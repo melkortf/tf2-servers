@@ -1,8 +1,8 @@
 FROM steamcmd/steamcmd:latest
 LABEL maintainer="garrappachc@gmail.com"
 
-RUN env DEBIAN_FRONTEND=noninteractive &&\
-  dpkg --add-architecture i386 \
+RUN env DEBIAN_FRONTEND=noninteractive \
+  && dpkg --add-architecture i386 \
   && apt -y update \
   && apt install -y software-properties-common \
   && add-apt-repository multiverse \
