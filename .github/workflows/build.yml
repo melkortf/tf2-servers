@@ -38,7 +38,6 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          load: true
           context: ./packages/tf2-base
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
@@ -72,7 +71,6 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          load: true
           context: ./packages/tf2-base-slim
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
@@ -106,7 +104,6 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v2
         with:
-          load: true
           context: ./packages/tf2-sourcemod
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
