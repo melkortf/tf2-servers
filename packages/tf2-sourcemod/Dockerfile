@@ -1,14 +1,6 @@
 FROM melkortf/tf2-base:latest
 LABEL maintainer="garrappachc@gmail.com"
 
-USER root
-
-RUN env DEBIAN_FRONTEND=noninteractive \
-  && apt-get -y update \
-  && apt-get install -y --no-install-recommends --no-install-suggests wget unzip \
-  && rm -rf /var/lib/apt/lists/*
-
-USER $USER
 WORKDIR $HOME
 
 ARG METAMOD_TARBALL_FILE_NAME=mmsource-1.11.0-git1144-linux.tar.gz

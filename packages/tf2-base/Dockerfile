@@ -16,6 +16,8 @@ RUN env DEBIAN_FRONTEND=noninteractive \
     lib32stdc++6 \
     libtinfo5:i386 \
     libcurl3-gnutls:i386 \
+    wget \
+    unzip \
   && rm -rf /var/lib/apt/lists/*
 
 ARG USER=tf2
