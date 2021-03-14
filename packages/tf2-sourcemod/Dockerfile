@@ -3,7 +3,8 @@ LABEL maintainer="garrappachc@gmail.com"
 
 USER root
 
-RUN apt-get -y update \
+RUN env DEBIAN_FRONTEND=noninteractive \
+  && apt-get -y update \
   && apt-get -y install wget \
   && rm -rf /var/lib/apt/lists/*
 
