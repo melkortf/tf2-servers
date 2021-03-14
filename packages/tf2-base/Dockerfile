@@ -38,19 +38,21 @@ RUN useradd --home-dir $HOME --create-home --shell /bin/bash $USER
 USER $USER
 WORKDIR $HOME
 
-RUN steamcmd +login anonymous +force_install_dir $SERVER_DIR +app_update $APP_ID +quit
-RUN mkdir $HOME/.steam/sdk32 && ln -s $HOME/.steam/steamcmd/linux32/steamclient.so $HOME/.steam/sdk32/
-RUN printf "@ShutdownOnFailedCommand 1\n\
+RUN mkdir $HOME/.steam/sdk32 \
+  && ln -s $HOME/.steam/steamcmd/linux32/steamclient.so $HOME/.steam/sdk32/ \
+  && printf "@ShutdownOnFailedCommand 1\n\
 @NoPromptForPassword 1\n\
 login anonymous\n\
 force_install_dir ${SERVER_DIR}\n\
 app_update ${APP_ID}\n\
 quit" >> $HOME/tf2.txt
-COPY server.cfg ${SERVER_DIR}/tf/cfg
 
-WORKDIR $SERVER_DIR/tf/maps
 COPY maps_to_keep .
-RUN ls | grep -v "$(cat maps_to_keep)" | xargs rm -rf
+RUN steamcmd +login anonymous +force_install_dir $SERVER_DIR +app_update $APP_ID +quit \
+  && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
+  && rm maps_to_keep
+
+COPY server.cfg ${SERVER_DIR}/tf/cfg
 
 WORKDIR $SERVER_DIR
 RUN printf "#!/bin/bash\n \
