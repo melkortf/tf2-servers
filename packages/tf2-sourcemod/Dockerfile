@@ -5,7 +5,7 @@ USER root
 
 RUN env DEBIAN_FRONTEND=noninteractive \
   && apt-get -y update \
-  && apt-get install -y --no-install-recommends --no-install-suggests wget \
+  && apt-get install -y --no-install-recommends --no-install-suggests wget unzip \
   && rm -rf /var/lib/apt/lists/*
 
 USER $USER
