@@ -40,7 +40,12 @@ WORKDIR $HOME
 
 RUN steamcmd +login anonymous +force_install_dir $SERVER_DIR +app_update $APP_ID +quit
 RUN mkdir $HOME/.steam/sdk32 && ln -s $HOME/.steam/steamcmd/linux32/steamclient.so $HOME/.steam/sdk32/
-RUN printf "@ShutdownOnFailedCommand 1\n@NoPromptForPassword 1\nlogin anonymous\nforce_install_dir $SERVER_DIR\napp_update $APP_ID\nquit" >> $HOME/tf2.txt
+RUN printf "@ShutdownOnFailedCommand 1\n\
+@NoPromptForPassword 1\n\
+login anonymous\n\
+force_install_dir $s\n\
+app_update $s\n\
+quit" "${SERVER_DIR}" "${APP_ID}" >> $HOME/tf2.txt
 COPY server.cfg ${SERVER_DIR}/tf/cfg
 
 WORKDIR $SERVER_DIR/tf/maps
@@ -48,7 +53,8 @@ COPY maps_to_keep .
 RUN ls | grep -v "$(cat maps_to_keep)" | xargs rm -rf
 
 WORKDIR $SERVER_DIR
-RUN printf "#!/bin/bash\n\$SERVER_DIR/srcds_run \
+RUN printf "#!/bin/bash\n \
+  \$SERVER_DIR/srcds_run \
   -game tf \
   -secured \
   -steam_dir \$HOME/.steam/steamcmd \
