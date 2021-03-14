@@ -1,4 +1,4 @@
-FROM melkortf/tf2-base:latest
+FROM melkortf/tf2-base-slim:latest
 LABEL maintainer="garrappachc@gmail.com"
 
 USER root
