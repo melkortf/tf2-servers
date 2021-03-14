@@ -43,6 +43,10 @@ RUN mkdir $HOME/.steam/sdk32 && ln -s $HOME/.steam/steamcmd/linux32/steamclient.
 RUN printf "@ShutdownOnFailedCommand 1\n@NoPromptForPassword 1\nlogin anonymous\nforce_install_dir $SERVER_DIR\napp_update $APP_ID\nquit" >> $HOME/tf2.txt
 COPY server.cfg ${SERVER_DIR}/tf/cfg
 
+WORKDIR $SERVER_DIR/tf/maps
+COPY maps_to_keep .
+RUN ls | grep -v "$(cat maps_to_keep)" | xargs rm -rf
+
 WORKDIR $SERVER_DIR
 RUN printf "#!/bin/bash\n\$SERVER_DIR/srcds_run \
   -game tf \

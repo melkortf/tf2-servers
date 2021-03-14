@@ -1,11 +1,11 @@
-FROM melkortf/tf2-base-slim:latest
+FROM melkortf/tf2-base:latest
 LABEL maintainer="garrappachc@gmail.com"
 
 USER root
 
 RUN env DEBIAN_FRONTEND=noninteractive \
   && apt-get -y update \
-  && apt-get -y install wget \
+  && apt-get install -y --no-install-recommends --no-install-suggests wget \
   && rm -rf /var/lib/apt/lists/*
 
 USER $USER
