@@ -3,11 +3,11 @@ LABEL maintainer="garrappachc@gmail.com"
 
 RUN env DEBIAN_FRONTEND=noninteractive \
   && dpkg --add-architecture i386 \
-  && apt -y update \
-  && apt install -y software-properties-common \
+  && apt-get -y update \
+  && apt-get install -y software-properties-common \
   && add-apt-repository multiverse \
-  && apt -y update \
-  && apt install -y --no-install-recommends --no-install-suggests \
+  && apt-get -y update \
+  && apt-get install -y --no-install-recommends --no-install-suggests \
     lib32gcc1 \
     lib32z1 \
     libncurses5:i386 \
