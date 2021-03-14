@@ -69,7 +69,7 @@ RUN printf "#!/bin/bash\n \
   \$@" > ./entrypoint.sh && chmod +x ./entrypoint.sh
 
 ENTRYPOINT ["./entrypoint.sh"]
-CMD ["+sv_pure", "1", "+map", "cp_badlands", "+maxplayers", "32"]
+CMD ["+sv_pure", "1", "+map", "cp_badlands", "+maxplayers", "24"]
 
 EXPOSE $PORT/tcp
 EXPOSE $PORT/udp
