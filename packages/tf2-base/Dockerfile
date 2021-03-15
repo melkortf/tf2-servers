@@ -30,12 +30,6 @@ ENV HOME=$HOME
 ENV SERVER_DIR=$SERVER_DIR
 ENV APP_ID=$APP_ID
 
-ENV IP=0.0.0.0
-ENV PORT=27015
-ENV CLIENTPORT=27016
-ENV STEAMPORT=27018
-ENV STVPORT=27020
-
 RUN useradd --home-dir $HOME --create-home --shell /bin/bash $USER
 USER $USER
 WORKDIR $HOME
@@ -56,25 +50,31 @@ quit" >> $HOME/tf2.txt
 
 COPY server.cfg ${SERVER_DIR}/tf/cfg
 
+ENV IP=0.0.0.0
+ENV PORT=27015
+ENV CLIENT_PORT=27016
+ENV STEAM_PORT=27018
+ENV STV_PORT=27020
+
+ENV RCON_PASSWORD="123456"
+ENV SERVER_HOSTNAME="A Team Fortress 2 server"
+ENV SERVER_PASSWORD=
+ENV STV_NAME="Source TV"
+ENV STV_TITLE="A Team Fortress 2 server Source TV"
+ENV STV_PASSWORD=
+
+ENV LOGS_TF_APIKEY=
+ENV LOGS_TF_PREFIX=
+
+ENV DEMOS_TF_APIKEY=
+
 WORKDIR $SERVER_DIR
-RUN printf "#!/bin/bash\n \
-  \$SERVER_DIR/srcds_run \
-  -game tf \
-  -secured \
-  -steam_dir \$HOME/.steam/steamcmd \
-  -steamcmd_script \$HOME/tf2.txt \
-  -autoupdate \
-  -ip \$IP \
-  -port \$PORT \
-  +clientport \$CLIENTPORT \
-  -steamport \$STEAMPORT \
-  +tv_port \$STVPORT \
-  -strictportbind \
-  \$@" > ./entrypoint.sh && chmod +x ./entrypoint.sh
+COPY entrypoint.sh .
+COPY generate_dynamic_cfg.sh .
 
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["+sv_pure", "1", "+map", "cp_badlands", "+maxplayers", "24"]
 
 EXPOSE $PORT/tcp
 EXPOSE $PORT/udp
-EXPOSE $STVPORT/udp
+EXPOSE $STV_PORT/udp
