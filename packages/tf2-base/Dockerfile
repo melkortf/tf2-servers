@@ -1,7 +1,7 @@
 FROM steamcmd/steamcmd:latest
 LABEL maintainer="garrappachc@gmail.com"
 
-RUN env DEBIAN_FRONTEND=noninteractive \
+RUN DEBIAN_FRONTEND=noninteractive \
   && dpkg --add-architecture i386 \
   && apt-get -y update \
   && apt-get install -y software-properties-common \
