@@ -11,3 +11,4 @@ RUN wget -nv "${TFTRUE_URL}" \
   && rm -f "${TFTRUE_FILE_NAME}"
 
 WORKDIR $SERVER_DIR
+CMD ["+sv_pure", "2", "+map", "cp_badlands", "+maxplayers", "24"]
