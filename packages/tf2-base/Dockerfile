@@ -18,6 +18,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     libcurl3-gnutls:i386 \
     wget \
     unzip \
+    gettext-base \
   && rm -rf /var/lib/apt/lists/*
 
 ARG USER=tf2
@@ -48,7 +49,7 @@ force_install_dir ${SERVER_DIR}\n\
 app_update ${APP_ID}\n\
 quit" >> $HOME/tf2.txt
 
-COPY server.cfg ${SERVER_DIR}/tf/cfg
+COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
 
 ENV IP=0.0.0.0
 ENV PORT=27015
@@ -63,14 +64,8 @@ ENV STV_NAME="Source TV"
 ENV STV_TITLE="A Team Fortress 2 server Source TV"
 ENV STV_PASSWORD=
 
-ENV LOGS_TF_APIKEY=
-ENV LOGS_TF_PREFIX=
-
-ENV DEMOS_TF_APIKEY=
-
 WORKDIR $SERVER_DIR
 COPY entrypoint.sh .
-COPY generate_dynamic_cfg.sh .
 
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["+sv_pure", "1", "+map", "cp_badlands", "+maxplayers", "24"]

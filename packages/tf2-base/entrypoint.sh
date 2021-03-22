@@ -1,6 +1,9 @@
 #!/bin/bash
 
-./generate_dynamic_cfg.sh > $SERVER_DIR/tf/cfg/server_dynamic.cfg
+if test -f "${SERVER_DIR}/tf/cfg/server.cfg.template"; then
+  envsubst < "${SERVER_DIR}/tf/cfg/server.cfg.template" > "${SERVER_DIR}/tf/cfg/server.cfg"
+fi
+
 
 $SERVER_DIR/srcds_run \
   -game tf \

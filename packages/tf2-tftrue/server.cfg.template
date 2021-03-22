@@ -1,0 +1,21 @@
+log on
+
+rcon_password "${RCON_PASSWORD}"
+
+hostname "${SERVER_HOSTNAME}"
+sv_password "${SERVER_PASSWORD}"
+
+sv_contact ""
+sv_tags ""
+sv_allowdownload 1
+sv_allowupload 1
+
+tv_enable 1
+tv_name "${STV_NAME}"
+tv_title "${STV_TITLE}"
+tv_password "${STV_PASSWORD}"
+
+sv_quota_stringcmdspersecond 400
+
+tftrue_logs_apikey "${LOGS_TF_APIKEY}"
+tftrue_logs_prefix "${LOGS_TF_PREFIX}"

@@ -42,6 +42,8 @@ RUN ETF2L_CONFIGS_FILE_NAME="etf2l_configs.zip" \
   && unzip ${ETF2L_CONFIGS_FILE_NAME} \
   && rm -f ${ETF2L_CONFIGS_FILE_NAME}
 
-COPY server.cfg ${SERVER_DIR}/tf/cfg
-
 WORKDIR $SERVER_DIR
+
+ENV DEMOS_TF_APIKEY=
+
+COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template

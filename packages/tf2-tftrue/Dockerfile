@@ -12,3 +12,8 @@ RUN wget -nv "${TFTRUE_URL}" \
 
 WORKDIR $SERVER_DIR
 CMD ["+sv_pure", "2", "+map", "cp_badlands", "+maxplayers", "24"]
+
+ENV LOGS_TF_APIKEY=
+ENV LOGS_TF_PREFIX=
+
+COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
