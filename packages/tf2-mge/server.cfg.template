@@ -7,6 +7,8 @@ sv_password "${SERVER_PASSWORD}"
 
 sv_contact ""
 sv_tags ""
+
+sv_downloadurl "${DOWNLOAD_URL}"
 sv_allowdownload 1
 sv_allowupload 1
 
