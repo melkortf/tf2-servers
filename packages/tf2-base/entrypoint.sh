@@ -1,8 +1,16 @@
 #!/bin/bash
 
-if test -f "${SERVER_DIR}/tf/cfg/server.cfg.template"; then
-  envsubst < "${SERVER_DIR}/tf/cfg/server.cfg.template" > "${SERVER_DIR}/tf/cfg/server.cfg"
-fi
+auto_envsubst() {
+  local template_dir="${SERVER_DIR}/tf/cfg"
+  local suffix=".template"
+
+  find "$template_dir" -follow -type f -name "*$suffix" -print | while read -r template; do
+    output_file="${template%$suffix}"
+    envsubst < "${template}" > "${output_file}"
+  done
+}
+
+auto_envsubst
 
 
 $SERVER_DIR/srcds_run \
