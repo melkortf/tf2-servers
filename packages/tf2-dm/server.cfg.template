@@ -1,0 +1,40 @@
+log on
+
+rcon_password "${RCON_PASSWORD}"
+
+hostname "${SERVER_HOSTNAME}"
+sv_password "${SERVER_PASSWORD}"
+
+sv_contact ""
+sv_tags ""
+
+sv_downloadurl "${DOWNLOAD_URL}"
+sv_allowdownload 1
+sv_allowupload 1
+
+tv_enable 0
+
+sv_quota_stringcmdspersecond 400
+
+tf_weapon_criticals 0
+tf_weapon_criticals_melee 0
+tf_use_fixed_weaponspreads 1
+
+mp_timelimit 20
+mp_enableroundwaittime 0
+mp_waitingforplayers_cancel 1
+sm_cvar mp_waitingforplayers_time 0
+
+sm_deterministic_fall_damage 1
+sm_fix_ghost_crossbow_bolts 1
+sm_fix_slope_bug 1
+sm_fix_sticky_delay 1
+sm_gunboats_always_apply 1
+sm_projectiles_ignore_teammates 1
+sm_remove_halloween_souls 1
+sm_remove_medic_attach_speed 0
+sm_remove_pipe_spin 0
+sm_rest_in_peace_rick_may 0
+sm_winger_jump_bonus_when_fully_deployed 1
+
+sm_concede_command 0
