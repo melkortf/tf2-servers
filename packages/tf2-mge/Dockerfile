@@ -14,5 +14,8 @@ RUN wget -nv "https://github.com/sapphonie/MGEMod/archive/master.zip" -O "mgemod
   && tar xf "sourcebans-pp-1.6.3.plugin-only.tar.gz" -C "${SERVER_DIR}/tf" --strip-components=1 \
   && rm -rf "sourcebans-pp-1.6.3.plugin-only.tar.gz"
 
+ENV SELECTED_MAP="mge_training_v8_beta4b"
+
 COPY server.cfg.template "${SERVER_DIR}/tf/cfg/server.cfg.template"
+COPY mapcycle.txt.template "${SERVER_DIR}/tf/cfg/mapcycle.txt.template"
 COPY afk_manager.cfg "${SERVER_DIR}/tf/cfg/sourcemod/afk_manager.cfg"
