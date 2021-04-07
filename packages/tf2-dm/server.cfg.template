@@ -23,6 +23,7 @@ tf_use_fixed_weaponspreads 1
 mp_timelimit 20
 mp_enableroundwaittime 0
 mp_waitingforplayers_cancel 1
+mp_match_end_at_timelimit 1
 sm_cvar mp_waitingforplayers_time 0
 
 sm_deterministic_fall_damage 1
@@ -38,3 +39,26 @@ sm_rest_in_peace_rick_may 0
 sm_winger_jump_bonus_when_fully_deployed 1
 
 sm_concede_command 0
+
+sm_classrestrict_enabled 1
+sm_classrestrict_immunity 0
+
+sm_classrestrict_blu_demomen 1
+sm_classrestrict_blu_engineers 0
+sm_classrestrict_blu_heavies 0
+sm_classrestrict_blu_medics 0
+sm_classrestrict_blu_pyros 0
+sm_classrestrict_blu_scouts 2
+sm_classrestrict_blu_snipers 0
+sm_classrestrict_blu_soldiers 2
+sm_classrestrict_blu_spies 0
+
+sm_classrestrict_red_demomen 1
+sm_classrestrict_red_engineers 0
+sm_classrestrict_red_heavies 0
+sm_classrestrict_red_medics 0
+sm_classrestrict_red_pyros 0
+sm_classrestrict_red_scouts 2
+sm_classrestrict_red_snipers 0
+sm_classrestrict_red_soldiers 2
+sm_classrestrict_red_spies 0

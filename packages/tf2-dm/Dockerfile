@@ -18,5 +18,8 @@ RUN COMP_FIXES_FILE_NAME="tf2-comp-fixes.zip" \
   && unzip -o "${COMP_FIXES_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && rm -f "${COMP_FIXES_FILE_NAME}"
 
+RUN wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=27957" -O "${SERVER_DIR}/tf/addons/sourcemod/plugins/classrestrict.smx"
+
 COPY server.cfg.template "${SERVER_DIR}/tf/cfg/server.cfg.template"
 COPY soap_tf2dm.cfg "${SERVER_DIR}/tf/cfg/sourcemod/soap_tf2dm.cfg"
+COPY mapcycle.txt "${SERVER_DIR}/tf/cfg/mapcycle.txt"
