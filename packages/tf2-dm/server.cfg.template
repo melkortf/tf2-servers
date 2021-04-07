@@ -66,3 +66,10 @@ sm_classrestrict_red_scouts 2
 sm_classrestrict_red_snipers 0
 sm_classrestrict_red_soldiers 2
 sm_classrestrict_red_spies 0
+
+mp_tournament_whitelist "cfg/custom_whitelist_11769.txt"
+
+tftrue_gamedesc "deathmatch"
+tftrue_no_hats 0
+tftrue_no_misc 0
+tftrue_no_action 0

@@ -1,4 +1,4 @@
-FROM melkortf/tf2-sourcemod:latest
+FROM melkortf/tf2-tftrue:latest
 LABEL maintainer="garrappachc@gmail.com"
 
 RUN rm $SERVER_DIR/tf/addons/sourcemod/plugins/{funcommands,funvotes}.smx
@@ -29,3 +29,4 @@ COPY server.cfg.template "${SERVER_DIR}/tf/cfg/server.cfg.template"
 COPY soap_tf2dm.cfg "${SERVER_DIR}/tf/cfg/sourcemod/soap_tf2dm.cfg"
 COPY mapcycle.txt "${SERVER_DIR}/tf/cfg/mapcycle.txt"
 COPY afk_manager.cfg "${SERVER_DIR}/tf/cfg/sourcemod/afk_manager.cfg"
+COPY custom_whitelist_11769.txt "${SERVER_DIR}/tf/cfg/custom_whitelist_11769.txt"
