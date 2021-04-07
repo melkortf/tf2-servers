@@ -24,6 +24,7 @@ mp_timelimit 20
 mp_enableroundwaittime 0
 mp_waitingforplayers_cancel 1
 mp_match_end_at_timelimit 1
+mp_mapcycle_empty_timeout_seconds 60
 sm_cvar mp_waitingforplayers_time 0
 
 sm_deterministic_fall_damage 1

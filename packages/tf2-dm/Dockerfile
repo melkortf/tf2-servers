@@ -18,8 +18,14 @@ RUN COMP_FIXES_FILE_NAME="tf2-comp-fixes.zip" \
   && unzip -o "${COMP_FIXES_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && rm -f "${COMP_FIXES_FILE_NAME}"
 
-RUN wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=27957" -O "${SERVER_DIR}/tf/addons/sourcemod/plugins/classrestrict.smx"
+RUN wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=27957" -O "${SERVER_DIR}/tf/addons/sourcemod/plugins/classrestrict.smx" \
+  && wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=170330" -O "${SERVER_DIR}/tf/addons/sourcemod/plugins/afk_manager4.smx" \
+  && wget -nv "https://forums.alliedmods.net/attachment.php?attachmentid=166646&d=1510967008" -O "${SERVER_DIR}/tf/addons/sourcemod/translations/afk_manager.phrases.txt" \
+  && wget -nv "https://github.com/sbpp/sourcebans-pp/releases/download/1.6.3/sourcebans-pp-1.6.3.plugin-only.tar.gz" \
+  && tar xf "sourcebans-pp-1.6.3.plugin-only.tar.gz" -C "${SERVER_DIR}/tf" --strip-components=1 \
+  && rm -rf "sourcebans-pp-1.6.3.plugin-only.tar.gz"
 
 COPY server.cfg.template "${SERVER_DIR}/tf/cfg/server.cfg.template"
 COPY soap_tf2dm.cfg "${SERVER_DIR}/tf/cfg/sourcemod/soap_tf2dm.cfg"
 COPY mapcycle.txt "${SERVER_DIR}/tf/cfg/mapcycle.txt"
+COPY afk_manager.cfg "${SERVER_DIR}/tf/cfg/sourcemod/afk_manager.cfg"
