@@ -24,3 +24,9 @@ mp_timelimit 300
 mp_enableroundwaittime 0
 mp_match_end_at_timelimit 1
 mp_mapcycle_empty_timeout_seconds 60
+
+sv_voiceenable 1
+sv_alltalk 1
+mp_chattime 1
+mp_bonusroundtime 0
+mp_enableroundwaittime 0
