@@ -24,7 +24,6 @@ mp_timelimit 20
 mp_enableroundwaittime 0
 mp_waitingforplayers_cancel 1
 mp_match_end_at_timelimit 1
-mp_mapcycle_empty_timeout_seconds 60
 mp_bonusroundtime 0
 mp_enableroundwaittime 0
 mp_chattime 1
