@@ -95,7 +95,7 @@ In order to make the image as small as possible, the only map shipped with the i
 with all the maps and share it between all the containers. Just mount `/home/tf2/server/tf/maps` to your local directory that contains all the maps you need:
 
 ```
-docker run -it -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps:ro --network=host -d melkortf/tf2-base"
+docker run -it -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps:ro" --network=host -d melkortf/tf2-base
 ```
 
 If you want to have all the maps available on [serveme.tf's FastDL](https://dl.serveme.tf/maps/), just type the following command:
