@@ -87,3 +87,20 @@ DEMOS_TF_APIKEY      |               | sm_demostf_apikey ${DEMOS_TF_APIKEY} | Th
 ```
 docker run -it -e "RCON_PASSWORD=foobar123" -e "SERVER_HOSTNAME=melkor.tf" -e "STV_NAME=melkor TV" --network=host -d melkortf/tf2-base
 ```
+
+## Maps
+
+In order to make the image as small as possible, the only map shipped with the image is cp_badlands. This has also the advantage of letting you maintain just one directory
+with all the maps and share it between all the containers. Just mount `/home/tf2/server/tf/maps` to your local directory that contains all the maps you need:
+
+```
+docker run -it -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps:ro --network=host -d melkortf/tf2-base"
+```
+
+If you want to have all the maps available on [serveme.tf's FastDL](https://dl.serveme.tf/maps/), just type the following command:
+
+```
+wget -r --no-parent --accept bsp -l1 --cut-dirs=2 --no-host-directories -nc https://dl.serveme.tf/maps/
+```
+
+It will download every single map to the current directory.
