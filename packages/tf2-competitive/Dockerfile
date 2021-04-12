@@ -25,6 +25,12 @@ RUN UPDATED_PAUSE_PLUGIN_FILE_NAME="updated-pause-plugin.zip" \
   && unzip -o ${UPDATED_PAUSE_PLUGIN_FILE_NAME} \
   && rm -f ${UPDATED_PAUSE_PLUGIN_FILE_NAME}
 
+RUN wget -nv "https://github.com/sapphonie/MGEMod/archive/master.zip" -O "mgemod.zip" \
+  && unzip mgemod.zip \
+  && cp -r MGEMod-master/addons "$SERVER_DIR/tf/" \
+  && rm -rf MGEMod-master \
+  && rm -f mgemod.zip
+
 WORKDIR $SERVER_DIR/tf/addons/sourcemod
 
 RUN CURL_FILE_NAME="curl_1.3.0.0.zip" \
