@@ -16,6 +16,7 @@ tv_enable 1
 tv_name "${STV_NAME}"
 tv_title "${STV_TITLE}"
 tv_password "${STV_PASSWORD}"
+tv_maxrate 0
 
 sv_quota_stringcmdspersecond 400
 
