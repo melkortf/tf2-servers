@@ -3,8 +3,8 @@ LABEL maintainer="garrappachc@gmail.com"
 
 WORKDIR $SERVER_DIR/tf
 
-ARG TFTRUE_FILE_NAME=tftrue4_79.zip
-ARG TFTRUE_URL=https://sappho.io/files/tf/${TFTRUE_FILE_NAME}
+ARG TFTRUE_FILE_NAME=TFTrue.zip
+ARG TFTRUE_URL=https://tftrue.esport-tools.net/${TFTRUE_FILE_NAME}
 
 RUN wget -nv "${TFTRUE_URL}" \
   && unzip "${TFTRUE_FILE_NAME}" \
