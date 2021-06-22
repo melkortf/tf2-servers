@@ -6,7 +6,7 @@ WORKDIR $HOME
 ARG METAMOD_TARBALL_FILE_NAME=mmsource-1.11.0-git1144-linux.tar.gz
 ARG METAMOD_TARBALL_URL=https://mms.alliedmods.net/mmsdrop/1.11/${METAMOD_TARBALL_FILE_NAME}
 
-ARG SOURCEMOD_TARBALL_FILE_NAME=sourcemod-1.10.0-git6502-linux.tar.gz
+ARG SOURCEMOD_TARBALL_FILE_NAME=sourcemod-1.10.0-git6504-linux.tar.gz
 ARG SOURCEMOD_TARBALL_URL=https://sm.alliedmods.net/smdrop/1.10/${SOURCEMOD_TARBALL_FILE_NAME}
 
 RUN wget -nv "${METAMOD_TARBALL_URL}" \
