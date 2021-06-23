@@ -1,11 +1,10 @@
 FROM melkortf/tf2-sourcemod:latest
 LABEL maintainer="garrappachc@gmail.com"
 
-ARG TFTRUE_FILE_NAME=TFTrue.zip
-ARG TFTRUE_URL=https://tftrue.esport-tools.net/${TFTRUE_FILE_NAME}
+ARG TFTRUE_FILE_NAME=TFTrue.so
+ARG TFTRUE_URL=https://raw.githubusercontent.com/AnAkkk/TFTrue/public/release/${TFTRUE_FILE_NAME}
 
-RUN wget -nv --no-check-certificate "${TFTRUE_URL}" \
-  && unzip "${TFTRUE_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
+RUN wget -nv "${TFTRUE_URL}" -P "${SERVER_DIR}/tf/addons/" \
   && rm -f "${TFTRUE_FILE_NAME}"
 
 CMD ["+sv_pure", "2", "+map", "cp_badlands", "+maxplayers", "24"]
