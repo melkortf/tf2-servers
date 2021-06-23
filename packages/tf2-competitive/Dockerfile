@@ -14,7 +14,7 @@ RUN DHOOKS_FILE_NAME="dhooks-2.2.0-detours16-sm110.zip" \
   && rm -f "${DHOOKS_FILE_NAME}"
 
 RUN COMP_FIXES_FILE_NAME="tf2-comp-fixes.zip" \
-  && wget -nv "https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.10.5/${COMP_FIXES_FILE_NAME}" \
+  && wget -nv "https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.11.0/${COMP_FIXES_FILE_NAME}" \
   && unzip -o "${COMP_FIXES_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && rm -f "${COMP_FIXES_FILE_NAME}"
 
