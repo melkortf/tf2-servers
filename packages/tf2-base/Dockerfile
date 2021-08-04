@@ -1,3 +1,16 @@
+FROM debian:latest AS rcon-build
+WORKDIR /build
+
+RUN apt-get -y update\
+  && apt-get install -y build-essential git cmake check pkg-config libglib2.0-dev libbsd-dev \
+  && rm -rf /var/lib/apt/lists/* \
+  && git clone https://github.com/n0la/rcon.git \
+  && mkdir rcon/build \
+  && cd rcon/build \
+  && cmake .. \
+  && make
+
+
 FROM steamcmd/steamcmd:latest
 LABEL maintainer="garrappachc@gmail.com"
 
@@ -19,6 +32,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
     wget \
     unzip \
     gettext-base \
+    libbsd0 \
   && rm -rf /var/lib/apt/lists/*
 
 ARG USER=tf2
@@ -50,6 +64,7 @@ app_update ${APP_ID}\n\
 quit" >> $HOME/tf2.txt
 
 COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
+COPY --from=rcon-build /build/rcon/build/rcon ${SERVER_DIR}/rcon
 
 ENV IP=0.0.0.0
 ENV PORT=27015
