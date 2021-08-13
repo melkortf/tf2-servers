@@ -82,6 +82,7 @@ ENV DOWNLOAD_URL="https://dl.serveme.tf/"
 
 WORKDIR $SERVER_DIR
 COPY entrypoint.sh .
+COPY healthcheck.sh .
 
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["+sv_pure", "1", "+map", "cp_badlands", "+maxplayers", "24"]
@@ -89,3 +90,5 @@ CMD ["+sv_pure", "1", "+map", "cp_badlands", "+maxplayers", "24"]
 EXPOSE $PORT/tcp
 EXPOSE $PORT/udp
 EXPOSE $STV_PORT/udp
+
+HEALTHCHECK --interval=30s --timeout=30s --start-period=20s --retries=3 CMD [ "./healthcheck.sh" ]
