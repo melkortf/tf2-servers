@@ -1,8 +1,34 @@
-# Team Fortress 2 server Docker images for multiple purposes.
+# tf2-servers
 
-All images have the autoupdate feature enabled; just restart the container to update TF2 to the newest version.
+<p>
+  <a href="https://hub.docker.com/repository/docker/melkortf/tf2-base">
+    <img alt="Docker Image Version" src="https://img.shields.io/docker/v/melkortf/tf2-base/latest">
+  </a>
+  <a href="https://hub.docker.com/repository/docker/melkortf/tf2-base">
+    <img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/melkortf/tf2-base/latest">
+  </a>
+  <a href="https://hub.docker.com/repository/docker/melkortf/tf2-base">
+    <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/melkortf/tf2-base" />
+  </a>
+  <a href="https://opensource.org/licenses/MIT">
+    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT license">
+  </a>
+</p>
 
-### server.cfg
+> [Team Fortress 2 Dedicated Server](https://wiki.teamfortress.com/wiki/Linux_dedicated_server) Docker images for multiple purposes
+
+
+```
+$ docker run \
+  -v "maps:/home/tf2/server/tf/maps" \
+  -e "RCON_PASSWORD=foobar123" \
+  -e "SERVER_HOSTNAME=melkor.tf" \
+  -e "STV_NAME=melkor TV" \
+  --network=host \
+  melkortf/tf2-base
+```
+
+### Concerning server.cfg
 
 Each TF2 image has its own `server.cfg.template` file that is used to generate `server.cfg`. The docker container
 uses `envsubst` to replace environment variables in the template file.
@@ -83,19 +109,13 @@ Environment variable | Default value | Used in | Description
 DEMOS_TF_APIKEY      |               | sm_demostf_apikey ${DEMOS_TF_APIKEY} | The API key used to upload the demo to [demos.tf](https://demos.tf/).
 
 
-## Example
-
-```
-docker run -it -e "RCON_PASSWORD=foobar123" -e "SERVER_HOSTNAME=melkor.tf" -e "STV_NAME=melkor TV" --network=host -d melkortf/tf2-base
-```
-
 ## Maps
 
-In order to make the image as small as possible, the only map shipped with the image is cp_badlands. This has also the advantage of letting you maintain just one directory
+In order to make the image as small as possible, the only map shipped with the image is _cp_badlands_. This has also the advantage of letting you maintain only one directory
 with all the maps and share it between all the containers. Just mount `/home/tf2/server/tf/maps` to your local directory that contains all the maps you need:
 
 ```
-docker run -it -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps:ro" --network=host -d melkortf/tf2-base
+docker run -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps:ro" --network=host -d melkortf/tf2-base
 ```
 
 If you want to have all the maps available on [serveme.tf's FastDL](https://dl.serveme.tf/maps/), just type the following command:
