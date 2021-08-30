@@ -39,7 +39,7 @@ rcon_password "${RCON_PASSWORD}"
 
 when launched with these params:
 ```
-docker run --network=host -e RCON_PASSWORD=123456 -itd melkortf/tf2-base
+$ docker run --network=host -e RCON_PASSWORD=123456 -itd melkortf/tf2-base
 ```
 will generate the following `server.cfg`:
 ```
@@ -52,7 +52,7 @@ There are many more configuration options, you will find them all below.
 ## tf2-base
 
 ```
-docker pull melkortf/tf2-base
+$ docker pull melkortf/tf2-base
 ```
 
 The base image for all other images; pure TF2 server, without any add-ons and plugins.
@@ -76,7 +76,7 @@ DOWNLOAD_URL         | https://dl.serveme.tf/ | `sv_downloadurl "${DOWNLOAD_URL}
 ## tf2-sourcemod
 
 ```
-docker pull melkortf/tf2-sourcemod
+$ docker pull melkortf/tf2-sourcemod
 ```
 
 TF2 server with [Metamod:Source](https://www.sourcemm.net/) and [SourceMod](https://www.sourcemod.net/) installed.
@@ -85,7 +85,7 @@ TF2 server with [Metamod:Source](https://www.sourcemm.net/) and [SourceMod](http
 ## tf2-tftrue
 
 ```
-docker pull melkortf/tf2-tftrue
+$ docker pull melkortf/tf2-tftrue
 ```
 
 TF2 server with [Metamod:Source](https://www.sourcemm.net/), [SourceMod](https://www.sourcemod.net/) and [TFTrue](https://tftrue.esport-tools.net/) addons installed.
@@ -99,7 +99,7 @@ LOGS_TF_PREFIX       |               | `tftrue_logs_prefix ${LOGS_TF_PREFIX}` | 
 ## tf2-competitive
 
 ```
-docker pull melkortf/tf2-competitive
+$ docker pull melkortf/tf2-competitive
 ```
 
 TF2 server configured to be used in competitive matches.
@@ -109,19 +109,37 @@ Environment variable | Default value | Used in | Description
 DEMOS_TF_APIKEY      |               | sm_demostf_apikey ${DEMOS_TF_APIKEY} | The API key used to upload the demo to [demos.tf](https://demos.tf/).
 
 
+## tf2-dm
+
+```
+$ docker pull melkortf/tf2-dm
+```
+
+TF2 dedicated server for DeathMatch gameplay.
+
+
+## tf2-mge
+
+```
+$ docker pull melkortf/tf2-mge
+```
+
+TF2 dedicated server for MGE 1v1 training mod.
+
+
 ## Maps
 
 In order to make the image as small as possible, the only map shipped with the image is _cp_badlands_. This has also the advantage of letting you maintain only one directory
 with all the maps and share it between all the containers. Just mount `/home/tf2/server/tf/maps` to your local directory that contains all the maps you need:
 
 ```
-docker run -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps:ro" --network=host -d melkortf/tf2-base
+$ docker run -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps:ro" --network=host -d melkortf/tf2-base
 ```
 
 If you want to have all the maps available on [serveme.tf's FastDL](https://dl.serveme.tf/maps/), just type the following command:
 
 ```
-wget -r --no-parent --accept bsp -l1 --cut-dirs=2 --no-host-directories -nc https://dl.serveme.tf/maps/
+$ wget -r --no-parent --accept bsp -l1 --cut-dirs=2 --no-host-directories -nc https://dl.serveme.tf/maps/
 ```
 
 It will download every single map to the current directory.
