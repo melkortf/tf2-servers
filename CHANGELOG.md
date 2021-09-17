@@ -1,3 +1,10 @@
+# 1.1.2
+
+
+### Fixes
+
+* **tf2-tftrue**: use temporary build of TFTrue ([9c48f9b5](https://github.com/melkortf/tf2-servers/commit/9c48f9b554001c3fc8ab29b7793b63eb460668f3))
+
 # 1.1.1
 
 
