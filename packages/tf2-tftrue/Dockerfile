@@ -8,7 +8,7 @@ RUN wget -nv --no-check-certificate "${TFTRUE_URL}" \
   && unzip "${TFTRUE_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && rm -f "${TFTRUE_FILE_NAME}"
 
-RUN wget -nv "https://melkor.tf/TFTrue.so" -O "${SERVER_DIR}/tf/addons/TFTrue.so"
+RUN wget -nv "https://spenny.tf/TFTrue.so" -O "${SERVER_DIR}/tf/addons/TFTrue.so"
 
 CMD ["+sv_pure", "2", "+map", "cp_badlands", "+maxplayers", "24"]
 

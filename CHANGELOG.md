@@ -1,3 +1,11 @@
+# 1.1.3
+
+
+### Fixes
+
+* **tf2-tftrue**: bump temporary build of TFTrue
+
+
 # 1.1.2
 
 
