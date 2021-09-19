@@ -1,10 +1,16 @@
+# 1.1.4
+
+
+### Fixes
+
+* **tf2-tftrue**: update TFTrue binary ([c5b5a19b](https://github.com/melkortf/tf2-servers/commit/c5b5a19b78c433328cd4a9dd469e97d5a522e941))
+
 # 1.1.3
 
 
 ### Fixes
 
 * **tf2-tftrue**: bump temporary build of TFTrue
-
 
 # 1.1.2
 
