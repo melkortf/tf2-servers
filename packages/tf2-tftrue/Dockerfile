@@ -1,14 +1,10 @@
 FROM melkortf/tf2-sourcemod:latest
 LABEL maintainer="garrappachc@gmail.com"
 
-ARG TFTRUE_FILE_NAME=TFTrue.zip
-ARG TFTRUE_URL=https://tftrue.esport-tools.net/${TFTRUE_FILE_NAME}
+ARG TFTRUE_URL=https://github.com/AnAkkk/TFTrue/raw/public/release/TFTrue.so
 
-RUN wget -nv --no-check-certificate "${TFTRUE_URL}" \
-  && unzip "${TFTRUE_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
-  && rm -f "${TFTRUE_FILE_NAME}"
-
-RUN wget -nv "https://spenny.tf/TFTrue.so" -O "${SERVER_DIR}/tf/addons/TFTrue.so"
+COPY TFTrue.vdf "${SERVER_DIR}/tf/addons/TFTrue.vdf"
+RUN wget -nv "${TFTRUE_URL}" -O "${SERVER_DIR}/tf/addons/TFTrue.so"
 
 CMD ["+sv_pure", "2", "+map", "cp_badlands", "+maxplayers", "24"]
 
