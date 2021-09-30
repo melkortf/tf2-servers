@@ -1,13 +1,13 @@
 # tf2-servers
 
 <p>
-  <a href="https://hub.docker.com/repository/docker/melkortf/tf2-base">
+  <a href="https://hub.docker.com/r/melkortf/tf2-base">
     <img alt="Docker Image Version" src="https://img.shields.io/docker/v/melkortf/tf2-base/latest">
   </a>
-  <a href="https://hub.docker.com/repository/docker/melkortf/tf2-base">
+  <a href="https://hub.docker.com/r/melkortf/tf2-base">
     <img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/melkortf/tf2-base/latest">
   </a>
-  <a href="https://hub.docker.com/repository/docker/melkortf/tf2-base">
+  <a href="https://hub.docker.com/r/melkortf/tf2-base">
     <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/melkortf/tf2-base" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
