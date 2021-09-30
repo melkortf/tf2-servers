@@ -1,3 +1,15 @@
+# [1.2.0](https://github.com/melkortf/tf2-servers/compare/1.1.4...1.2.0) (2021-09-30)
+
+
+### Bug Fixes
+
+* **ci:** add release-it support ([2ff24b4](https://github.com/melkortf/tf2-servers/commit/2ff24b412ee3b6226f4b1293deeab0c5deb24f7b))
+
+
+### Features
+
+* **tf2-competitive:** add rgl configs ([#6](https://github.com/melkortf/tf2-servers/issues/6)) ([f6b3ea0](https://github.com/melkortf/tf2-servers/commit/f6b3ea0ced321ff00a76cb547310bced03148a54))
+
 # 1.1.4
 
 
