@@ -41,6 +41,12 @@ RUN ETF2L_CONFIGS_FILE_NAME="etf2l_configs.zip" \
   && unzip "${ETF2L_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
   && rm -f "${ETF2L_CONFIGS_FILE_NAME}"
 
+RUN RGL_CONFIGS_FILE_NAME="rgl_configs.zip" \
+  && wget -nv "https://github.com/RGLgg/server-resources-updater/archive/master.zip" -O "${RGL_CONFIGS_FILE_NAME}" \ 
+  && unzip "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master/cfg/*.cfg" \
+  && mv server-resources-updater-master/cfg/* "tf/cfg/" \
+  && rm -rf "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master/"
+
 RUN wget -nv "https://github.com/dalegaard/srctvplus/releases/download/v1.1/srctvplus.so" -O "${SERVER_DIR}/tf/addons/srctvplus.so" \
   && wget -nv "https://github.com/dalegaard/srctvplus/releases/download/v1.1/srctvplus.vdf" -O "${SERVER_DIR}/tf/addons/srctvplus.vdf"
 
