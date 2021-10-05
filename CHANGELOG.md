@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/melkortf/tf2-servers/compare/1.2.0...1.2.1) (2021-10-05)
+
+
+### Bug Fixes
+
+* **tf2-tftrue:** bump TFTrue version ([93894ed](https://github.com/melkortf/tf2-servers/commit/93894ed7c383c72a76c3c85011eb4946afdae0cb))
+
 # [1.2.0](https://github.com/melkortf/tf2-servers/compare/1.1.4...1.2.0) (2021-09-30)
 
 
