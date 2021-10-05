@@ -4,7 +4,11 @@ LABEL maintainer="garrappachc@gmail.com"
 ARG TFTRUE_URL=https://github.com/AnAkkk/TFTrue/raw/public/release/TFTrue.so
 
 COPY TFTrue.vdf "${SERVER_DIR}/tf/addons/TFTrue.vdf"
-RUN wget -nv "${TFTRUE_URL}" -O "${SERVER_DIR}/tf/addons/TFTrue.so"
+COPY checksum.md5 .
+RUN wget -nv "${TFTRUE_URL}" -O TFTrue.so \
+  && md5sum -c checksum.md5 \
+  && cp TFTrue.so "${SERVER_DIR}/tf/addons/TFTrue.so" \
+  && rm checksum.md5
 
 CMD ["+sv_pure", "2", "+map", "cp_badlands", "+maxplayers", "24"]
 
