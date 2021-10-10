@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/melkortf/tf2-servers/compare/1.2.1...1.2.2) (2021-10-10)
+
+
+### Bug Fixes
+
+* **tf2-tftrue:** update TFTrue to build 209 ([c33a7c7](https://github.com/melkortf/tf2-servers/commit/c33a7c7fe980e25dd12b7a470039b7252c11e6a9))
+
 ## [1.2.1](https://github.com/melkortf/tf2-servers/compare/1.2.0...1.2.1) (2021-10-05)
 
 
