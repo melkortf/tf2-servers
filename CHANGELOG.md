@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/melkortf/tf2-servers/compare/1.2.2...1.2.3) (2021-10-29)
+
+
+### Bug Fixes
+
+* **tf2-tftrue:** update TFTrue to build 245 ([0039643](https://github.com/melkortf/tf2-servers/commit/0039643f94b35f2da1d75c9f3d68481fbd0bba99))
+
 ## [1.2.2](https://github.com/melkortf/tf2-servers/compare/1.2.1...1.2.2) (2021-10-10)
 
 
