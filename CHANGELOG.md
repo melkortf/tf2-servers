@@ -1,3 +1,11 @@
+## [1.2.4](https://github.com/melkortf/tf2-servers/compare/1.2.3...1.2.4) (2021-11-04)
+
+
+### Bug Fixes
+
+* **tf2-base:** make healthcheck work for all IP env variables ([#8](https://github.com/melkortf/tf2-servers/issues/8)) ([93d9d57](https://github.com/melkortf/tf2-servers/commit/93d9d57559cad6c27726823468854da41aa6d648))
+* **tf2-tftrue:** update TFTrue to build 249 ([e1d3c48](https://github.com/melkortf/tf2-servers/commit/e1d3c489056b831710b6f8210e0787654bc951ea))
+
 ## [1.2.3](https://github.com/melkortf/tf2-servers/compare/1.2.2...1.2.3) (2021-10-29)
 
 
