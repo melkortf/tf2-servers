@@ -24,7 +24,7 @@ faketty() {
 
 quit() {
   echo "*** Stopping ***"
-  "${SERVER_DIR}/rcon" -H 127.0.0.1 -p ${PORT} -P ${RCON_PASSWORD} quit
+  "${SERVER_DIR}/rcon" -H ${IP/0.0.0.0/127.0.0.1} -p ${PORT} -P ${RCON_PASSWORD} quit
   sleep 5
   exit 0
 }
