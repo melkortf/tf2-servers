@@ -1,3 +1,10 @@
+## [1.2.5](https://github.com/melkortf/tf2-servers/compare/1.2.4...1.2.5) (2021-11-16)
+
+
+### Bug Fixes
+
+* **tf2-sourcemod:** bump sourcemod to v1.10.0-git6528 ([972ed85](https://github.com/melkortf/tf2-servers/commit/972ed854e49e4706516a990933dba9b950264349))
+
 ## [1.2.4](https://github.com/melkortf/tf2-servers/compare/1.2.3...1.2.4) (2021-11-04)
 
 
