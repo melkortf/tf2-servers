@@ -1,3 +1,10 @@
+## [1.2.6](https://github.com/melkortf/tf2-servers/compare/1.2.5...1.2.6) (2021-11-24)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update tf2-comp-fixes to v1.11.2 ([#9](https://github.com/melkortf/tf2-servers/issues/9)) ([9fcd13e](https://github.com/melkortf/tf2-servers/commit/9fcd13e57b0a0f24c91f949573e2723010a4b788))
+
 ## [1.2.5](https://github.com/melkortf/tf2-servers/compare/1.2.4...1.2.5) (2021-11-16)
 
 
