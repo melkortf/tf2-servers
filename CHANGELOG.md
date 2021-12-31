@@ -1,3 +1,10 @@
+## [1.2.7](https://github.com/melkortf/tf2-servers/compare/1.2.6...1.2.7) (2021-12-31)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** verify all plugins' checksums ([#10](https://github.com/melkortf/tf2-servers/issues/10)) ([ea8546a](https://github.com/melkortf/tf2-servers/commit/ea8546a820ffea97258c0e5a636e3eaa454d0137))
+
 ## [1.2.6](https://github.com/melkortf/tf2-servers/compare/1.2.5...1.2.6) (2021-11-24)
 
 
