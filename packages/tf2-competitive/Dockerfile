@@ -42,13 +42,14 @@ RUN \
   && mv "srctvplus.vdf" "${SERVER_DIR}/tf/addons/srctvplus.vdf" \
   # cleanup
   && rm -r "SOAP-TF2DM-master" "soap-dm.zip" \
-  && rm -f "${DHOOKS_FILE_NAME}" \
-  && rm -f "${COMP_FIXES_FILE_NAME}" \
-  && rm -f "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" \
+  && rm "${DHOOKS_FILE_NAME}" \
+  && rm "${COMP_FIXES_FILE_NAME}" \
+  && rm "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" \
   && rm -r "MGEMod-master" "mgemod.zip" \
-  && rm -f "${CURL_FILE_NAME}" \
-  && rm -f "${ETF2L_CONFIGS_FILE_NAME}" \
-  && rm -r "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master"
+  && rm "${CURL_FILE_NAME}" \
+  && rm "${ETF2L_CONFIGS_FILE_NAME}" \
+  && rm -r "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master" \
+  && rm "checksum.md5"
 
 ENV DEMOS_TF_APIKEY=
 
