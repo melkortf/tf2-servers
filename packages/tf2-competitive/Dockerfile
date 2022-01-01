@@ -11,7 +11,7 @@ RUN \
   && DHOOKS_FILE_NAME="dhooks-2.2.0-detours16-sm110.zip" \
   && wget -nv "https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours16/${DHOOKS_FILE_NAME}" \
   && COMP_FIXES_FILE_NAME="tf2-comp-fixes.zip" \
-  && wget -nv "https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.11.2/${COMP_FIXES_FILE_NAME}" \
+  && wget -nv "https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.13.0/${COMP_FIXES_FILE_NAME}" \
   && UPDATED_PAUSE_PLUGIN_FILE_NAME="updated-pause-plugin.zip" \
   && wget -nv "https://github.com/l-Aad-l/updated-pause-plugin/releases/download/v1.4.2/${UPDATED_PAUSE_PLUGIN_FILE_NAME}" \
   && wget -nv "https://github.com/sapphonie/MGEMod/archive/master.zip" -O "mgemod.zip" \

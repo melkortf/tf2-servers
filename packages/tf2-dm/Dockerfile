@@ -12,7 +12,7 @@ RUN \
   && DHOOKS_FILE_NAME="dhooks-2.2.0-detours16-sm110.zip" \
   && wget -nv "https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours16/${DHOOKS_FILE_NAME}" \
   && COMP_FIXES_FILE_NAME="tf2-comp-fixes.zip" \
-  && wget -nv "https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.10.5/${COMP_FIXES_FILE_NAME}" \
+  && wget -nv "https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.13.0/${COMP_FIXES_FILE_NAME}" \
   && wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=27957" -O "classrestrict.smx" \
   && wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=170330" -O "afk_manager4.smx" \
   && wget -nv "https://forums.alliedmods.net/attachment.php?attachmentid=166646&d=1510967008" -O "afk_manager.phrases.txt" \
