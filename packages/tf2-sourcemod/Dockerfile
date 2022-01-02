@@ -1,8 +1,6 @@
 FROM melkortf/tf2-base:latest
 LABEL maintainer="garrappachc@gmail.com"
 
-WORKDIR $HOME
-
 ARG METAMOD_TARBALL_FILE_NAME=mmsource-1.11.0-git1145-linux.tar.gz
 ARG METAMOD_TARBALL_URL=https://mms.alliedmods.net/mmsdrop/1.11/${METAMOD_TARBALL_FILE_NAME}
 
@@ -15,5 +13,3 @@ RUN wget -nv "${METAMOD_TARBALL_URL}" \
   && wget -nv "${SOURCEMOD_TARBALL_URL}" \
   && tar xf "${SOURCEMOD_TARBALL_FILE_NAME}" -C "${SERVER_DIR}/tf" \
   && rm -f "${SOURCEMOD_TARBALL_FILE_NAME}"
-
-WORKDIR $SERVER_DIR
