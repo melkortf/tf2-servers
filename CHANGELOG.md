@@ -1,3 +1,14 @@
+## [1.2.8](https://github.com/melkortf/tf2-servers/compare/1.2.7...1.2.8) (2022-01-02)
+
+
+### Bug Fixes
+
+* **build:** cleanup TFTrue binary ([#13](https://github.com/melkortf/tf2-servers/issues/13)) ([a528b9c](https://github.com/melkortf/tf2-servers/commit/a528b9c427c9c550bdaf7bc8d2ddc99da42d891e))
+* **build:** don't chdir when downloading sourcemod ([#12](https://github.com/melkortf/tf2-servers/issues/12)) ([3d1e839](https://github.com/melkortf/tf2-servers/commit/3d1e839faa632123d42250fb7e76cde84a4b975a))
+* **deps:** update tf2-comp-fixes to v1.13.0 ([#11](https://github.com/melkortf/tf2-servers/issues/11)) ([fc6ee4b](https://github.com/melkortf/tf2-servers/commit/fc6ee4b4e66027d890d14cf9830caded4e1db699))
+* **tf2-base:** update quit function of entrypoint ([#15](https://github.com/melkortf/tf2-servers/issues/15)) ([7a8a729](https://github.com/melkortf/tf2-servers/commit/7a8a729a8532ce37307d06e0cc84f8989b872c9f))
+* **tf2-dm:** verify plugins' checksums ([#14](https://github.com/melkortf/tf2-servers/issues/14)) ([8cd5e19](https://github.com/melkortf/tf2-servers/commit/8cd5e19bb8b0ab98943d7bf928da2a1b566f20e2))
+
 ## [1.2.7](https://github.com/melkortf/tf2-servers/compare/1.2.6...1.2.7) (2021-12-31)
 
 
