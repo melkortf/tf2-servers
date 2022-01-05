@@ -1,3 +1,15 @@
+# [1.3.0](https://github.com/melkortf/tf2-servers/compare/1.2.8...1.3.0) (2022-01-05)
+
+
+### Bug Fixes
+
+* **deps:** update soap-tf2dm to version 4.4.1 ([#17](https://github.com/melkortf/tf2-servers/issues/17)) ([c54a04c](https://github.com/melkortf/tf2-servers/commit/c54a04c52826a81f75c980db60f4525a9a27793b))
+
+
+### Features
+
+* **tf2-base:** parse status command ([#16](https://github.com/melkortf/tf2-servers/issues/16)) ([e54aa37](https://github.com/melkortf/tf2-servers/commit/e54aa370d356e99c038db0e028032b54007cc7c6))
+
 ## [1.2.8](https://github.com/melkortf/tf2-servers/compare/1.2.7...1.2.8) (2022-01-02)
 
 
