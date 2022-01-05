@@ -7,7 +7,8 @@ RUN rm "$SERVER_DIR/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.
 
 RUN \
   # download all the plugins
-  wget -nv "https://github.com/spiretf/SOAP-TF2DM/archive/master.zip" -O "soap-dm.zip" \
+  SOAP_DM_FILE_NAME="soap.zip" \
+  && wget -nv "https://github.com/sapphonie/SOAP-TF2DM/releases/download/v4.4.1/${SOAP_DM_FILE_NAME}" \
   && DHOOKS_FILE_NAME="dhooks-2.2.0-detours16-sm110.zip" \
   && wget -nv "https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours16/${DHOOKS_FILE_NAME}" \
   && COMP_FIXES_FILE_NAME="tf2-comp-fixes.zip" \
@@ -28,7 +29,7 @@ RUN \
   # verify md5 checksums
   && md5sum -c checksum.md5 \
   # install plugins
-  && unzip -q "soap-dm.zip" && cp -r SOAP-TF2DM-master/* "${SERVER_DIR}/tf/" \
+  && unzip -q "${SOAP_DM_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q "${DHOOKS_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${COMP_FIXES_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
@@ -41,7 +42,7 @@ RUN \
   && mv "srctvplus.so" "${SERVER_DIR}/tf/addons/srctvplus.so" \
   && mv "srctvplus.vdf" "${SERVER_DIR}/tf/addons/srctvplus.vdf" \
   # cleanup
-  && rm -r "SOAP-TF2DM-master" "soap-dm.zip" \
+  && rm "${SOAP_DM_FILE_NAME}" \
   && rm "${DHOOKS_FILE_NAME}" \
   && rm "${COMP_FIXES_FILE_NAME}" \
   && rm "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" \
