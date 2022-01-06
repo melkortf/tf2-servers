@@ -1,18 +1,26 @@
 FROM melkortf/tf2-sourcemod
 LABEL maintainer="garrappachc@gmail.com"
 
-RUN rm $SERVER_DIR/tf/addons/sourcemod/plugins/{nextmap,funcommands,funvotes}.smx
+RUN rm "$SERVER_DIR/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx
 
-RUN wget -nv "https://github.com/sapphonie/MGEMod/archive/master.zip" -O "mgemod.zip" \
-  && unzip mgemod.zip \
-  && cp -r MGEMod-master/addons "$SERVER_DIR/tf/" \
-  && rm -rf MGEMod-master \
-  && rm -f mgemod.zip \
-  && wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=170330" -O "${SERVER_DIR}/tf/addons/sourcemod/plugins/afk_manager4.smx" \
-  && wget -nv "https://forums.alliedmods.net/attachment.php?attachmentid=166646&d=1510967008" -O "${SERVER_DIR}/tf/addons/sourcemod/translations/afk_manager.phrases.txt" \
-  && wget -nv "https://github.com/sbpp/sourcebans-pp/releases/download/1.6.3/sourcebans-pp-1.6.3.plugin-only.tar.gz" \
-  && tar xf "sourcebans-pp-1.6.3.plugin-only.tar.gz" -C "${SERVER_DIR}/tf" --strip-components=1 \
-  && rm -rf "sourcebans-pp-1.6.3.plugin-only.tar.gz"
+RUN \
+  # download plugins
+  wget -nv "https://github.com/sapphonie/MGEMod/archive/master.zip" -O "mgemod.zip" \
+  && SOURCEBANS_FILE_NAME="sourcebans-pp-1.6.3.plugin-only.tar.gz" \
+  && wget -nv "https://github.com/sbpp/sourcebans-pp/releases/download/1.6.3/${SOURCEBANS_FILE_NAME}" \
+  && wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=170330" -O "afk_manager4.smx" \
+  && wget -nv "https://forums.alliedmods.net/attachment.php?attachmentid=166646&d=1510967008" -O "afk_manager.phrases.txt" \
+  # verify checksums
+  && md5sum -c checksum.md5 \
+  # install plugins
+  && unzip -q "mgemod.zip" && cp -r "MGEMod-master/addons" "${SERVER_DIR}/tf/" \
+  && tar xf "${SOURCEBANS_FILE_NAME}" -C "${SERVER_DIR}/tf" --strip-components=1 \
+  && mv "afk_manager4.smx" "${SERVER_DIR}/tf/addons/sourcemod/plugins/afk_manager4.smx" \
+  && mv "afk_manager.phrases.txt" "${SERVER_DIR}/tf/addons/sourcemod/translations/afk_manager.phrases.txt" \
+  # cleanup
+  && rm -r "MGEMod-master" "mgemod.zip" \
+  && rm "${SOURCEBANS_FILE_NAME}" \
+  && rm "checksum.md5"
 
 ENV SELECTED_MAP="mge_training_v8_beta4b"
 
