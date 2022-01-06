@@ -1,7 +1,9 @@
 FROM melkortf/tf2-sourcemod
 LABEL maintainer="garrappachc@gmail.com"
 
-RUN rm "$SERVER_DIR/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx
+COPY checksum.md5 .
+
+RUN rm "${SERVER_DIR}/tf/addons/sourcemod/plugins/"{funcommands,funvotes}.smx
 
 RUN \
   # download plugins
