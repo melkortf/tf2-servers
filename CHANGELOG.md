@@ -1,3 +1,13 @@
+## [1.3.1](https://github.com/melkortf/tf2-servers/compare/1.3.0...1.3.1) (2022-01-07)
+
+
+### Bug Fixes
+
+* **deps:** update sourcebans++ to version 1.6.4 ([#21](https://github.com/melkortf/tf2-servers/issues/21)) ([95b36ad](https://github.com/melkortf/tf2-servers/commit/95b36ad954a733a981212314c0ab74c98177eb3c))
+* **deps:** update tf2-comp-fixes to v1.15.0 ([#18](https://github.com/melkortf/tf2-servers/issues/18)) ([0537b9b](https://github.com/melkortf/tf2-servers/commit/0537b9b952894221b5a0d47e9bbd29012506d7d2))
+* **tf2-competitive:** update ETF2L configs to the latest version ([#20](https://github.com/melkortf/tf2-servers/issues/20)) ([9f8247d](https://github.com/melkortf/tf2-servers/commit/9f8247df47b0f4c2db158ad7654ecef9123b2210))
+* **tf2-mge:** verify plugins' checksums ([#19](https://github.com/melkortf/tf2-servers/issues/19)) ([69186ac](https://github.com/melkortf/tf2-servers/commit/69186ac76770b83f3793a9fb7e582a2d62f9ae36))
+
 # [1.3.0](https://github.com/melkortf/tf2-servers/compare/1.2.8...1.3.0) (2022-01-05)
 
 
