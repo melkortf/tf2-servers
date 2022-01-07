@@ -9,8 +9,8 @@ RUN \
   # download plugins
   SOAP_DM_FILE_NAME="soap-dm.zip" \
   && wget -nv "https://github.com/spiretf/SOAP-TF2DM/archive/master.zip" -O "${SOAP_DM_FILE_NAME}" \
-  && DHOOKS_FILE_NAME="dhooks-2.2.0-detours16-sm110.zip" \
-  && wget -nv "https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours16/${DHOOKS_FILE_NAME}" \
+  && DHOOKS_FILE_NAME="dhooks-2.2.0-detours17-sm110.zip" \
+  && wget -nv "https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours17/${DHOOKS_FILE_NAME}" \
   && COMP_FIXES_FILE_NAME="tf2-comp-fixes.zip" \
   && wget -nv "https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.15.0/${COMP_FIXES_FILE_NAME}" \
   && wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=27957" -O "classrestrict.smx" \
