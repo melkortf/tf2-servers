@@ -1,3 +1,11 @@
+## [1.3.2](https://github.com/melkortf/tf2-servers/compare/1.3.1...1.3.2) (2022-01-07)
+
+
+### Bug Fixes
+
+* **deps:** update DHooks2 to version 2.2.0-detours17 ([#23](https://github.com/melkortf/tf2-servers/issues/23)) ([4ef7cc5](https://github.com/melkortf/tf2-servers/commit/4ef7cc51fba360259bcdd0f73768f051bb0fb682))
+* **deps:** update ETF2L configs to the latest version ([#22](https://github.com/melkortf/tf2-servers/issues/22)) ([b80a2e7](https://github.com/melkortf/tf2-servers/commit/b80a2e7bba01cf205d5aa3a3fe58e080f1f0dd59))
+
 ## [1.3.1](https://github.com/melkortf/tf2-servers/compare/1.3.0...1.3.1) (2022-01-07)
 
 
