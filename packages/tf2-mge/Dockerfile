@@ -8,8 +8,8 @@ RUN rm "${SERVER_DIR}/tf/addons/sourcemod/plugins/"{funcommands,funvotes}.smx
 RUN \
   # download plugins
   wget -nv "https://github.com/sapphonie/MGEMod/archive/master.zip" -O "mgemod.zip" \
-  && SOURCEBANS_FILE_NAME="sourcebans-pp-1.6.3.plugin-only.tar.gz" \
-  && wget -nv "https://github.com/sbpp/sourcebans-pp/releases/download/1.6.3/${SOURCEBANS_FILE_NAME}" \
+  && SOURCEBANS_FILE_NAME="sourcebans-pp-1.6.4.plugin-only.tar.gz" \
+  && wget -nv "https://github.com/sbpp/sourcebans-pp/releases/download/1.6.4/${SOURCEBANS_FILE_NAME}" \
   && wget -nv "https://www.sourcemod.net/vbcompiler.php?file_id=170330" -O "afk_manager4.smx" \
   && wget -nv "https://forums.alliedmods.net/attachment.php?attachmentid=166646&d=1510967008" -O "afk_manager.phrases.txt" \
   # verify checksums
