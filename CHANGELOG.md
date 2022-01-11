@@ -1,3 +1,11 @@
+## [1.3.3](https://github.com/melkortf/tf2-servers/compare/1.3.2...1.3.3) (2022-01-11)
+
+
+### Bug Fixes
+
+* **deps:** update etf2l-configs to v1.0.2 ([#25](https://github.com/melkortf/tf2-servers/issues/25)) ([c93ca6e](https://github.com/melkortf/tf2-servers/commit/c93ca6e488cbc7dab39f9ada383391149fd1c58c))
+* **deps:** update tf2-comp-fixes to version 1.16.2 ([#24](https://github.com/melkortf/tf2-servers/issues/24)) ([4f23e3e](https://github.com/melkortf/tf2-servers/commit/4f23e3ebf81ec5932424df5770c78e17c1fee5cc))
+
 ## [1.3.2](https://github.com/melkortf/tf2-servers/compare/1.3.1...1.3.2) (2022-01-07)
 
 
