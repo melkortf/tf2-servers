@@ -19,7 +19,7 @@ RUN \
   && CURL_FILE_NAME="curl_1.3.0.0.zip" \
   && wget -nv "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/sourcemod-curl-extension/${CURL_FILE_NAME}" \
   && ETF2L_CONFIGS_FILE_NAME="etf2l_configs.zip" \
-  && wget -nv "http://etf2l.org/configs/${ETF2L_CONFIGS_FILE_NAME}" \ 
+  && wget -nv "https://github.com/ETF2L/gameserver-configs/releases/download/1.0.2/${ETF2L_CONFIGS_FILE_NAME}" \ 
   && RGL_CONFIGS_FILE_NAME="rgl_configs.zip" \
   && wget -nv "https://github.com/RGLgg/server-resources-updater/archive/master.zip" -O "${RGL_CONFIGS_FILE_NAME}" \
   && wget -nv "https://raw.githubusercontent.com/spiretf/docker-comp-server/master/curl.ext.so" \
