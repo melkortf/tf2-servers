@@ -1,3 +1,11 @@
+## [1.3.4](https://github.com/melkortf/tf2-servers/compare/1.3.3...1.3.4) (2022-01-15)
+
+
+### Bug Fixes
+
+* **deps:** update RGL.gg configs to the latest version ([#27](https://github.com/melkortf/tf2-servers/issues/27)) ([6428c91](https://github.com/melkortf/tf2-servers/commit/6428c915070b14f96f1023ddbd894f74e1c89a26))
+* **tf2-tftrue:** downgrade TFTrue to build 209 ([#26](https://github.com/melkortf/tf2-servers/issues/26)) ([a429e04](https://github.com/melkortf/tf2-servers/commit/a429e0423b0904b1422a5e057f81d4e89ec8dd11))
+
 ## [1.3.3](https://github.com/melkortf/tf2-servers/compare/1.3.2...1.3.3) (2022-01-11)
 
 
