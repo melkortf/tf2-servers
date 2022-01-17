@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/melkortf/tf2-servers/compare/1.3.4...1.4.0) (2022-01-17)
+
+
+### Bug Fixes
+
+* **deps:** update RGL.gg configs to the latest version ([#29](https://github.com/melkortf/tf2-servers/issues/29)) ([69aa395](https://github.com/melkortf/tf2-servers/commit/69aa395612b4a1584a93a51f4ca9894a5f137ec9))
+
+
+### Features
+
+* **tf2-tftrue:** build TFTrue in a Docker stage ([#28](https://github.com/melkortf/tf2-servers/issues/28)) ([4886d4f](https://github.com/melkortf/tf2-servers/commit/4886d4f7960b1d2b01596327bf8d9c21a3ed56f2))
+
 ## [1.3.4](https://github.com/melkortf/tf2-servers/compare/1.3.3...1.3.4) (2022-01-15)
 
 
