@@ -3,54 +3,75 @@ LABEL maintainer="garrappachc@gmail.com"
 
 COPY checksum.md5 .
 
-RUN rm "$SERVER_DIR/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx
+ARG SOAP_DM_PLUGIN_FILE_NAME=soap.zip
+ARG SOAP_DM_PLUGIN_URL=https://github.com/sapphonie/SOAP-TF2DM/releases/download/v4.4.1/${SOAP_DM_PLUGIN_FILE_NAME}
+
+ARG DHOOKS_PLUGIN_FILE_NAME=dhooks-2.2.0-detours17-sm110.zip
+ARG DHOOKS_PLUGIN_URL=https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours17/${DHOOKS_PLUGIN_FILE_NAME}
+
+ARG COMP_FIXES_PLUGIN_FILE_NAME=tf2-comp-fixes.zip
+ARG COMP_FIXES_PLUGIN_URL=https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.16.2/${COMP_FIXES_PLUGIN_FILE_NAME}
+
+ARG UPDATED_PAUSE_PLUGIN_FILE_NAME=updated-pause-plugin.zip
+ARG UPDATED_PAUSE_PLUGIN_URL=https://github.com/l-Aad-l/updated-pause-plugin/releases/download/v1.4.2/${UPDATED_PAUSE_PLUGIN_FILE_NAME}
+
+ARG MGEMOD_PLUGIN_FILE_NAME=mgemod.zip
+ARG MGEMOD_PLUGIN_URL=https://github.com/sapphonie/MGEMod/archive/master.zip
+
+ARG CURL_PLUGIN_FILE_NAME=curl_1.3.0.0.zip
+ARG CURL_PLUGIN_URL=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/sourcemod-curl-extension/${CURL_PLUGIN_FILE_NAME}
+ARG CURL_EXTENSION_FILE_NAME=curl.ext.so
+ARG CURL_EXTENSION_URL=https://raw.githubusercontent.com/spiretf/docker-comp-server/master/${CURL_EXTENSION_FILE_NAME}
+
+ARG ETF2L_CONFIGS_FILE_NAME=etf2l_configs.zip
+ARG ETF2L_CONFIGS_URL=https://github.com/ETF2L/gameserver-configs/releases/download/1.0.2/${ETF2L_CONFIGS_FILE_NAME}
+
+ARG RGL_CONFIGS_FILE_NAME=rgl_configs.zip
+ARG RGL_CONFIGS_URL=https://github.com/RGLgg/server-resources-updater/archive/master.zip
+
+ARG DEMOS_TF_PLUGIN_FILE_NAME=demostf.smx
+ARG DEMOS_TF_PLUGIN_URL=https://github.com/demostf/plugin/raw/master/${DEMOS_TF_PLUGIN_FILE_NAME}
+
+ARG SRCTV_PLUS_SO_FILE_NAME=srctvplus.so
+ARG SRCTV_PLUS_SO_URL=https://github.com/dalegaard/srctvplus/releases/download/v1.1/${SRCTV_PLUS_SO_FILE_NAME}
+
+ARG SRCTV_PLUS_VDF_FILE_NAME=srctvplus.vdf
+ARG SRCTV_PLUS_VDF_URL=https://github.com/dalegaard/srctvplus/releases/download/v1.1/${SRCTV_PLUS_VDF_FILE_NAME}
 
 RUN \
   # download all the plugins
-  SOAP_DM_FILE_NAME="soap.zip" \
-  && wget -nv "https://github.com/sapphonie/SOAP-TF2DM/releases/download/v4.4.1/${SOAP_DM_FILE_NAME}" \
-  && DHOOKS_FILE_NAME="dhooks-2.2.0-detours17-sm110.zip" \
-  && wget -nv "https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours17/${DHOOKS_FILE_NAME}" \
-  && COMP_FIXES_FILE_NAME="tf2-comp-fixes.zip" \
-  && wget -nv "https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.16.2/${COMP_FIXES_FILE_NAME}" \
-  && UPDATED_PAUSE_PLUGIN_FILE_NAME="updated-pause-plugin.zip" \
-  && wget -nv "https://github.com/l-Aad-l/updated-pause-plugin/releases/download/v1.4.2/${UPDATED_PAUSE_PLUGIN_FILE_NAME}" \
-  && wget -nv "https://github.com/sapphonie/MGEMod/archive/master.zip" -O "mgemod.zip" \
-  && CURL_FILE_NAME="curl_1.3.0.0.zip" \
-  && wget -nv "https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/sourcemod-curl-extension/${CURL_FILE_NAME}" \
-  && ETF2L_CONFIGS_FILE_NAME="etf2l_configs.zip" \
-  && wget -nv "https://github.com/ETF2L/gameserver-configs/releases/download/1.0.2/${ETF2L_CONFIGS_FILE_NAME}" \ 
-  && RGL_CONFIGS_FILE_NAME="rgl_configs.zip" \
-  && wget -nv "https://github.com/RGLgg/server-resources-updater/archive/master.zip" -O "${RGL_CONFIGS_FILE_NAME}" \
-  && wget -nv "https://raw.githubusercontent.com/spiretf/docker-comp-server/master/curl.ext.so" \
-  && wget -nv "https://github.com/demostf/plugin/raw/master/demostf.smx" \
-  && wget -nv "https://github.com/dalegaard/srctvplus/releases/download/v1.1/srctvplus.so" \
-  && wget -nv "https://github.com/dalegaard/srctvplus/releases/download/v1.1/srctvplus.vdf" \
+  wget -nv "${SOAP_DM_PLUGIN_URL}" "${DHOOKS_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${UPDATED_PAUSE_PLUGIN_URL}" "${CURL_PLUGIN_URL}" "${CURL_EXTENSION_URL}" \
+    "${ETF2L_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
+  && wget -nv "${MGEMOD_PLUGIN_URL}" -O "${MGEMOD_PLUGIN_FILE_NAME}" \
+  && wget -nv "${RGL_CONFIGS_URL}" -O "${RGL_CONFIGS_FILE_NAME}" \
   # verify md5 checksums
   && md5sum -c checksum.md5 \
   # install plugins
-  && unzip -q "${SOAP_DM_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
-  && unzip -q "${DHOOKS_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
-  && unzip -q -o "${COMP_FIXES_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
+  && unzip -q "${SOAP_DM_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
+  && unzip -q "${DHOOKS_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
+  && unzip -q -o "${COMP_FIXES_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
-  && unzip -q "mgemod.zip" && cp -r "MGEMod-master/addons" "${SERVER_DIR}/tf/" \
-  && unzip -q -o "${CURL_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod" \
+  && unzip -q "${MGEMOD_PLUGIN_FILE_NAME}" && cp -r "MGEMod-master/addons" "${SERVER_DIR}/tf/" \
+  && unzip -q -o "${CURL_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod" \
   && unzip -q "${ETF2L_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master/cfg/*.cfg" && mv "server-resources-updater-master/cfg/"* "${SERVER_DIR}/tf/cfg/" \
-  && mv "curl.ext.so" "${SERVER_DIR}/tf/addons/sourcemod/extensions/curl.ext.so" \
-  && mv "demostf.smx" "${SERVER_DIR}/tf/addons/sourcemod/plugins/demostf.smx" \
-  && mv "srctvplus.so" "${SERVER_DIR}/tf/addons/srctvplus.so" \
-  && mv "srctvplus.vdf" "${SERVER_DIR}/tf/addons/srctvplus.vdf" \
+  && mv "${CURL_EXTENSION_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/extensions/${CURL_EXTENSION_FILE_NAME}" \
+  && mv "${DEMOS_TF_PLUGIN_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/plugins/${DEMOS_TF_PLUGIN_FILE_NAME}" \
+  && mv "${SRCTV_PLUS_SO_FILE_NAME}" "${SERVER_DIR}/tf/addons/${SRCTV_PLUS_SO_FILE_NAME}" \
+  && mv "${SRCTV_PLUS_VDF_FILE_NAME}" "${SERVER_DIR}/tf/addons/${SRCTV_PLUS_VDF_FILE_NAME}" \
   # cleanup
-  && rm "${SOAP_DM_FILE_NAME}" \
-  && rm "${DHOOKS_FILE_NAME}" \
-  && rm "${COMP_FIXES_FILE_NAME}" \
+  && rm "${SOAP_DM_PLUGIN_FILE_NAME}" \
+  && rm "${DHOOKS_PLUGIN_FILE_NAME}" \
+  && rm "${COMP_FIXES_PLUGIN_FILE_NAME}" \
   && rm "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" \
-  && rm -r "MGEMod-master" "mgemod.zip" \
-  && rm "${CURL_FILE_NAME}" \
+  && rm -r "MGEMod-master" "${MGEMOD_PLUGIN_FILE_NAME}" \
+  && rm "${CURL_PLUGIN_FILE_NAME}" \
   && rm "${ETF2L_CONFIGS_FILE_NAME}" \
   && rm -r "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master" \
-  && rm "checksum.md5"
+  && rm "checksum.md5" \
+  # remove useless (and potentially harmful) plugins
+  && rm "$SERVER_DIR/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx
+
 
 ENV DEMOS_TF_APIKEY=
 
