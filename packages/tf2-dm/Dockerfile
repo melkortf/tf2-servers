@@ -8,7 +8,7 @@ RUN rm "${SERVER_DIR}/tf/addons/sourcemod/plugins/"{funcommands,funvotes}.smx
 RUN \
   # download plugins
   SOAP_DM_FILE_NAME="soap-dm.zip" \
-  && wget -nv "https://github.com/spiretf/SOAP-TF2DM/archive/master.zip" -O "${SOAP_DM_FILE_NAME}" \
+  && wget -nv "https://github.com/sapphonie/SOAP-TF2DM/archive/master.zip" -O "${SOAP_DM_FILE_NAME}" \
   && DHOOKS_FILE_NAME="dhooks-2.2.0-detours17-sm110.zip" \
   && wget -nv "https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours17/${DHOOKS_FILE_NAME}" \
   && COMP_FIXES_FILE_NAME="tf2-comp-fixes.zip" \
