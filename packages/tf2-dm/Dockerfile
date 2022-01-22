@@ -50,3 +50,5 @@ COPY soap_tf2dm.cfg "${SERVER_DIR}/tf/cfg/sourcemod/soap_tf2dm.cfg"
 COPY mapcycle.txt "${SERVER_DIR}/tf/cfg/mapcycle.txt"
 COPY afk_manager.cfg "${SERVER_DIR}/tf/cfg/sourcemod/afk_manager.cfg"
 COPY custom_whitelist_11769.txt "${SERVER_DIR}/tf/cfg/custom_whitelist_11769.txt"
+
+CMD ["+sv_pure", "2", "+map", "cp_badlands", "+maxplayers", "8"]
