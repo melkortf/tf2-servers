@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/melkortf/tf2-servers/compare/1.5.0...1.5.1) (2022-01-22)
+
+
+### Bug Fixes
+
+* **deps:** update tf2-comp-fixes to version 1.16.6 ([#35](https://github.com/melkortf/tf2-servers/issues/35)) ([4e20948](https://github.com/melkortf/tf2-servers/commit/4e20948d12f807c8ffdff01526438367f2a225a6))
+
 # [1.5.0](https://github.com/melkortf/tf2-servers/compare/1.4.0...1.5.0) (2022-01-22)
 
 
