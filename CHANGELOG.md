@@ -1,3 +1,17 @@
+# [1.5.0](https://github.com/melkortf/tf2-servers/compare/1.4.0...1.5.0) (2022-01-22)
+
+
+### Bug Fixes
+
+* **build:** add missing checksums ([#33](https://github.com/melkortf/tf2-servers/issues/33)) ([da2f4cd](https://github.com/melkortf/tf2-servers/commit/da2f4cd996f3747b5061cc5071ba826c7e1c5ed7))
+* **tf2-dm:** set maxplayers to 8 ([#34](https://github.com/melkortf/tf2-servers/issues/34)) ([efee724](https://github.com/melkortf/tf2-servers/commit/efee724b9be38bcb105f3c8395d0397d28874c06))
+
+
+### Features
+
+* **tf2-competitive:** use ARG to specify all the URLs ([#30](https://github.com/melkortf/tf2-servers/issues/30)) ([be55ca4](https://github.com/melkortf/tf2-servers/commit/be55ca4b9cb862f832a5e941d7573330cfc1bf00))
+* **tf2-dm:** use ARG to specify all plugins' URLs ([#32](https://github.com/melkortf/tf2-servers/issues/32)) ([d250e61](https://github.com/melkortf/tf2-servers/commit/d250e614a17fe3f8d4ac57d03e4a92b6a60999f5))
+
 # [1.4.0](https://github.com/melkortf/tf2-servers/compare/1.3.4...1.4.0) (2022-01-17)
 
 
