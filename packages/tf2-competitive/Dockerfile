@@ -75,4 +75,4 @@ RUN \
 
 ENV DEMOS_TF_APIKEY=
 
-COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
+COPY cfg/* ${SERVER_DIR}/tf/cfg/
