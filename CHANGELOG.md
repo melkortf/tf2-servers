@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/melkortf/tf2-servers/compare/1.5.1...1.6.0) (2022-04-12)
+
+
+### Bug Fixes
+
+* **deps:** update RGL.gg configs to the latest version ([#37](https://github.com/melkortf/tf2-servers/issues/37)) ([e5c3590](https://github.com/melkortf/tf2-servers/commit/e5c35905741fc79da7a432e26349f0d61bc51e58))
+
+
+### Features
+
+* **tf2-competitive:** add unity cup configs ([#36](https://github.com/melkortf/tf2-servers/issues/36)) ([9be1679](https://github.com/melkortf/tf2-servers/commit/9be167995b1f9b63d3d8740c289742637dc3d901))
+
 ## [1.5.1](https://github.com/melkortf/tf2-servers/compare/1.5.0...1.5.1) (2022-01-22)
 
 
