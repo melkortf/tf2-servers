@@ -1,3 +1,10 @@
+## [1.6.1](https://github.com/melkortf/tf2-servers/compare/1.6.0...1.6.1) (2022-04-14)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** add round timer override plugin ([#38](https://github.com/melkortf/tf2-servers/issues/38)) ([5d6d985](https://github.com/melkortf/tf2-servers/commit/5d6d985b4e7a32954d7ca6dd235de92cad5af079))
+
 # [1.6.0](https://github.com/melkortf/tf2-servers/compare/1.5.1...1.6.0) (2022-04-12)
 
 
