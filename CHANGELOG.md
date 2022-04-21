@@ -1,3 +1,11 @@
+## [1.6.2](https://github.com/melkortf/tf2-servers/compare/1.6.1...1.6.2) (2022-04-21)
+
+
+### Bug Fixes
+
+* **deps:** update RGL.gg configs to the latest version ([#40](https://github.com/melkortf/tf2-servers/issues/40)) ([d06dfae](https://github.com/melkortf/tf2-servers/commit/d06dfae8786db884127996db5a79625037a9d769))
+* **tf2-dm:** unpack sourcebans++ plugin to the correct directory ([#39](https://github.com/melkortf/tf2-servers/issues/39)) ([eaefefb](https://github.com/melkortf/tf2-servers/commit/eaefefbf64ebb2bfe3ab4c28024a47a29fe47483))
+
 ## [1.6.1](https://github.com/melkortf/tf2-servers/compare/1.6.0...1.6.1) (2022-04-14)
 
 
