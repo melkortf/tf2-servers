@@ -11,7 +11,8 @@ ARG DHOOKS_PLUGIN_FILE_NAME=dhooks-2.2.0-detours17-sm110.zip
 ARG DHOOKS_PLUGIN_URL=https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours17/${DHOOKS_PLUGIN_FILE_NAME}
 
 ARG COMP_FIXES_PLUGIN_FILE_NAME=tf2-comp-fixes.zip
-ARG COMP_FIXES_PLUGIN_URL=https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v1.16.6/${COMP_FIXES_PLUGIN_FILE_NAME}
+ARG COMP_FIXES_PLUGIN_VERSION=1.16.7
+ARG COMP_FIXES_PLUGIN_URL=https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v${COMP_FIXES_PLUGIN_VERSION}/${COMP_FIXES_PLUGIN_FILE_NAME}
 
 ARG UPDATED_PAUSE_PLUGIN_FILE_NAME=updated-pause-plugin.zip
 ARG UPDATED_PAUSE_PLUGIN_URL=https://github.com/l-Aad-l/updated-pause-plugin/releases/download/v1.4.2/${UPDATED_PAUSE_PLUGIN_FILE_NAME}
