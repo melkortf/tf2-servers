@@ -16,7 +16,7 @@ RUN \
   && md5sum -c checksum.md5 \
   # install plugins
   && unzip -q "mgemod.zip" && cp -r "MGEMod-master/addons" "${SERVER_DIR}/tf/" \
-  && tar xf "${SOURCEBANS_FILE_NAME}" -C "${SERVER_DIR}/tf" --strip-components=1 \
+  && tar xf "${SOURCEBANS_FILE_NAME}" -C "${SERVER_DIR}/tf" \
   && mv "afk_manager4.smx" "${SERVER_DIR}/tf/addons/sourcemod/plugins/afk_manager4.smx" \
   && mv "afk_manager.phrases.txt" "${SERVER_DIR}/tf/addons/sourcemod/translations/afk_manager.phrases.txt" \
   # cleanup
