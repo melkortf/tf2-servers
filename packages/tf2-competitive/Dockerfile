@@ -4,7 +4,8 @@ LABEL maintainer="garrappachc@gmail.com"
 COPY checksum.md5 .
 
 ARG SOAP_DM_PLUGIN_FILE_NAME=soap.zip
-ARG SOAP_DM_PLUGIN_URL=https://github.com/sapphonie/SOAP-TF2DM/releases/download/v4.4.1/${SOAP_DM_PLUGIN_FILE_NAME}
+ARG SOAP_DM_PLUGIN_VERSION=4.4.2
+ARG SOAP_DM_PLUGIN_URL=https://github.com/sapphonie/SOAP-TF2DM/releases/download/v${SOAP_DM_PLUGIN_VERSION}/${SOAP_DM_PLUGIN_FILE_NAME}
 
 ARG DHOOKS_PLUGIN_FILE_NAME=dhooks-2.2.0-detours17-sm110.zip
 ARG DHOOKS_PLUGIN_URL=https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours17/${DHOOKS_PLUGIN_FILE_NAME}
