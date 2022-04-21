@@ -1,3 +1,14 @@
+## [1.6.3](https://github.com/melkortf/tf2-servers/compare/1.6.2...1.6.3) (2022-04-21)
+
+
+### Bug Fixes
+
+* **deps:** update ETF2L configs to version 1.0.3 ([#44](https://github.com/melkortf/tf2-servers/issues/44)) ([ddf2945](https://github.com/melkortf/tf2-servers/commit/ddf29451d65b4607b98c1b916fcc8c1b1da6d8dc))
+* **deps:** update Soap-TF2DM plugin to version 4.4.2 ([#42](https://github.com/melkortf/tf2-servers/issues/42)) ([c896fb6](https://github.com/melkortf/tf2-servers/commit/c896fb691b896404b667099e560c5902ba6c8c30))
+* **deps:** update tf2-comp-fixes to version 1.16.7 ([#43](https://github.com/melkortf/tf2-servers/issues/43)) ([303ddbc](https://github.com/melkortf/tf2-servers/commit/303ddbc61a0c6eeb19ec521c65f1c91b0e43edab))
+* **tf2-mge:** unpack sourcebans++ plugin to the correct directory ([#41](https://github.com/melkortf/tf2-servers/issues/41)) ([cac41fc](https://github.com/melkortf/tf2-servers/commit/cac41fcf307a463ca5707b32261f5998c0206424))
+* **tf2-sourcemod:** verify download checksums ([#45](https://github.com/melkortf/tf2-servers/issues/45)) ([5320389](https://github.com/melkortf/tf2-servers/commit/5320389ea42877fd049deffedebabe1aa55d70dc))
+
 ## [1.6.2](https://github.com/melkortf/tf2-servers/compare/1.6.1...1.6.2) (2022-04-21)
 
 
