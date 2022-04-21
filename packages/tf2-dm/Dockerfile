@@ -38,7 +38,7 @@ RUN \
   && mv "${CLASS_RESTRICT_PLUGIN_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/plugins/${CLASS_RESTRICT_PLUGIN_FILE_NAME}" \
   && mv "${AFK_MANAGER_PLUGIN_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/plugins/${AFK_MANAGER_PLUGIN_FILE_NAME}" \
   && mv "${AFK_MANAGER_PHRASES_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/translations/${AFK_MANAGER_PHRASES_FILE_NAME}" \
-  && tar xf "${SOURCEBANS_PLUGIN_FILE_NAME}" -C "${SERVER_DIR}/tf" --strip-components=1 \
+  && tar xf "${SOURCEBANS_PLUGIN_FILE_NAME}" -C "${SERVER_DIR}/tf" \
   # clean everything up
   && rm "${SOAP_DM_PLUGIN_FILE_NAME}" "${DHOOKS_PLUGIN_FILE_NAME}" "${COMP_FIXES_PLUGIN_FILE_NAME}" "${SOURCEBANS_PLUGIN_FILE_NAME}" \
   && rm "checksum.md5" \
