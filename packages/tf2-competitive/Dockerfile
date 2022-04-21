@@ -26,7 +26,8 @@ ARG CURL_EXTENSION_FILE_NAME=curl.ext.so
 ARG CURL_EXTENSION_URL=https://raw.githubusercontent.com/spiretf/docker-comp-server/master/${CURL_EXTENSION_FILE_NAME}
 
 ARG ETF2L_CONFIGS_FILE_NAME=etf2l_configs.zip
-ARG ETF2L_CONFIGS_URL=https://github.com/ETF2L/gameserver-configs/releases/download/1.0.2/${ETF2L_CONFIGS_FILE_NAME}
+ARG ETF2L_CONFIGS_VERSION=1.0.3
+ARG ETF2L_CONFIGS_URL=https://github.com/ETF2L/gameserver-configs/releases/download/${ETF2L_CONFIGS_VERSION}/${ETF2L_CONFIGS_FILE_NAME}
 
 ARG RGL_CONFIGS_FILE_NAME=rgl_configs.zip
 ARG RGL_CONFIGS_URL=https://github.com/RGLgg/server-resources-updater/archive/master.zip
