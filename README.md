@@ -2,16 +2,16 @@
 
 <p>
   <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Image Version" src="https://img.shields.io/docker/v/melkortf/tf2-base/latest?color=blueviolet&style=flat-square&logo=docker">
+    <img alt="Docker Image Version" src="https://img.shields.io/docker/v/melkortf/tf2-base/latest?color=blueviolet&logo=docker">
   </a>
   <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/melkortf/tf2-base/latest?style=flat-square&color=informational">
+    <img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/melkortf/tf2-base/latest?color=informational">
   </a>
   <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/melkortf/tf2-base?color=green&style=flat-square" />
+    <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/melkortf/tf2-base?color=green" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/license-MIT-yellow.svg?style=flat-square" alt="MIT license">
+    <img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="MIT license">
   </a>
 </p>
 
