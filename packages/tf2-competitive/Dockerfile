@@ -41,8 +41,8 @@ ARG SRCTV_PLUS_SO_URL=https://github.com/dalegaard/srctvplus/releases/download/v
 ARG SRCTV_PLUS_VDF_FILE_NAME=srctvplus.vdf
 ARG SRCTV_PLUS_VDF_URL=https://github.com/dalegaard/srctvplus/releases/download/v1.1/${SRCTV_PLUS_VDF_FILE_NAME}
 
-ARG ROUNDTIMER_OVERRIDE_PLUGIN_FILE_NAME=roundtimeroverride.zip
-ARG ROUNDTIMER_OVERRIDE_PLUGIN_URL=https://github.com/b4nnyBot/TF2-Improved-Round-Timer-Plugin/raw/main/Round%20Timer%20Override%20Plugin.zip
+ARG IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME=Improved-Match-Timer-main.zip
+ARG IMPROVED_MATCH_TIMER_PLUGIN_URL=https://github.com/dewbsku/Improved-Match-Timer/archive/refs/heads/main.zip
 
 RUN \
   # download all the plugins
@@ -50,7 +50,7 @@ RUN \
     "${ETF2L_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
   && wget -nv "${MGEMOD_PLUGIN_URL}" -O "${MGEMOD_PLUGIN_FILE_NAME}" \
   && wget -nv "${RGL_CONFIGS_URL}" -O "${RGL_CONFIGS_FILE_NAME}" \
-  && wget -nv "${ROUNDTIMER_OVERRIDE_PLUGIN_URL}" -O "${ROUNDTIMER_OVERRIDE_PLUGIN_FILE_NAME}" \
+  && wget -nv "${IMPROVED_MATCH_TIMER_PLUGIN_URL}" -O "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
   # verify md5 checksums
   && md5sum -c checksum.md5 \
   # install plugins
@@ -62,9 +62,9 @@ RUN \
   && unzip -q -o "${CURL_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod" \
   && unzip -q "${ETF2L_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master/cfg/*.cfg" && mv "server-resources-updater-master/cfg/"* "${SERVER_DIR}/tf/cfg/" \
-  && unzip -q "${ROUNDTIMER_OVERRIDE_PLUGIN_FILE_NAME}"\
-    && mv roundtimer_override.smx "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
-    && mv roundtimer_override.sp "${SERVER_DIR}/tf/addons/sourcemod/scripting/" \
+  && unzip -q "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
+    && mv "Improved-Match-Timer-main/addons/sourcemod/plugins/"*.smx "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+    && mv "Improved-Match-Timer-main/addons/sourcemod/scripting/"*.sp "${SERVER_DIR}/tf/addons/sourcemod/scripting/" \
   && mv "${CURL_EXTENSION_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/extensions/${CURL_EXTENSION_FILE_NAME}" \
   && mv "${DEMOS_TF_PLUGIN_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/plugins/${DEMOS_TF_PLUGIN_FILE_NAME}" \
   && mv "${SRCTV_PLUS_SO_FILE_NAME}" "${SERVER_DIR}/tf/addons/${SRCTV_PLUS_SO_FILE_NAME}" \
@@ -78,7 +78,7 @@ RUN \
   && rm "${CURL_PLUGIN_FILE_NAME}" \
   && rm "${ETF2L_CONFIGS_FILE_NAME}" \
   && rm -r "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master" \
-  && rm "${ROUNDTIMER_OVERRIDE_PLUGIN_FILE_NAME}" \
+  && rm -r "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" "Improved-Match-Timer-main" \
   && rm "checksum.md5" \
   # remove useless (and potentially harmful) plugins
   && rm "$SERVER_DIR/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx
