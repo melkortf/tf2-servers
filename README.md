@@ -1,21 +1,24 @@
+<img src="./images/logo.svg" align="right"
+     alt="tf2-servers logo by bobair" width="170" height="170">
+
 # tf2-servers
 
 <p>
   <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Image Version" src="https://img.shields.io/docker/v/melkortf/tf2-base/latest">
+    <img alt="Docker Image Version" src="https://img.shields.io/docker/v/melkortf/tf2-base/latest?color=%235c7c8b&logo=docker">
   </a>
   <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/melkortf/tf2-base/latest">
+    <img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/melkortf/tf2-base/latest?color=%238a5043">
   </a>
   <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/melkortf/tf2-base" />
+    <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/melkortf/tf2-base?color=%235c7c8b" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT license">
+    <img src="https://img.shields.io/badge/license-MIT-d4c0bf.svg" alt="MIT license">
   </a>
 </p>
 
-> [Team Fortress 2 Dedicated Server](https://wiki.teamfortress.com/wiki/Linux_dedicated_server) Docker images for multiple purposes
+**[Team Fortress 2 Dedicated Server](https://wiki.teamfortress.com/wiki/Linux_dedicated_server) Docker images for multiple purposes**
 
 
 ```
@@ -103,6 +106,13 @@ $ docker pull melkortf/tf2-competitive
 ```
 
 TF2 server configured to be used in competitive matches.
+
+* [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes)
+* [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin)
+* [SrcTV+](https://github.com/dalegaard/srctvplus)
+* [Improved Match Timer plugin](https://github.com/dewbsku/Improved-Match-Timer)
+* [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
+* [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
 
 Environment variable | Default value | Used in | Description
 -------------------- | ------------- | ------- | -----------
