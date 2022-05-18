@@ -63,8 +63,8 @@ RUN \
   && unzip -q "${ETF2L_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master/cfg/*.cfg" && mv "server-resources-updater-master/cfg/"* "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
-    && mv "Improved-Match-Timer-main/addons/sourcemod/plugins/*.smx" "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
-    && mv "Improved-Match-Timer-main/addons/sourcemod/scripting/*.sp" "${SERVER_DIR}/tf/addons/sourcemod/scripting/" \
+    && mv "Improved-Match-Timer-main/addons/sourcemod/plugins/"*.smx "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+    && mv "Improved-Match-Timer-main/addons/sourcemod/scripting/"*.sp "${SERVER_DIR}/tf/addons/sourcemod/scripting/" \
   && mv "${CURL_EXTENSION_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/extensions/${CURL_EXTENSION_FILE_NAME}" \
   && mv "${DEMOS_TF_PLUGIN_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/plugins/${DEMOS_TF_PLUGIN_FILE_NAME}" \
   && mv "${SRCTV_PLUS_SO_FILE_NAME}" "${SERVER_DIR}/tf/addons/${SRCTV_PLUS_SO_FILE_NAME}" \
