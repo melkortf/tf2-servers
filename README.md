@@ -107,6 +107,13 @@ $ docker pull melkortf/tf2-competitive
 
 TF2 server configured to be used in competitive matches.
 
+* [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes)
+* [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin)
+* [SrcTV+](https://github.com/dalegaard/srctvplus)
+* [Improved Match Timer plugin](https://github.com/dewbsku/Improved-Match-Timer)
+* [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
+* [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
+
 Environment variable | Default value | Used in | Description
 -------------------- | ------------- | ------- | -----------
 DEMOS_TF_APIKEY      |               | sm_demostf_apikey ${DEMOS_TF_APIKEY} | The API key used to upload the demo to [demos.tf](https://demos.tf/).
