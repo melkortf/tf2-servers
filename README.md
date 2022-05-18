@@ -18,7 +18,7 @@
   </a>
 </p>
 
-> [Team Fortress 2 Dedicated Server](https://wiki.teamfortress.com/wiki/Linux_dedicated_server) Docker images for multiple purposes
+**[Team Fortress 2 Dedicated Server](https://wiki.teamfortress.com/wiki/Linux_dedicated_server) Docker images for multiple purposes**
 
 
 ```
