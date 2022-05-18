@@ -1,3 +1,12 @@
+## [1.6.4](https://github.com/melkortf/tf2-servers/compare/1.6.3...1.6.4) (2022-05-18)
+
+
+### Bug Fixes
+
+* **deps:** update ETF2L configs to version 1.0.3 (updated) ([#47](https://github.com/melkortf/tf2-servers/issues/47)) ([905a441](https://github.com/melkortf/tf2-servers/commit/905a44114fa8c8f678a2e6f736d90a4b523853e6))
+* **deps:** update RGL.gg configs to the latest version ([#48](https://github.com/melkortf/tf2-servers/issues/48)) ([21fa0b2](https://github.com/melkortf/tf2-servers/commit/21fa0b2fed6301666a3cb908f4a66f9767195bae))
+* **tf2-competitive:** replace Round-Timer-Override with Improved-Match-Timer ([#46](https://github.com/melkortf/tf2-servers/issues/46)) ([c81409b](https://github.com/melkortf/tf2-servers/commit/c81409b48c09659257d660fcdce55871ef8532c7))
+
 ## [1.6.3](https://github.com/melkortf/tf2-servers/compare/1.6.2...1.6.3) (2022-04-21)
 
 
