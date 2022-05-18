@@ -1,17 +1,20 @@
+<img src="./images/logo.svg" align="right"
+     alt="tf2-servers logo by bobair" width="170" height="170">
+
 # tf2-servers
 
 <p>
   <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Image Version" src="https://img.shields.io/docker/v/melkortf/tf2-base/latest?color=blueviolet&logo=docker">
+    <img alt="Docker Image Version" src="https://img.shields.io/docker/v/melkortf/tf2-base/latest?color=%235c7c8b&logo=docker">
   </a>
   <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/melkortf/tf2-base/latest?color=informational">
+    <img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/melkortf/tf2-base/latest?color=%238a5043">
   </a>
   <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/melkortf/tf2-base?color=green" />
+    <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/melkortf/tf2-base?color=%235c7c8b" />
   </a>
   <a href="https://opensource.org/licenses/MIT">
-    <img src="https://img.shields.io/badge/license-MIT-yellow.svg" alt="MIT license">
+    <img src="https://img.shields.io/badge/license-MIT-d4c0bf.svg" alt="MIT license">
   </a>
 </p>
 
