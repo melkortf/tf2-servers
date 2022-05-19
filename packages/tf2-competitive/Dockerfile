@@ -29,8 +29,9 @@ ARG ETF2L_CONFIGS_FILE_NAME=etf2l_configs.zip
 ARG ETF2L_CONFIGS_VERSION=1.0.3
 ARG ETF2L_CONFIGS_URL=https://github.com/ETF2L/gameserver-configs/releases/download/${ETF2L_CONFIGS_VERSION}/${ETF2L_CONFIGS_FILE_NAME}
 
-ARG RGL_CONFIGS_FILE_NAME=rgl_configs.zip
-ARG RGL_CONFIGS_URL=https://github.com/RGLgg/server-resources-updater/archive/master.zip
+ARG RGL_CONFIGS_FILE_NAME=server-resources-updater.zip
+ARG RGL_CONFIGS_VERSION=v117
+ARG RGL_CONFIGS_URL=https://github.com/RGLgg/server-resources-updater/releases/download/${RGL_CONFIGS_VERSION}/${RGL_CONFIGS_FILE_NAME}
 
 ARG DEMOS_TF_PLUGIN_FILE_NAME=demostf.smx
 ARG DEMOS_TF_PLUGIN_URL=https://github.com/demostf/plugin/raw/master/${DEMOS_TF_PLUGIN_FILE_NAME}
@@ -47,9 +48,8 @@ ARG IMPROVED_MATCH_TIMER_PLUGIN_URL=https://github.com/dewbsku/Improved-Match-Ti
 RUN \
   # download all the plugins
   wget -nv "${SOAP_DM_PLUGIN_URL}" "${DHOOKS_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${UPDATED_PAUSE_PLUGIN_URL}" "${CURL_PLUGIN_URL}" "${CURL_EXTENSION_URL}" \
-    "${ETF2L_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
+    "${ETF2L_CONFIGS_URL}" "${RGL_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
   && wget -nv "${MGEMOD_PLUGIN_URL}" -O "${MGEMOD_PLUGIN_FILE_NAME}" \
-  && wget -nv "${RGL_CONFIGS_URL}" -O "${RGL_CONFIGS_FILE_NAME}" \
   && wget -nv "${IMPROVED_MATCH_TIMER_PLUGIN_URL}" -O "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
   # verify md5 checksums
   && md5sum -c checksum.md5 \
@@ -61,7 +61,7 @@ RUN \
   && unzip -q "${MGEMOD_PLUGIN_FILE_NAME}" && cp -r "MGEMod-master/addons" "${SERVER_DIR}/tf/" \
   && unzip -q -o "${CURL_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod" \
   && unzip -q "${ETF2L_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
-  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master/cfg/*.cfg" && mv "server-resources-updater-master/cfg/"* "${SERVER_DIR}/tf/cfg/" \
+  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "cfg/*.cfg" && mv "cfg/"* "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
     && mv "Improved-Match-Timer-main/addons/sourcemod/plugins/"*.smx "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
     && mv "Improved-Match-Timer-main/addons/sourcemod/scripting/"*.sp "${SERVER_DIR}/tf/addons/sourcemod/scripting/" \
@@ -77,7 +77,7 @@ RUN \
   && rm -r "MGEMod-master" "${MGEMOD_PLUGIN_FILE_NAME}" \
   && rm "${CURL_PLUGIN_FILE_NAME}" \
   && rm "${ETF2L_CONFIGS_FILE_NAME}" \
-  && rm -r "${RGL_CONFIGS_FILE_NAME}" "server-resources-updater-master" \
+  && rm -r "${RGL_CONFIGS_FILE_NAME}" "cfg" \
   && rm -r "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" "Improved-Match-Timer-main" \
   && rm "checksum.md5" \
   # remove useless (and potentially harmful) plugins
