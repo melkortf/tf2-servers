@@ -1,3 +1,11 @@
+## [1.6.5](https://github.com/melkortf/tf2-servers/compare/1.6.4...1.6.5) (2022-05-19)
+
+
+### Bug Fixes
+
+* **deps:** update RGL.gg configs to v1.10.117 ([#52](https://github.com/melkortf/tf2-servers/issues/52)) ([e22b3b8](https://github.com/melkortf/tf2-servers/commit/e22b3b844b09468f02beea021863b74affea1841))
+* **deps:** update tf2-comp-fixes to version 1.16.10 ([#51](https://github.com/melkortf/tf2-servers/issues/51)) ([9a3f51f](https://github.com/melkortf/tf2-servers/commit/9a3f51f4f201937a0a0e3081861978fea7ebe5c2))
+
 ## [1.6.4](https://github.com/melkortf/tf2-servers/compare/1.6.3...1.6.4) (2022-05-18)
 
 
