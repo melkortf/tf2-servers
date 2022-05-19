@@ -1,3 +1,10 @@
+## [1.6.6-beta.0](https://github.com/melkortf/tf2-servers/compare/1.6.5...1.6.6-beta.0) (2022-05-19)
+
+
+### Bug Fixes
+
+* **tf2-tftrue:** use sapphonie's fork of TFTrue ([#53](https://github.com/melkortf/tf2-servers/issues/53)) ([751eb5c](https://github.com/melkortf/tf2-servers/commit/751eb5c48a068d80f9701d9b9db68bec0ce5e70a))
+
 ## [1.6.5](https://github.com/melkortf/tf2-servers/compare/1.6.4...1.6.5) (2022-05-19)
 
 
