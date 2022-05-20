@@ -19,7 +19,7 @@ RUN apt-get -y update \
 FROM melkortf/tf2-sourcemod:latest
 LABEL maintainer="garrappachc@gmail.com"
 
-COPY TFTrue.vdf "${SERVER_DIR}/tf/addons/tftruer.vdf"
+COPY tftruer.vdf "${SERVER_DIR}/tf/addons/tftruer.vdf"
 COPY --from=tftruer-build /build/tftruer/build/tftruer.so ${SERVER_DIR}/tf/addons/tftruer.so
 
 CMD ["+sv_pure", "2", "+map", "cp_badlands", "+maxplayers", "24"]
