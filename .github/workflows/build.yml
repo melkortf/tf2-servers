@@ -41,7 +41,7 @@ jobs:
         name: Save docker image
         run: |
           mkdir -p images
-          docker save "${{ steps.docker_meta.outputs.version }}" > images/tf2-base.tar
+          docker save "melkortf/tf2-base:${{ steps.docker_meta.outputs.version }}" > images/tf2-base.tar
       -
         name: Upload docker image
         uses: actions/upload-artifact@v2
