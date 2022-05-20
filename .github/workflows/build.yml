@@ -36,10 +36,10 @@ jobs:
         with:
           context: ./packages/tf2-base
           tags: ${{ steps.docker_meta.outputs.tags }}
+          load: true
       -
         name: Save docker image
-        run: |
-          docker save melkortf/tf2-base:${{ steps.docker_meta.outputs.version }} | gzip > tf2-base.tar.gz
+        run: docker save melkortf/tf2-base:${{ steps.docker_meta.outputs.version }} | gzip > tf2-base.tar.gz
       -
         name: Upload docker image
         uses: actions/upload-artifact@v2
@@ -59,12 +59,10 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: tf2-base
-          path: images
+          path: tf2-base.tar.gz
       - 
         name: Load tf2-base
-        run: |
-          cd images
-          docker load < tf2-base.tar
+        run: docker load < tf2-base.tar.gz
       -
         name: Docker meta
         id: docker_meta
