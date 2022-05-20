@@ -36,18 +36,16 @@ jobs:
         with:
           context: ./packages/tf2-base
           tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
       -
         name: Save docker image
         run: |
-          mkdir -p images
-          docker save "melkortf/tf2-base:${{ steps.docker_meta.outputs.version }}" > images/tf2-base.tar
+          docker save melkortf/tf2-base:${{ steps.docker_meta.outputs.version }} | gzip > tf2-base.tar.gz
       -
         name: Upload docker image
         uses: actions/upload-artifact@v2
         with:
           name: tf2-base
-          path: images
+          path: tf2-base.tar.gz
 
   tf2-sourcemod:
     runs-on: ubuntu-latest
