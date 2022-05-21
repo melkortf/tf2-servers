@@ -46,6 +46,7 @@ jobs:
         with:
           name: tf2-base
           path: tf2-base.tar.gz
+          if-no-files-found: error
 
   tf2-sourcemod:
     runs-on: ubuntu-latest
@@ -60,9 +61,6 @@ jobs:
         with:
           name: tf2-base
           path: tf2-base.tar.gz
-      - 
-        name: Load tf2-base
-        run: docker load < tf2-base.tar.gz
       -
         name: Docker meta
         id: docker_meta
@@ -73,6 +71,9 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      - 
+        name: Load tf2-base
+        run: docker load < tf2-base.tar.gz
       -
         name: Build and push
         id: docker_build
@@ -83,3 +84,4 @@ jobs:
             TF2_BASE_VERSION=${{ needs.tf2-base.outputs.tf2-base-version }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          load: true
