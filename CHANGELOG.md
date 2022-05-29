@@ -1,3 +1,15 @@
+## [1.6.6](https://github.com/melkortf/tf2-servers/compare/1.6.6-beta.0...1.6.6) (2022-05-29)
+
+
+### Bug Fixes
+
+* **deps:** update etf2l-configs to version 1.0.4 ([#61](https://github.com/melkortf/tf2-servers/issues/61)) ([5a84424](https://github.com/melkortf/tf2-servers/commit/5a84424e4965ca5c905d78a17f9a056305e18cd2))
+
+
+### Reverts
+
+* **tf2-tftrue:** bring back TFTrue upstream ([#55](https://github.com/melkortf/tf2-servers/issues/55)) ([fad2157](https://github.com/melkortf/tf2-servers/commit/fad2157f7a11669b54bdb13f3981dc67a59ad91e)), closes [#53](https://github.com/melkortf/tf2-servers/issues/53)
+
 ## [1.6.6-beta.0](https://github.com/melkortf/tf2-servers/compare/1.6.5...1.6.6-beta.0) (2022-05-19)
 
 
