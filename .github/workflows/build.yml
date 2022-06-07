@@ -60,7 +60,9 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: tf2-base
-          path: tf2-base.tar.gz
+      -
+        name: List files
+        run: ls -R
       -
         name: Docker meta
         id: docker_meta
