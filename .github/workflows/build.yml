@@ -73,7 +73,7 @@ jobs:
         uses: docker/setup-buildx-action@v2
       - 
         name: Load tf2-base
-        run: docker load < tf2-base.tar.gz
+        run: docker load --input tf2-base.tar.gz
       -
         name: Build and push
         id: docker_build
