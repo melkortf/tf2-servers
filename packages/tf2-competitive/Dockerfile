@@ -37,10 +37,10 @@ ARG DEMOS_TF_PLUGIN_FILE_NAME=demostf.smx
 ARG DEMOS_TF_PLUGIN_URL=https://github.com/demostf/plugin/raw/master/${DEMOS_TF_PLUGIN_FILE_NAME}
 
 ARG SRCTV_PLUS_SO_FILE_NAME=srctvplus.so
-ARG SRCTV_PLUS_SO_URL=https://github.com/dalegaard/srctvplus/releases/download/v1.1/${SRCTV_PLUS_SO_FILE_NAME}
+ARG SRCTV_PLUS_SO_URL=https://github.com/dalegaard/srctvplus/releases/download/v2.0/${SRCTV_PLUS_SO_FILE_NAME}
 
 ARG SRCTV_PLUS_VDF_FILE_NAME=srctvplus.vdf
-ARG SRCTV_PLUS_VDF_URL=https://github.com/dalegaard/srctvplus/releases/download/v1.1/${SRCTV_PLUS_VDF_FILE_NAME}
+ARG SRCTV_PLUS_VDF_URL=https://github.com/dalegaard/srctvplus/releases/download/v2.0/${SRCTV_PLUS_VDF_FILE_NAME}
 
 ARG IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME=Improved-Match-Timer-main.zip
 ARG IMPROVED_MATCH_TIMER_PLUGIN_URL=https://github.com/dewbsku/Improved-Match-Timer/archive/refs/heads/main.zip
