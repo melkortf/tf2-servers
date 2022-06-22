@@ -1,8 +1,8 @@
 FROM debian:latest AS tftrue-build
 WORKDIR /build
 
-ARG TFTRUE_REPOSITORY_URL=https://github.com/AnAkkk/TFTrue.git
-ARG TFTRUE_COMMIT=7008ad4591d6b384a461c5bc5d8bfffadf1fecbd
+ARG TFTRUE_REPOSITORY_URL=https://github.com/melkortf/TFTrue.git
+ARG TFTRUE_COMMIT=8472f93a0e71c0a8fcd38370adbf3b86c3cf3d2b
 
 RUN apt-get -y update \
   && apt-get install -y build-essential git cmake gcc-multilib g++-multilib \
