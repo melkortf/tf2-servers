@@ -1,3 +1,15 @@
+# [1.7.0](https://github.com/melkortf/tf2-servers/compare/1.6.7...1.7.0) (2022-06-22)
+
+
+### Bug Fixes
+
+* **deps:** update etf2l-configs to version 1.0.5 ([#66](https://github.com/melkortf/tf2-servers/issues/66)) ([5ffd408](https://github.com/melkortf/tf2-servers/commit/5ffd4089f5b292a3c51bdb2810bafbb35082491b))
+
+
+### Features
+
+* **tf2-tftrue:** switch to melkortf TFTrue fork ([#65](https://github.com/melkortf/tf2-servers/issues/65)) ([5746cd9](https://github.com/melkortf/tf2-servers/commit/5746cd99085e30b22cb53b02c1801bd04ad4a16b))
+
 
 
 ## [1.6.7](https://github.com/melkortf/tf2-servers/compare/1.6.6...1.6.7) (2022-06-22)
