@@ -1,3 +1,14 @@
+
+
+## [1.6.7](https://github.com/melkortf/tf2-servers/compare/1.6.6...1.6.7) (2022-06-22)
+
+
+### Bug Fixes
+
+* **deps:** update MGEMod to the latest version ([#63](https://github.com/melkortf/tf2-servers/issues/63)) ([45c46d5](https://github.com/melkortf/tf2-servers/commit/45c46d5e4f067ae51037d4916583e328121fdaf1))
+* **deps:** update SrcTv+ to version 2.0 ([#62](https://github.com/melkortf/tf2-servers/issues/62)) ([75e1a06](https://github.com/melkortf/tf2-servers/commit/75e1a06a577fe0c9c2455676427d1b407efae0ab))
+* **deps:** update TFTrue to the latest version ([#64](https://github.com/melkortf/tf2-servers/issues/64)) ([45a25a1](https://github.com/melkortf/tf2-servers/commit/45a25a1d06221877ba98b140db1fe3c33ced6c9b))
+
 ## [1.6.6](https://github.com/melkortf/tf2-servers/compare/1.6.6-beta.0...1.6.6) (2022-05-29)
 
 
