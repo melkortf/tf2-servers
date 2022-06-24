@@ -1,3 +1,11 @@
+## [1.7.1](https://github.com/melkortf/tf2-servers/compare/1.7.0...1.7.1) (2022-06-24)
+
+
+### Bug Fixes
+
+* **deps:** update SourceMod to build 6543 ([#68](https://github.com/melkortf/tf2-servers/issues/68)) ([31a3f54](https://github.com/melkortf/tf2-servers/commit/31a3f54ccd2a94d17588b99d84e4abb7f470186e))
+* **tf2-competitive:** update SrcTv+ checksum ([#67](https://github.com/melkortf/tf2-servers/issues/67)) ([f5b14d3](https://github.com/melkortf/tf2-servers/commit/f5b14d3c2a005e5ca44d2d618c8529a2c23fb053))
+
 # [1.7.0](https://github.com/melkortf/tf2-servers/compare/1.6.7...1.7.0) (2022-06-22)
 
 
