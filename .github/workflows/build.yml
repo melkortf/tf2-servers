@@ -77,6 +77,9 @@ jobs:
         name: Load tf2-base
         run: docker load --input tf2-base.tar.gz
       -
+        name: List images
+        run: docker image ls
+      -
         name: Build and push
         id: docker_build
         uses: docker/build-push-action@v3
