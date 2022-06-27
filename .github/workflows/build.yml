@@ -39,13 +39,13 @@ jobs:
           load: true
       -
         name: Save docker image
-        run: docker save melkortf/tf2-base:${{ steps.docker_meta.outputs.version }} | gzip > tf2-base.tar.gz
+        run: docker save melkortf/tf2-base:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-base.tar.gz
       -
         name: Upload docker image
         uses: actions/upload-artifact@v2
         with:
           name: tf2-base
-          path: tf2-base.tar.gz
+          path: /tmp/tf2-base.tar.gz
           if-no-files-found: error
 
   tf2-sourcemod:
@@ -60,9 +60,7 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: tf2-base
-      -
-        name: List files
-        run: ls -R
+          path: /tmp
       -
         name: Docker meta
         id: docker_meta
@@ -75,10 +73,9 @@ jobs:
         uses: docker/setup-buildx-action@v2
       - 
         name: Load tf2-base
-        run: docker load --input tf2-base.tar.gz
-      -
-        name: List images
-        run: docker image ls
+        run: |
+          docker load --input /tmp/tf2-base.tar.gz
+          docker inspect --format='{{.Os}}/{{.Architecture}}' melkortf/tf2-base
       -
         name: Build and push
         id: docker_build
