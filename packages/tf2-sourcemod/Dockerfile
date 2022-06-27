@@ -1,5 +1,5 @@
 ARG TF2_BASE_VERSION=latest
-FROM melkortf/tf2-base:${TF2_BASE_VERSION}
+FROM --platform=linux/amd64 melkortf/tf2-base:${TF2_BASE_VERSION}
 LABEL maintainer="garrappachc@gmail.com"
 
 COPY checksum.md5 .
