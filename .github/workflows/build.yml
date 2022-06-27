@@ -75,7 +75,7 @@ jobs:
         name: Load tf2-base
         run: |
           docker load --input /tmp/tf2-base.tar.gz
-          docker inspect --format='{{.Os}}/{{.Architecture}}' melkortf/tf2-base
+          docker inspect --format='{{.Os}}/{{.Architecture}}' melkortf/tf2-base:${{ needs.tf2-base.outputs.tf2-base-version }}
       -
         name: Build and push
         id: docker_build
