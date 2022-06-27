@@ -75,6 +75,7 @@ jobs:
         name: Load tf2-base
         run: |
           docker load --input /tmp/tf2-base.tar.gz
+          docker image ls
           docker inspect --format='{{.Os}}/{{.Architecture}}' melkortf/tf2-base:${{ needs.tf2-base.outputs.tf2-base-version }}
       -
         name: Build and push
@@ -87,3 +88,4 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           load: true
+          pull: false
