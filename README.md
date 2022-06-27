@@ -85,38 +85,29 @@ $ docker pull melkortf/tf2-sourcemod
 TF2 server with [Metamod:Source](https://www.sourcemm.net/) and [SourceMod](https://www.sourcemod.net/) installed.
 
 
-## tf2-tftrue
-
-```
-$ docker pull melkortf/tf2-tftrue
-```
-
-TF2 server with [Metamod:Source](https://www.sourcemm.net/), [SourceMod](https://www.sourcemod.net/) and [TFTrue](https://tftrue.esport-tools.net/) addons installed.
-
-Environment variable | Default value | Used in | Description
--------------------- | ------------- | ------- | -----------
-LOGS_TF_APIKEY       |               | `tftrue_logs_apikey ${LOGS_TF_APIKEY}` | The API key used to upload logs to logs.tf.
-LOGS_TF_PREFIX       |               | `tftrue_logs_prefix ${LOGS_TF_PREFIX}` | The prefix to add in the log name when uploading to logs.tf.
-
-
 ## tf2-competitive
 
 ```
 $ docker pull melkortf/tf2-competitive
 ```
 
-TF2 server configured to be used in competitive matches.
+TF2 server configured to be used in competitive matches. Installed plugins, add-ons and configs:
 
 * [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes)
 * [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin)
 * [SrcTV+](https://github.com/dalegaard/srctvplus)
 * [Improved Match Timer plugin](https://github.com/dewbsku/Improved-Match-Timer)
+* [Supplemental Stats 2](https://github.com/F2/F2s-sourcemod-plugins#supplemental-stats-2-)
+* [Medic Stats](https://github.com/F2/F2s-sourcemod-plugins#medic-stats-)
+* [RestoreScore](https://github.com/F2/F2s-sourcemod-plugins#restorescore-)
+* [LogsTF](https://github.com/F2/F2s-sourcemod-plugins#logstf-)
 * [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
 * [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
 
 Environment variable | Default value | Used in | Description
 -------------------- | ------------- | ------- | -----------
-DEMOS_TF_APIKEY      |               | sm_demostf_apikey ${DEMOS_TF_APIKEY} | The API key used to upload the demo to [demos.tf](https://demos.tf/).
+DEMOS_TF_APIKEY      |               | `sm_demostf_apikey ${DEMOS_TF_APIKEY}` | The API key used to upload the demo to [demos.tf](https://demos.tf/).
+LOGS_TF_APIKEY       |               | `logstf_apikey ${LOGS_TF_APIKEY}` | The API key used to upload logs to logs.tf.
 
 
 ## tf2-dm
