@@ -101,6 +101,7 @@ TF2 server configured to be used in competitive matches. Installed plugins, add-
 * [Medic Stats](https://github.com/F2/F2s-sourcemod-plugins#medic-stats-)
 * [RestoreScore](https://github.com/F2/F2s-sourcemod-plugins#restorescore-)
 * [LogsTF](https://github.com/F2/F2s-sourcemod-plugins#logstf-)
+* [RecordSTV](https://github.com/F2/F2s-sourcemod-plugins#recordstv-)
 * [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
 * [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
 
