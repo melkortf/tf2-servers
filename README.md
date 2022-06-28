@@ -102,6 +102,9 @@ TF2 server configured to be used in competitive matches. Installed plugins, add-
 * [RestoreScore](https://github.com/F2/F2s-sourcemod-plugins#restorescore-)
 * [LogsTF](https://github.com/F2/F2s-sourcemod-plugins#logstf-)
 * [RecordSTV](https://github.com/F2/F2s-sourcemod-plugins#recordstv-)
+* [WaitForSTV](https://github.com/F2/F2s-sourcemod-plugins#waitforstv-)
+* [FixStvSlot](https://github.com/F2/F2s-sourcemod-plugins#fixstvslot-)
+* [AFK](https://github.com/F2/F2s-sourcemod-plugins#afk-)
 * [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
 * [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
 
