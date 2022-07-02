@@ -25,10 +25,16 @@ jobs:
         uses: docker/metadata-action@v4
         with:
           images: melkortf/tf2-base
-          tags: type=sha,format=short
+          tags: type=sha,format=long
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       -
         name: Build
         id: docker_build
@@ -36,7 +42,8 @@ jobs:
         with:
           context: ./packages/tf2-base
           tags: ${{ steps.docker_meta.outputs.tags }}
-          load: true
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          platforms: linux/amd64
       -
         name: Save docker image
         run: docker save melkortf/tf2-base:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-base.tar.gz
@@ -71,6 +78,12 @@ jobs:
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
+      -
+        name: Login to DockerHub
+        uses: docker/login-action@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
       - 
         name: Load tf2-base
         run: |
@@ -89,3 +102,4 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           load: true
           pull: false
+          platforms: linux/amd64
