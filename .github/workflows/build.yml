@@ -44,6 +44,7 @@ jobs:
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           platforms: linux/amd64
+          load: true
       -
         name: Save docker image
         run: docker save melkortf/tf2-base:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-base.tar.gz
