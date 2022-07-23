@@ -141,13 +141,13 @@ jobs:
           platforms: linux/amd64
       -
         name: Save docker image
-        run: docker save melkortf/tf2-tftrue:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-tftrue.tar.gz
+        run: docker save melkortf/tf2-mge:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-mge.tar.gz
       -
         name: Upload docker image
         uses: actions/upload-artifact@v2
         with:
-          name: tf2-tftrue
-          path: /tmp/tf2-tftrue.tar.gz
+          name: tf2-mge
+          path: /tmp/tf2-mge.tar.gz
           if-no-files-found: error
 
   tf2-tftrue:
@@ -200,7 +200,7 @@ jobs:
           name: tf2-tftrue
           path: /tmp/tf2-tftrue.tar.gz
           if-no-files-found: error
-  
+
   tf2-competitive:
     runs-on: ubuntu-latest
     needs: tf2-tftrue
@@ -239,7 +239,17 @@ jobs:
           load: true
           pull: false
           platforms: linux/amd64
-  
+      -
+        name: Save docker image
+        run: docker save melkortf/tf2-competitive:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-competitive.tar.gz
+      -
+        name: Upload docker image
+        uses: actions/upload-artifact@v2
+        with:
+          name: tf2-competitive
+          path: /tmp/tf2-competitive.tar.gz
+          if-no-files-found: error
+
   tf2-dm:
     runs-on: ubuntu-latest
     needs: tf2-tftrue
@@ -278,3 +288,13 @@ jobs:
           load: true
           pull: false
           platforms: linux/amd64
+     -
+        name: Save docker image
+        run: docker save melkortf/tf2-dm:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-dm.tar.gz
+      -
+        name: Upload docker image
+        uses: actions/upload-artifact@v2
+        with:
+          name: tf2-dm
+          path: /tmp/tf2-dm.tar.gz
+          if-no-files-found: error
