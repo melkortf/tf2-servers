@@ -1,3 +1,5 @@
+ARG TF2_SOURCEMOD_TAG=latest
+
 FROM debian:latest AS tftrue-build
 WORKDIR /build
 
@@ -16,7 +18,7 @@ RUN apt-get -y update \
   && make
 
 
-FROM melkortf/tf2-sourcemod:latest
+FROM melkortf/tf2-sourcemod:${TF2_SOURCEMOD_TAG}
 LABEL maintainer="garrappachc@gmail.com"
 
 COPY TFTrue.vdf "${SERVER_DIR}/tf/addons/TFTrue.vdf"

@@ -1,4 +1,5 @@
-FROM melkortf/tf2-base:latest
+ARG TF2_BASE_TAG=latest
+FROM melkortf/tf2-base:${TF2_BASE_TAG}
 LABEL maintainer="garrappachc@gmail.com"
 
 COPY checksum.md5 .

@@ -1,4 +1,5 @@
-FROM melkortf/tf2-tftrue:latest
+ARG TF2_TFTRUE_TAG=latest
+FROM melkortf/tf2-tftrue:${TF2_TFTRUE_TAG}
 LABEL maintainer="garrappachc@gmail.com"
 
 COPY checksum.md5 .
