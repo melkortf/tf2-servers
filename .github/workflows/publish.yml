@@ -8,6 +8,8 @@ on:
 jobs:
   tf2-base:
     runs-on: ubuntu-latest
+    outputs:
+      tf2-base-tag: ${{ steps.docker_meta.outputs.version }}
     steps:
       -
         name: Checkout
@@ -34,13 +36,15 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./packages/tf2-base
-          push: ${{ github.event_name != 'pull_request' }}
+          push: ${{ github.event_name == 'release' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
 
   tf2-sourcemod:
     runs-on: ubuntu-latest
     needs: tf2-base
+    outputs:
+      tf2-sourcemod-tag: ${{ steps.docker_meta.outputs.version }}
     steps:
       -
         name: Checkout
@@ -67,6 +71,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./packages/tf2-sourcemod
+          build-args: |
+            TF2_BASE_TAG=${{ needs.tf2-base.outputs.tf2-base-tag }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
@@ -74,6 +80,8 @@ jobs:
   tf2-tftrue:
     runs-on: ubuntu-latest
     needs: tf2-sourcemod
+    outputs:
+      tf2-tftrue-tag: ${{ steps.docker_meta.outputs.version }}
     steps:
       -
         name: Checkout
@@ -100,6 +108,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./packages/tf2-tftrue
+          build-args: |
+            TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
@@ -133,6 +143,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./packages/tf2-competitive
+          build-args: |
+            TF2_TFTRUE_TAG=${{ needs.tf2-tftrue.outputs.tf2-tftrue-tag }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
@@ -166,6 +178,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./packages/tf2-mge
+          build-args: |
+            TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
@@ -199,6 +213,8 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./packages/tf2-dm
+          build-args: |
+            TF2_TFTRUE_TAG=${{ needs.tf2-tftrue.outputs.tf2-tftrue-tag }}
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
