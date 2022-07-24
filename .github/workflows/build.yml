@@ -288,7 +288,7 @@ jobs:
           load: true
           pull: false
           platforms: linux/amd64
-     -
+      -
         name: Save docker image
         run: docker save melkortf/tf2-dm:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-dm.tar.gz
       -
