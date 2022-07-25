@@ -44,7 +44,7 @@ jobs:
         run: docker save melkortf/tf2-base:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-base.tar.gz
       -
         name: Upload docker image
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: tf2-base
           path: /tmp/tf2-base.tar.gz
@@ -95,7 +95,7 @@ jobs:
         run: docker save melkortf/tf2-sourcemod:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-sourcemod.tar.gz
       -
         name: Upload docker image
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: tf2-sourcemod
           path: /tmp/tf2-sourcemod.tar.gz
@@ -144,7 +144,7 @@ jobs:
         run: docker save melkortf/tf2-mge:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-mge.tar.gz
       -
         name: Upload docker image
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: tf2-mge
           path: /tmp/tf2-mge.tar.gz
@@ -193,7 +193,7 @@ jobs:
         run: docker save melkortf/tf2-competitive:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-competitive.tar.gz
       -
         name: Upload docker image
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: tf2-competitive
           path: /tmp/tf2-competitive.tar.gz
@@ -242,7 +242,7 @@ jobs:
         run: docker save melkortf/tf2-dm:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-dm.tar.gz
       -
         name: Upload docker image
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v3
         with:
           name: tf2-dm
           path: /tmp/tf2-dm.tar.gz
