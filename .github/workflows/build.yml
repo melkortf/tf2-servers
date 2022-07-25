@@ -109,7 +109,7 @@ jobs:
         name: Checkout
         uses: actions/checkout@v3
       - 
-        name: Download tf2-sourcmeomd
+        name: Download tf2-sourcemod
         uses: actions/download-artifact@v2
         with:
           name: tf2-sourcemod
@@ -150,17 +150,15 @@ jobs:
           path: /tmp/tf2-mge.tar.gz
           if-no-files-found: error
 
-  tf2-tftrue:
+  tf2-competitive:
     runs-on: ubuntu-latest
     needs: tf2-sourcemod
-    outputs:
-      tf2-tftrue-tag: ${{ steps.docker_meta.outputs.version }}
     steps:
       -
         name: Checkout
         uses: actions/checkout@v3
       - 
-        name: Download tf2-sourcmeomd
+        name: Download tf2-sourcemod
         uses: actions/download-artifact@v2
         with:
           name: tf2-sourcemod
@@ -170,7 +168,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v4
         with:
-          images: melkortf/tf2-tftrue
+          images: melkortf/tf2-competitive
           tags: type=sha,format=long
       - 
         name: Load tf2-sourcemod
@@ -182,58 +180,9 @@ jobs:
         id: docker_build
         uses: docker/build-push-action@v3
         with:
-          context: ./packages/tf2-tftrue
-          build-args: |
-            TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
-          tags: ${{ steps.docker_meta.outputs.tags }}
-          labels: ${{ steps.docker_meta.outputs.labels }}
-          load: true
-          pull: false
-          platforms: linux/amd64
-      -
-        name: Save docker image
-        run: docker save melkortf/tf2-tftrue:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-tftrue.tar.gz
-      -
-        name: Upload docker image
-        uses: actions/upload-artifact@v2
-        with:
-          name: tf2-tftrue
-          path: /tmp/tf2-tftrue.tar.gz
-          if-no-files-found: error
-
-  tf2-competitive:
-    runs-on: ubuntu-latest
-    needs: tf2-tftrue
-    steps:
-      -
-        name: Checkout
-        uses: actions/checkout@v3
-      - 
-        name: Download tf2-tftrue
-        uses: actions/download-artifact@v2
-        with:
-          name: tf2-tftrue
-          path: /tmp
-      -
-        name: Docker meta
-        id: docker_meta
-        uses: docker/metadata-action@v4
-        with:
-          images: melkortf/tf2-competitive
-          tags: type=sha,format=long
-      - 
-        name: Load tf2-tftrue
-        run: |
-          docker load --input /tmp/tf2-tftrue.tar.gz
-          docker image ls
-      -
-        name: Build
-        id: docker_build
-        uses: docker/build-push-action@v3
-        with:
           context: ./packages/tf2-competitive
           build-args: |
-            TF2_TFTRUE_TAG=${{ needs.tf2-tftrue.outputs.tf2-tftrue-tag }}
+            TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           load: true
@@ -252,16 +201,16 @@ jobs:
 
   tf2-dm:
     runs-on: ubuntu-latest
-    needs: tf2-tftrue
+    needs: tf2-sourcemod
     steps:
       -
         name: Checkout
         uses: actions/checkout@v3
       - 
-        name: Download tf2-tftrue
+        name: Download tf2-sourcemod
         uses: actions/download-artifact@v2
         with:
-          name: tf2-tftrue
+          name: tf2-sourcemod
           path: /tmp
       -
         name: Docker meta
@@ -271,9 +220,9 @@ jobs:
           images: melkortf/tf2-dm
           tags: type=sha,format=long
       - 
-        name: Load tf2-tftrue
+        name: Load tf2-sourcemod
         run: |
-          docker load --input /tmp/tf2-tftrue.tar.gz
+          docker load --input /tmp/tf2-sourcemod.tar.gz
           docker image ls
       -
         name: Build
@@ -282,7 +231,7 @@ jobs:
         with:
           context: ./packages/tf2-dm
           build-args: |
-            TF2_TFTRUE_TAG=${{ needs.tf2-tftrue.outputs.tf2-tftrue-tag }}
+            TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           load: true

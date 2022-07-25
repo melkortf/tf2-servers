@@ -20,15 +20,5 @@ tv_maxrate 0
 
 sv_quota_stringcmdspersecond 400
 
-tftrue_no_hats 0
-tftrue_no_misc 0
-tftrue_no_action 0
-tftrue_tv_autorecord 1
-tftrue_tv_demos_path demos
-tftrue_logs_roundend 0
-tftrue_logs_accuracy 1
-
-tftrue_logs_apikey "${LOGS_TF_APIKEY}"
-tftrue_logs_prefix "${LOGS_TF_PREFIX}"
-
+logstf_apikey "${LOGS_TF_APIKEY}"
 sm_demostf_apikey "${DEMOS_TF_APIKEY}"

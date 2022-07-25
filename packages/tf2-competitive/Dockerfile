@@ -1,5 +1,5 @@
-ARG TF2_TFTRUE_TAG=latest
-FROM melkortf/tf2-tftrue:${TF2_TFTRUE_TAG}
+ARG TF2_SOURCEMOD_TAG=latest
+FROM melkortf/tf2-sourcemod:${TF2_SOURCEMOD_TAG}
 LABEL maintainer="garrappachc@gmail.com"
 
 COPY checksum.md5 .
@@ -46,10 +46,40 @@ ARG SRCTV_PLUS_VDF_URL=https://github.com/dalegaard/srctvplus/releases/download/
 ARG IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME=Improved-Match-Timer-main.zip
 ARG IMPROVED_MATCH_TIMER_PLUGIN_URL=https://github.com/dewbsku/Improved-Match-Timer/archive/refs/heads/main.zip
 
+ARG SUPSTATS2_PLUGIN_FILE_NAME=supstats2.zip
+ARG SUPSTATS2_PLUGIN_URL=http://sourcemod.krus.dk/supstats2.zip
+
+ARG MEDIC_STATS_PLUGIN_FILE_NAME=medicstats.zip
+ARG MEDIC_STATS_PLUGIN_URL=http://sourcemod.krus.dk/medicstats.zip
+
+ARG RESTORE_SCORE_PLUGIN_FILE_NAME=restorescore.zip
+ARG RESTORE_SCORE_PLUGIN_URL=http://sourcemod.krus.dk/restorescore.zip
+
+ARG LOGSTF_PLUGIN_FILE_NAME=logstf.zip
+ARG LOGSTF_PLUGIN_URL=http://sourcemod.krus.dk/logstf.zip
+
+ARG RECORD_STV_PLUGIN_FILE_NAME=recordstv.zip
+ARG RECORD_STV_PLUGIN_URL=http://sourcemod.krus.dk/recordstv.zip
+
+ARG WAIT_FOR_STV_PLUGIN_FILE_NAME=waitforstv.zip
+ARG WAIT_FOR_STV_PLUGIN_URL=http://sourcemod.krus.dk/waitforstv.zip
+
+ARG FIX_STV_SLOT_PLUGIN_FILE_NAME=fixstvslot.zip
+ARG FIX_STV_SLOT_PLUGIN_URL=http://sourcemod.krus.dk/fixstvslot.zip
+
+ARG AFK_PLUGIN_FILE_NAME=afk.zip
+ARG AFK_PLUGIN_URL=http://sourcemod.krus.dk/afk.zip
+
+ARG TF2RUE_PLUGIN_FILE_NAME=tf2rue.zip
+ARG TF2RUE_PLUGIN_VERSION=v0.0.4
+ARG TF2RUE_PLUGIN_URL=https://github.com/sapphonie/tf2rue/releases/download/${TF2RUE_PLUGIN_VERSION}/${TF2RUE_PLUGIN_FILE_NAME}
+
 RUN \
   # download all the plugins
-  wget -nv "${SOAP_DM_PLUGIN_URL}" "${DHOOKS_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${UPDATED_PAUSE_PLUGIN_URL}" "${CURL_PLUGIN_URL}" "${CURL_EXTENSION_URL}" \
-    "${ETF2L_CONFIGS_URL}" "${RGL_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
+  wget -nv "${SOAP_DM_PLUGIN_URL}" "${DHOOKS_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${UPDATED_PAUSE_PLUGIN_URL}" "${CURL_PLUGIN_URL}" \
+    "${CURL_EXTENSION_URL}" "${ETF2L_CONFIGS_URL}" "${RGL_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
+    "${SUPSTATS2_PLUGIN_URL}" "${MEDIC_STATS_PLUGIN_URL}" "${RESTORE_SCORE_PLUGIN_URL}" "${LOGSTF_PLUGIN_URL}" "${RECORD_STV_PLUGIN_URL}" \
+    "${WAIT_FOR_STV_PLUGIN_URL}" "${FIX_STV_SLOT_PLUGIN_URL}" "${AFK_PLUGIN_URL}" "${TF2RUE_PLUGIN_URL}" \
   && wget -nv "${MGEMOD_PLUGIN_URL}" -O "${MGEMOD_PLUGIN_FILE_NAME}" \
   && wget -nv "${IMPROVED_MATCH_TIMER_PLUGIN_URL}" -O "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
   # verify md5 checksums
@@ -70,6 +100,15 @@ RUN \
   && mv "${DEMOS_TF_PLUGIN_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/plugins/${DEMOS_TF_PLUGIN_FILE_NAME}" \
   && mv "${SRCTV_PLUS_SO_FILE_NAME}" "${SERVER_DIR}/tf/addons/${SRCTV_PLUS_SO_FILE_NAME}" \
   && mv "${SRCTV_PLUS_VDF_FILE_NAME}" "${SERVER_DIR}/tf/addons/${SRCTV_PLUS_VDF_FILE_NAME}" \
+  && unzip -q "${SUPSTATS2_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+  && unzip -q "${MEDIC_STATS_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+  && unzip -q "${RESTORE_SCORE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+  && unzip -q "${LOGSTF_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+  && unzip -q "${RECORD_STV_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+  && unzip -q "${WAIT_FOR_STV_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+  && unzip -q "${FIX_STV_SLOT_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+  && unzip -q "${AFK_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+  && unzip -q -n "${TF2RUE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/" \
   # cleanup
   && rm "${SOAP_DM_PLUGIN_FILE_NAME}" \
   && rm "${DHOOKS_PLUGIN_FILE_NAME}" \
@@ -80,11 +119,14 @@ RUN \
   && rm "${ETF2L_CONFIGS_FILE_NAME}" \
   && rm -r "${RGL_CONFIGS_FILE_NAME}" "cfg" \
   && rm -r "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" "Improved-Match-Timer-main" \
+  && rm "${SUPSTATS2_PLUGIN_FILE_NAME}" "${MEDIC_STATS_PLUGIN_FILE_NAME}" "${RESTORE_SCORE_PLUGIN_FILE_NAME}" "${LOGSTF_PLUGIN_FILE_NAME}" \
+    "${RECORD_STV_PLUGIN_FILE_NAME}" "${WAIT_FOR_STV_PLUGIN_FILE_NAME}" "${FIX_STV_SLOT_PLUGIN_FILE_NAME}" "${AFK_PLUGIN_FILE_NAME}" "${TF2RUE_PLUGIN_FILE_NAME}" \
   && rm "checksum.md5" \
   # remove useless (and potentially harmful) plugins
   && rm "$SERVER_DIR/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx
 
 
 ENV DEMOS_TF_APIKEY=
+ENV LOGS_TF_APIKEY=
 
 COPY cfg/* ${SERVER_DIR}/tf/cfg/
