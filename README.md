@@ -91,7 +91,7 @@ TF2 server with [Metamod:Source](https://www.sourcemm.net/) and [SourceMod](http
 $ docker pull melkortf/tf2-competitive
 ```
 
-TF2 server configured to be used in competitive matches. Installed plugins, add-ons and configs:
+TF2 server configured to be used in competitive matches. The following plugins, add-ons and configs are installed:
 
 * [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes)
 * [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin)
@@ -105,6 +105,7 @@ TF2 server configured to be used in competitive matches. Installed plugins, add-
 * [WaitForSTV](https://github.com/F2/F2s-sourcemod-plugins#waitforstv-)
 * [FixStvSlot](https://github.com/F2/F2s-sourcemod-plugins#fixstvslot-)
 * [AFK](https://github.com/F2/F2s-sourcemod-plugins#afk-)
+* [tf2rue](https://github.com/sapphonie/tf2rue)
 * [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
 * [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
 
