@@ -61,7 +61,7 @@ jobs:
         uses: actions/checkout@v3
       - 
         name: Download tf2-base
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: tf2-base
           path: /tmp
@@ -110,7 +110,7 @@ jobs:
         uses: actions/checkout@v3
       - 
         name: Download tf2-sourcemod
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: tf2-sourcemod
           path: /tmp
@@ -159,7 +159,7 @@ jobs:
         uses: actions/checkout@v3
       - 
         name: Download tf2-sourcemod
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: tf2-sourcemod
           path: /tmp
@@ -208,7 +208,7 @@ jobs:
         uses: actions/checkout@v3
       - 
         name: Download tf2-sourcemod
-        uses: actions/download-artifact@v2
+        uses: actions/download-artifact@v3
         with:
           name: tf2-sourcemod
           path: /tmp
