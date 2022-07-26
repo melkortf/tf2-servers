@@ -36,7 +36,7 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           context: ./packages/tf2-base
-          push: ${{ github.event_name == 'release' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
 
@@ -73,7 +73,7 @@ jobs:
           context: ./packages/tf2-sourcemod
           build-args: |
             TF2_BASE_TAG=${{ needs.tf2-base.outputs.tf2-base-tag }}
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
 
@@ -110,7 +110,7 @@ jobs:
           context: ./packages/tf2-tftrue
           build-args: |
             TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
 
@@ -145,7 +145,7 @@ jobs:
           context: ./packages/tf2-competitive
           build-args: |
             TF2_TFTRUE_TAG=${{ needs.tf2-tftrue.outputs.tf2-tftrue-tag }}
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
 
@@ -180,7 +180,7 @@ jobs:
           context: ./packages/tf2-mge
           build-args: |
             TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
 
@@ -215,6 +215,6 @@ jobs:
           context: ./packages/tf2-dm
           build-args: |
             TF2_TFTRUE_TAG=${{ needs.tf2-tftrue.outputs.tf2-tftrue-tag }}
-          push: ${{ github.event_name != 'pull_request' }}
+          push: true
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
