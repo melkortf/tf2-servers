@@ -1,3 +1,10 @@
+## [2.0.1](https://github.com/melkortf/tf2-servers/compare/2.0.0...2.0.1) (2022-07-26)
+
+
+### Bug Fixes
+
+* **ci:** push release builds ([#72](https://github.com/melkortf/tf2-servers/issues/72)) ([3351693](https://github.com/melkortf/tf2-servers/commit/33516934f434c76a4d6ba3fc6e8c990057fd54f7))
+
 # [2.0.0](https://github.com/melkortf/tf2-servers/compare/1.7.1...2.0.0) (2022-07-26)
 
 
