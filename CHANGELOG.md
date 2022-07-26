@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/melkortf/tf2-servers/compare/1.7.1...2.0.0) (2022-07-26)
+
+
+### Features
+
+* **tf2-competitive:** remove TFTrue ([#69](https://github.com/melkortf/tf2-servers/issues/69)) ([d89a6ec](https://github.com/melkortf/tf2-servers/commit/d89a6ec2c6565df690a97624f73130015fbb6827))
+
+
+### BREAKING CHANGES
+
+* **tf2-competitive:** TFTrue image is deprecated & removed
+
 ## [1.7.1](https://github.com/melkortf/tf2-servers/compare/1.7.0...1.7.1) (2022-06-24)
 
 
