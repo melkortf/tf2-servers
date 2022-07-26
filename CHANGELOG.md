@@ -1,3 +1,10 @@
+## [2.0.2](https://github.com/melkortf/tf2-servers/compare/2.0.1...2.0.2) (2022-07-26)
+
+
+### Bug Fixes
+
+* **ci:** cleanup publish script ([#73](https://github.com/melkortf/tf2-servers/issues/73)) ([4dde522](https://github.com/melkortf/tf2-servers/commit/4dde52229170e0fde9dd69e02e5f0d0bb5604782))
+
 ## [2.0.1](https://github.com/melkortf/tf2-servers/compare/2.0.0...2.0.1) (2022-07-26)
 
 
