@@ -1,3 +1,17 @@
+# [2.1.0](https://github.com/melkortf/tf2-servers/compare/2.0.2...2.1.0) (2022-10-06)
+
+
+### Bug Fixes
+
+* **deps:** update ETF2L configs to version 1.0.6 ([#76](https://github.com/melkortf/tf2-servers/issues/76)) ([9ade5b4](https://github.com/melkortf/tf2-servers/commit/9ade5b41304fa189432422c0d52d23f6f103c05a))
+* **tf2-competitive:** update F2 sourcemod plugins to the latest version ([#78](https://github.com/melkortf/tf2-servers/issues/78)) ([1f6b8ce](https://github.com/melkortf/tf2-servers/commit/1f6b8ce7bedd7580cb09982bdfc59065cc187424))
+* **tf2-dm:** add TFrue ([#77](https://github.com/melkortf/tf2-servers/issues/77)) ([c2cc752](https://github.com/melkortf/tf2-servers/commit/c2cc752ff1b05417442449a4981019406711e386))
+
+
+### Features
+
+* **tf2-competitive:** store recorded demos on a separate volume ([#74](https://github.com/melkortf/tf2-servers/issues/74)) ([f93c622](https://github.com/melkortf/tf2-servers/commit/f93c6223b1133304851bc2a2301856e34486a273))
+
 ## [2.0.2](https://github.com/melkortf/tf2-servers/compare/2.0.1...2.0.2) (2022-07-26)
 
 
