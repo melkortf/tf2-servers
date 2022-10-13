@@ -1,3 +1,11 @@
+## [2.1.1](https://github.com/melkortf/tf2-servers/compare/2.1.0...2.1.1) (2022-10-13)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update f2-sourcemod plugins to the latest version ([#79](https://github.com/melkortf/tf2-servers/issues/79)) ([46ab09c](https://github.com/melkortf/tf2-servers/commit/46ab09caf810daca59d64b8d1a5790ef2178a28a))
+* **tf2-competitive:** update srctvplus to v3.0 ([#80](https://github.com/melkortf/tf2-servers/issues/80)) ([bac86f9](https://github.com/melkortf/tf2-servers/commit/bac86f9cc2f3056f9bda1b28ef6d14f563459407))
+
 # [2.1.0](https://github.com/melkortf/tf2-servers/compare/2.0.2...2.1.0) (2022-10-06)
 
 
