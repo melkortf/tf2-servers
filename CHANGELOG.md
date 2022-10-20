@@ -1,3 +1,12 @@
+
+
+## [2.1.2](https://github.com/melkortf/tf2-servers/compare/2.1.1...2.1.2) (2022-10-20)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** remove demos volume ([#81](https://github.com/melkortf/tf2-servers/issues/81)) ([1ad3b7b](https://github.com/melkortf/tf2-servers/commit/1ad3b7b7b5191b7d36e95b6f57d18a98fba08d3c))
+
 ## [2.1.1](https://github.com/melkortf/tf2-servers/compare/2.1.0...2.1.1) (2022-10-13)
 
 
