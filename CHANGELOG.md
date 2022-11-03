@@ -1,3 +1,10 @@
+## [2.1.3](https://github.com/melkortf/tf2-servers/compare/2.1.2...2.1.3) (2022-11-03)
+
+
+### Bug Fixes
+
+* **deps:** update F2 sourcemod plugins to the latest version ([#82](https://github.com/melkortf/tf2-servers/issues/82)) ([a9f6e30](https://github.com/melkortf/tf2-servers/commit/a9f6e30aec126978ed8351dd9e0322ffb9721502))
+
 
 
 ## [2.1.2](https://github.com/melkortf/tf2-servers/compare/2.1.1...2.1.2) (2022-10-20)
