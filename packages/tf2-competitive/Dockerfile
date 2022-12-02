@@ -8,9 +8,6 @@ ARG SOAP_DM_PLUGIN_FILE_NAME=soap.zip
 ARG SOAP_DM_PLUGIN_VERSION=4.4.2
 ARG SOAP_DM_PLUGIN_URL=https://github.com/sapphonie/SOAP-TF2DM/releases/download/v${SOAP_DM_PLUGIN_VERSION}/${SOAP_DM_PLUGIN_FILE_NAME}
 
-ARG DHOOKS_PLUGIN_FILE_NAME=dhooks-2.2.0-detours17-sm110.zip
-ARG DHOOKS_PLUGIN_URL=https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours17/${DHOOKS_PLUGIN_FILE_NAME}
-
 ARG COMP_FIXES_PLUGIN_FILE_NAME=tf2-comp-fixes.zip
 ARG COMP_FIXES_PLUGIN_VERSION=1.16.10
 ARG COMP_FIXES_PLUGIN_URL=https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v${COMP_FIXES_PLUGIN_VERSION}/${COMP_FIXES_PLUGIN_FILE_NAME}
@@ -58,7 +55,7 @@ ARG TF2RUE_PLUGIN_URL=https://github.com/sapphonie/tf2rue/releases/download/${TF
 
 RUN \
   # download all the plugins
-  wget -nv "${SOAP_DM_PLUGIN_URL}" "${DHOOKS_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${UPDATED_PAUSE_PLUGIN_URL}" "${CURL_PLUGIN_URL}" \
+  wget -nv "${SOAP_DM_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${UPDATED_PAUSE_PLUGIN_URL}" "${CURL_PLUGIN_URL}" \
     "${CURL_EXTENSION_URL}" "${ETF2L_CONFIGS_URL}" "${RGL_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
     "${F2_SOURCEMOD_PLUGINS_URL}" "${TF2RUE_PLUGIN_URL}" \
   && wget -nv "${MGEMOD_PLUGIN_URL}" -O "${MGEMOD_PLUGIN_FILE_NAME}" \
@@ -67,7 +64,6 @@ RUN \
   && md5sum -c checksum.md5 \
   # install plugins
   && unzip -q "${SOAP_DM_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
-  && unzip -q "${DHOOKS_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${COMP_FIXES_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q "${MGEMOD_PLUGIN_FILE_NAME}" && cp -r "MGEMod-master/addons" "${SERVER_DIR}/tf/" \
@@ -85,7 +81,6 @@ RUN \
   && unzip -q -n "${TF2RUE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/" \
   # cleanup
   && rm "${SOAP_DM_PLUGIN_FILE_NAME}" \
-  && rm "${DHOOKS_PLUGIN_FILE_NAME}" \
   && rm "${COMP_FIXES_PLUGIN_FILE_NAME}" \
   && rm "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" \
   && rm -r "MGEMod-master" "${MGEMOD_PLUGIN_FILE_NAME}" \
