@@ -8,11 +8,8 @@ ARG SOAP_DM_PLUGIN_FILE_NAME=soap.zip
 ARG SOAP_DM_PLUGIN_VERSION=4.4.2
 ARG SOAP_DM_PLUGIN_URL=https://github.com/sapphonie/SOAP-TF2DM/releases/download/v${SOAP_DM_PLUGIN_VERSION}/${SOAP_DM_PLUGIN_FILE_NAME}
 
-ARG DHOOKS_PLUGIN_FILE_NAME=dhooks-2.2.0-detours17-sm110.zip
-ARG DHOOKS_PLUGIN_URL=https://github.com/peace-maker/DHooks2/releases/download/v2.2.0-detours17/${DHOOKS_PLUGIN_FILE_NAME}
-
 ARG COMP_FIXES_PLUGIN_FILE_NAME=tf2-comp-fixes.zip
-ARG COMP_FIXES_PLUGIN_VERSION=1.16.7
+ARG COMP_FIXES_PLUGIN_VERSION=1.16.11
 ARG COMP_FIXES_PLUGIN_URL=https://github.com/ldesgoui/tf2-comp-fixes/releases/download/v${COMP_FIXES_PLUGIN_VERSION}/${COMP_FIXES_PLUGIN_FILE_NAME}
 
 ARG CLASS_RESTRICT_PLUGIN_FILE_NAME=classrestrict.smx
@@ -32,7 +29,7 @@ ARG TF2RUE_PLUGIN_URL=https://github.com/sapphonie/tf2rue/releases/download/${TF
 
 RUN \
   # download plugins
-  wget -nv "${SOAP_DM_PLUGIN_URL}" "${DHOOKS_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${SOURCEBANS_PLUGIN_URL}" "${TF2RUE_PLUGIN_URL}" \
+  wget -nv "${SOAP_DM_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${SOURCEBANS_PLUGIN_URL}" "${TF2RUE_PLUGIN_URL}" \
   && wget -nv "${CLASS_RESTRICT_PLUGIN_URL}" -O "${CLASS_RESTRICT_PLUGIN_FILE_NAME}" \
   && wget -nv "${AFK_MANAGER_PLUGIN_URL}" -O "${AFK_MANAGER_PLUGIN_FILE_NAME}" \
   && wget -nv "${AFK_MANAGER_PHRASES_URL}" -O "${AFK_MANAGER_PHRASES_FILE_NAME}" \
@@ -40,7 +37,6 @@ RUN \
   && md5sum -c checksum.md5 \
   # install plugins
   && unzip -q "${SOAP_DM_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
-  && unzip -q -o "${DHOOKS_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${COMP_FIXES_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -n "${TF2RUE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/" \
   && mv "${CLASS_RESTRICT_PLUGIN_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/plugins/${CLASS_RESTRICT_PLUGIN_FILE_NAME}" \
@@ -48,7 +44,7 @@ RUN \
   && mv "${AFK_MANAGER_PHRASES_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/translations/${AFK_MANAGER_PHRASES_FILE_NAME}" \
   && tar xf "${SOURCEBANS_PLUGIN_FILE_NAME}" -C "${SERVER_DIR}/tf" \
   # clean everything up
-  && rm "${SOAP_DM_PLUGIN_FILE_NAME}" "${DHOOKS_PLUGIN_FILE_NAME}" "${COMP_FIXES_PLUGIN_FILE_NAME}" "${SOURCEBANS_PLUGIN_FILE_NAME}" "${TF2RUE_PLUGIN_FILE_NAME}" \
+  && rm "${SOAP_DM_PLUGIN_FILE_NAME}" "${COMP_FIXES_PLUGIN_FILE_NAME}" "${SOURCEBANS_PLUGIN_FILE_NAME}" "${TF2RUE_PLUGIN_FILE_NAME}" \
   && rm "checksum.md5" \
   # remove unused plugins
   && rm "${SERVER_DIR}/tf/addons/sourcemod/plugins/"{funcommands,funvotes}.smx
