@@ -1,3 +1,10 @@
+## [2.1.4](https://github.com/melkortf/tf2-servers/compare/2.1.3...2.1.4) (2022-12-02)
+
+
+### Bug Fixes
+
+* update plugins after TF2 update of December 1st ([#84](https://github.com/melkortf/tf2-servers/issues/84)) ([6a92bc7](https://github.com/melkortf/tf2-servers/commit/6a92bc72d4e6682ba162b854f97c3de34033ef4e))
+
 ## [2.1.3](https://github.com/melkortf/tf2-servers/compare/2.1.2...2.1.3) (2022-11-03)
 
 
