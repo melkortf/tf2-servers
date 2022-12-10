@@ -1,3 +1,14 @@
+
+
+## [2.1.6](https://github.com/melkortf/tf2-servers/compare/2.1.5...2.1.6) (2022-12-10)
+
+
+### Bug Fixes
+
+* **deps:** update demos.tf plugin to the latest version ([#89](https://github.com/melkortf/tf2-servers/issues/89)) ([66b643c](https://github.com/melkortf/tf2-servers/commit/66b643cfcffcdd2160941a14b0442fe51aeef341))
+* **deps:** update Metamod:Source to build 1148 ([#87](https://github.com/melkortf/tf2-servers/issues/87)) ([fa9c188](https://github.com/melkortf/tf2-servers/commit/fa9c1886397b5ab1e3861a4f9853b2f61c456496))
+* **deps:** update SOAP DM to version 4.4.6 ([#88](https://github.com/melkortf/tf2-servers/issues/88)) ([e07b551](https://github.com/melkortf/tf2-servers/commit/e07b5514cb688b1af3892d8b2715536780c7dcc3))
+
 ## [2.1.5](https://github.com/melkortf/tf2-servers/compare/2.1.4...2.1.5) (2022-12-02)
 
 
