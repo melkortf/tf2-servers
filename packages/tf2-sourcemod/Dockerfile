@@ -4,7 +4,7 @@ LABEL maintainer="garrappachc@gmail.com"
 
 COPY checksum.md5 .
 
-ARG METAMOD_TARBALL_FILE_NAME=mmsource-1.11.0-git1145-linux.tar.gz
+ARG METAMOD_TARBALL_FILE_NAME=mmsource-1.11.0-git1148-linux.tar.gz
 ARG METAMOD_MAJOR_VERSION=1.11
 ARG METAMOD_TARBALL_URL=https://mms.alliedmods.net/mmsdrop/${METAMOD_MAJOR_VERSION}/${METAMOD_TARBALL_FILE_NAME}
 
