@@ -5,7 +5,7 @@ LABEL maintainer="garrappachc@gmail.com"
 COPY checksum.md5 .
 
 ARG SOAP_DM_PLUGIN_FILE_NAME=soap.zip
-ARG SOAP_DM_PLUGIN_VERSION=4.4.2
+ARG SOAP_DM_PLUGIN_VERSION=4.4.6
 ARG SOAP_DM_PLUGIN_URL=https://github.com/sapphonie/SOAP-TF2DM/releases/download/v${SOAP_DM_PLUGIN_VERSION}/${SOAP_DM_PLUGIN_FILE_NAME}
 
 ARG COMP_FIXES_PLUGIN_FILE_NAME=tf2-comp-fixes.zip
