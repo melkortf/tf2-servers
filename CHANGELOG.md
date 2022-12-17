@@ -1,3 +1,10 @@
+## [2.1.7](https://github.com/melkortf/tf2-servers/compare/2.1.6...2.1.7) (2022-12-17)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update demos.tf plugin to the latest version ([#90](https://github.com/melkortf/tf2-servers/issues/90)) ([d9dff58](https://github.com/melkortf/tf2-servers/commit/d9dff583e6939b4608a1f8670e0561691acac2bb))
+
 
 
 ## [2.1.6](https://github.com/melkortf/tf2-servers/compare/2.1.5...2.1.6) (2022-12-10)
