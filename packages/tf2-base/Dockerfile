@@ -25,7 +25,6 @@ RUN DEBIAN_FRONTEND=noninteractive \
     lib32z1 \
     libncurses5:i386 \
     libbz2-1.0:i386 \
-    lib32gcc1 \
     lib32stdc++6 \
     libtinfo5:i386 \
     libcurl3-gnutls:i386 \
