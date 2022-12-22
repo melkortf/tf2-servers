@@ -1,3 +1,10 @@
+## [2.1.8](https://github.com/melkortf/tf2-servers/compare/2.1.7...2.1.8) (2022-12-22)
+
+
+### Bug Fixes
+
+* **build:** bring back ubuntu-20 ([#91](https://github.com/melkortf/tf2-servers/issues/91)) ([10b273f](https://github.com/melkortf/tf2-servers/commit/10b273f2e750266d711cebca0eea8171ee8a4ba0))
+
 ## [2.1.7](https://github.com/melkortf/tf2-servers/compare/2.1.6...2.1.7) (2022-12-17)
 
 
