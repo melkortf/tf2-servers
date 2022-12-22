@@ -11,7 +11,7 @@ RUN apt-get -y update\
   && make
 
 
-FROM steamcmd/steamcmd:latest
+FROM steamcmd/steamcmd:ubuntu-20
 LABEL maintainer="garrappachc@gmail.com"
 
 RUN DEBIAN_FRONTEND=noninteractive \
@@ -21,7 +21,7 @@ RUN DEBIAN_FRONTEND=noninteractive \
   && add-apt-repository multiverse \
   && apt-get -y update \
   && apt-get install -y --no-install-recommends --no-install-suggests \
-    lib32gcc1-s1 \
+    lib32gcc1 \
     lib32z1 \
     libncurses5:i386 \
     libbz2-1.0:i386 \
