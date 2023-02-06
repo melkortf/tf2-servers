@@ -50,7 +50,7 @@ ARG F2_SOURCEMOD_PLUGINS_URL=https://github.com/F2/F2s-sourcemod-plugins/release
 ARG F2_ENABLED_PLUGINS="afk.smx fixstvslot.smx logstf.smx medicstats.smx recordstv.smx restorescore.smx supstats2.smx waitforstv.smx"
 
 ARG TF2RUE_PLUGIN_FILE_NAME=tf2rue.zip
-ARG TF2RUE_PLUGIN_VERSION=v0.0.4
+ARG TF2RUE_PLUGIN_VERSION=v0.0.5
 ARG TF2RUE_PLUGIN_URL=https://github.com/sapphonie/tf2rue/releases/download/${TF2RUE_PLUGIN_VERSION}/${TF2RUE_PLUGIN_FILE_NAME}
 
 RUN \
