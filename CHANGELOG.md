@@ -1,3 +1,10 @@
+## [2.1.10](https://github.com/melkortf/tf2-servers/compare/2.1.9...2.1.10) (2023-02-06)
+
+
+### Bug Fixes
+
+* **deps:** update tf2rue to version 0.0.5 ([#94](https://github.com/melkortf/tf2-servers/issues/94)) ([4cabb62](https://github.com/melkortf/tf2-servers/commit/4cabb6260d71b00adcd4d426848a66e51aaaf9cf))
+
 ## [2.1.9](https://github.com/melkortf/tf2-servers/compare/2.1.8...2.1.9) (2023-01-08)
 
 
