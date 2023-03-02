@@ -1,3 +1,10 @@
+## [2.1.11](https://github.com/melkortf/tf2-servers/compare/2.1.10...2.1.11) (2023-03-02)
+
+
+### Bug Fixes
+
+* **deps:** bump MGEmod to the latest version ([#95](https://github.com/melkortf/tf2-servers/issues/95)) ([1bc9721](https://github.com/melkortf/tf2-servers/commit/1bc97210cd6b2c1e1760b281a766a5596f60b531))
+
 ## [2.1.10](https://github.com/melkortf/tf2-servers/compare/2.1.9...2.1.10) (2023-02-06)
 
 
