@@ -1,5 +1,6 @@
+ARG REGISTRY=ghcr.io
 ARG TF2_SOURCEMOD_TAG=latest
-FROM melkortf/tf2-sourcemod:${TF2_SOURCEMOD_TAG}
+FROM ${REGISTRY}/melkortf/tf2-sourcemod:${TF2_SOURCEMOD_TAG}
 LABEL maintainer="garrappachc@gmail.com"
 
 COPY checksum.md5 .

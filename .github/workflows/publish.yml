@@ -5,6 +5,9 @@ on:
     tags:
       - '*.*.*'
 
+env:
+  REGISTRY: ghcr.io
+
 jobs:
   tf2-base:
     runs-on: ubuntu-latest
@@ -19,7 +22,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v4
         with:
-          images: melkortf/tf2-base
+          images: ${{ env.REGISTRY }}/melkortf/tf2-base
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -28,8 +31,9 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Build and push
         id: docker_build
@@ -54,7 +58,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v4
         with:
-          images: melkortf/tf2-sourcemod
+          images: ${{ env.REGISTRY }}/melkortf/tf2-sourcemod
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -63,8 +67,9 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Build and push
         id: docker_build
@@ -89,7 +94,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v4
         with:
-          images: melkortf/tf2-competitive
+          images: ${{ env.REGISTRY }}/melkortf/tf2-competitive
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -98,8 +103,9 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Build and push
         id: docker_build
@@ -124,7 +130,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v4
         with:
-          images: melkortf/tf2-mge
+          images: ${{ env.REGISTRY }}/melkortf/tf2-mge
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -133,8 +139,9 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Build and push
         id: docker_build
@@ -159,7 +166,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v4
         with:
-          images: melkortf/tf2-dm
+          images: ${{ env.REGISTRY }}/melkortf/tf2-dm
       -
         name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v2
@@ -168,8 +175,9 @@ jobs:
         if: github.event_name != 'pull_request'
         uses: docker/login-action@v2
         with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
       -
         name: Build and push
         id: docker_build
