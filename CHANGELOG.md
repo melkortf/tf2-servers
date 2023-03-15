@@ -1,3 +1,20 @@
+# [3.0.0](https://github.com/melkortf/tf2-servers/compare/2.1.11...3.0.0) (2023-03-15)
+
+
+### Bug Fixes
+
+* **docs:** update README.md ([#97](https://github.com/melkortf/tf2-servers/issues/97)) ([c4509fc](https://github.com/melkortf/tf2-servers/commit/c4509fc7dca1eab75011459bed67218569ad3ea0))
+
+
+### Features
+
+* **build:** move to GitHub Packages registry ([#96](https://github.com/melkortf/tf2-servers/issues/96)) ([28cc289](https://github.com/melkortf/tf2-servers/commit/28cc28978166ed1c8c782695372640f09eac7c7b))
+
+
+### BREAKING CHANGES
+
+* **build:** All images are moved to GitHub Packages registry (ghcr.io)
+
 ## [2.1.11](https://github.com/melkortf/tf2-servers/compare/2.1.10...2.1.11) (2023-03-02)
 
 
