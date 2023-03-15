@@ -4,14 +4,8 @@
 # tf2-servers
 
 <p>
-  <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Image Version" src="https://img.shields.io/docker/v/melkortf/tf2-base/latest?color=%235c7c8b&logo=docker">
-  </a>
-  <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Image Size" src="https://img.shields.io/docker/image-size/melkortf/tf2-base/latest?color=%238a5043">
-  </a>
-  <a href="https://hub.docker.com/r/melkortf/tf2-base">
-    <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/melkortf/tf2-base?color=%235c7c8b" />
+  <a href="https://github.com/melkortf/tf2-servers/releases">
+    <img alt="Latest release" src="https://img.shields.io/github/v/release/melkortf/tf2-servers">
   </a>
   <a href="https://opensource.org/licenses/MIT">
     <img src="https://img.shields.io/badge/license-MIT-d4c0bf.svg" alt="MIT license">
@@ -28,7 +22,7 @@ $ docker run \
   -e "SERVER_HOSTNAME=melkor.tf" \
   -e "STV_NAME=melkor TV" \
   --network=host \
-  melkortf/tf2-base
+  ghcr.io/melkortf/tf2-base
 ```
 
 ### Concerning server.cfg
@@ -42,7 +36,7 @@ rcon_password "${RCON_PASSWORD}"
 
 when launched with these params:
 ```
-$ docker run --network=host -e RCON_PASSWORD=123456 -itd melkortf/tf2-base
+$ docker run --network=host -e RCON_PASSWORD=123456 -itd ghcr.io/melkortf/tf2-base
 ```
 will generate the following `server.cfg`:
 ```
@@ -55,7 +49,7 @@ There are many more configuration options, you will find them all below.
 ## tf2-base
 
 ```
-$ docker pull melkortf/tf2-base
+$ docker pull ghcr.io/melkortf/tf2-base
 ```
 
 The base image for all other images; pure TF2 server, without any add-ons and plugins.
@@ -79,7 +73,7 @@ DOWNLOAD_URL         | https://dl.serveme.tf/ | `sv_downloadurl "${DOWNLOAD_URL}
 ## tf2-sourcemod
 
 ```
-$ docker pull melkortf/tf2-sourcemod
+$ docker pull ghcr.io/melkortf/tf2-sourcemod
 ```
 
 TF2 server with [Metamod:Source](https://www.sourcemm.net/) and [SourceMod](https://www.sourcemod.net/) installed.
@@ -88,7 +82,7 @@ TF2 server with [Metamod:Source](https://www.sourcemm.net/) and [SourceMod](http
 ## tf2-competitive
 
 ```
-$ docker pull melkortf/tf2-competitive
+$ docker pull ghcr.io/melkortf/tf2-competitive
 ```
 
 TF2 server configured to be used in competitive matches. The following plugins, add-ons and configs are installed:
@@ -118,7 +112,7 @@ LOGS_TF_APIKEY       |               | `logstf_apikey ${LOGS_TF_APIKEY}` | The A
 ## tf2-dm
 
 ```
-$ docker pull melkortf/tf2-dm
+$ docker pull ghcr.io/melkortf/tf2-dm
 ```
 
 TF2 dedicated server for DeathMatch gameplay.
@@ -127,7 +121,7 @@ TF2 dedicated server for DeathMatch gameplay.
 ## tf2-mge
 
 ```
-$ docker pull melkortf/tf2-mge
+$ docker pull ghcr.io/melkortf/tf2-mge
 ```
 
 TF2 dedicated server for MGE 1v1 training mod.
@@ -139,7 +133,7 @@ In order to make the image as small as possible, the only map shipped with the i
 with all the maps and share it between all the containers. Just mount `/home/tf2/server/tf/maps` to your local directory that contains all the maps you need:
 
 ```
-$ docker run -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps" --network=host -d melkortf/tf2-base
+$ docker run -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps" --network=host -d ghcr.io/melkortf/tf2-base
 ```
 
 If you want to have all the maps available on [serveme.tf's FastDL](https://dl.serveme.tf/maps/), just type the following command:
