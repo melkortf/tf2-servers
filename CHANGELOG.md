@@ -1,3 +1,10 @@
+## [3.0.4](https://github.com/melkortf/tf2-servers/compare/3.0.3...3.0.4) (2023-07-17)
+
+
+### Bug Fixes
+
+* **deps:** update demos.tf plugin to the latest version ([#101](https://github.com/melkortf/tf2-servers/issues/101)) ([d8e6540](https://github.com/melkortf/tf2-servers/commit/d8e65401055a68ac3c6c4e210299de8d2d3666a3))
+
 ## [3.0.3](https://github.com/melkortf/tf2-servers/compare/3.0.2...3.0.3) (2023-07-17)
 
 ## [3.0.2](https://github.com/melkortf/tf2-servers/compare/3.0.1...3.0.2) (2023-05-22)
