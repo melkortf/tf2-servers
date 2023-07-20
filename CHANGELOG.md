@@ -1,3 +1,10 @@
+# [3.1.0](https://github.com/melkortf/tf2-servers/compare/3.0.4...3.1.0) (2023-07-20)
+
+
+### Features
+
+* **tf2-competitive:** add poland.tf bball config ([#102](https://github.com/melkortf/tf2-servers/issues/102)) ([fda3e8a](https://github.com/melkortf/tf2-servers/commit/fda3e8a3a22fa78729cb348d6c54c1cc11111c3b))
+
 ## [3.0.4](https://github.com/melkortf/tf2-servers/compare/3.0.3...3.0.4) (2023-07-17)
 
 
