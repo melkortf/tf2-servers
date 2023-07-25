@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/melkortf/tf2-servers/compare/3.1.1...3.1.2) (2023-07-25)
+
+
+### Bug Fixes
+
+* use debian stable image for rcon build ([#103](https://github.com/melkortf/tf2-servers/issues/103)) ([0ca6576](https://github.com/melkortf/tf2-servers/commit/0ca6576104c26dcabd31e4f15ad4a3c919bc8cc5))
+
 ## [3.1.1](https://github.com/melkortf/tf2-servers/compare/3.1.0...3.1.1) (2023-07-21)
 
 # [3.1.0](https://github.com/melkortf/tf2-servers/compare/3.0.4...3.1.0) (2023-07-20)
