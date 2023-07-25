@@ -1,4 +1,4 @@
-FROM debian:latest AS rcon-build
+FROM debian:stable AS rcon-build
 WORKDIR /build
 
 RUN apt-get -y update\
