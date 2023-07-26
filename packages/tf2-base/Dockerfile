@@ -1,4 +1,4 @@
-FROM debian:stable AS rcon-build
+FROM ubuntu:20.04 AS rcon-build
 WORKDIR /build
 
 RUN apt-get -y update\
