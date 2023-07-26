@@ -1,7 +1,9 @@
 FROM ubuntu:20.04 AS rcon-build
 WORKDIR /build
 
-RUN apt-get -y update\
+RUN export DEBIAN_FRONTEND=noninteractive \
+  && export TZ=Etc/UTC \
+  && apt-get -y update \
   && apt-get install -y build-essential git cmake check pkg-config libglib2.0-dev libbsd-dev \
   && rm -rf /var/lib/apt/lists/* \
   && git clone https://github.com/n0la/rcon.git \
@@ -14,24 +16,25 @@ RUN apt-get -y update\
 FROM steamcmd/steamcmd:ubuntu-20
 LABEL maintainer="garrappachc@gmail.com"
 
-RUN DEBIAN_FRONTEND=noninteractive \
+RUN export DEBIAN_FRONTEND=noninteractive \
+  && export TZ=Etc/UTC \
   && dpkg --add-architecture i386 \
   && apt-get -y update \
   && apt-get install -y software-properties-common \
   && add-apt-repository multiverse \
   && apt-get -y update \
   && apt-get install -y --no-install-recommends --no-install-suggests \
-    lib32gcc1 \
-    lib32z1 \
-    libncurses5:i386 \
-    libbz2-1.0:i386 \
-    lib32stdc++6 \
-    libtinfo5:i386 \
-    libcurl3-gnutls:i386 \
-    wget \
-    unzip \
-    gettext-base \
-    libbsd0 \
+  lib32gcc1 \
+  lib32z1 \
+  libncurses5:i386 \
+  libbz2-1.0:i386 \
+  lib32stdc++6 \
+  libtinfo5:i386 \
+  libcurl3-gnutls:i386 \
+  wget \
+  unzip \
+  gettext-base \
+  libbsd0 \
   && rm -rf /var/lib/apt/lists/*
 
 ARG USER=tf2
