@@ -1,3 +1,10 @@
+## [3.1.3](https://github.com/melkortf/tf2-servers/compare/3.1.2...3.1.3) (2023-07-26)
+
+
+### Bug Fixes
+
+* use Ubuntu 20.04 for rcon build ([#104](https://github.com/melkortf/tf2-servers/issues/104)) ([1b57961](https://github.com/melkortf/tf2-servers/commit/1b579612ef646c6c66892ef4df347c43894ca999))
+
 ## [3.1.2](https://github.com/melkortf/tf2-servers/compare/3.1.1...3.1.2) (2023-07-25)
 
 
