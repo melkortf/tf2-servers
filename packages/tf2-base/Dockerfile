@@ -63,7 +63,7 @@ RUN mkdir $HOME/.steam/sdk32 \
 login anonymous\n\
 force_install_dir ${SERVER_DIR}\n\
 app_update ${APP_ID}\n\
-quit" >> $HOME/tf2.txt
+quit" > $HOME/tf2.txt
 
 COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
 COPY --from=rcon-build /build/rcon/build/rcon ${SERVER_DIR}/rcon
