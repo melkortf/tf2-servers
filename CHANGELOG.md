@@ -1,3 +1,10 @@
+## [3.1.6](https://github.com/melkortf/tf2-servers/compare/3.1.5...3.1.6) (2023-08-07)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update tf2rue to version 0.0.9 ([#105](https://github.com/melkortf/tf2-servers/issues/105)) ([e5e6188](https://github.com/melkortf/tf2-servers/commit/e5e61887796439c18e3b3258969b753e086e17f0))
+
 ## [3.1.5](https://github.com/melkortf/tf2-servers/compare/3.1.4...3.1.5) (2023-07-31)
 
 ## [3.1.4](https://github.com/melkortf/tf2-servers/compare/3.1.3...3.1.4) (2023-07-28)
