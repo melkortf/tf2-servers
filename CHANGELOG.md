@@ -1,3 +1,12 @@
+## [3.1.7](https://github.com/melkortf/tf2-servers/compare/3.1.6...3.1.7) (2023-08-08)
+
+
+### Bug Fixes
+
+* **deps:** update ETF2L.org configs to version 1.0.8 ([#108](https://github.com/melkortf/tf2-servers/issues/108)) ([3b5d07e](https://github.com/melkortf/tf2-servers/commit/3b5d07ed68e193674cf3a643168413cdde00a7a8))
+* **deps:** update tf2-comp-fixes to version 1.16.13 ([#107](https://github.com/melkortf/tf2-servers/issues/107)) ([e000395](https://github.com/melkortf/tf2-servers/commit/e000395842ffca746625991567ac5b151faab237))
+* **docs:** fix spelling in readme ([#106](https://github.com/melkortf/tf2-servers/issues/106)) ([da7da07](https://github.com/melkortf/tf2-servers/commit/da7da076f53443766996efeed5a0833fd4b25066))
+
 ## [3.1.6](https://github.com/melkortf/tf2-servers/compare/3.1.5...3.1.6) (2023-08-07)
 
 
