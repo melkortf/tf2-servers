@@ -64,7 +64,7 @@ PORT                 | 27015         | `-port ${PORT}` | The port which the serv
 CLIENT_PORT          | 27016         | `+clientport ${CLIENT_PORT}` | The client port.
 STEAM_PORT           | 27018         | `-steamport ${STEAM_PORT}` | Master server updater port.
 STV_PORT             | 27020         | `+tv_port ${STV_PORT}` | SourceTV port.
-RCON_PASSWORD        | 123456        | `rcon_password "${RCON_PASSWORD}"` | The RCON passowrd (change this in your `docker run` invocation).
+RCON_PASSWORD        | 123456        | `rcon_password "${RCON_PASSWORD}"` | The RCON password (change this in your `docker run` invocation).
 SERVER_HOSTNAME      | A Team Fortress 2 server | `hostname "${SERVER_HOSTNAME}"` | The game server hostname.
 SERVER_PASSWORD      |               | `sv_password "${SERVER_PASSWORD}"` | The server password.
 STV_NAME             | Source TV     | `tv_name "${STV_NAME}"` | SourceTV host name.
