@@ -85,7 +85,7 @@ RUN \
   && rm "${SOAP_DM_PLUGIN_FILE_NAME}" \
   && rm "${COMP_FIXES_PLUGIN_FILE_NAME}" \
   && rm "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" \
-  && rm -r "MGEMod-master" "${MGEMOD_PLUGIN_FILE_NAME}" \
+  && rm "${MGEMOD_PLUGIN_FILE_NAME}" \
   && rm "${CURL_PLUGIN_FILE_NAME}" \
   && rm "${ETF2L_CONFIGS_FILE_NAME}" \
   && rm -r "${RGL_CONFIGS_FILE_NAME}" "cfg" \

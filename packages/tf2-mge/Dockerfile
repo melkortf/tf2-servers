@@ -26,7 +26,7 @@ RUN \
   && mv "afk_manager4.smx" "${SERVER_DIR}/tf/addons/sourcemod/plugins/afk_manager4.smx" \
   && mv "afk_manager.phrases.txt" "${SERVER_DIR}/tf/addons/sourcemod/translations/afk_manager.phrases.txt" \
   # cleanup
-  && rm -r "MGEMod-master" "mgemod.zip" \
+  && rm "${MGEMOD_PLUGIN_FILE_NAME}" \
   && rm "${SOURCEBANS_FILE_NAME}" \
   && rm "checksum.md5"
 
