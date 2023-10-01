@@ -1,3 +1,10 @@
+## [3.1.10](https://github.com/melkortf/tf2-servers/compare/3.1.9...3.1.10) (2023-10-01)
+
+
+### Bug Fixes
+
+* **tf2-competitive, tf2-mge:** update MGEMod to version 3.0.3 ([#115](https://github.com/melkortf/tf2-servers/issues/115)) ([4362c4c](https://github.com/melkortf/tf2-servers/commit/4362c4c123cdb0e38ed09206ffb15e8fc87bcf5c))
+
 ## [3.1.9](https://github.com/melkortf/tf2-servers/compare/3.1.8...3.1.9) (2023-09-01)
 
 ## [3.1.8](https://github.com/melkortf/tf2-servers/compare/3.1.7...3.1.8) (2023-08-22)
