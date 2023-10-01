@@ -16,8 +16,9 @@ ARG COMP_FIXES_PLUGIN_URL=https://github.com/ldesgoui/tf2-comp-fixes/releases/do
 ARG UPDATED_PAUSE_PLUGIN_FILE_NAME=updated-pause-plugin.zip
 ARG UPDATED_PAUSE_PLUGIN_URL=https://github.com/l-Aad-l/updated-pause-plugin/releases/download/v1.4.2/${UPDATED_PAUSE_PLUGIN_FILE_NAME}
 
-ARG MGEMOD_PLUGIN_FILE_NAME=mgemod.zip
-ARG MGEMOD_PLUGIN_URL=https://github.com/sapphonie/MGEMod/archive/master.zip
+ARG MGEMOD_PLUGIN_FILE_NAME=mge.zip
+ARG MGEMOD_PLUGIN_VERSION=v3.0.3
+ARG MGEMOD_PLUGIN_URL=https://github.com/sapphonie/MGEMod/releases/download/${MGEMOD_PLUGIN_VERSION}/mge.zip
 
 ARG CURL_PLUGIN_FILE_NAME=curl_1.3.0.0.zip
 ARG CURL_PLUGIN_URL=https://storage.googleapis.com/google-code-archive-downloads/v2/code.google.com/sourcemod-curl-extension/${CURL_PLUGIN_FILE_NAME}
@@ -58,8 +59,7 @@ RUN \
   # download all the plugins
   wget -nv "${SOAP_DM_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${UPDATED_PAUSE_PLUGIN_URL}" "${CURL_PLUGIN_URL}" \
   "${CURL_EXTENSION_URL}" "${ETF2L_CONFIGS_URL}" "${RGL_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
-  "${F2_SOURCEMOD_PLUGINS_URL}" "${TF2RUE_PLUGIN_URL}" \
-  && wget -nv "${MGEMOD_PLUGIN_URL}" -O "${MGEMOD_PLUGIN_FILE_NAME}" \
+  "${F2_SOURCEMOD_PLUGINS_URL}" "${TF2RUE_PLUGIN_URL}" "${MGEMOD_PLUGIN_URL}" \
   && wget -nv "${IMPROVED_MATCH_TIMER_PLUGIN_URL}" -O "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
   # verify md5 checksums
   && md5sum -c checksum.md5 \
@@ -67,11 +67,11 @@ RUN \
   && unzip -q "${SOAP_DM_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${COMP_FIXES_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
-  && unzip -q "${MGEMOD_PLUGIN_FILE_NAME}" && cp -r "MGEMod-master/addons" "${SERVER_DIR}/tf/" \
   && unzip -q -o "${CURL_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod" \
   && unzip -q "${ETF2L_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "cfg/*.cfg" && mv "cfg/"* "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
+  && unzip -q -n "${MGEMOD_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf" \
   && mv "Improved-Match-Timer-main/addons/sourcemod/plugins/"*.smx "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
   && mv "Improved-Match-Timer-main/addons/sourcemod/scripting/"*.sp "${SERVER_DIR}/tf/addons/sourcemod/scripting/" \
   && mv "${CURL_EXTENSION_FILE_NAME}" "${SERVER_DIR}/tf/addons/sourcemod/extensions/${CURL_EXTENSION_FILE_NAME}" \
@@ -84,7 +84,7 @@ RUN \
   && rm "${SOAP_DM_PLUGIN_FILE_NAME}" \
   && rm "${COMP_FIXES_PLUGIN_FILE_NAME}" \
   && rm "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" \
-  && rm -r "MGEMod-master" "${MGEMOD_PLUGIN_FILE_NAME}" \
+  && rm "${MGEMOD_PLUGIN_FILE_NAME}" \
   && rm "${CURL_PLUGIN_FILE_NAME}" \
   && rm "${ETF2L_CONFIGS_FILE_NAME}" \
   && rm -r "${RGL_CONFIGS_FILE_NAME}" "cfg" \
