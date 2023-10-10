@@ -1,3 +1,10 @@
+## [3.1.12](https://github.com/melkortf/tf2-servers/compare/3.1.11...3.1.12) (2023-10-10)
+
+
+### Bug Fixes
+
+* **tf2-sourcemod:** fix sourcemod & metamod checksums ([#118](https://github.com/melkortf/tf2-servers/issues/118)) ([87a50b6](https://github.com/melkortf/tf2-servers/commit/87a50b6ad6bc391024742298871f9690d2f8d4ec))
+
 ## [3.1.11](https://github.com/melkortf/tf2-servers/compare/3.1.10...3.1.11) (2023-10-09)
 
 
