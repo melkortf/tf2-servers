@@ -2,13 +2,15 @@ name: Build Docker images
 
 on:
   schedule:
-    - cron: '0 0 * * *' # At 00:00.
+    - cron: "0 0 * * *" # At 00:00.
   push:
     branches:
-      - 'master'
+      - "master"
+    tags:
+      - "*.*.*"
   pull_request:
     branches:
-      - 'master'
+      - "master"
 
 env:
   REGISTRY: ghcr.io
@@ -18,71 +20,75 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       tf2-base-tag: ${{ steps.docker_meta.outputs.version }}
+
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      -
-        name: Docker meta
+
+      - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/melkortf/tf2-base
-          tags: type=sha,format=long
-      -
-        name: Set up Docker Buildx
+          tags: |
+            type=sha,format=long
+            type=schedule,pattern=nightly
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+
+      - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-      -
-        name: Build
-        id: docker_build
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: ./packages/tf2-base
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
+          push: true
           platforms: linux/amd64
-          load: true
-      -
-        name: Save docker image
-        run: docker save ${{ env.REGISTRY }}/melkortf/tf2-base:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-base.tar.gz
-      -
-        name: Upload docker image
-        uses: actions/upload-artifact@v3
-        with:
-          name: tf2-base
-          path: /tmp/tf2-base.tar.gz
-          if-no-files-found: error
 
   tf2-sourcemod:
     runs-on: ubuntu-latest
     needs: tf2-base
     outputs:
       tf2-sourcemod-tag: ${{ steps.docker_meta.outputs.version }}
+
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      - 
-        name: Download tf2-base
-        uses: actions/download-artifact@v3
-        with:
-          name: tf2-base
-          path: /tmp
-      -
-        name: Docker meta
+
+      - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/melkortf/tf2-sourcemod
-          tags: type=sha,format=long
-      - 
-        name: Load tf2-base
-        run: |
-          docker load --input /tmp/tf2-base.tar.gz
-          docker image ls
-      -
-        name: Build
-        id: docker_build
+          tags: |
+            type=sha,format=long
+            type=schedule,pattern=nightly
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: ./packages/tf2-sourcemod
@@ -90,48 +96,40 @@ jobs:
             TF2_BASE_TAG=${{ needs.tf2-base.outputs.tf2-base-tag }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          load: true
-          pull: false
+          push: true
           platforms: linux/amd64
-      -
-        name: Save docker image
-        run: docker save ${{ env.REGISTRY }}/melkortf/tf2-sourcemod:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-sourcemod.tar.gz
-      -
-        name: Upload docker image
-        uses: actions/upload-artifact@v3
-        with:
-          name: tf2-sourcemod
-          path: /tmp/tf2-sourcemod.tar.gz
-          if-no-files-found: error
 
   tf2-mge:
     runs-on: ubuntu-latest
     needs: tf2-sourcemod
+
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      - 
-        name: Download tf2-sourcemod
-        uses: actions/download-artifact@v3
-        with:
-          name: tf2-sourcemod
-          path: /tmp
-      -
-        name: Docker meta
+
+      - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/melkortf/tf2-mge
-          tags: type=sha,format=long
-      - 
-        name: Load tf2-sourcemod
-        run: |
-          docker load --input /tmp/tf2-sourcemod.tar.gz
-          docker image ls
-      -
-        name: Build
-        id: docker_build
+          tags: |
+            type=sha,format=long
+            type=schedule,pattern=nightly
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: ./packages/tf2-mge
@@ -139,48 +137,40 @@ jobs:
             TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          load: true
-          pull: false
+          push: true
           platforms: linux/amd64
-      -
-        name: Save docker image
-        run: docker save ${{ env.REGISTRY }}/melkortf/tf2-mge:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-mge.tar.gz
-      -
-        name: Upload docker image
-        uses: actions/upload-artifact@v3
-        with:
-          name: tf2-mge
-          path: /tmp/tf2-mge.tar.gz
-          if-no-files-found: error
 
   tf2-competitive:
     runs-on: ubuntu-latest
     needs: tf2-sourcemod
+
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      - 
-        name: Download tf2-sourcemod
-        uses: actions/download-artifact@v3
-        with:
-          name: tf2-sourcemod
-          path: /tmp
-      -
-        name: Docker meta
+
+      - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/melkortf/tf2-competitive
-          tags: type=sha,format=long
-      - 
-        name: Load tf2-sourcemod
-        run: |
-          docker load --input /tmp/tf2-sourcemod.tar.gz
-          docker image ls
-      -
-        name: Build
-        id: docker_build
+          tags: |
+            type=sha,format=long
+            type=schedule,pattern=nightly
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build
         uses: docker/build-push-action@v5
         with:
           context: ./packages/tf2-competitive
@@ -188,48 +178,40 @@ jobs:
             TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          load: true
-          pull: false
+          push: true
           platforms: linux/amd64
-      -
-        name: Save docker image
-        run: docker save ${{ env.REGISTRY }}/melkortf/tf2-competitive:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-competitive.tar.gz
-      -
-        name: Upload docker image
-        uses: actions/upload-artifact@v3
-        with:
-          name: tf2-competitive
-          path: /tmp/tf2-competitive.tar.gz
-          if-no-files-found: error
 
   tf2-dm:
     runs-on: ubuntu-latest
     needs: tf2-sourcemod
+
     steps:
-      -
-        name: Checkout
+      - name: Checkout
         uses: actions/checkout@v4
-      - 
-        name: Download tf2-sourcemod
-        uses: actions/download-artifact@v3
-        with:
-          name: tf2-sourcemod
-          path: /tmp
-      -
-        name: Docker meta
+
+      - name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
           images: ${{ env.REGISTRY }}/melkortf/tf2-dm
-          tags: type=sha,format=long
-      - 
-        name: Load tf2-sourcemod
-        run: |
-          docker load --input /tmp/tf2-sourcemod.tar.gz
-          docker image ls
-      -
-        name: Build
-        id: docker_build
+          tags: |
+            type=sha,format=long
+            type=schedule,pattern=nightly
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
         uses: docker/build-push-action@v5
         with:
           context: ./packages/tf2-dm
@@ -237,16 +219,5 @@ jobs:
             TF2_SOURCEMOD_TAG=${{ needs.tf2-sourcemod.outputs.tf2-sourcemod-tag }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-          load: true
-          pull: false
+          push: true
           platforms: linux/amd64
-      -
-        name: Save docker image
-        run: docker save ${{ env.REGISTRY }}/melkortf/tf2-dm:${{ steps.docker_meta.outputs.version }} | gzip > /tmp/tf2-dm.tar.gz
-      -
-        name: Upload docker image
-        uses: actions/upload-artifact@v3
-        with:
-          name: tf2-dm
-          path: /tmp/tf2-dm.tar.gz
-          if-no-files-found: error
