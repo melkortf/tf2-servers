@@ -1,3 +1,10 @@
+## [3.1.13](https://github.com/melkortf/tf2-servers/compare/3.1.12...3.1.13) (2023-10-17)
+
+
+### Bug Fixes
+
+* **build:** unify build & publish workflows ([#119](https://github.com/melkortf/tf2-servers/issues/119)) ([45c88cc](https://github.com/melkortf/tf2-servers/commit/45c88cc359da37d9e2c816fd9c0a85c328e69685))
+
 ## [3.1.12](https://github.com/melkortf/tf2-servers/compare/3.1.11...3.1.12) (2023-10-10)
 
 
