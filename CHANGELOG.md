@@ -1,3 +1,13 @@
+## [3.1.17](https://github.com/melkortf/tf2-servers/compare/3.1.16...3.1.17) (2023-11-06)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update etf2l configs to version 1.0.11 ([#121](https://github.com/melkortf/tf2-servers/issues/121)) ([a50f9f2](https://github.com/melkortf/tf2-servers/commit/a50f9f2d200659310ba32d0f7ad77a2c3f5c6ea9))
+* **tf2-competitive:** update f2 sourcemod plugins to version 20231105-1699206011260 ([#120](https://github.com/melkortf/tf2-servers/issues/120)) ([850cea6](https://github.com/melkortf/tf2-servers/commit/850cea6db932b639613e128ef0865952259ff924))
+* **tf2-dm:** update tf2-comp-fixes to version 1.16.11 ([#123](https://github.com/melkortf/tf2-servers/issues/123)) ([d2bfc11](https://github.com/melkortf/tf2-servers/commit/d2bfc1179922dfdab946d9b92bab9f0d425d9d50))
+* **tf2-dm:** update tf2rue to version 0.0.9 ([#122](https://github.com/melkortf/tf2-servers/issues/122)) ([0f17343](https://github.com/melkortf/tf2-servers/commit/0f17343172c02a0e5cc3ebff7aeea7d07fe099df))
+
 ## [3.1.16](https://github.com/melkortf/tf2-servers/compare/3.1.15...3.1.16) (2023-10-31)
 
 ## [3.1.15](https://github.com/melkortf/tf2-servers/compare/3.1.14...3.1.15) (2023-10-30)
