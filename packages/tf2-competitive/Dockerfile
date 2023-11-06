@@ -47,7 +47,7 @@ ARG IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME=Improved-Match-Timer-main.zip
 ARG IMPROVED_MATCH_TIMER_PLUGIN_URL=https://github.com/dewbsku/Improved-Match-Timer/archive/refs/heads/main.zip
 
 ARG F2_SOURCEMOD_PLUGINS_FILE_NAME=f2-sourcemod-plugins.zip
-ARG F2_SOURCEMOD_PLUGINS_VERSION=20230501-1682976916791
+ARG F2_SOURCEMOD_PLUGINS_VERSION=20231105-1699206011260
 ARG F2_SOURCEMOD_PLUGINS_URL=https://github.com/F2/F2s-sourcemod-plugins/releases/download/${F2_SOURCEMOD_PLUGINS_VERSION}/${F2_SOURCEMOD_PLUGINS_FILE_NAME}
 ARG F2_ENABLED_PLUGINS="afk.smx fixstvslot.smx logstf.smx medicstats.smx recordstv.smx restorescore.smx supstats2.smx waitforstv.smx"
 
