@@ -1,3 +1,10 @@
+## [3.1.18](https://github.com/melkortf/tf2-servers/compare/3.1.17...3.1.18) (2023-11-27)
+
+
+### Bug Fixes
+
+* **tf2-competitive, tf2-dm:** update tf2-comp-fixes to version 1.16.14 ([#125](https://github.com/melkortf/tf2-servers/issues/125)) ([5fadb28](https://github.com/melkortf/tf2-servers/commit/5fadb286f20acc55f3f0d393db858d412b52d7c1))
+
 ## [3.1.17](https://github.com/melkortf/tf2-servers/compare/3.1.16...3.1.17) (2023-11-06)
 
 
