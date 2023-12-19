@@ -1,0 +1,21 @@
+name: Release new version
+
+on:
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install release-it
+        run: npm install --global release-it @release-it/conventional-changelog
+
+      - name: Release
+        run: release-it --ci
