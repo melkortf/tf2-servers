@@ -1,5 +1,12 @@
 
 
+## [3.1.22](https://github.com/melkortf/tf2-servers/compare/3.1.21...3.1.22) (2023-12-19)
+
+
+### Bug Fixes
+
+* **tf2-base:** fix DOWNLOAD_URL ([#128](https://github.com/melkortf/tf2-servers/issues/128)) ([7304c58](https://github.com/melkortf/tf2-servers/commit/7304c58a1b2cc9feac8f5f8e4f48d1d7c6b70eb3))
+
 ## [3.1.21](https://github.com/melkortf/tf2-servers/compare/3.1.20...3.1.21) (2023-12-19)
 
 ## [3.1.20](https://github.com/melkortf/tf2-servers/compare/3.1.19...3.1.20) (2023-12-09)
