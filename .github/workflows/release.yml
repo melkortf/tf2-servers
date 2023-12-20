@@ -13,9 +13,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          fetch-tags: true
 
       - name: Install release-it
         run: npm install --global release-it @release-it/conventional-changelog
+      
+      - name: Set git identity
+        run: |
+          git config --global user.name 'release bot'
+          git config --global user.email 'release-it@users.noreply.github.com'
 
       - name: Release
         run: release-it --ci
