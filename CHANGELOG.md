@@ -1,5 +1,12 @@
 
 
+## [3.1.23](https://github.com/melkortf/tf2-servers/compare/3.1.22...3.1.23) (2023-12-20)
+
+
+### Bug Fixes
+
+* **ci:** fix release workflow ([#130](https://github.com/melkortf/tf2-servers/issues/130)) ([00e741a](https://github.com/melkortf/tf2-servers/commit/00e741a59cdb463e6c77f0956739f6365debd5ea))
+
 ## [3.1.22](https://github.com/melkortf/tf2-servers/compare/3.1.21...3.1.22) (2023-12-19)
 
 
