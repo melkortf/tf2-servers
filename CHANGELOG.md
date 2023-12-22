@@ -1,5 +1,12 @@
 
 
+## [3.1.27](https://github.com/melkortf/tf2-servers/compare/3.1.26...3.1.27) (2023-12-22)
+
+
+### Bug Fixes
+
+* **ci:** use dedicated token for automatic releases ([#131](https://github.com/melkortf/tf2-servers/issues/131)) ([39b542a](https://github.com/melkortf/tf2-servers/commit/39b542a6f7111ddd3eff7092498827e01c3f53c8))
+
 ## [3.1.26](https://github.com/melkortf/tf2-servers/compare/3.1.25...3.1.26) (2023-12-22)
 
 ## [3.1.25](https://github.com/melkortf/tf2-servers/compare/3.1.24...3.1.25) (2023-12-22)
