@@ -18,13 +18,13 @@ jobs:
 
       - name: Install release-it
         run: npm install --global release-it @release-it/conventional-changelog
-      
+
       - name: Set git identity
         run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git config user.name "release bot"
+          git config user.email "release-bot@users.noreply.github.com"
 
       - name: Release
         run: release-it --ci
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.RELEASE_IT_TOKEN }}
