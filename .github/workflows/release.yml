@@ -15,6 +15,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.RELEASE_IT_TOKEN }}
 
       - name: Install release-it
         run: npm install --global release-it @release-it/conventional-changelog
