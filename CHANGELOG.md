@@ -1,5 +1,12 @@
 
 
+## [3.1.30](https://github.com/melkortf/tf2-servers/compare/3.1.29...3.1.30) (2024-01-05)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update f2-sourcemod-plugins to version 20240105-1704448802517 ([#133](https://github.com/melkortf/tf2-servers/issues/133)) ([f12510a](https://github.com/melkortf/tf2-servers/commit/f12510a9f1bd8b907ae708817fb6b85d5ea489ab))
+
 ## [3.1.29](https://github.com/melkortf/tf2-servers/compare/3.1.28...3.1.29) (2023-12-29)
 
 
