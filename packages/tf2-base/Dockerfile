@@ -51,19 +51,13 @@ RUN useradd --home-dir $HOME --create-home --shell /bin/bash $USER
 USER $USER
 WORKDIR $HOME
 
-COPY maps_to_keep .
-RUN steamcmd +login anonymous +force_install_dir $SERVER_DIR +app_update $APP_ID +quit \
+COPY maps_to_keep tf2.txt.template $HOME/
+RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
+  && steamcmd +runscript $HOME/tf2.txt \
   && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
-  && rm maps_to_keep
-
-RUN mkdir $HOME/.steam/sdk32 \
-  && ln -s $HOME/.steam/steamcmd/linux32/steamclient.so $HOME/.steam/sdk32/ \
-  && printf "@ShutdownOnFailedCommand 1\n\
-@NoPromptForPassword 1\n\
-login anonymous\n\
-force_install_dir ${SERVER_DIR}\n\
-app_update ${APP_ID}\n\
-quit" > $HOME/tf2.txt
+  && rm maps_to_keep \
+  && mkdir $HOME/.steam/sdk32 \
+  && ln -s $HOME/.steam/steamcmd/linux32/steamclient.so $HOME/.steam/sdk32/
 
 COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
 COPY --from=rcon-build /build/rcon/build/rcon ${SERVER_DIR}/rcon
