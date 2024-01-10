@@ -1,5 +1,7 @@
 
 
+## [3.1.31](https://github.com/melkortf/tf2-servers/compare/3.1.30...3.1.31) (2024-01-10)
+
 ## [3.1.30](https://github.com/melkortf/tf2-servers/compare/3.1.29...3.1.30) (2024-01-05)
 
 
