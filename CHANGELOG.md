@@ -1,5 +1,12 @@
 
 
+# [3.2.0](https://github.com/melkortf/tf2-servers/compare/3.1.31...3.2.0) (2024-01-10)
+
+
+### Features
+
+* **tf2-base:** make tf2.txt a template ([#134](https://github.com/melkortf/tf2-servers/issues/134)) ([bbf6ce9](https://github.com/melkortf/tf2-servers/commit/bbf6ce9ed973997d21c41dcd9889751dc2d47440))
+
 ## [3.1.31](https://github.com/melkortf/tf2-servers/compare/3.1.30...3.1.31) (2024-01-10)
 
 ## [3.1.30](https://github.com/melkortf/tf2-servers/compare/3.1.29...3.1.30) (2024-01-05)
