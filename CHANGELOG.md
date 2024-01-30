@@ -1,5 +1,12 @@
 
 
+## [3.2.1](https://github.com/melkortf/tf2-servers/compare/3.2.0...3.2.1) (2024-01-30)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update demos.tf plugin to the latest version ([#136](https://github.com/melkortf/tf2-servers/issues/136)) ([d583878](https://github.com/melkortf/tf2-servers/commit/d583878c45b17adc2561fabb92c32adf0534b036))
+
 # [3.2.0](https://github.com/melkortf/tf2-servers/compare/3.1.31...3.2.0) (2024-01-10)
 
 
