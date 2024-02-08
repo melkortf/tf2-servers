@@ -1,5 +1,12 @@
 
 
+## [3.2.2](https://github.com/melkortf/tf2-servers/compare/3.2.1...3.2.2) (2024-02-08)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update improved-match-timer plugin to the latest version ([#137](https://github.com/melkortf/tf2-servers/issues/137)) ([70b58ab](https://github.com/melkortf/tf2-servers/commit/70b58abbb38bd6063032c066aa5a0c2946c2e780))
+
 ## [3.2.1](https://github.com/melkortf/tf2-servers/compare/3.2.0...3.2.1) (2024-01-30)
 
 
