@@ -103,6 +103,8 @@ TF2 server configured to be used in competitive matches. The following plugins, 
 - [FixStvSlot](https://github.com/F2/F2s-sourcemod-plugins#fixstvslot-)
 - [AFK](https://github.com/F2/F2s-sourcemod-plugins#afk-)
 - [tf2rue](https://github.com/sapphonie/tf2rue)
+- [neocurl](https://github.com/sapphonie/SM-neocurl-ext)
+- [demos.tf](https://github.com/demostf/plugin)
 - [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
 - [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
 
