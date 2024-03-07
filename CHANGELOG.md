@@ -1,5 +1,13 @@
 
 
+## [3.2.4](https://github.com/melkortf/tf2-servers/compare/3.2.3...3.2.4) (2024-03-07)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** replace old curl extension with neocurl ([#140](https://github.com/melkortf/tf2-servers/issues/140)) ([66638f0](https://github.com/melkortf/tf2-servers/commit/66638f01fe06e5713268dc1308df0be511bfcdeb))
+* **tf2-competitive:** update f2-sourcemod-plugins to version 20240228-1709146386551 ([#141](https://github.com/melkortf/tf2-servers/issues/141)) ([14047ef](https://github.com/melkortf/tf2-servers/commit/14047ef05aa44539678fa8cbfb95538b1aa2a3ef))
+
 ## [3.2.3](https://github.com/melkortf/tf2-servers/compare/3.2.2...3.2.3) (2024-02-19)
 
 
