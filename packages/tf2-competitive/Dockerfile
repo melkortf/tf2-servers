@@ -25,7 +25,7 @@ ARG NEOCURL_PLUGIN_VERSION=v2.0.1-beta1
 ARG NEOCURL_PLUGIN_URL=https://github.com/sapphonie/SM-neocurl-ext/releases/download/${NEOCURL_PLUGIN_VERSION}/${NEOCURL_PLUGIN_FILE_NAME}
 
 ARG ETF2L_CONFIGS_FILE_NAME=etf2l_configs.zip
-ARG ETF2L_CONFIGS_VERSION=1.0.12
+ARG ETF2L_CONFIGS_VERSION=1.0.14
 ARG ETF2L_CONFIGS_URL=https://github.com/ETF2L/gameserver-configs/releases/download/${ETF2L_CONFIGS_VERSION}/${ETF2L_CONFIGS_FILE_NAME}
 
 ARG RGL_CONFIGS_FILE_NAME=server-resources-updater.zip
