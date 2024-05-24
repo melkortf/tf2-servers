@@ -6,7 +6,7 @@ LABEL maintainer="garrappachc@gmail.com"
 COPY checksum.md5 .
 
 ARG SOAP_DM_PLUGIN_FILE_NAME=soap.zip
-ARG SOAP_DM_PLUGIN_VERSION=4.4.6
+ARG SOAP_DM_PLUGIN_VERSION=4.4.7
 ARG SOAP_DM_PLUGIN_URL=https://github.com/sapphonie/SOAP-TF2DM/releases/download/v${SOAP_DM_PLUGIN_VERSION}/${SOAP_DM_PLUGIN_FILE_NAME}
 
 ARG COMP_FIXES_PLUGIN_FILE_NAME=tf2-comp-fixes.zip
@@ -51,7 +51,7 @@ ARG F2_SOURCEMOD_PLUGINS_URL=https://github.com/F2/F2s-sourcemod-plugins/release
 ARG F2_ENABLED_PLUGINS="afk.smx fixstvslot.smx logstf.smx medicstats.smx recordstv.smx restorescore.smx supstats2.smx waitforstv.smx"
 
 ARG TF2RUE_PLUGIN_FILE_NAME=tf2rue.zip
-ARG TF2RUE_PLUGIN_VERSION=v0.0.9
+ARG TF2RUE_PLUGIN_VERSION=v0.0.11
 ARG TF2RUE_PLUGIN_URL=https://github.com/sapphonie/tf2rue/releases/download/${TF2RUE_PLUGIN_VERSION}/${TF2RUE_PLUGIN_FILE_NAME}
 
 RUN \
