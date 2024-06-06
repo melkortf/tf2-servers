@@ -1,5 +1,12 @@
 
 
+## [3.2.6](https://github.com/melkortf/tf2-servers/compare/3.2.5...3.2.6) (2024-06-06)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update SOAP-TF2DM, tf2rue plugins and ETF2L.org configs ([#146](https://github.com/melkortf/tf2-servers/issues/146)) ([b7bc51c](https://github.com/melkortf/tf2-servers/commit/b7bc51c64425af2a2c54ce753e0da2068497447f))
+
 ## [3.2.5](https://github.com/melkortf/tf2-servers/compare/3.2.4...3.2.5) (2024-03-25)
 
 
