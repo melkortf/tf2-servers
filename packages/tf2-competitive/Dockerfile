@@ -6,7 +6,7 @@ LABEL maintainer="garrappachc@gmail.com"
 COPY checksum.md5 .
 
 ARG SOAP_DM_PLUGIN_FILE_NAME=soap.zip
-ARG SOAP_DM_PLUGIN_VERSION=4.4.6
+ARG SOAP_DM_PLUGIN_VERSION=4.4.7
 ARG SOAP_DM_PLUGIN_URL=https://github.com/sapphonie/SOAP-TF2DM/releases/download/v${SOAP_DM_PLUGIN_VERSION}/${SOAP_DM_PLUGIN_FILE_NAME}
 
 ARG COMP_FIXES_PLUGIN_FILE_NAME=tf2-comp-fixes.zip
@@ -25,7 +25,7 @@ ARG NEOCURL_PLUGIN_VERSION=v2.0.1-beta1
 ARG NEOCURL_PLUGIN_URL=https://github.com/sapphonie/SM-neocurl-ext/releases/download/${NEOCURL_PLUGIN_VERSION}/${NEOCURL_PLUGIN_FILE_NAME}
 
 ARG ETF2L_CONFIGS_FILE_NAME=etf2l_configs.zip
-ARG ETF2L_CONFIGS_VERSION=1.0.14
+ARG ETF2L_CONFIGS_VERSION=1.0.16
 ARG ETF2L_CONFIGS_URL=https://github.com/ETF2L/gameserver-configs/releases/download/${ETF2L_CONFIGS_VERSION}/${ETF2L_CONFIGS_FILE_NAME}
 
 ARG RGL_CONFIGS_FILE_NAME=server-resources-updater.zip
@@ -51,7 +51,7 @@ ARG F2_SOURCEMOD_PLUGINS_URL=https://github.com/F2/F2s-sourcemod-plugins/release
 ARG F2_ENABLED_PLUGINS="afk.smx fixstvslot.smx logstf.smx medicstats.smx recordstv.smx restorescore.smx supstats2.smx waitforstv.smx"
 
 ARG TF2RUE_PLUGIN_FILE_NAME=tf2rue.zip
-ARG TF2RUE_PLUGIN_VERSION=v0.0.9
+ARG TF2RUE_PLUGIN_VERSION=v0.0.11
 ARG TF2RUE_PLUGIN_URL=https://github.com/sapphonie/tf2rue/releases/download/${TF2RUE_PLUGIN_VERSION}/${TF2RUE_PLUGIN_FILE_NAME}
 
 RUN \
