@@ -29,7 +29,7 @@ ARG ETF2L_CONFIGS_VERSION=1.0.16
 ARG ETF2L_CONFIGS_URL=https://github.com/ETF2L/gameserver-configs/releases/download/${ETF2L_CONFIGS_VERSION}/${ETF2L_CONFIGS_FILE_NAME}
 
 ARG RGL_CONFIGS_FILE_NAME=server-resources-updater.zip
-ARG RGL_CONFIGS_VERSION=v117
+ARG RGL_CONFIGS_VERSION=v256
 ARG RGL_CONFIGS_URL=https://github.com/RGLgg/server-resources-updater/releases/download/${RGL_CONFIGS_VERSION}/${RGL_CONFIGS_FILE_NAME}
 
 ARG DEMOS_TF_PLUGIN_FILE_NAME=demostf.smx
@@ -69,6 +69,10 @@ RUN \
   && unzip -q -o "${NEOCURL_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod" \
   && unzip -q "${ETF2L_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "cfg/*.cfg" && mv "cfg/"* "${SERVER_DIR}/tf/cfg/" \
+  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/plugins/"{config_checker,rglqol}.smx && mv "addons/sourcemod/plugins/"* "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
+  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/scripting/"{config_checker,rglqol}.sp && mv "addons/sourcemod/scripting/"* "${SERVER_DIR}/tf/addons/sourcemod/scripting/" \
+  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/plugins/disabled/"{p4sstime,tf2Halftime,roundtimer_override}.smx && mv "addons/sourcemod/plugins/disabled/"* "${SERVER_DIR}/tf/addons/sourcemod/plugins/disabled" \
+  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/scripting/disabled/roundtimer_override.sp" && mv "addons/sourcemod/scripting/disabled/"* "${SERVER_DIR}/tf/addons/sourcemod/scripting/disabled" \
   && unzip -q "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
   && unzip -q -n "${MGEMOD_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf" \
   && mv "Improved-Match-Timer-main/addons/sourcemod/plugins/"*.smx "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
