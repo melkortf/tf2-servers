@@ -1,0 +1,296 @@
+﻿"Phrases"
+{
+	// Mod Detection (Debug Messages)
+	"Insurgency"
+	{
+		"en"		"Detected Mod Insurgency"
+		"de"		"Mod Insurgency erkannt"
+		"fr"		"Mod Insurgency detecté"
+		"it"		"Mod Insurgency rilevata"
+		"pl"		"Wykryto Mod Insurgency"
+		"hu"		"Insurgency játékmód észlelve"
+		"ru"		"Обнаружен мод Insurgency"
+		"es"		"Detectado Modo Insurgency"
+		"pt"		"Mod detectado Insurgency"
+		"tr"		"Insurgency Mod Tespit Edildi"
+		"no"		"Insugency Mod Oppdaget"
+		"cze"		"Detekován mód Insurgency"
+	}
+
+	"Synergy"
+	{
+		"en"		"Detected Mod Synergy"
+		"de"		"Mod Synergy erkannt"
+		"fr"		"Mod Synergy detecté"
+		"it"		"Mod Synergy rilevata"
+		"pl"		"Wykryto Mod Synergy"
+		"hu"		"Synergy játékmód észlelve"
+		"ru"		"Обнаружен мод Synergy"
+		"es"		"Detectado Modo Synergy"
+		"pt"		"Mod detectado Synergy"
+		"tr"		"Synergy Mod Tespit Edildi"
+		"no"		"Synergy Mod Oppdaget"
+		"cze"		"Detekován mód Synergy"
+	}
+
+	"TF2"
+	{
+		"en"		"Detected Mod Team Fortress 2"
+		"de"		"Mod Team Fortress 2 erkannt"
+		"fr"		"Team Fortress 2 detecté"
+		"it"		"Team Fortress 2 rilevato"
+		"pl"		"Wykryto Mod Team Fortress 2"
+		"hu"		"Team Fortress 2 játékmód észlelve"
+		"ru"		"Обнаружен мод Team Fortress 2"
+		"es"		"Detectado Modo Team Fortress 2"
+		"pt"		"Mod detectado Team Fortress 2"
+		"tr"		"Team Fortress 2 Mod Tespit Edildi"
+		"no"		"Team Fortress 2 Mod Oppdaget"
+		"cze"		"Detekován mód Team Fortress 2"
+	}
+
+	"CSTRIKE"
+	{
+		"en"		"Detected Mod Counter-Strike: Source"
+		"de"		"Mod Counter-Strike: Source erkannt"
+		"fr"		"Counter-Strike: Source detecté"
+		"it"		"Counter-Strike: Source rilevato"
+		"pl"		"Wykryto Mod Counter-Strike: Source"
+		"hu"		"Counter-Strike: Source játékmód észlelve"
+		"ru"		"Обнаружен мод Counter-Strike: Source"
+		"es"		"Detectado Modo Counter-Strike: Source"
+		"pt"		"Mod detectado Counter-Strike: Source"
+		"tr"		"Counter-Strike: Source Mod Tespit Edildi"
+		"no"		"Counter-Strike: Source Mod Oppdaget"
+		"cze"		"Detekován mód Counter-Strike: Source"
+	}
+
+	"CSGO"
+	{
+		"en"		"Detected Mod Counter-Strike: Global Offensive"
+		"de"		"Mod Counter-Strike: Global Offensive erkannt"
+		"fr"		"Counter-Strike: Global Offensive detecté"
+		"it"		"Counter-Strike: Global Offensive rilevato"
+		"pl"		"Wykryto Mod Counter-Strike: Global Offensive"
+		"hu"		"Counter-Strike: Global Offensive játékmód észlelve"
+		"ru"		"Обнаружен мод Counter-Strike: Global Offensive"
+		"es"		"Detectado Modo Counter-Strike: Global Offensive"
+		"pt"		"Mod detectado Counter-Strike: Global Offensive"
+		"tr"		"Counter-Strike: Global Offensive Mod Tespit Edildi"
+		"no"		"Counter-Strike: Global Offensive Mod Oppdaget"
+		"cze"		"Detekován mód Counter-Strike: Global Offensive"
+	}
+
+	"L4D"
+	{
+		"en"		"Detected Mod Left 4 Dead"
+		"de"		"Mod Left 4 Dead erkannt"
+		"fr"		"Left 4 Dead detecté"
+		"it"		"Left 4 Dead rilevato"
+		"pl"		"Wykryto Mod Left 4 Dead"
+		"hu"		"Left 4 Dead játékmód észlelve"
+		"ru"		"Обнаружен мод Left 4 Dead"
+		"es"		"Detectado Modo Left 4 Dead"
+		"pt"		"Mod detectado Left 4 Dead"
+		"tr"		"Left 4 Dead Mod Tespit Edildi"
+		"no"		"Left 4 Dead Mod Oppdaget"
+		"cze"		"Detekován mód Left 4 Dead"
+	}
+
+	"GESOURCE"
+	{
+		"en"		"Detected Mod GoldenEye: Source"
+		"de"		"Mod GoldenEye: Source erkannt"
+		"fr"		"GoldenEye: Source detecté"
+		"it"		"GoldenEye: Source rilevato"
+		"pl"		"Wykryto Mod GoldenEye: Source"
+		"hu"		"GoldenEye: Source játékmód észlelve"
+		"ru"		"Обнаружен мод GoldenEye: Source"
+		"es"		"Detectado Modo GoldenEye: Source"
+		"pt"		"Mod detectado GoldenEye: Source"
+		"tr"		"GoldenEye: Source Mod Tespit Edildi"
+		"no"		"GoldenEye: Source Mod Oppdaget"
+		"cze"		"Detekován mód GoldenEye: Source"
+	}
+
+
+	// Debug Messages
+
+
+	// Plugin Messages
+	"Spectate_Force"
+	{
+		"#format"	"{1:t}"
+		"en"		"Forced player {1} to join the spectator team."
+		"de"		"Zwingt Spieler {1} in den Zuschauermodus."
+		"fr"		"{1} a été déplacé en spectateur."
+		"it"		"{1} assegnato al team spettatori."
+		"pl"		"Wymuszono na graczu {1} dołączenie do obserwatorów."
+		"hu"		"{1} áthelyezve nézőnek."
+		"ru"		"Игрок {1} был принудительно перемещен в наблюдатели."
+		"es"		"Forzado el Jugador {1} a estar en espectador."
+		"pt"		"Jogador {1} foi forçado a entrar de espectador."
+		"tr"		"{1} isimli oyuncu izleyicilere atılıyor."
+		"no"		"Spiller{1} Ble Flyttet Til Spectator Laget."
+		"cze"       "{1} přesunut do spectate módu."
+	}
+
+	"Spawn_Move_Warning"
+	{
+		"#format"	"{1:i}"
+		"en"		"Warning: If you do not move from your spawn position in {1} seconds, you will be moved to spectate."
+		"de"		"Warnung: Wenn du dich nicht in {1} Sekunden von deiner Spawnposition bewegst, wirst du in den Zuschauermodus versetzt."
+		"fr"		"Attention: Si vous ne bougez de votre spawn dans {1} secondes, vous deviendrez spectateur."
+		"it"		"Attenzione: Se non ti muovi dalla posizione di spawn entro {1} secondi, sarai spostato negli spettatori."
+		"pl"		"Uwaga: Jeśli nie ruszysz się z respa za {1} sekund(y), zostaniesz przeniesiony do obserwatorów."
+		"hu"		"Figyelem: Ha nem mozdulsz el a kezdő helyről {1} másodpercen belül, át leszel helyezve nézőnek."
+		"ru"		"ВНИМАНИЕ: Начните двигаться с места возрождения, или через {1} сек. отправитесь в наблюдатели."
+		"es"		"Advertencia: Si usted no se mueve de su lugar de regeneramiento en {1} segundos, usted será movido a espectador."
+		"pt"		"Aviso: Se você não sair da base em {1} segundos, você será movido para espectador."
+		"tr"		"Dikkat: Bulunduğunuz yerden {1} saniye içinde ayrılmazsanız izleyicilere atılacaksınız."
+		"no"		"Advarsel: Om Du Ikke Beveger Deg Fra Spawn Lokasjonen innen {1} Sekunder, Vill Du Bli Flyttet Til Spectate."
+		"cze"       "Upozornění: Pokuď neopustíš spawn do {1} sekund, budeš přesunut do spectate módu!"
+	}
+
+	"Move_Warning"
+	{
+		"#format"	"{1:i}"
+		"en"		"Warning: If you do not move in {1} seconds, you will be moved to spectate."
+		"de"		"Warnung: Wenn du dich nicht in {1} Sekunden bewegst, wirst du in den Zuschauermodus versetzt."
+		"da"		"Advarsel: Hvis ikke du bevæger dig inden {1} sekunder, vil du blive gjort til tilskuer."
+		"fr"		"Attention: Si vous ne bougez pas dans les {1} prochaines secondes, vous deviendrez spectateur."
+		"it"		"Attenzione: Se non ti muovi entro {1} secondi, sarai spostato negli spettatori."
+		"pl"		"Uwaga: Jeżeli się nie poruszysz w ciągu {1} sekund(y), zostaniesz przeniesiony do obserwatorów."
+		"hu"		"Figyelem: Ha nem mozdulsz meg {1} másodpercen belül, akkor át leszel helyezve nézőnek."
+		"ru"		"ВНИМАНИЕ: Начните двигаться, или через {1} сек. отправитесь в наблюдатели."
+		"es"		"Advertencia: Si usted no se mueve en {1} segundos, usted será movido a espectador."
+		"pt"		"Aviso: se você não se mover em {1} segundos, você será movido para espectador."
+		"tr"		"Dikkat: {1} saniye içinde hareket etmezseniz izleyicilere atılacaksınız."
+		"no"		"Advarsel: Om Du Ikke Beveger Deg Fra Spawn Lokasjonen innen {1} Sekunder, Vill Du Bli Flyttet Til Spectate."
+		"cze"       "Upozornění: Pokuď neprojevíš aktivitu do {1} sekund, budeš přesunut do spectate módu."
+	}
+
+	"Spawn_Kick_Warning"
+	{
+		"#format"	"{1:i}"
+		"en"		"Warning: If you do not move from your spawn position in {1} seconds, you will be kicked."
+		"de"		"Warnung: Wenn du dich nicht in {1} Sekunden von deiner Spawnposition bewegst, wirst du vom Server entfernt."
+		"fr"		"Attention: Si vous ne bougez de votre spawn dans {1} secondes, vous serez kické."
+		"it"		"Attenzione: Se non ti muovi dalla posizione di spawn entro {1} secondi, sarai kickato."
+		"pl"		"Uwaga: Jeśli nie ruszysz się z respa za {1} sekund(y), zostaniesz wykopany z serwera."
+		"hu"		"Figyelem: Ha nem mozdulsz el a kezdő helyről {1} másodpercen belül, ki leszel rugva."
+		"ru"		"ВНИМАНИЕ: Начните двигаться с места возрождения, или через {1} сек. будете отключены от сервера."
+		"es"		"Advertencia: Si usted no se mueve de su lugar de regeneramiento en {1} segundos, usted será expulsado."
+		"pt"		"Aviso: Se você não sair da base em {1} segundos, você será kickado."
+		"tr"		"Dikkat: Doğuş blögesinden {1} saniye içinde ayrılmazsanız oyundan atılacaksınız."
+		"no"		"Advarsel: Om Du Ikke Beveger Deg Fra Spawn Lokasjonen innen {1} Sekunder, Vill Du Bli Flyttet Til Spectate."
+		"cze"       "Upozornění: Pokuď neopustíš spawn do {1} sekund, budeš vyhozen ze serveru."
+	}
+
+	"Kick_Warning"
+	{
+		"#format"	"{1:i}"
+		"en"		"Warning: If you do not move in {1} seconds, you will be kicked."
+		"de"		"Warnung: Wenn du dich nicht in {1} Sekunden bewegst, wirst du vom Server entfernt."
+		"da"		"Advarsel: Hvis ikke du bevæger dig inden {1} sekunder, vil du blive fjernet fra serveren."
+		"fr"		"Attention: Si vous ne bougez pas dans les {1} prochaines secondes, vous serez kické."
+		"it"		"Attenzione: Se non ti muovi entro {1} secondi, sarai kickato."
+		"pl"		"Uwaga: Jeżeli się nie poruszysz w ciągu {1} sekund(y), zostaniesz wykopany z serwera."
+		"hu"		"Figyelem: Ha nem mozdulsz meg {1} másodpercen belül, akkor ki leszel dobva AFK miatt."
+		"ru"		"ВНИМАНИЕ: Начните двигаться, или через {1} сек. будете отключены от сервера."
+		"es"		"Advertencia: Si usted no se mueve en {1} segundos, usted será expulsado."
+		"pt"		"Aviso: Se você não se mover em {1} segundos, você será kickado."
+		"tr"		"Dikkat: {1} saniye içinde ayrılmazsanız oyundan atılacaksınız."
+		"no"		"Advarsel: Om Du Ikke Beveger Deg innen {1} Sekunder, Vill Du Bli Kastet Ut."
+		"cze"       "Upozornění: Pokuď neprojevíš aktivitu do {1} sekund, budeš vyhozen ze serveru z důvodu AFK."
+	}
+
+	"Move_Announce"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} was moved to spectate for being AFK too long."
+		"de"		"{1} wurde in den Zuschauermodus versetzt, weil er zu lange in Abwesehenheit war."
+		"da"		"{1} blev gjort til tilskuer for at være AFK for længe."
+		"fr"		"{1} est devenu spectateur pour avoir été AFK trop longtemps."
+		"it"		"{1} é stato spostato negli spettatori perché AFK troppo a lungo."
+		"pl"		"{1} został przeniesiony do obserwatorów ponieważ za długo pozostawał bez ruchu."
+		"hu"		"{1} át lett helyezve nézőnek AFK miatt."
+		"ru"		"{1} был перемещен в наблюдатели из-за длительного бездействия."
+		"es"		"{1} fue movido a espectador por estar AFK."
+		"pt"		"{1} Foi movido para spectador por ficar AFK."
+		"tr"		"{1} uzun süre AFK olduğu için izleyicilere atıldı."
+		"no"		"{1} Ble Flyttet Til Spectate Fordi Var Ikke Tilstede."
+		"cze"       "{1} byl přesunut do spectate módu za AFK."
+	}
+
+	"Move_Log"
+	{
+		"#format"	"{1:L}"
+		"en"		"{1} was moved to spectate for being AFK too long."
+		"de"		"{1} wurde in den Zuschauermodus versetzt, weil er zu lange in Abwesehenheit war."
+		"da"		"{1} blev gjort til tilskuer for at være AFK for længe."
+		"fr"		"{1} est devenu spectateur pour avoir été AFK trop longtemps."
+		"it"		"{1} é stato spostato negli spettatori perché AFK troppo a lungo."
+		"pl"		"{1} został przeniesiony do obserwatorów ponieważ za długo pozostawał bez ruchu."
+		"hu"		"{1} át lett helyezve nézőnek AFK miatt."
+		"ru"		"{1} был перемещен в наблюдатели из-за длительного бездействия."
+		"es"		"{1} fue movido a espectador por estar AFK."
+		"pt"		"{1} foi movido para spectador por ficar AFK."
+		"tr"		"{1} uzun süre AFK olduğu için izleyicilere atıldı."
+		"no"		"{1} Ble Flyttet Til Spectate Fordi Var Ikke Tilstede."
+		"cze"       "{1} byl přesunut do spectate módu za AFK."
+	}
+
+	"Kick_Announce"
+	{
+		"#format"	"{1:s}"
+		"en"		"{1} was kicked for being AFK too long."
+		"de"		"{1} wurde entfernt, weil er zu lange in Abwesenheit war."
+		"da"		"{1} blev fjernet fra serveren for at være AFK for længe."
+		"fr"		"{1} a été kické pour avoir été AFK trop longtemps."
+		"it"		"{1} é stato kickato perché AFK troppo a lungo."
+		"pl"		"{1} został wykopany ponieważ za długo pozostawał bez ruchu."
+		"hu"		"{1} ki lett dobva AFK miatt."
+		"ru"		"{1} был отключен от сервера из-за длительного бездействия."
+		"es"		"{1} fue expulsado por estar AFK."
+		"pt"		"{1} foi kickado por ficar AFK."
+		"tr"		"{1} uzun süre AFK olduğu için oyundan atıldı."
+		"no"		"{1} Ble Kastet Ut Fordi Var Ikke Tilstede."
+		"cze"       "{1} byl vyhozen za AFK!
+	}
+
+	"Kick_Message"
+	{
+		"en"		"You were kicked for being AFK too long."
+		"de"		"Du wurdest vom Server entfernt, weil du zu lange in Abwesenheit warst."
+		"da"		"Du blev fjernet fra serveren fordi du var AFK for længe."
+		"fr"		"Vous avez été kické pour avoir été AFK trop longtemps."
+		"it"		"Sei stato kickato perché AFK troppo a lungo."
+		"pl"		"Zostałeś wykopany ponieważ za długo pozostawałeś bez ruchu."
+		"hu"		"Ki lettél dobva AFK miatt."
+		"ru"		"Вы слишком долго бездействовали."
+		"es"		"Usted fue expulsado por estar demasiado tiempo AFK (Lejos del teclado)."
+		"pt"		"Voce foi kickado por ficar AFK."
+		"tr"		"Uzun süre AFK olduğunuz için oyundan atıldınız."
+		"no"		"Du Ble KAstet Ut Fordi Du Var Ikke Tilstede."
+		"cze"       "Byl jsi vyhozen za AFK."
+	}
+
+	"Kick_Log"
+	{
+		"#format"	"{1:L}"
+		"en"		"{1} was kicked for being AFK too long."
+		"de"		"{1} wurde entfernt, weil er zu lange in Abwesenheit war."
+		"da"		"{1} blev fjernet fra serveren for at være AFK for længe."
+		"fr"		"{1} a été kické pour avoir été AFK trop longtemps."
+		"it"		"{1} é stato kickato perché AFK troppo a lungo."
+		"pl"		"{1} został wykopany ponieważ za długo pozostawał bez ruchu."
+		"hu"		"AFK miatt {1} ki lett dobva."
+		"ru"		"{1} был отключен от сервера из-за длительного бездействия."
+		"es"		"{1} fue expulsado por estar AFK."
+		"pt"		"{1} foi kickado por ficar muito tempo AFK."
+		"tr"		"{1} uzun süre AFK olduğu için oyundan atıldı."
+		"no"		"{1} Ble Kastet Ut Fordi Var Ikke Tilstede."
+		"cze"       "{1} Byl vyhozen za AFK."
+	}
+}
