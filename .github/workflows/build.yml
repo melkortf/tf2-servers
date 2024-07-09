@@ -15,6 +15,9 @@ on:
 env:
   REGISTRY: ghcr.io
 
+permissions:
+  packages: write
+
 jobs:
   tf2-base:
     runs-on: ubuntu-latest
