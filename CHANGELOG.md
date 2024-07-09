@@ -1,5 +1,13 @@
 
 
+## [3.2.7](https://github.com/melkortf/tf2-servers/compare/3.2.6...3.2.7) (2024-07-09)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update RGL resources to v256 ([#148](https://github.com/melkortf/tf2-servers/issues/148)) ([00571b9](https://github.com/melkortf/tf2-servers/commit/00571b923458793ae647cd71d9129a18ec1f3113))
+* **tf2-mge,tf2-dm:** don't download afk_manager.phrases.txt ([#149](https://github.com/melkortf/tf2-servers/issues/149)) ([0dc3770](https://github.com/melkortf/tf2-servers/commit/0dc3770251d18333f2d0cffbb85b0bfb53f063e7))
+
 ## [3.2.6](https://github.com/melkortf/tf2-servers/compare/3.2.5...3.2.6) (2024-06-06)
 
 
