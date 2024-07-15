@@ -47,7 +47,7 @@ jobs:
           case ${{ inputs.package }} in
             etf2l_configs)
               ETF2L_CONFIGS_URL=$(grep -r "ARG ETF2L_CONFIGS" packages/tf2-competitive/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $ETF2L_CONFIGS_URL; })
-              MD5SUM=$(wget -O - "$ETF2L_CONFIGS_URL" | tee file | md5sum | awk '{print $1}')
+              MD5SUM=$(wget -O - "$ETF2L_CONFIGS_URL" | tee file | md5sum | awk '{print $1}' && rm file)
               sed -i -E 's/^([0-9a-f]+)(\s+)(etf2l_configs.zip)$/'"$MD5SUM"'\2\3/g' packages/tf2-competitive/checksum.md5
               echo "package_url=${ETF2L_CONFIGS_URL}" >> "$GITHUB_ENV"
               echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
