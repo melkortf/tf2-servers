@@ -1,0 +1,84 @@
+name: Update package
+
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        type: choice
+        required: true
+        options:
+        - etf2l_configs
+      
+      version:
+        type: string
+        required: true
+
+jobs:
+  update-package:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set git identity
+        run: |
+          git config --global user.email 'github-actions[bot]@users.noreply.github.com'
+          git config --global user.name 'github-actions[bot]'
+      
+      - name: Replace version string
+        run: |
+          case ${{ inputs.package }} in
+            etf2l_configs)
+              sed -i 's/ETF2L_CONFIGS_VERSION=.*/ETF2L_CONFIGS_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
+              ;;
+            *)
+              echo "invalid package"
+              exit 1
+              ;;
+          esac
+
+      - name: Download new package version and replace its md5
+        run: |
+          case ${{ inputs.package }} in
+            etf2l_configs)
+              ETF2L_CONFIGS_URL=$(grep -r "ARG ETF2L_CONFIGS" packages/tf2-competitive/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $ETF2L_CONFIGS_URL; })
+              MD5SUM=$(wget -O - "$ETF2L_CONFIGS_URL" | tee file | md5sum | awk '{print $1}' && rm file)
+              sed -i -E 's/^([0-9a-f]+)(\s+)(etf2l_configs.zip)$/'"$MD5SUM"'\2\3/g' packages/tf2-competitive/checksum.md5
+              echo "package_url=${ETF2L_CONFIGS_URL}" >> "$GITHUB_ENV"
+              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
+              ;;
+            *)
+              echo "invalid package"
+              exit 1
+              ;;
+          esac
+      
+      - name: Generate human-friendly package name
+        run: |
+          case ${{ inputs.package }} in
+            etf2l_configs)
+              echo "package_name=ETF2L.org gameserver configs" >> "$GITHUB_ENV"
+              ;;
+            *)
+              echo "invalid package"
+              exit 1
+              ;;
+          esac
+
+      - name: Create pull request
+        uses: peter-evans/create-pull-request@v6
+        with:
+          commit-message: "fix(deps): update ${{ env.package_name }} to version ${{ inputs.version }}"
+          title: "fix(deps): update ${{ env.package_name }} to version ${{ inputs.version }}"
+          body: |
+            Update [${{ env.package_name }}](${{ env.package_url }}) to version ${{ inputs.version }}
+            MD5: ${{ env.package_md5 }}
+          branch: update-${{ inputs.package }}-${{ inputs.version }}
+          delete-branch: true
+          reviewers: garrappachc
+          
