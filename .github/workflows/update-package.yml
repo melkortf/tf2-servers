@@ -24,8 +24,6 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.ACTIONS_BOT_TOKEN }}
 
       - name: Set git identity
         run: |
@@ -75,7 +73,6 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
           commit-message: "fix(deps): update ${package_name} to version ${{ inputs.version }}"
           title: "fix(deps): update ${package_name} to version ${{ inputs.version }}"
           body: |
