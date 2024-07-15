@@ -73,11 +73,12 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
-          commit-message: "fix(deps): update ${package_name} to version ${{ inputs.version }}"
-          title: "fix(deps): update ${package_name} to version ${{ inputs.version }}"
+          commit-message: "fix(deps): update ${{ env.package_name }} to version ${{ inputs.version }}"
+          title: "fix(deps): update ${{ env.package_name }} to version ${{ inputs.version }}"
           body: |
-            Update [${package_name}](${package_url}) to version ${{ inputs.version }}
-            MD5: ${package_md5}
+            Update [${{ env.package_name }}](${{ env.package_url }}) to version ${{ inputs.version }}
+            MD5: ${{ env.package_md5 }}
           branch: update-${{ inputs.package }}-${{ inputs.version }}
           delete-branch: true
           reviewers: garrappachc
+          
