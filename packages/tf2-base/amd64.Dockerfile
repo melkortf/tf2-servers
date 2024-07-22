@@ -46,13 +46,13 @@ RUN useradd --home-dir $HOME --create-home --shell /bin/bash $USER
 USER $USER
 WORKDIR $HOME
 
-COPY ../maps_to_keep ../tf2.txt.template $HOME/
+COPY maps_to_keep tf2.txt.template $HOME/
 RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && steamcmd +runscript $HOME/tf2.txt \
   && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
   && rm maps_to_keep
 
-COPY ../server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
+COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
 COPY --from=rcon-build /build/rcon/build/rcon ${SERVER_DIR}/rcon
 
 ENV IP=0.0.0.0
@@ -71,8 +71,8 @@ ENV STV_PASSWORD=
 ENV DOWNLOAD_URL="https://fastdl.serveme.tf/"
 
 WORKDIR $SERVER_DIR
-COPY ../entrypoint.sh .
-COPY ../healthcheck.sh .
+COPY entrypoint.sh .
+COPY healthcheck.sh .
 
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["+sv_pure", "1", "+map", "cp_badlands", "+maxplayers", "24"]

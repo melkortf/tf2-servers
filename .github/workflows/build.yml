@@ -55,7 +55,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./packages/tf2-base/i386
+          context: ./packages/tf2-base
+          file: ./packages/tf2-base/i386.Dockerfile
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           push: true
@@ -95,7 +96,8 @@ jobs:
       - name: Build and push
         uses: docker/build-push-action@v6
         with:
-          context: ./packages/tf2-base/amd64
+          context: ./packages/tf2-base
+          file: ./packages/tf2-base/amd64.Dockerfile
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           push: true
