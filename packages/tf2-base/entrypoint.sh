@@ -39,7 +39,7 @@ faketty $SERVER_DIR/srcds_run \
   -steam_dir ${HOME}/.steam/steamcmd \
   -steamcmd_script ${HOME}/tf2.txt \
   -autoupdate \
-  +sv_setsteamaccount ${SEVER_TOKEN} \
+  +sv_setsteamaccount ${SERVER_TOKEN} \
   -ip ${IP} \
   -port ${PORT} \
   +clientport ${CLIENT_PORT} \
