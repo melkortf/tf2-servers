@@ -33,7 +33,7 @@ trap 'quit' SIGTERM
 
 auto_envsubst
 
-faketty $SERVER_DIR/srcds_run \
+faketty $SERVER_DIR/$SRCDS_EXEC \
   -game tf \
   -secured \
   -steam_dir ${HOME}/.steam/steamcmd \

@@ -18,19 +18,13 @@ LABEL maintainer="garrappachc@gmail.com"
 
 RUN export DEBIAN_FRONTEND=noninteractive \
   && export TZ=Etc/UTC \
-  && dpkg --add-architecture i386 \
   && apt-get -y update \
   && apt-get install -y software-properties-common \
   && add-apt-repository multiverse \
   && apt-get -y update \
   && apt-get install -y --no-install-recommends --no-install-suggests \
-  lib32gcc1 \
-  lib32z1 \
-  libncurses5:i386 \
-  libbz2-1.0:i386 \
-  lib32stdc++6 \
-  libtinfo5:i386 \
-  libcurl3-gnutls:i386 \
+  libncurses5 \
+  libbz2-1.0 \
   wget \
   unzip \
   gettext-base \
@@ -46,20 +40,19 @@ ENV USER=$USER
 ENV HOME=$HOME
 ENV SERVER_DIR=$SERVER_DIR
 ENV APP_ID=$APP_ID
+ENV SRCDS_EXEC=srcds_run_64
 
 RUN useradd --home-dir $HOME --create-home --shell /bin/bash $USER
 USER $USER
 WORKDIR $HOME
 
-COPY maps_to_keep tf2.txt.template $HOME/
+COPY ../maps_to_keep ../tf2.txt.template $HOME/
 RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && steamcmd +runscript $HOME/tf2.txt \
   && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
-  && rm maps_to_keep \
-  && mkdir $HOME/.steam/sdk32 \
-  && ln -s $HOME/.steam/steamcmd/linux32/steamclient.so $HOME/.steam/sdk32/
+  && rm maps_to_keep
 
-COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
+COPY ../server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
 COPY --from=rcon-build /build/rcon/build/rcon ${SERVER_DIR}/rcon
 
 ENV IP=0.0.0.0
@@ -78,8 +71,8 @@ ENV STV_PASSWORD=
 ENV DOWNLOAD_URL="https://fastdl.serveme.tf/"
 
 WORKDIR $SERVER_DIR
-COPY entrypoint.sh .
-COPY healthcheck.sh .
+COPY ../entrypoint.sh .
+COPY ../healthcheck.sh .
 
 ENTRYPOINT ["./entrypoint.sh"]
 CMD ["+sv_pure", "1", "+map", "cp_badlands", "+maxplayers", "24"]
