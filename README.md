@@ -59,20 +59,21 @@ $ docker pull ghcr.io/melkortf/tf2-base
 
 The base image for all other images; pure TF2 server, without any add-ons and plugins.
 
-| Environment variable | Default value                      | Used in                            | Description                                                                             |
-| -------------------- | ---------------------------------- | ---------------------------------- | --------------------------------------------------------------------------------------- |
-| IP                   | 0.0.0.0                            | `-ip ${IP}`                        | Specifies the address to use for the bind(2) syscall.                                   |
-| PORT                 | 27015                              | `-port ${PORT}`                    | The port which the server will run on.                                                  |
-| CLIENT_PORT          | 27016                              | `+clientport ${CLIENT_PORT}`       | The client port.                                                                        |
-| STEAM_PORT           | 27018                              | `-steamport ${STEAM_PORT}`         | Master server updater port.                                                             |
-| STV_PORT             | 27020                              | `+tv_port ${STV_PORT}`             | SourceTV port.                                                                          |
-| RCON_PASSWORD        | 123456                             | `rcon_password "${RCON_PASSWORD}"` | The RCON password (change this in your `docker run` invocation).                        |
-| SERVER_HOSTNAME      | A Team Fortress 2 server           | `hostname "${SERVER_HOSTNAME}"`    | The game server hostname.                                                               |
-| SERVER_PASSWORD      |                                    | `sv_password "${SERVER_PASSWORD}"` | The server password.                                                                    |
-| STV_NAME             | Source TV                          | `tv_name "${STV_NAME}"`            | SourceTV host name.                                                                     |
-| STV_TITLE            | A Team Fortress 2 server Source TV | `tv_title "${STV_TITLE}"`          | Title for the SourceTV spectator UI.                                                    |
-| STV_PASSWORD         |                                    | `tv_password "${STV_PASSWORD}"`    | SourceTV password.                                                                      |
-| DOWNLOAD_URL         | https://fastdl.serveme.tf/         | `sv_downloadurl "${DOWNLOAD_URL}"` | Download URL for the [FastDL](https://developer.valvesoftware.com/wiki/Sv_downloadurl). |
+| Environment variable | Default value                      | Used in                               | Description                                                                             |
+| -------------------- | ---------------------------------- | ------------------------------------- | --------------------------------------------------------------------------------------- |
+| IP                   | 0.0.0.0                            | `-ip ${IP}`                           | Specifies the address to use for the bind(2) syscall.                                   |
+| PORT                 | 27015                              | `-port ${PORT}`                       | The port which the server will run on.                                                  |
+| CLIENT_PORT          | 27016                              | `+clientport ${CLIENT_PORT}`          | The client port.                                                                        |
+| STEAM_PORT           | 27018                              | `-steamport ${STEAM_PORT}`            | Master server updater port.                                                             |
+| STV_PORT             | 27020                              | `+tv_port ${STV_PORT}`                | SourceTV port.                                                                          |
+| SERVER_TOKEN         |                                    | `+sv_setsteamaccount ${SERVER_TOKEN}` | Game server account token to use for logging in to a persistent game server account.    |
+| RCON_PASSWORD        | 123456                             | `rcon_password "${RCON_PASSWORD}"`    | The RCON password (change this in your `docker run` invocation).                        |
+| SERVER_HOSTNAME      | A Team Fortress 2 server           | `hostname "${SERVER_HOSTNAME}"`       | The game server hostname.                                                               |
+| SERVER_PASSWORD      |                                    | `sv_password "${SERVER_PASSWORD}"`    | The server password.                                                                    |
+| STV_NAME             | Source TV                          | `tv_name "${STV_NAME}"`               | SourceTV host name.                                                                     |
+| STV_TITLE            | A Team Fortress 2 server Source TV | `tv_title "${STV_TITLE}"`             | Title for the SourceTV spectator UI.                                                    |
+| STV_PASSWORD         |                                    | `tv_password "${STV_PASSWORD}"`       | SourceTV password.                                                                      |
+| DOWNLOAD_URL         | https://fastdl.serveme.tf/         | `sv_downloadurl "${DOWNLOAD_URL}"`    | Download URL for the [FastDL](https://developer.valvesoftware.com/wiki/Sv_downloadurl). |
 
 ## tf2-sourcemod
 
