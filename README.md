@@ -51,11 +51,15 @@ rcon_password "123456"
 
 There are many more configuration options, you will find them all below.
 
-## tf2-base
+#### tf2-base
 
 ```
 $ docker pull ghcr.io/melkortf/tf2-base
 ```
+
+| 32-bit                                                        | 64-bit                            |
+| ------------------------------------------------------------- | --------------------------------- |
+| `ghcr.io/melkortf/tf2-base`, `ghcr.io/melkortf/tf2-base/i386` | `ghcr.io/melkortf/tf2-base/amd64` |
 
 The base image for all other images; pure TF2 server, without any add-ons and plugins.
 
@@ -75,19 +79,27 @@ The base image for all other images; pure TF2 server, without any add-ons and pl
 | STV_PASSWORD         |                                    | `tv_password "${STV_PASSWORD}"`       | SourceTV password.                                                                      |
 | DOWNLOAD_URL         | https://fastdl.serveme.tf/         | `sv_downloadurl "${DOWNLOAD_URL}"`    | Download URL for the [FastDL](https://developer.valvesoftware.com/wiki/Sv_downloadurl). |
 
-## tf2-sourcemod
+#### tf2-sourcemod
 
 ```
 $ docker pull ghcr.io/melkortf/tf2-sourcemod
 ```
 
+| 32-bit                                                                  | 64-bit |
+| ----------------------------------------------------------------------- | ------ |
+| `ghcr.io/melkortf/tf2-sourcemod`, `ghcr.io/melkortf/tf2-sourcemod/i386` | -      |
+
 TF2 server with [Metamod:Source](https://www.sourcemm.net/) and [SourceMod](https://www.sourcemod.net/) installed.
 
-## tf2-competitive
+#### tf2-competitive
 
 ```
 $ docker pull ghcr.io/melkortf/tf2-competitive
 ```
+
+| 32-bit                                                                      | 64-bit |
+| --------------------------------------------------------------------------- | ------ |
+| `ghcr.io/melkortf/tf2-competitive`, `ghcr.io/melkortf/tf2-competitive/i386` | -      |
 
 TF2 server configured to be used in competitive matches. The following plugins, add-ons and configs are installed:
 
@@ -114,23 +126,31 @@ TF2 server configured to be used in competitive matches. The following plugins, 
 | DEMOS_TF_APIKEY      |               | `sm_demostf_apikey ${DEMOS_TF_APIKEY}` | The API key used to upload the demo to [demos.tf](https://demos.tf/). |
 | LOGS_TF_APIKEY       |               | `logstf_apikey ${LOGS_TF_APIKEY}`      | The API key used to upload logs to logs.tf.                           |
 
-## tf2-dm
+#### tf2-dm
 
 ```
 $ docker pull ghcr.io/melkortf/tf2-dm
 ```
 
+| 32-bit                                                    | 64-bit |
+| --------------------------------------------------------- | ------ |
+| `ghcr.io/melkortf/tf2-dm`, `ghcr.io/melkortf/tf2-dm/i386` | -      |
+
 TF2 dedicated server for DeathMatch gameplay.
 
-## tf2-mge
+#### tf2-mge
 
 ```
 $ docker pull ghcr.io/melkortf/tf2-mge
 ```
 
+| 32-bit                                                      | 64-bit |
+| ----------------------------------------------------------- | ------ |
+| `ghcr.io/melkortf/tf2-mge`, `ghcr.io/melkortf/tf2-mge/i386` | -      |
+
 TF2 dedicated server for MGE 1v1 training mod.
 
-## Maps
+### Maps
 
 In order to make the image as small as possible, the only map shipped with the image is _cp_badlands_. This has also the advantage of letting you maintain only one directory
 with all the maps and share it between all the containers. Just mount `/home/tf2/server/tf/maps` to your local directory that contains all the maps you need:

@@ -18,19 +18,14 @@ LABEL maintainer="garrappachc@gmail.com"
 
 RUN export DEBIAN_FRONTEND=noninteractive \
   && export TZ=Etc/UTC \
-  && dpkg --add-architecture i386 \
   && apt-get -y update \
   && apt-get install -y software-properties-common \
   && add-apt-repository multiverse \
   && apt-get -y update \
   && apt-get install -y --no-install-recommends --no-install-suggests \
-  lib32gcc1 \
-  lib32z1 \
-  libncurses5:i386 \
-  libbz2-1.0:i386 \
-  lib32stdc++6 \
-  libtinfo5:i386 \
-  libcurl3-gnutls:i386 \
+  libncurses5 \
+  libbz2-1.0 \
+  libcurl3-gnutls \
   wget \
   unzip \
   gettext-base \
@@ -46,6 +41,7 @@ ENV USER=$USER
 ENV HOME=$HOME
 ENV SERVER_DIR=$SERVER_DIR
 ENV APP_ID=$APP_ID
+ENV SRCDS_EXEC=srcds_run_64
 
 RUN useradd --home-dir $HOME --create-home --shell /bin/bash $USER
 USER $USER
@@ -56,8 +52,8 @@ RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && steamcmd +runscript $HOME/tf2.txt \
   && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
   && rm maps_to_keep \
-  && mkdir $HOME/.steam/sdk32 \
-  && ln -s $HOME/.steam/steamcmd/linux32/steamclient.so $HOME/.steam/sdk32/
+  && mkdir $HOME/.steam/sdk64 \
+  && ln -s $HOME/.steam/steamcmd/linux64/steamclient.so  $HOME/.steam/sdk64/
 
 COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
 COPY --from=rcon-build /build/rcon/build/rcon ${SERVER_DIR}/rcon

@@ -19,10 +19,10 @@ permissions:
   packages: write
 
 jobs:
-  tf2-base:
+  tf2-base-i386:
     runs-on: ubuntu-latest
     outputs:
-      tf2-base-tag: ${{ steps.docker_meta.outputs.version }}
+      tf2-base-i386-tag: ${{ steps.docker_meta.outputs.version }}
 
     steps:
       - name: Checkout
@@ -32,7 +32,9 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/melkortf/tf2-base
+          images: |
+            ${{ env.REGISTRY }}/melkortf/tf2-base
+            ${{ env.REGISTRY }}/melkortf/tf2-base/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -54,6 +56,48 @@ jobs:
         uses: docker/build-push-action@v6
         with:
           context: ./packages/tf2-base
+          file: ./packages/tf2-base/i386.Dockerfile
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          labels: ${{ steps.docker_meta.outputs.labels }}
+          push: true
+          platforms: linux/amd64
+
+  tf2-base-amd64:
+    runs-on: ubuntu-latest
+    outputs:
+      tf2-base-amd64-tag: ${{ steps.docker_meta.outputs.version }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ${{ env.REGISTRY }}/melkortf/tf2-base/amd64
+          tags: |
+            type=sha,format=long
+            type=schedule,pattern=nightly
+            type=semver,pattern={{version}}
+            type=semver,pattern={{major}}.{{minor}}
+            type=semver,pattern={{major}}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to DockerHub
+        uses: docker/login-action@v3
+        with:
+          registry: ${{ env.REGISTRY }}
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v6
+        with:
+          context: ./packages/tf2-base
+          file: ./packages/tf2-base/amd64.Dockerfile
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           push: true
@@ -61,7 +105,7 @@ jobs:
 
   tf2-sourcemod:
     runs-on: ubuntu-latest
-    needs: tf2-base
+    needs: tf2-base-i386
     outputs:
       tf2-sourcemod-tag: ${{ steps.docker_meta.outputs.version }}
 
@@ -73,7 +117,9 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/melkortf/tf2-sourcemod
+          images: |
+            ${{ env.REGISTRY }}/melkortf/tf2-sourcemod
+            ${{ env.REGISTRY }}/melkortf/tf2-sourcemod/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -96,7 +142,7 @@ jobs:
         with:
           context: ./packages/tf2-sourcemod
           build-args: |
-            TF2_BASE_TAG=${{ needs.tf2-base.outputs.tf2-base-tag }}
+            TF2_BASE_TAG=${{ needs.tf2-base-i386.outputs.tf2-base-i386-tag }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
           push: true
@@ -114,7 +160,9 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/melkortf/tf2-mge
+          images: |
+            ${{ env.REGISTRY }}/melkortf/tf2-mge
+            ${{ env.REGISTRY }}/melkortf/tf2-mge/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -155,7 +203,9 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/melkortf/tf2-competitive
+          images: |
+            ${{ env.REGISTRY }}/melkortf/tf2-competitive
+            ${{ env.REGISTRY }}/melkortf/tf2-competitive/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -196,7 +246,9 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/melkortf/tf2-dm
+          images: |
+            ${{ env.REGISTRY }}/melkortf/tf2-dm
+            ${{ env.REGISTRY }}/melkortf/tf2-dm/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
