@@ -1,5 +1,13 @@
 
 
+# [3.3.0](https://github.com/melkortf/tf2-servers/compare/3.2.11...3.3.0) (2024-07-24)
+
+
+### Features
+
+* **tf2-base:** add 64-bit image ([#158](https://github.com/melkortf/tf2-servers/issues/158)) ([7a440c6](https://github.com/melkortf/tf2-servers/commit/7a440c6570253fe2de8bb8e7e71aee4d3d5341db))
+* **tf2-base:** add support for server tokens ([#156](https://github.com/melkortf/tf2-servers/issues/156)) ([624bb73](https://github.com/melkortf/tf2-servers/commit/624bb73fd9fe049da083b81347f92b5f2ff16b23))
+
 ## [3.2.11](https://github.com/melkortf/tf2-servers/compare/3.2.10...3.2.11) (2024-07-22)
 
 
