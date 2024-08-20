@@ -7,8 +7,9 @@ on:
         type: choice
         required: true
         options:
-        - etf2l_configs
-      
+          - etf2l_configs
+          - f2_sourcemod_plugins
+
       version:
         type: string
         required: true
@@ -20,7 +21,7 @@ jobs:
     permissions:
       contents: write
       pull-requests: write
-    
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -29,12 +30,15 @@ jobs:
         run: |
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git config --global user.name 'github-actions[bot]'
-      
+
       - name: Replace version string
         run: |
           case ${{ inputs.package }} in
             etf2l_configs)
               sed -i 's/ETF2L_CONFIGS_VERSION=.*/ETF2L_CONFIGS_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
+              ;;
+            f2_sourcemod_plugins)
+              sed -i 's/F2_SOURCEMOD_PLUGINS_VERSION=.*/F2_SOURCEMOD_PLUGINS_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
               ;;
             *)
               echo "invalid package"
@@ -52,17 +56,27 @@ jobs:
               echo "package_url=${ETF2L_CONFIGS_URL}" >> "$GITHUB_ENV"
               echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
               ;;
+            f2_sourcemod_plugins)
+              F2_SOURCEMOD_PLUGINS_URL=$(grep -r "ARG F2_SOURCEMOD_PLUGINS" packages/tf2-competitive/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $F2_SOURCEMOD_PLUGINS_URL; })
+              MD5SUM=$(wget -O - "$F2_SOURCEMOD_PLUGINS_URL" | tee file | md5sum | awk '{print $1}' && rm file)
+              sed -i -E 's/^([0-9a-f]+)(\s+)(f2-sourcemod-plugins.zip)$/'"$MD5SUM"'\2\3/g' packages/tf2-competitive/checksum.md5
+              echo "package_url=${F2_SOURCEMOD_PLUGINS_URL}" >> "$GITHUB_ENV"
+              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
+              ;;
             *)
               echo "invalid package"
               exit 1
               ;;
           esac
-      
+
       - name: Generate human-friendly package name
         run: |
           case ${{ inputs.package }} in
             etf2l_configs)
               echo "package_name=ETF2L.org gameserver configs" >> "$GITHUB_ENV"
+              ;;
+            f2_sourcemod_plugins)
+              echo "package_name=F2's SourceMod plugins" >> "$GITHUB_ENV"
               ;;
             *)
               echo "invalid package"
@@ -81,4 +95,3 @@ jobs:
           branch: update-${{ inputs.package }}-${{ inputs.version }}
           delete-branch: true
           reviewers: garrappachc
-          
