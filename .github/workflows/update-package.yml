@@ -9,6 +9,7 @@ on:
         options:
           - etf2l_configs
           - f2_sourcemod_plugins
+          - tf2-comp-fixes
 
       version:
         type: string
@@ -40,6 +41,9 @@ jobs:
             f2_sourcemod_plugins)
               sed -i 's/F2_SOURCEMOD_PLUGINS_VERSION=.*/F2_SOURCEMOD_PLUGINS_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
               ;;
+            tf2-comp-fixes)
+              sed -i 's/COMP_FIXES_PLUGIN_VERSION=.*/COMP_FIXES_PLUGIN_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
+              ;;
             *)
               echo "invalid package"
               exit 1
@@ -63,6 +67,13 @@ jobs:
               echo "package_url=${F2_SOURCEMOD_PLUGINS_URL}" >> "$GITHUB_ENV"
               echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
               ;;
+            tf2-comp-fixes)
+              COMP_FIXES_PLUGIN_URL=$(grep -r "ARG COMP_FIXES_PLUGIN" packages/tf2-competitive/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $COMP_FIXES_PLUGIN_URL; })
+              MD5SUM=$(wget -O - "$COMP_FIXES_PLUGIN_URL" | tee file | md5sum | awk '{print $1}' && rm file)
+              sed -i -E 's/^([0-9a-f]+)(\s+)(tf2-comp-fixes.zip)$/'"$MD5SUM"'\2\3/g' packages/tf2-competitive/checksum.md5
+              echo "package_url=${COMP_FIXES_PLUGIN_URL}" >> "$GITHUB_ENV"
+              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
+              ;;
             *)
               echo "invalid package"
               exit 1
@@ -77,6 +88,9 @@ jobs:
               ;;
             f2_sourcemod_plugins)
               echo "package_name=F2's SourceMod plugins" >> "$GITHUB_ENV"
+              ;;
+            tf2-comp-fixes)
+              echo "package_name=TF2 Competitive Fixes" >> "$GITHUB_ENV"
               ;;
             *)
               echo "invalid package"
