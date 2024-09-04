@@ -1,5 +1,12 @@
 
 
+## [3.3.3](https://github.com/melkortf/tf2-servers/compare/3.3.2...3.3.3) (2024-09-04)
+
+
+### Bug Fixes
+
+* **deps:** update TF2 Competitive Fixes to version 1.16.16 ([#169](https://github.com/melkortf/tf2-servers/issues/169)) ([29726f1](https://github.com/melkortf/tf2-servers/commit/29726f199d561a2b6011bc6373be6606ace237fc))
+
 ## [3.3.2](https://github.com/melkortf/tf2-servers/compare/3.3.1...3.3.2) (2024-08-20)
 
 
