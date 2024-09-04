@@ -99,7 +99,7 @@ jobs:
           esac
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7
         with:
           commit-message: "fix(deps): update ${{ env.package_name }} to version ${{ inputs.version }}"
           title: "fix(deps): update ${{ env.package_name }} to version ${{ inputs.version }}"
