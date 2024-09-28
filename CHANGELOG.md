@@ -1,5 +1,13 @@
 
 
+## [3.3.5](https://github.com/melkortf/tf2-servers/compare/3.3.4...3.3.5) (2024-09-28)
+
+
+### Bug Fixes
+
+* **build:** add architecture specifiers ([#172](https://github.com/melkortf/tf2-servers/issues/172)) ([644e661](https://github.com/melkortf/tf2-servers/commit/644e66126ba108a7b8891067193c2c6166f9c90c))
+* **deps:** update TF2 Competitive Fixes to version 1.16.17 ([#173](https://github.com/melkortf/tf2-servers/issues/173)) ([b6924cc](https://github.com/melkortf/tf2-servers/commit/b6924cc15aae5c83225008ae9423345abfee6cf3))
+
 ## [3.3.4](https://github.com/melkortf/tf2-servers/compare/3.3.3...3.3.4) (2024-09-17)
 
 
