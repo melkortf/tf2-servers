@@ -1,5 +1,13 @@
 
 
+## [3.3.6](https://github.com/melkortf/tf2-servers/compare/3.3.5...3.3.6) (2024-09-30)
+
+
+### Bug Fixes
+
+* **deps:** update Metamod:Source to version 1.11.0-git1155 ([#178](https://github.com/melkortf/tf2-servers/issues/178)) ([8855989](https://github.com/melkortf/tf2-servers/commit/8855989da137195a4b64755bc8ad9e3eb01d4b6a))
+* **deps:** update SourceMod to version 1.11.0-git6968 ([#179](https://github.com/melkortf/tf2-servers/issues/179)) ([2cfa137](https://github.com/melkortf/tf2-servers/commit/2cfa137752292a1dd79abcc4395d019727c75bfb))
+
 ## [3.3.5](https://github.com/melkortf/tf2-servers/compare/3.3.4...3.3.5) (2024-09-28)
 
 
