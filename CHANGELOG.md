@@ -1,5 +1,13 @@
 
 
+# [3.4.0](https://github.com/melkortf/tf2-servers/compare/3.3.6...3.4.0) (2024-09-30)
+
+
+### Features
+
+* **tf2-sourcemod:** add amd64 image build ([#182](https://github.com/melkortf/tf2-servers/issues/182)) ([99bc5ab](https://github.com/melkortf/tf2-servers/commit/99bc5abf180d00e912623281cd2c6360c4c0dd77))
+* **tf2-sourcemod:** switch to metamod & sourcemod 1.12 branch ([#180](https://github.com/melkortf/tf2-servers/issues/180)) ([ffb8c1f](https://github.com/melkortf/tf2-servers/commit/ffb8c1f5a79680d947e41fe508ed457034a1bfcb))
+
 ## [3.3.6](https://github.com/melkortf/tf2-servers/compare/3.3.5...3.3.6) (2024-09-30)
 
 
