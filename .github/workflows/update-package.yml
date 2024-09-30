@@ -7,8 +7,8 @@ on:
         type: choice
         required: true
         options:
-          - metamod
-          - sourcemod
+          - metamod [build]
+          - sourcemod [build]
           - etf2l_configs
           - f2_sourcemod_plugins
           - tf2-comp-fixes
@@ -33,10 +33,10 @@ jobs:
         run: |
           case ${{ inputs.package }} in
             metamod)
-              sed -i 's/METAMOD_GIT_VERSION=.*/METAMOD_GIT_VERSION=${{ inputs.version }}/' packages/tf2-sourcemod/Dockerfile
+              sed -i 's/METAMOD_VERSION_BUILD=.*/METAMOD_VERSION_BUILD=${{ inputs.version }}/' packages/tf2-sourcemod/Dockerfile
               ;;
             sourcemod)
-              sed -i 's/SOURCEMOD_GIT_VERSION=.*/SOURCEMOD_GIT_VERSION=${{ inputs.version }}/' packages/tf2-sourcemod/Dockerfile
+              sed -i 's/SOURCEMOD_VERSION_BUILD=.*/SOURCEMOD_VERSION_BUILD=${{ inputs.version }}/' packages/tf2-sourcemod/Dockerfile
               ;;
             etf2l_configs)
               sed -i 's/ETF2L_CONFIGS_VERSION=.*/ETF2L_CONFIGS_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
