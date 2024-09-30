@@ -7,6 +7,8 @@ on:
         type: choice
         required: true
         options:
+          - metamod
+          - sourcemod
           - etf2l_configs
           - f2_sourcemod_plugins
           - tf2-comp-fixes
@@ -30,6 +32,12 @@ jobs:
       - name: Replace version string
         run: |
           case ${{ inputs.package }} in
+            metamod)
+              sed -i 's/METAMOD_VERSION=.*/METAMOD_VERSION=${{ inputs.version }}/' packages/tf2-sourcemod/Dockerfile
+              ;;
+            sourcemod)
+              sed -i 's/SOURCEMOD_VERSION=.*/SOURCEMOD_VERSION=${{ inputs.version }}/' packages/tf2-sourcemod/Dockerfile
+              ;;
             etf2l_configs)
               sed -i 's/ETF2L_CONFIGS_VERSION=.*/ETF2L_CONFIGS_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
               ;;
@@ -48,6 +56,24 @@ jobs:
       - name: Download new package version and replace its md5
         run: |
           case ${{ inputs.package }} in
+            metamod)
+              METAMOD_URL=$(grep -r "ARG METAMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $METAMOD_TARBALL_URL; })
+              MD5SUM=$(wget -O - "$METAMOD_URL" | tee file | md5sum | awk '{print $1}' && rm file)
+              METAMOD_TARBALL_FILE_NAME=$(grep -r "ARG METAMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $METAMOD_TARBALL_FILE_NAME; })
+              sed -i -E 's/^([0-9a-f]+)(\s+)(mmsource.*\.tar\.gz)$/'"$MD5SUM"'\2'"$METAMOD_TARBALL_FILE_NAME"'/g' packages/tf2-sourcemod/checksum.md5
+              echo "package_url=${METAMOD_URL}" >> "$GITHUB_ENV"
+              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
+              ;;
+            
+            sourcemod)
+              SOURCEMOD_URL=$(grep -r "ARG SOURCEMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $SOURCEMOD_TARBALL_URL; })
+              MD5SUM=$(wget -O - "$SOURCEMOD_URL" | tee file | md5sum | awk '{print $1}' && rm file)
+              SOURCEMOD_TARBALL_FILE_NAME=$(grep -r "ARG SOURCEMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $SOURCEMOD_TARBALL_FILE_NAME; })
+              sed -i -E 's/^([0-9a-f]+)(\s+)(sourcemod.*\.tar\.gz)$/'"$MD5SUM"'\2'"$SOURCEMOD_TARBALL_FILE_NAME"'/g' packages/tf2-sourcemod/checksum.md5
+              echo "package_url=${SOURCEMOD_URL}" >> "$GITHUB_ENV"
+              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
+              ;;
+
             etf2l_configs)
               ETF2L_CONFIGS_URL=$(grep -r "ARG ETF2L_CONFIGS" packages/tf2-competitive/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $ETF2L_CONFIGS_URL; })
               MD5SUM=$(wget -O - "$ETF2L_CONFIGS_URL" | tee file | md5sum | awk '{print $1}' && rm file)
@@ -78,6 +104,12 @@ jobs:
       - name: Generate human-friendly package name
         run: |
           case ${{ inputs.package }} in
+            metamod)
+              echo "package_name=Metamod:Source" >> "$GITHUB_ENV"
+              ;;
+            sourcemod)
+              echo "package_name=SourceMod" >> "$GITHUB_ENV"
+              ;;
             etf2l_configs)
               echo "package_name=ETF2L.org gameserver configs" >> "$GITHUB_ENV"
               ;;
