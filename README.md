@@ -85,9 +85,9 @@ The base image for all other images; pure TF2 server, without any add-ons and pl
 $ docker pull ghcr.io/melkortf/tf2-sourcemod
 ```
 
-| 32-bit                                                                  | 64-bit |
-| ----------------------------------------------------------------------- | ------ |
-| `ghcr.io/melkortf/tf2-sourcemod`, `ghcr.io/melkortf/tf2-sourcemod/i386` | -      |
+| 32-bit                                                                  | 64-bit                                 |
+| ----------------------------------------------------------------------- | -------------------------------------- |
+| `ghcr.io/melkortf/tf2-sourcemod`, `ghcr.io/melkortf/tf2-sourcemod/i386` | `ghcr.io/melkortf/tf2-sourcemod/amd64` |
 
 TF2 server with [Metamod:Source](https://www.sourcemm.net/) and [SourceMod](https://www.sourcemod.net/) installed.
 
