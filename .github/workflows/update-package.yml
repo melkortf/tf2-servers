@@ -7,8 +7,8 @@ on:
         type: choice
         required: true
         options:
-          - metamod [build]
-          - sourcemod [build]
+          - metamod
+          - sourcemod
           - etf2l_configs
           - f2_sourcemod_plugins
           - tf2-comp-fixes
@@ -124,7 +124,7 @@ jobs:
               exit 1
               ;;
           esac
-      
+
       - name: Generate real package version
         run: |
           case ${{ inputs.package }} in
