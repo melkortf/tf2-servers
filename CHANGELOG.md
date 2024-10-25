@@ -1,5 +1,12 @@
 
 
+## [3.4.5](https://github.com/melkortf/tf2-servers/compare/3.4.4...3.4.5) (2024-10-25)
+
+
+### Bug Fixes
+
+* **deps:** update SourceMod to version 1.12.0-git7164 ([#185](https://github.com/melkortf/tf2-servers/issues/185)) ([9fa5f2e](https://github.com/melkortf/tf2-servers/commit/9fa5f2e6517032c8c8294cca52f2bc22ba2e00df))
+
 ## [3.4.4](https://github.com/melkortf/tf2-servers/compare/3.4.3...3.4.4) (2024-10-25)
 
 ## [3.4.3](https://github.com/melkortf/tf2-servers/compare/3.4.2...3.4.3) (2024-10-20)
