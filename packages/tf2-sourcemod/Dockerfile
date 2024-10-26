@@ -1,8 +1,8 @@
 ARG REGISTRY=ghcr.io
 ARG TF2_BASE_TAG=latest
 ARG ARCH=i386
-FROM ${REGISTRY}/melkortf/tf2-base/${ARCH}:${TF2_BASE_TAG}
-LABEL maintainer="garrappachc@gmail.com"
+FROM ${REGISTRY}/latamgg/tf2-base/${ARCH}:${TF2_BASE_TAG}
+LABEL maintainer="contact@latamgg.com"
 
 COPY checksum.md5 .
 

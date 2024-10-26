@@ -1,7 +1,7 @@
 ARG REGISTRY=ghcr.io
 ARG TF2_SOURCEMOD_TAG=latest
-FROM ${REGISTRY}/melkortf/tf2-sourcemod/i386:${TF2_SOURCEMOD_TAG}
-LABEL maintainer="garrappachc@gmail.com"
+FROM ${REGISTRY}/latamgg/tf2-sourcemod/i386:${TF2_SOURCEMOD_TAG}
+LABEL maintainer="contact@latamgg.com"
 
 COPY checksum.md5 .
 
