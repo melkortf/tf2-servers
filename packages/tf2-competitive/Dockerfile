@@ -32,6 +32,10 @@ ARG RGL_CONFIGS_FILE_NAME=server-resources-updater.zip
 ARG RGL_CONFIGS_VERSION=v256
 ARG RGL_CONFIGS_URL=https://github.com/RGLgg/server-resources-updater/releases/download/${RGL_CONFIGS_VERSION}/${RGL_CONFIGS_FILE_NAME}
 
+ARG FBTF_CONFIGS_VERSION=23
+ARG FBTF_CONFIGS_FILE_NAME=fbtf_cfg_s${FBTF_CONFIGS_VERSION}.zip
+ARG FBTF_CONFIGS_URL=https://fbtf.tf/uploads/cfgs/fbtf_cfg_s${FBTF_CONFIGS_VERSION}.zip
+
 ARG DEMOS_TF_PLUGIN_FILE_NAME=demostf.smx
 ARG DEMOS_TF_PLUGIN_URL=https://github.com/demostf/plugin/raw/master/${DEMOS_TF_PLUGIN_FILE_NAME}
 
@@ -57,7 +61,7 @@ ARG TF2RUE_PLUGIN_URL=https://github.com/sapphonie/tf2rue/releases/download/${TF
 RUN \
   # download all the plugins
   wget -nv "${SOAP_DM_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${UPDATED_PAUSE_PLUGIN_URL}" "${NEOCURL_PLUGIN_URL}" \
-  "${ETF2L_CONFIGS_URL}" "${RGL_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
+  "${ETF2L_CONFIGS_URL}" "${RGL_CONFIGS_URL}" "${FBTF_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
   "${F2_SOURCEMOD_PLUGINS_URL}" "${TF2RUE_PLUGIN_URL}" "${MGEMOD_PLUGIN_URL}" \
   && wget -nv "${IMPROVED_MATCH_TIMER_PLUGIN_URL}" -O "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
   # verify md5 checksums
@@ -68,6 +72,7 @@ RUN \
   && unzip -q -o "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${NEOCURL_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod" \
   && unzip -q "${ETF2L_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
+  && unzip -q "${FBTF_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "cfg/*.cfg" && mv "cfg/"* "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/plugins/"{config_checker,rglqol}.smx && mv "addons/sourcemod/plugins/"* "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/scripting/"{config_checker,rglqol}.sp && mv "addons/sourcemod/scripting/"* "${SERVER_DIR}/tf/addons/sourcemod/scripting/" \
@@ -89,6 +94,7 @@ RUN \
   && rm "${MGEMOD_PLUGIN_FILE_NAME}" \
   && rm "${NEOCURL_PLUGIN_FILE_NAME}" \
   && rm "${ETF2L_CONFIGS_FILE_NAME}" \
+  && rm "${FBTF_CONFIGS_FILE_NAME}" \
   && rm -r "${RGL_CONFIGS_FILE_NAME}" "cfg" \
   && rm -r "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" "Improved-Match-Timer-main" \
   && rm "${F2_SOURCEMOD_PLUGINS_FILE_NAME}" "${TF2RUE_PLUGIN_FILE_NAME}" \
