@@ -72,7 +72,7 @@ RUN \
   && unzip -q -o "${UPDATED_PAUSE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/" \
   && unzip -q -o "${NEOCURL_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod" \
   && unzip -q "${ETF2L_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
-  && unzip -q "${FBTF_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
+  && unzip -q -j "${FBTF_CONFIGS_FILE_NAME}" -d "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "cfg/*.cfg" && mv "cfg/"* "${SERVER_DIR}/tf/cfg/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/plugins/"{config_checker,rglqol}.smx && mv "addons/sourcemod/plugins/"* "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
   && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/scripting/"{config_checker,rglqol}.sp && mv "addons/sourcemod/scripting/"* "${SERVER_DIR}/tf/addons/sourcemod/scripting/" \
