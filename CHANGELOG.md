@@ -1,5 +1,17 @@
 
 
+# [1.1.0](https://github.com/latamgg/TF2-Servers/compare/1.0.1...1.1.0) (2024-10-28)
+
+
+### Bug Fixes
+
+* correct flags added to unzip ([e59ebaa](https://github.com/latamgg/TF2-Servers/commit/e59ebaa9ae6724b78ca639de87fa0f10675b98d5))
+
+
+### Features
+
+* adding FBTF config files ([c6fccae](https://github.com/latamgg/TF2-Servers/commit/c6fccaece00ebcdf5850a87c8dbdaedc9c3bdb0f))
+
 ## [1.0.1](https://github.com/latamgg/TF2-Servers/compare/1.0.0...1.0.1) (2024-10-26)
 
 # 1.0.0 (2024-10-26)
