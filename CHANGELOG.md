@@ -1,5 +1,7 @@
 
 
+## [1.1.1](https://github.com/latamgg/TF2-Servers/compare/1.1.0...1.1.1) (2024-11-05)
+
 # [1.1.0](https://github.com/latamgg/TF2-Servers/compare/1.0.1...1.1.0) (2024-10-28)
 
 
