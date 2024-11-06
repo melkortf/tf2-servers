@@ -1,5 +1,12 @@
 
 
+# [3.5.0](https://github.com/melkortf/tf2-servers/compare/3.4.5...3.5.0) (2024-11-06)
+
+
+### Features
+
+* **tf2-competitive:** add FBTF.tf config files ([#187](https://github.com/melkortf/tf2-servers/issues/187)) ([12a13cc](https://github.com/melkortf/tf2-servers/commit/12a13cc01075cef878a3269c8800dcc1cc57d38b))
+
 ## [3.4.5](https://github.com/melkortf/tf2-servers/compare/3.4.4...3.4.5) (2024-10-25)
 
 
