@@ -17,7 +17,7 @@ ARG UPDATED_PAUSE_PLUGIN_FILE_NAME=updated-pause-plugin.zip
 ARG UPDATED_PAUSE_PLUGIN_URL=https://github.com/l-Aad-l/updated-pause-plugin/releases/download/v1.4.2/${UPDATED_PAUSE_PLUGIN_FILE_NAME}
 
 ARG MGEMOD_PLUGIN_FILE_NAME=mge.zip
-ARG MGEMOD_PLUGIN_VERSION=v3.0.3
+ARG MGEMOD_PLUGIN_VERSION=v3.0.7
 ARG MGEMOD_PLUGIN_URL=https://github.com/sapphonie/MGEMod/releases/download/${MGEMOD_PLUGIN_VERSION}/mge.zip
 
 ARG NEOCURL_PLUGIN_FILE_NAME=sm-neocurl-repack.zip
