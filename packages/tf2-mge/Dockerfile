@@ -6,7 +6,7 @@ LABEL maintainer="garrappachc@gmail.com"
 COPY checksum.md5 .
 
 ARG MGEMOD_PLUGIN_FILE_NAME=mge.zip
-ARG MGEMOD_PLUGIN_VERSION=v3.0.3
+ARG MGEMOD_PLUGIN_VERSION=v3.0.7
 ARG MGEMOD_PLUGIN_URL=https://github.com/sapphonie/MGEMod/releases/download/${MGEMOD_PLUGIN_VERSION}/mge.zip
 
 RUN rm "${SERVER_DIR}/tf/addons/sourcemod/plugins/"{funcommands,funvotes}.smx
