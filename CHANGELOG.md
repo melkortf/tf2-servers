@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.5.6](https://github.com/melkortf/tf2-servers/compare/3.5.5...3.5.6) (2025-01-24)
+
+
+### Bug Fixes
+
+* **deps:** update F2's SourceMod plugins to version 20241116-1731776878043 ([#191](https://github.com/melkortf/tf2-servers/issues/191)) ([9350ac7](https://github.com/melkortf/tf2-servers/commit/9350ac7984a219cf6bc42e701ad5ecaabeae2ed2))
+* **tf2-dm:** update tf2rue to version 0.0.11 ([#190](https://github.com/melkortf/tf2-servers/issues/190)) ([34f48de](https://github.com/melkortf/tf2-servers/commit/34f48de20f0ec767c8c052f592220ea596728cc9))
+
 ## [3.5.5](https://github.com/melkortf/tf2-servers/compare/3.5.4...3.5.5) (2024-12-28)
 
 ## [3.5.4](https://github.com/melkortf/tf2-servers/compare/3.5.3...3.5.4) (2024-12-20)
