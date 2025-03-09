@@ -1,5 +1,7 @@
 # Changelog
 
+## [3.5.9](https://github.com/melkortf/tf2-servers/compare/3.5.8...3.5.9) (2025-03-09)
+
 ## [3.5.8](https://github.com/melkortf/tf2-servers/compare/3.5.7...3.5.8) (2025-02-23)
 
 
