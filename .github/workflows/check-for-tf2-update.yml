@@ -1,4 +1,4 @@
-name: Check for TF2 Updates
+name: Check for TF2 update
 
 on:
   schedule:
@@ -9,13 +9,12 @@ permissions:
   contents: write
 
 jobs:
-  check_update:
+  check_version:
     runs-on: ubuntu-latest
     outputs:
       new_update_detected: ${{ steps.check.outputs.new_update_detected }}
-      update_gid: ${{ steps.check.outputs.update_gid }}
-      update_title: ${{ steps.check.outputs.update_title }}
-      update_url: ${{ steps.check.outputs.update_url }}
+      new_version: ${{ steps.check.outputs.new_version }}
+      old_version: ${{ steps.get_last_version.outputs.last_version }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -23,118 +22,128 @@ jobs:
       - name: Define state file path
         id: paths
         run: |
-          STATE_DIR=".github/tf2_state"
-          STATE_FILE="$STATE_DIR/last_update.gid"
+          STATE_DIR=".github/tf2-state"
+          STATE_FILE="$STATE_DIR/latest-version"
           echo "STATE_DIR=$STATE_DIR" >> $GITHUB_OUTPUT
           echo "STATE_FILE=$STATE_FILE" >> $GITHUB_OUTPUT
 
-      - name: Create State Directory if needed
-        run: mkdir -p ${{ steps.paths.outputs.STATE_DIR }}
-
-      - name: Get last processed update GID
-        id: get_last_id
+      - name: Get last known latest version
+        id: get_last_version
         run: |
-          # Default to 0 if file doesn't exist or is empty
-          last_id=$(cat "${{ steps.paths.outputs.STATE_FILE }}" 2>/dev/null || echo "0")
-          if [[ -z "$last_id" ]]; then
-            last_id="0"
+          STATE_FILE_PATH="${{ steps.paths.outputs.STATE_FILE }}"
+          last_version=$(cat "$STATE_FILE_PATH")
+          # Add check to ensure the file wasn't empty
+          if [[ -z "$last_version" ]]; then
+             echo "::error::State file '$STATE_FILE_PATH' exists but is empty. Please populate it with a starting version (e.g., '0')."
+             exit 1
           fi
-          echo "last_id=$last_id" >> $GITHUB_OUTPUT
+          echo "last_version=$last_version" >> $GITHUB_OUTPUT
+          echo "Last known version: $last_version"
 
-      - name: Fetch latest TF2 news from Steam API
-        id: fetch
+      - name: Check current version via Steam API
+        id: api_check
+        env:
+          LAST_VERSION: ${{ steps.get_last_version.outputs.last_version }}
         run: |
-          response=$(curl -fs --connect-timeout 10 --max-time 20 "https://api.steampowered.com/ISteamNews/GetNewsForApp/v2/?appid=440&count=5&format=json")
+          echo "Checking if version $LAST_VERSION is up-to-date..."
+          api_url="https://api.steampowered.com/ISteamApps/UpToDateCheck/v1/?appid=440&version=${LAST_VERSION}&format=json"
+
+          # Use -f to fail on server errors, -s for silent, add timeout
+          response=$(curl -fs --connect-timeout 10 --max-time 20 "$api_url")
           curl_exit_code=$?
 
+          # Check curl exit code
           if [[ $curl_exit_code -ne 0 ]]; then
-             echo "::error::curl command failed with exit code $curl_exit_code. Could not fetch data from Steam API."
+             echo "::error::curl command failed with exit code $curl_exit_code. Could not fetch data from Steam API ($api_url)."
              exit 1
           fi
 
+          # Check if response looks like valid JSON (basic check)
           if [[ ! "$response" =~ ^\{ ]]; then
              echo "::error::Steam API response does not look like valid JSON. Response received:"
-             echo "$response" # Log the potentially problematic HTML response
+             echo "$response"
              exit 1
           fi
 
-          if ! jq -e '.appnews.newsitems' <<< "$response" > /dev/null; then
-            echo "::error::Steam API JSON response is missing expected '.appnews.newsitems'. Response was:"
-            echo "$response" # Log the problematic JSON response
+          # Check if the expected structure exists using jq
+          if ! jq -e '.response.success' <<< "$response" > /dev/null; then
+            echo "::error::Steam API JSON response is missing expected '.response.success'. Response was:"
+            echo "$response"
             exit 1
           fi
 
+          # If all checks pass, output the data
+          echo "Successfully fetched and validated API response."
           echo "response_data<<EOF" >> $GITHUB_OUTPUT
           echo "$response" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Check for new update
+      - name: Evaluate API response
         id: check
         env:
-          JSON_DATA: ${{ steps.fetch.outputs.response_data }}
+          JSON_RESPONSE: ${{ steps.api_check.outputs.response_data }}
+          LAST_VERSION: ${{ steps.get_last_version.outputs.last_version }}
         run: |
-          last_processed_gid="${{ steps.get_last_id.outputs.last_id }}"
-          echo "Last processed Valve update GID: $last_processed_gid"
+          # Default outputs
+          echo "new_update_detected=false" >> $GITHUB_OUTPUT
+          echo "new_version=" >> $GITHUB_OUTPUT
+          echo "needs_commit=false" >> $GITHUB_OUTPUT # Default commit to false
 
-          if [[ -z "$JSON_DATA" ]]; then
-             echo "::error::JSON_DATA environment variable is empty. Cannot process."
-             exit 1
+          success=$(jq -r '.response.success' <<< "$JSON_RESPONSE")
+          if [[ "$success" != "true" ]]; then
+             echo "::warning::Steam API reported success=false."
+             jq '.' <<< "$JSON_RESPONSE" # Log the full response for debugging
+             exit 0 # Exit successfully, no detectable update
           fi
 
-          latest_valve_update=$(printf '%s' "$JSON_DATA" | jq -c '.appnews.newsitems | map(select(.title == "Team Fortress 2 Update Released" and .author == "Valve")) | sort_by(.date) | .[-1]')
-          jq_exit_code=$?
+          up_to_date=$(jq -r '.response.up_to_date' <<< "$JSON_RESPONSE")
+          required_version=$(jq -r '.response.required_version // empty' <<< "$JSON_RESPONSE")
 
-          if [[ $jq_exit_code -ne 0 ]]; then
-             echo "::error::jq command failed with exit code $jq_exit_code"
-             echo "${JSON_DATA:0:500}..."
-             exit 1
-          fi
+          echo "API Response: up_to_date=$up_to_date, required_version=$required_version"
 
-          # Check if an update was found (jq outputs 'null' if empty array or explicit null)
-          if [[ -z "$latest_valve_update" || "$latest_valve_update" == "null" ]]; then
-            echo "No new update post by 'Valve' found matching criteria in the latest news items."
-            echo "new_update_detected=false" >> $GITHUB_OUTPUT
-            exit 0 # Exit successfully, no update found
-          fi
+          if [[ "$up_to_date" == "true" ]]; then
+             echo "Version $LAST_VERSION is still the latest version. No update detected."
+             # No need to check/update state file here if version hasn't changed
+             exit 0
+          elif [[ "$up_to_date" == "false" ]]; then
+             echo "Version $LAST_VERSION is outdated."
+             if [[ -z "$required_version" ]]; then
+                echo "::error::API reports outdated, but required_version is missing from the response!"
+                jq '.' <<< "$JSON_RESPONSE"
+                exit 1
+             fi
 
-          latest_gid=$(printf '%s' "$latest_valve_update" | jq -r '.gid')
-          latest_title=$(printf '%s' "$latest_valve_update" | jq -r '.title')
-          latest_url=$(printf '%s' "$latest_valve_update" | jq -r '.url')
-
-          if [[ -z "$latest_gid" || "$latest_gid" == "null" ]]; then
-            echo "::error::Failed to extract 'gid' from the filtered update object."
-            echo "Filtered update object: $latest_valve_update"
-            exit 1
-          fi
-
-          echo "Latest 'Valve' update found GID: $latest_gid"
-          echo "Title: $latest_title"
-
-          # Compare with the last processed GID
-          if [[ "$latest_gid" != "$last_processed_gid" ]]; then
-            echo "New TF2 update detected! GID: $latest_gid"
-            echo "new_update_detected=true" >> $GITHUB_OUTPUT
-            echo "update_gid=$latest_gid" >> $GITHUB_OUTPUT
-            echo "update_title=$latest_title" >> $GITHUB_OUTPUT
-            echo "update_url=$latest_url" >> $GITHUB_OUTPUT
-            echo "$latest_gid" > "${{ steps.paths.outputs.STATE_FILE }}"
+             if [[ "$required_version" == "$LAST_VERSION" ]]; then
+                echo "::warning::API reports outdated, but required_version ($required_version) matches last known version ($LAST_VERSION). Ignoring."
+             else
+                echo "New version detected: $required_version"
+                echo "new_update_detected=true" >> $GITHUB_OUTPUT
+                echo "new_version=$required_version" >> $GITHUB_OUTPUT
+                # Store the new version ID for the next run
+                echo "$required_version" > "${{ steps.paths.outputs.STATE_FILE }}"
+                # Signal that a commit is needed because we updated the file
+                echo "needs_commit=true" >> $GITHUB_OUTPUT
+             fi
           else
-            echo "Latest 'Valve' update (GID: $latest_gid) already processed."
-            echo "new_update_detected=false" >> $GITHUB_OUTPUT
+             echo "::error::Unexpected value for 'up_to_date' field: $up_to_date"
+             jq '.' <<< "$JSON_RESPONSE"
+             exit 1
           fi
 
-      - name: Commit and push updated GID file
-        if: steps.check.outputs.new_update_detected == 'true'
+      - name: Commit and push updated version file
+        if: steps.check.outputs.needs_commit == 'true'
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
           git add "${{ steps.paths.outputs.STATE_FILE }}"
-          # Check if there are changes to commit
+
           if git diff --staged --quiet; then
-            echo "State file GID is already up-to-date. No commit needed."
+            echo "Commit was signaled, but state file content hasn't changed unexpectedly. No commit needed."
           else
             echo "Committing updated state file..."
-            git commit -m "chore: update last processed TF2 update GID to ${{ steps.check.outputs.update_gid }}"
+            commit_msg="ci(tf2): update tracked TF2 version to ${{ steps.check.outputs.new_version }}"
+            git commit -m "$commit_msg"
+            # Retry push
             retry_count=0
             max_retries=3
             until git push || [ $retry_count -eq $max_retries ]; do
@@ -153,24 +162,22 @@ jobs:
         if: steps.check.outputs.new_update_detected == 'true'
         env:
           GITHUB_PAT: ${{ secrets.ACTIONS_PAT }}
-          UPDATE_GID: ${{ steps.check.outputs.update_gid }}
-          UPDATE_TITLE: ${{ steps.check.outputs.update_title }}
-          UPDATE_URL: ${{ steps.check.outputs.update_url }}
+          NEW_VERSION: ${{ steps.check.outputs.new_version }}
+          OLD_VERSION: ${{ steps.get_last_version.outputs.last_version }}
         run: |
-          echo "Triggering release.yml workflow..."
+          echo "Triggering release.yml workflow for new version $NEW_VERSION..."
+          # Prepare JSON payload
+          json_payload=$(jq -n --arg new_ver "$NEW_VERSION" --arg old_ver "$OLD_VERSION" \
+            '{event_type: "tf2-update-released", client_payload: {new_version: $new_ver, old_version: $old_ver}}')
+
+          echo "Dispatch payload: $json_payload"
+
           response_code=$(curl -s -o /dev/null -w "%{http_code}" -L -X POST \
             -H "Accept: application/vnd.github+json" \
             -H "Authorization: Bearer $GITHUB_PAT" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             "https://api.github.com/repos/${{ github.repository }}/dispatches" \
-            -d '{
-                  "event_type": "tf2-update-released",
-                  "client_payload": {
-                    "gid": "'"$UPDATE_GID"'",
-                    "title": "'"$UPDATE_TITLE"'",
-                    "url": "'"$UPDATE_URL"'"
-                  }
-                }')
+            -d "$json_payload")
 
           echo "Dispatch API response code: $response_code"
           if [[ "$response_code" -lt 200 || "$response_code" -ge 300 ]]; then
