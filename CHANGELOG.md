@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.5.10](https://github.com/melkortf/tf2-servers/compare/3.5.9...3.5.10) (2025-04-30)
+
+
+### Bug Fixes
+
+* **deps:** update Metamod:Source to version 1.12.0-git1219 ([#201](https://github.com/melkortf/tf2-servers/issues/201)) ([4186b03](https://github.com/melkortf/tf2-servers/commit/4186b03bda1c255c115e4505b595de7dbcde2f4b))
+* **deps:** update SourceMod to version 1.12.0-git7198 ([#203](https://github.com/melkortf/tf2-servers/issues/203)) ([3083a38](https://github.com/melkortf/tf2-servers/commit/3083a3870f82bc5e1e80621c8050f84338dce05a))
+
 ## [3.5.9](https://github.com/melkortf/tf2-servers/compare/3.5.8...3.5.9) (2025-03-09)
 
 ## [3.5.8](https://github.com/melkortf/tf2-servers/compare/3.5.7...3.5.8) (2025-02-23)
