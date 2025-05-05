@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.13](https://github.com/melkortf/tf2-servers/compare/3.5.12...3.5.13) (2025-05-05)
+
+
+### Reverts
+
+* bring back fbtf.tf configs ([76c7cff](https://github.com/melkortf/tf2-servers/commit/76c7cff905276dbe634fdfd11c35dbc56cd15889))
+
 ## [3.5.12](https://github.com/melkortf/tf2-servers/compare/3.5.11...3.5.12) (2025-05-05)
 
 
