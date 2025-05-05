@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.5.12](https://github.com/melkortf/tf2-servers/compare/3.5.11...3.5.12) (2025-05-05)
+
+
+### Bug Fixes
+
+* **deps:** update ETF2L.org gameserver configs to version 1.0.20 ([#206](https://github.com/melkortf/tf2-servers/issues/206)) ([bd0040e](https://github.com/melkortf/tf2-servers/commit/bd0040e098d53c876892848c4d7f3ebf6ec28c5f))
+* **deps:** update F2's SourceMod plugins to version 20250321-1742561972181 ([#205](https://github.com/melkortf/tf2-servers/issues/205)) ([36eb0e3](https://github.com/melkortf/tf2-servers/commit/36eb0e332bbd2173a880ba0b39397eb94d0301a6))
+* **deps:** update SourceMod to version 1.12.0-git7200 ([#207](https://github.com/melkortf/tf2-servers/issues/207)) ([61ad40e](https://github.com/melkortf/tf2-servers/commit/61ad40e2e05b64f32ee94a9b304d354fbdfa4890))
+* **deps:** update TF2 Competitive Fixes to version 1.16.19 ([#204](https://github.com/melkortf/tf2-servers/issues/204)) ([8e883b5](https://github.com/melkortf/tf2-servers/commit/8e883b5e04e95cb7c39b734d0b884b4469e2bf8e))
+* **tf2-competitive:** remove fbtf.tf configs ([#210](https://github.com/melkortf/tf2-servers/issues/210)) ([ce080b5](https://github.com/melkortf/tf2-servers/commit/ce080b59d584820d38a5f81a417fa46e464ef27c))
+
 ## [3.5.11](https://github.com/melkortf/tf2-servers/compare/3.5.10...3.5.11) (2025-05-01)
 
 ## [3.5.10](https://github.com/melkortf/tf2-servers/compare/3.5.9...3.5.10) (2025-04-30)
