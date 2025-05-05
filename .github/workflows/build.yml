@@ -14,6 +14,7 @@ on:
 
 env:
   REGISTRY: ghcr.io
+  OWNER: ${{ github.repository_owner }}
 
 permissions:
   packages: write
@@ -33,8 +34,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.REGISTRY }}/melkortf/tf2-base
-            ${{ env.REGISTRY }}/melkortf/tf2-base/i386
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-base
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-base/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -75,7 +76,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v5
         with:
-          images: ${{ env.REGISTRY }}/melkortf/tf2-base/amd64
+          images: ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-base/amd64
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -118,8 +119,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.REGISTRY }}/melkortf/tf2-sourcemod
-            ${{ env.REGISTRY }}/melkortf/tf2-sourcemod/i386
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-sourcemod
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-sourcemod/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -148,7 +149,7 @@ jobs:
           labels: ${{ steps.docker_meta.outputs.labels }}
           push: true
           platforms: linux/amd64
-  
+
   tf2-sourcemod-amd64:
     runs-on: ubuntu-latest
     needs: tf2-base-amd64
@@ -164,7 +165,7 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.REGISTRY }}/melkortf/tf2-sourcemod/amd64
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-sourcemod/amd64
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -207,8 +208,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.REGISTRY }}/melkortf/tf2-mge
-            ${{ env.REGISTRY }}/melkortf/tf2-mge/i386
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-mge
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-mge/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -250,8 +251,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.REGISTRY }}/melkortf/tf2-competitive
-            ${{ env.REGISTRY }}/melkortf/tf2-competitive/i386
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-competitive
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-competitive/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -293,8 +294,8 @@ jobs:
         uses: docker/metadata-action@v5
         with:
           images: |
-            ${{ env.REGISTRY }}/melkortf/tf2-dm
-            ${{ env.REGISTRY }}/melkortf/tf2-dm/i386
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-dm
+            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-dm/i386
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
