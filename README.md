@@ -27,7 +27,7 @@ $ docker run \
   ghcr.io/melkortf/tf2-base
 ```
 
-### Concerning server.cfg
+### Handling server.cfg
 
 Each TF2 image has its own `server.cfg.template` file that is used to generate `server.cfg`. The docker container
 uses `envsubst` to replace environment variables in the template file.
@@ -49,7 +49,43 @@ will generate the following `server.cfg`:
 rcon_password "123456"
 ```
 
-There are many more configuration options, you will find them all below.
+There are many more configuration options, you will find them all listed below.
+
+### Maps
+
+In order to make the image as small as possible, the only map shipped is _cp_badlands_. This also lets you maintain only one volume with all the maps and share it between all the containers. Just mount `/home/tf2/server/tf/maps` to your local directory that contains all the maps you need:
+
+```
+$ docker run -v "/your/maps/directory:/home/tf2/server/tf/maps" --network=host -d ghcr.io/melkortf/tf2-base
+```
+
+### Network
+
+The `docker run` examples in this readme run on the `host` network for best performance. Read official documentation on the host network driver [here](https://docs.docker.com/engine/network/drivers/host/).
+
+### Command line arguments
+
+The container entrypoint ensures the safe parameters are used to launch the TF2 server. These are, among others:
+
+- `-steamcmd_script` path,
+- `-ip`, `-port`, `+clientport`, `-steamport` and `+tv_port` options,
+- `+sv_setsteamaccount` env variable.
+
+These are part of image internal scripts and cannot be overridden by other means than the environment variables. Other values, however, can be easily configured however desired. The default command line for the `tf2-base` image is
+
+```
++sv_pure 1 +map cp_badlands +maxplayers 24
+```
+
+You can override these by simply appending command line to the `docker run` invocation, for example:
+
+```
+$ docker run -v "maps:/home/tf2/server/tf/maps" --network=host ghcr.io/melkortf/tf2-base +sv_pure 1 +map pl_badwater +maxplayers 24
+```
+
+This will start the server on pl_badwater.
+
+### Images
 
 #### tf2-base
 
@@ -150,20 +186,3 @@ $ docker pull ghcr.io/melkortf/tf2-mge
 | `ghcr.io/melkortf/tf2-mge`, `ghcr.io/melkortf/tf2-mge/i386` | -      |
 
 TF2 dedicated server for MGE 1v1 training mod.
-
-### Maps
-
-In order to make the image as small as possible, the only map shipped with the image is _cp_badlands_. This has also the advantage of letting you maintain only one directory
-with all the maps and share it between all the containers. Just mount `/home/tf2/server/tf/maps` to your local directory that contains all the maps you need:
-
-```
-$ docker run -v "/usr/local/data/tf2/maps:/home/tf2/server/tf/maps" --network=host -d ghcr.io/melkortf/tf2-base
-```
-
-If you want to have all the maps available on [serveme.tf's FastDL](https://dl.serveme.tf/maps/), just type the following command:
-
-```
-$ wget -r --no-parent --accept bsp -l1 --cut-dirs=2 --no-host-directories -nc https://dl.serveme.tf/maps/
-```
-
-It will download every single map to the current directory.
