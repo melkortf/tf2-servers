@@ -71,7 +71,7 @@ The container entrypoint ensures the safe parameters are used to launch the TF2 
 - `-ip`, `-port`, `+clientport`, `-steamport` and `+tv_port` options,
 - `+sv_setsteamaccount` env variable.
 
-These are part of image internal scripts and cannot be overridden by other means than the environment variables. Other values, however, can be easily configured however desired. The default command line for the `tf2-base` image is
+These are part of image internal scripts and cannot be overridden by other means than the environment variables. Other values, on the other hand, can be easily configured however desired. The default command line for the `tf2-base` image is
 
 ```
 +sv_pure 1 +map cp_badlands +maxplayers 24
