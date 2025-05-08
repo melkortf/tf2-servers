@@ -10,6 +10,8 @@ on:
       - "*.*.*"
     paths-ignore:
       - "**/*.md"
+      - ".vscode/**"
+      - "images/**"
   pull_request:
     branches:
       - "master"
