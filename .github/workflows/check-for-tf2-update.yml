@@ -141,7 +141,7 @@ jobs:
             echo "Commit was signaled, but state file content hasn't changed unexpectedly. No commit needed."
           else
             echo "Committing updated state file..."
-            commit_msg="ci(tf2): update tracked TF2 version to ${{ steps.check.outputs.new_version }}"
+            commit_msg="fix(tf2-base): update tracked TF2 version to ${{ steps.check.outputs.new_version }}"
             git commit -m "$commit_msg"
             # Retry push
             retry_count=0
