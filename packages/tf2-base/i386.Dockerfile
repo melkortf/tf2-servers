@@ -1,4 +1,4 @@
-FROM ubuntu:20.04 AS rcon-build
+FROM ubuntu:22.04 AS rcon-build
 WORKDIR /build
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -13,7 +13,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && make
 
 
-FROM steamcmd/steamcmd:ubuntu-20
+FROM steamcmd/steamcmd:ubuntu-22
 LABEL maintainer="garrappachc@gmail.com"
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -24,7 +24,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && add-apt-repository multiverse \
   && apt-get -y update \
   && apt-get install -y --no-install-recommends --no-install-suggests \
-  lib32gcc1 \
+  lib32gcc-s1 \
   lib32z1 \
   libncurses5:i386 \
   libbz2-1.0:i386 \
@@ -57,8 +57,8 @@ RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && steamcmd +runscript $HOME/tf2.txt \
   && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
   && rm maps_to_keep \
-  && mkdir $HOME/.steam/sdk32 \
-  && ln -s $HOME/.steam/steamcmd/linux32/steamclient.so $HOME/.steam/sdk32/
+  && mkdir -p $HOME/.steam \
+  && ln -s $HOME/.local/share/Steam/steamcmd/linux32 $HOME/.steam/sdk32
 
 COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
 COPY --from=rcon-build /build/rcon/build/rcon ${SERVER_DIR}/rcon
