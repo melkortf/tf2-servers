@@ -23,7 +23,7 @@ ARG SOURCEBANS_PLUGIN_FILE_NAME=sourcebans-pp-1.6.4.plugin-only.tar.gz
 ARG SOURCEBANS_PLUGIN_URL=https://github.com/sbpp/sourcebans-pp/releases/download/1.6.4/${SOURCEBANS_PLUGIN_FILE_NAME}
 
 ARG TF2RUE_PLUGIN_FILE_NAME=tf2rue.zip
-ARG TF2RUE_PLUGIN_VERSION=v0.0.11
+ARG TF2RUE_PLUGIN_VERSION=v0.0.12
 ARG TF2RUE_PLUGIN_URL=https://github.com/sapphonie/tf2rue/releases/download/${TF2RUE_PLUGIN_VERSION}/${TF2RUE_PLUGIN_FILE_NAME}
 
 RUN \
