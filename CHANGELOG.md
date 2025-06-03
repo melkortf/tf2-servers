@@ -1,5 +1,12 @@
 # Changelog
 
+# [3.6.0](https://github.com/melkortf/tf2-servers/compare/3.5.16...3.6.0) (2025-06-03)
+
+
+### Features
+
+* **tf2-base:** update base package to ubuntu-22 ([#219](https://github.com/melkortf/tf2-servers/issues/219)) ([cfc0e03](https://github.com/melkortf/tf2-servers/commit/cfc0e03d09a2d6f482a13cc3be2002bd3625f3f9))
+
 ## [3.5.16](https://github.com/melkortf/tf2-servers/compare/3.5.15...3.5.16) (2025-06-03)
 
 
