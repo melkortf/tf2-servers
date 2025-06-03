@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.5.16](https://github.com/melkortf/tf2-servers/compare/3.5.15...3.5.16) (2025-06-03)
+
+
+### Bug Fixes
+
+* **deps:** update tf2rue plugin to version 0.0.12 ([#220](https://github.com/melkortf/tf2-servers/issues/220)) ([948ec68](https://github.com/melkortf/tf2-servers/commit/948ec682f137ae7daa3256db329414ca8e0794e0))
+
 ## [3.5.15](https://github.com/melkortf/tf2-servers/compare/3.5.14...3.5.15) (2025-05-13)
 
 ## [3.5.14](https://github.com/melkortf/tf2-servers/compare/3.5.13...3.5.14) (2025-05-12)
