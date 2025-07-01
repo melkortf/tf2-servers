@@ -58,11 +58,15 @@ ARG TF2RUE_PLUGIN_FILE_NAME=tf2rue.zip
 ARG TF2RUE_PLUGIN_VERSION=v0.0.12
 ARG TF2RUE_PLUGIN_URL=https://github.com/sapphonie/tf2rue/releases/download/${TF2RUE_PLUGIN_VERSION}/${TF2RUE_PLUGIN_FILE_NAME}
 
+ARG SHOWSDR_PLUGIN_FILE_NAME=showsdr.zip
+ARG SHOWSDR_PLUGIN_VERSION=1.0.0
+ARG SHOWSDR_PLUGIN_URL=https://github.com/Full-Buff/sdr-plugin/releases/download/${SHOWSDR_PLUGIN_VERSION}/${SHOWSDR_PLUGIN_FILE_NAME}
+
 RUN \
   # download all the plugins
   wget -nv "${SOAP_DM_PLUGIN_URL}" "${COMP_FIXES_PLUGIN_URL}" "${UPDATED_PAUSE_PLUGIN_URL}" "${NEOCURL_PLUGIN_URL}" \
   "${ETF2L_CONFIGS_URL}" "${RGL_CONFIGS_URL}" "${FBTF_CONFIGS_URL}" "${DEMOS_TF_PLUGIN_URL}" "${SRCTV_PLUS_SO_URL}" "${SRCTV_PLUS_VDF_URL}" \
-  "${F2_SOURCEMOD_PLUGINS_URL}" "${TF2RUE_PLUGIN_URL}" "${MGEMOD_PLUGIN_URL}" \
+  "${F2_SOURCEMOD_PLUGINS_URL}" "${TF2RUE_PLUGIN_URL}" "${MGEMOD_PLUGIN_URL}" "${SHOWSDR_PLUGIN_URL}" \
   && wget -nv "${IMPROVED_MATCH_TIMER_PLUGIN_URL}" -O "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" \
   # verify md5 checksums
   && md5sum -c checksum.md5 \
@@ -87,6 +91,7 @@ RUN \
   && mv "${SRCTV_PLUS_VDF_FILE_NAME}" "${SERVER_DIR}/tf/addons/${SRCTV_PLUS_VDF_FILE_NAME}" \
   && unzip -q -j "${F2_SOURCEMOD_PLUGINS_FILE_NAME}" ${F2_ENABLED_PLUGINS} -d "${SERVER_DIR}/tf/addons/sourcemod/plugins/" \
   && unzip -q -n "${TF2RUE_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/" \
+  && unzip -q -n "${SHOWSDR_PLUGIN_FILE_NAME}" -d "${SERVER_DIR}/tf/addons/sourcemod/" \
   # cleanup
   && rm "${SOAP_DM_PLUGIN_FILE_NAME}" \
   && rm "${COMP_FIXES_PLUGIN_FILE_NAME}" \
@@ -98,6 +103,7 @@ RUN \
   && rm -r "${RGL_CONFIGS_FILE_NAME}" "cfg" \
   && rm -r "${IMPROVED_MATCH_TIMER_PLUGIN_FILE_NAME}" "Improved-Match-Timer-main" \
   && rm "${F2_SOURCEMOD_PLUGINS_FILE_NAME}" "${TF2RUE_PLUGIN_FILE_NAME}" \
+  && rm "${SHOWSDR_PLUGIN_FILE_NAME}" \
   && rm "checksum.md5" \
   # remove useless (and potentially harmful) plugins
   && rm "$SERVER_DIR/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx

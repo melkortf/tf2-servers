@@ -33,9 +33,17 @@ trap 'quit' SIGTERM
 
 auto_envsubst
 
+# enablefakeip switch
+if [ "$ENABLE_FAKE_IP" = "1" ]; then
+  FAKE_IP_FLAG="-enablefakeip"
+else
+  FAKE_IP_FLAG=""
+fi
+
 faketty $SERVER_DIR/$SRCDS_EXEC \
   -game tf \
   -secured \
+  $FAKE_IP_FLAG \
   -steam_dir ${HOME}/.steam/steamcmd \
   -steamcmd_script ${HOME}/tf2.txt \
   -autoupdate \
