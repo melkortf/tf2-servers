@@ -114,6 +114,7 @@ The base image for all other images; pure TF2 server, without any add-ons and pl
 | STV_TITLE            | A Team Fortress 2 server Source TV | `tv_title "${STV_TITLE}"`             | Title for the SourceTV spectator UI.                                                    |
 | STV_PASSWORD         |                                    | `tv_password "${STV_PASSWORD}"`       | SourceTV password.                                                                      |
 | DOWNLOAD_URL         | https://fastdl.serveme.tf/         | `sv_downloadurl "${DOWNLOAD_URL}"`    | Download URL for the [FastDL](https://developer.valvesoftware.com/wiki/Sv_downloadurl). |
+| ENABLE_FAKE_IP       | 0                                  | `-enablefakeip`                       | Enables/Disables [SDR](https://developer.valvesoftware.com/wiki/Steam_Datagram_Relay) by turning the `-enablefakeip` flag on or off, setting to 1 or 0 respectively. |
 
 #### tf2-sourcemod
 
@@ -157,6 +158,7 @@ TF2 server configured to be used in competitive matches. The following plugins, 
 - [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
 - [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
 - [fbtf.tf configs](https://fbtf.tf/)
+- [showsdr](https://github.com/Ooglely/sdr-plugin)
 
 | Environment variable | Default value | Used in                                | Description                                                           |
 | -------------------- | ------------- | -------------------------------------- | --------------------------------------------------------------------- |
