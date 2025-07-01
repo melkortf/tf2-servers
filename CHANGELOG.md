@@ -1,5 +1,12 @@
 # Changelog
 
+# [3.7.0](https://github.com/melkortf/tf2-servers/compare/3.6.0...3.7.0) (2025-07-01)
+
+
+### Features
+
+* **tf2-competitive:** add SDR support and showsdr plugin ([#221](https://github.com/melkortf/tf2-servers/issues/221)) ([1839a97](https://github.com/melkortf/tf2-servers/commit/1839a97093929a162181710ae57f769d9ce9b8f3))
+
 # [3.6.0](https://github.com/melkortf/tf2-servers/compare/3.5.16...3.6.0) (2025-06-03)
 
 
