@@ -41,7 +41,7 @@ ARG NEOCURL_VERSION=v2.0.1-beta1
 ARG NEOCURL_URL=https://github.com/sapphonie/SM-neocurl-ext/releases/download/${NEOCURL_VERSION}/${NEOCURL_FILE_NAME}
 ARG NEOCURL_CHECKSUM=cddbef00ca5b4b2a14c35fd062fe18586fb42f68c6d6366bf74f5b72a5734e44
 ADD --checksum=sha256:${NEOCURL_CHECKSUM} ${NEOCURL_URL} .
-RUN unzip -q -o "${NEOCURL_FILE_NAME}" -d "${PLUGIN_INSTALL_DIR}/addons/sourcemod"
+RUN unzip -q -o "${NEOCURL_FILE_NAME}" -d "${PLUGIN_INSTALL_DIR}/addons/sourcemod/"
 
 ARG F2_SOURCEMOD_PLUGINS_FILE_NAME=f2-sourcemod-plugins.zip
 ARG F2_SOURCEMOD_PLUGINS_VERSION=20250321-1742561972181
@@ -76,8 +76,9 @@ RUN unzip -q "${RGL_CONFIGS_FILE_NAME}" \
   && cp "addons/sourcemod/plugins/"{config_checker,rglqol}.smx "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/" \
   && cp "addons/sourcemod/scripting/"{config_checker,rglqol}.sp "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/" \
   && mkdir "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/disabled" \
-  && cp "addons/sourcemod/plugins/disabled/"{p4sstime,tf2Halftime,roundtimer_override}.smx "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/disabled" \
-  && cp "addons/sourcemod/scripting/disabled/roundtimer_override.sp" "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/disabled"
+  && cp "addons/sourcemod/plugins/disabled/"{p4sstime,tf2Halftime,roundtimer_override}.smx "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/disabled/" \
+  && mkdir "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/disabled" \
+  && cp "addons/sourcemod/scripting/disabled/roundtimer_override.sp" "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/disabled/"
 
 ARG DEMOS_TF_FILE_NAME=demostf.smx
 ARG DEMOS_TF_URL=https://github.com/demostf/plugin/raw/master/${DEMOS_TF_FILE_NAME}
@@ -132,10 +133,10 @@ FROM ${REGISTRY}/melkortf/tf2-sourcemod/i386:${TF2_SOURCEMOD_TAG}
 LABEL maintainer="garrappachc@gmail.com"
 
 ARG PLUGIN_INSTALL_DIR=/download/tf
-COPY --from=plugins ${PLUGIN_INSTALL_DIR} "${SERVER_DIR}"
+COPY --from=plugins --chown=tf2 "${PLUGIN_INSTALL_DIR}/" "${SERVER_DIR}/tf/"
 
-# remove useless (and potentially harmful) plugins
-RUN rm "$SERVER_DIR/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx
+# disable useless (and potentially harmful) plugins
+RUN mv "${SERVER_DIR}/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx "${SERVER_DIR}/tf/addons/sourcemod/plugins/disabled/"
 
 ENV DEMOS_TF_APIKEY=
 ENV LOGS_TF_APIKEY=
