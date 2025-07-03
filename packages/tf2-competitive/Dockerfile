@@ -2,6 +2,7 @@ ARG REGISTRY=ghcr.io
 ARG TF2_SOURCEMOD_TAG=latest
 
 FROM ubuntu:22.04 AS plugins
+SHELL ["/bin/bash", "-c"]
 RUN export DEBIAN_FRONTEND=noninteractive \
   && export TZ=Etc/UTC \
   && apt-get -y update \
@@ -70,15 +71,13 @@ ARG RGL_CONFIGS_VERSION=v256
 ARG RGL_CONFIGS_URL=https://github.com/RGLgg/server-resources-updater/releases/download/${RGL_CONFIGS_VERSION}/${RGL_CONFIGS_FILE_NAME}
 ARG RGL_CONFIGS_CHECKSUM=c0730a631e1b27a1d19ff94cb5ef06693990c755e543f20d53ae8aa30d4b4ba4
 ADD --checksum=sha256:${RGL_CONFIGS_CHECKSUM} ${RGL_CONFIGS_URL} .
-RUN unzip -q "${RGL_CONFIGS_FILE_NAME}" "cfg/*.cfg" && mv "cfg/"* "${PLUGIN_INSTALL_DIR}/cfg/" \
-  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/plugins/"{config_checker,rglqol}.smx \
-  && mv "addons/sourcemod/plugins/"* "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/" \
-  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/scripting/"{config_checker,rglqol}.sp \
-  && mv "addons/sourcemod/scripting/"* "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/" \
-  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/plugins/disabled/"{p4sstime,tf2Halftime,roundtimer_override}.smx \
-  && mv "addons/sourcemod/plugins/disabled/"* "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/disabled" \
-  && unzip -q "${RGL_CONFIGS_FILE_NAME}" "addons/sourcemod/scripting/disabled/roundtimer_override.sp" \
-  && mv "addons/sourcemod/scripting/disabled/"* "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/disabled"
+RUN unzip -q "${RGL_CONFIGS_FILE_NAME}" \
+  && cp "cfg/"* "${PLUGIN_INSTALL_DIR}/cfg/" \
+  && cp "addons/sourcemod/plugins/"{config_checker,rglqol}.smx "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/" \
+  && cp "addons/sourcemod/scripting/"{config_checker,rglqol}.sp "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/" \
+  && mkdir "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/disabled" \
+  && cp "addons/sourcemod/plugins/disabled/"{p4sstime,tf2Halftime,roundtimer_override}.smx "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/disabled" \
+  && cp "addons/sourcemod/scripting/disabled/roundtimer_override.sp" "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/disabled"
 
 ARG DEMOS_TF_FILE_NAME=demostf.smx
 ARG DEMOS_TF_URL=https://github.com/demostf/plugin/raw/master/${DEMOS_TF_FILE_NAME}
