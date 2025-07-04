@@ -8,12 +8,11 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get -y update \
   && apt-get install -y --no-install-recommends --no-install-suggests \
   unzip \
-  tree \
   && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /download
-ARG PLUGIN_INSTALL_DIR=/download/tf
-RUN mkdir "${PLUGIN_INSTALL_DIR}"
+ARG PLUGIN_INSTALL_DIR=/server/tf
+RUN mkdir -p "${PLUGIN_INSTALL_DIR}"
 
 ARG SOAP_DM_FILE_NAME=soap.zip
 ARG SOAP_DM_VERSION=4.4.7
@@ -127,12 +126,10 @@ ARG SRCTV_PLUS_VDF_CHECKSUM=886287c911200c1f2f0effc232fd01740cc0913cd92723fdf27c
 ADD --checksum=sha256:${SRCTV_PLUS_VDF_CHECKSUM} ${SRCTV_PLUS_VDF_URL} .
 RUN cp "${SRCTV_PLUS_VDF_FILE_NAME}" "${PLUGIN_INSTALL_DIR}/addons/${SRCTV_PLUS_VDF_FILE_NAME}"
 
-RUN tree -a "${PLUGIN_INSTALL_DIR}"
-
 FROM ${REGISTRY}/melkortf/tf2-sourcemod/i386:${TF2_SOURCEMOD_TAG}
 LABEL maintainer="garrappachc@gmail.com"
 
-ARG PLUGIN_INSTALL_DIR=/download/tf
+ARG PLUGIN_INSTALL_DIR=/server/tf
 COPY --from=plugins --chown=tf2 "${PLUGIN_INSTALL_DIR}/" "${SERVER_DIR}/tf/"
 
 # disable useless (and potentially harmful) plugins
