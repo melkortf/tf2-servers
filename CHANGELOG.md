@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.7.1](https://github.com/melkortf/tf2-servers/compare/3.7.0...3.7.1) (2025-07-08)
+
+
+### Bug Fixes
+
+* **deps:** update SourceMod to version 1.12.0-git7210 ([#233](https://github.com/melkortf/tf2-servers/issues/233)) ([2b4e305](https://github.com/melkortf/tf2-servers/commit/2b4e3051e9aa216744f6bcf80432590b0a131b04))
+* **tf2-competitive:** remove unity configs ([#224](https://github.com/melkortf/tf2-servers/issues/224)) ([a2739c8](https://github.com/melkortf/tf2-servers/commit/a2739c8aea78d3582ddf5af688c522c8993022e6))
+
 # [3.7.0](https://github.com/melkortf/tf2-servers/compare/3.6.0...3.7.0) (2025-07-01)
 
 
