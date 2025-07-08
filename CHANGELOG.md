@@ -1,5 +1,12 @@
 # Changelog
 
+# [3.8.0](https://github.com/melkortf/tf2-servers/compare/3.7.1...3.8.0) (2025-07-08)
+
+
+### Features
+
+* **tf2-competitive:** add ultitrio configs ([#234](https://github.com/melkortf/tf2-servers/issues/234)) ([7fb24d4](https://github.com/melkortf/tf2-servers/commit/7fb24d4fccdf3da75b38bd6e1e7dca67ec9c8ea7))
+
 ## [3.7.1](https://github.com/melkortf/tf2-servers/compare/3.7.0...3.7.1) (2025-07-08)
 
 
