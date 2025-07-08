@@ -79,6 +79,14 @@ RUN unzip -q "${RGL_CONFIGS_FILE_NAME}" \
   && mkdir "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/disabled" \
   && cp "addons/sourcemod/scripting/disabled/roundtimer_override.sp" "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/disabled/"
 
+ARG ULTITRIO_CONFIGS_VERSION=3.2.1
+ARG ULTITRIO_CONFIGS_FILE_NAME=Ultitrio-${ULTITRIO_CONFIGS_VERSION}.zip
+ARG ULTITRIO_CONFIGS_URL=https://github.com/CoolstuffTF2/Ultitrio/archive/refs/tags/v${ULTITRIO_CONFIGS_VERSION}.zip
+ARG ULTITRIO_CONFIGS_CHECKSUM=73c5a7daca365bc8e5461e49bd42430aec482c0e5d9e155651cbb54cd18e1a29
+ADD --checksum=sha256:${ULTITRIO_CONFIGS_CHECKSUM} ${ULTITRIO_CONFIGS_URL} ./${ULTITRIO_CONFIGS_FILE_NAME}
+RUN unzip -q "${ULTITRIO_CONFIGS_FILE_NAME}" \
+  && cp "Ultitrio-${ULTITRIO_CONFIGS_VERSION}/ultitrio_"*.{cfg,txt} "${PLUGIN_INSTALL_DIR}/cfg/"
+
 ARG DEMOS_TF_FILE_NAME=demostf.smx
 ARG DEMOS_TF_URL=https://github.com/demostf/plugin/raw/master/${DEMOS_TF_FILE_NAME}
 ARG DEMOS_TF_CHECKSUM=e2fad4e7970ed0eb609d29ce17336408963debba9a3392768404cdff47fd90d0
