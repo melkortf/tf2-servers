@@ -11,16 +11,81 @@ on:
           - sourcemod
           - etf2l_configs
           - f2_sourcemod_plugins
-          - tf2-comp-fixes
+          - tf2_comp_fixes
 
       version:
         type: string
         required: true
 
 jobs:
-  update-package:
+  resolve-package-variables:
     runs-on: ubuntu-latest
+    outputs:
+      packageName: ${{ steps.resolve.outputs.packageName }}
+      packagePath: ${{ steps.resolve.outputs.packagePath }}
+      variablePrefix: ${{ steps.resolve.outputs.variablePrefix }}
 
+    steps:
+      - id: resolve
+        name: Resolve package variables
+        run: |
+          case ${{ inputs.package }} in
+            metamod)
+              echo "package_name=Metamod:Source" >> "$GITHUB_ENV"
+              echo "packagePath=packages/tf2-sourcemod" >> "$GITHUB_OUTPUT"
+              echo "variablePrefix=METAMOD" >> "$GITHUB_OUTPUT"
+              ;;
+            sourcemod)
+              echo "package_name=SourceMod" >> "$GITHUB_ENV"
+              echo "packagePath=packages/tf2-sourcemod" >> "$GITHUB_OUTPUT"
+              echo "variablePrefix=SOURCEMOD" >> "$GITHUB_OUTPUT"
+              ;;
+            etf2l_configs)
+              echo "package_name=ETF2L.org gameserver configs" >> "$GITHUB_ENV"
+              echo "packagePath=packages/tf2-competitive" >> "$GITHUB_OUTPUT"
+              echo "variablePrefix=ETF2L_CONFIGS" >> "$GITHUB_OUTPUT"
+              ;;
+            f2_sourcemod_plugins)
+              echo "package_name=F2's SourceMod plugins" >> "$GITHUB_ENV"
+              echo "packagePath=packages/tf2-competitive" >> "$GITHUB_OUTPUT"
+              echo "variablePrefix=F2_SOURCEMOD_PLUGINS" >> "$GITHUB_OUTPUT"
+              ;;
+            tf2_comp_fixes)
+              echo "package_name=TF2 Competitive Fixes" >> "$GITHUB_ENV"
+              echo "packagePath=packages/tf2-competitive" >> "$GITHUB_OUTPUT"
+              echo "variablePrefix=COMP_FIXES" >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "invalid package"
+              exit 1
+              ;;
+          esac
+  
+  generate-checksum:
+    runs-on: ubuntu-latest
+    needs: resolve-package-variables
+    outputs:
+      packageUrl: ${{ steps.generate-checksum.outputs.packageUrl }}
+      packageChecksum: ${{ steps.generate-checksum.outputs.packageChecksum }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - id: generate-checksum
+        name: generate-checksum
+        env:
+          PACKAGE_PATH: ${{ needs.resolve-package-variables.outputs.packagePath }}
+          VARIABLE_PREFIX: ${{ needs.resolve-package-variables.outputs.variablePrefix }}
+        run: |
+          PACKAGE_URL=$(grep -r "ARG ${{env.VARIABLE_PREFIX}}" ${{env.PACKAGE_PATH}}/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo ${${{env.VARIABLE_PREFIX}}_URL}; })
+          PACKAGE_CHECKSUM=$(wget -O - "$PACKAGE_URL" | tee file | sha256sum | awk '{print $1}' && rm file)
+          echo "packageUrl=${PACKAGE_URL}" >> "$GITHUB_ENV"
+          echo "packageChecksum=${PACKAGE_CHECKSUM}" >> "$GITHUB_ENV"
+
+  update-version:
+    runs-on: ubuntu-latest
+    needs: [resolve-package-variables, generate-checksum]
     permissions:
       contents: write
       pull-requests: write
@@ -28,128 +93,31 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Replace version string
+      
+      - name: Replace version and checksum
+        env:
+          PACKAGE_PATH: ${{ needs.resolve-package-variables.outputs.packagePath }}
+          PACKAGE_VERSION: ${{ inputs.version }}
+          PACKAGE_CHECKSUM: ${{ needs.generate-checksum.outputs.packageChecksum }}
+          VARIABLE_PREFIX: ${{ needs.resolve-package-variables.outputs.variablePrefix }}
         run: |
-          case ${{ inputs.package }} in
-            metamod)
-              sed -i 's/METAMOD_VERSION_BUILD=.*/METAMOD_VERSION_BUILD=${{ inputs.version }}/' packages/tf2-sourcemod/Dockerfile
-              ;;
-            sourcemod)
-              sed -i 's/SOURCEMOD_VERSION_BUILD=.*/SOURCEMOD_VERSION_BUILD=${{ inputs.version }}/' packages/tf2-sourcemod/Dockerfile
-              ;;
-            etf2l_configs)
-              sed -i 's/ETF2L_CONFIGS_VERSION=.*/ETF2L_CONFIGS_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
-              ;;
-            f2_sourcemod_plugins)
-              sed -i 's/F2_SOURCEMOD_PLUGINS_VERSION=.*/F2_SOURCEMOD_PLUGINS_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
-              ;;
-            tf2-comp-fixes)
-              sed -i 's/COMP_FIXES_PLUGIN_VERSION=.*/COMP_FIXES_PLUGIN_VERSION=${{ inputs.version }}/' packages/tf2-competitive/Dockerfile
-              ;;
-            *)
-              echo "invalid package"
-              exit 1
-              ;;
-          esac
-
-      - name: Download new package version and replace its md5
-        run: |
-          case ${{ inputs.package }} in
-            metamod)
-              METAMOD_URL=$(grep -r "ARG METAMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $METAMOD_TARBALL_URL; })
-              MD5SUM=$(wget -O - "$METAMOD_URL" | tee file | md5sum | awk '{print $1}' && rm file)
-              METAMOD_TARBALL_FILE_NAME=$(grep -r "ARG METAMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $METAMOD_TARBALL_FILE_NAME; })
-              sed -i -E 's/^([0-9a-f]+)(\s+)(mmsource.*\.tar\.gz)$/'"$MD5SUM"'\2'"$METAMOD_TARBALL_FILE_NAME"'/g' packages/tf2-sourcemod/checksum.md5
-              echo "package_url=${METAMOD_URL}" >> "$GITHUB_ENV"
-              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
-              ;;
-            
-            sourcemod)
-              SOURCEMOD_URL=$(grep -r "ARG SOURCEMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $SOURCEMOD_TARBALL_URL; })
-              MD5SUM=$(wget -O - "$SOURCEMOD_URL" | tee file | md5sum | awk '{print $1}' && rm file)
-              SOURCEMOD_TARBALL_FILE_NAME=$(grep -r "ARG SOURCEMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $SOURCEMOD_TARBALL_FILE_NAME; })
-              sed -i -E 's/^([0-9a-f]+)(\s+)(sourcemod.*\.tar\.gz)$/'"$MD5SUM"'\2'"$SOURCEMOD_TARBALL_FILE_NAME"'/g' packages/tf2-sourcemod/checksum.md5
-              echo "package_url=${SOURCEMOD_URL}" >> "$GITHUB_ENV"
-              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
-              ;;
-
-            etf2l_configs)
-              ETF2L_CONFIGS_URL=$(grep -r "ARG ETF2L_CONFIGS" packages/tf2-competitive/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $ETF2L_CONFIGS_URL; })
-              MD5SUM=$(wget -O - "$ETF2L_CONFIGS_URL" | tee file | md5sum | awk '{print $1}' && rm file)
-              sed -i -E 's/^([0-9a-f]+)(\s+)(etf2l_configs.zip)$/'"$MD5SUM"'\2\3/g' packages/tf2-competitive/checksum.md5
-              echo "package_url=${ETF2L_CONFIGS_URL}" >> "$GITHUB_ENV"
-              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
-              ;;
-            f2_sourcemod_plugins)
-              F2_SOURCEMOD_PLUGINS_URL=$(grep -r "ARG F2_SOURCEMOD_PLUGINS" packages/tf2-competitive/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $F2_SOURCEMOD_PLUGINS_URL; })
-              MD5SUM=$(wget -O - "$F2_SOURCEMOD_PLUGINS_URL" | tee file | md5sum | awk '{print $1}' && rm file)
-              sed -i -E 's/^([0-9a-f]+)(\s+)(f2-sourcemod-plugins.zip)$/'"$MD5SUM"'\2\3/g' packages/tf2-competitive/checksum.md5
-              echo "package_url=${F2_SOURCEMOD_PLUGINS_URL}" >> "$GITHUB_ENV"
-              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
-              ;;
-            tf2-comp-fixes)
-              COMP_FIXES_PLUGIN_URL=$(grep -r "ARG COMP_FIXES_PLUGIN" packages/tf2-competitive/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $COMP_FIXES_PLUGIN_URL; })
-              MD5SUM=$(wget -O - "$COMP_FIXES_PLUGIN_URL" | tee file | md5sum | awk '{print $1}' && rm file)
-              sed -i -E 's/^([0-9a-f]+)(\s+)(tf2-comp-fixes.zip)$/'"$MD5SUM"'\2\3/g' packages/tf2-competitive/checksum.md5
-              echo "package_url=${COMP_FIXES_PLUGIN_URL}" >> "$GITHUB_ENV"
-              echo "package_md5=${MD5SUM}" >> "$GITHUB_ENV"
-              ;;
-            *)
-              echo "invalid package"
-              exit 1
-              ;;
-          esac
-
-      - name: Generate human-friendly package name
-        run: |
-          case ${{ inputs.package }} in
-            metamod)
-              echo "package_name=Metamod:Source" >> "$GITHUB_ENV"
-              ;;
-            sourcemod)
-              echo "package_name=SourceMod" >> "$GITHUB_ENV"
-              ;;
-            etf2l_configs)
-              echo "package_name=ETF2L.org gameserver configs" >> "$GITHUB_ENV"
-              ;;
-            f2_sourcemod_plugins)
-              echo "package_name=F2's SourceMod plugins" >> "$GITHUB_ENV"
-              ;;
-            tf2-comp-fixes)
-              echo "package_name=TF2 Competitive Fixes" >> "$GITHUB_ENV"
-              ;;
-            *)
-              echo "invalid package"
-              exit 1
-              ;;
-          esac
-
-      - name: Generate real package version
-        run: |
-          case ${{ inputs.package }} in
-            metamod)
-              METAMOD_VERSION=$(grep -r "ARG METAMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $METAMOD_VERSION; })
-              echo "package_version=${METAMOD_VERSION}" >> "$GITHUB_ENV"
-              ;;
-            sourcemod)
-              SOURCEMOD_VERSION=$(grep -r "ARG SOURCEMOD" packages/tf2-sourcemod/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $SOURCEMOD_VERSION; })
-              echo "package_version=${SOURCEMOD_VERSION}" >> "$GITHUB_ENV"
-              ;;
-            *)
-              echo "package_version=${{ inputs.version }}" >> "$GITHUB_ENV"
-              ;;
-          esac
-
+          sed -i 's/${{env.VARIABLE_PREFIX}}_VERSION=.*/${{env.VARIABLE_PREFIX}}_VERSION=${{env.PACKAGE_VERSION}}/' ${{env.PACKAGE_PATH}}/Dockerfile
+          sed -i 's/${{env.VARIABLE_PREFIX}}_CHECKSUM=.*/${{env.VARIABLE_PREFIX}}_CHECKSUM=${{env.PACKAGE_CHECKSUM}}/' ${{env.PACKAGE_PATH}}/Dockerfile
+    
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
+        env:
+          PACKAGE_NAME: ${{ needs.resolve-package-variables.outputs.packageName }}
+          PACKAGE_CHECKSUM: ${{ needs.generate-checksum.outputs.packageChecksum }}
+          PACKAGE_URL: ${{ needs.generate-checksum.outputs.packageUrl }}
+          PACKAGE_VERSION: ${{ inputs.version }}
         with:
-          commit-message: "fix(deps): update ${{ env.package_name }} to version ${{ env.package_version }}"
+          commit-message: "fix(deps): update ${{env.PACKAGE_NAME}} to version ${{env.PACKAGE_VERSION}}"
           sign-commits: true
-          title: "fix(deps): update ${{ env.package_name }} to version ${{ env.package_version }}"
+          title: "fix(deps): update ${{env.PACKAGE_NAME}} to version ${{env.PACKAGE_VERSION}}"
           body: |
-            Update [${{ env.package_name }}](${{ env.package_url }}) to version ${{ env.package_version }}
-            MD5: ${{ env.package_md5 }}
-          branch: update-${{ inputs.package }}-${{ env.package_version }}
+            Update [${{env.PACKAGE_NAME}}](${{env.PACKAGE_URL}}) to version ${{env.PACKAGE_VERSION}}
+            SHA256: ${{env.PACKAGE_CHECKSUM}}
+          branch: update-${{inputs.package}}-${{env.PACKAGE_VERSION}}
           delete-branch: true
           reviewers: garrappachc
