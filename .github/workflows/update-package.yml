@@ -106,18 +106,13 @@ jobs:
     
       - name: Create pull request
         uses: peter-evans/create-pull-request@v7
-        env:
-          PACKAGE_NAME: ${{ needs.resolve-package-variables.outputs.packageName }}
-          PACKAGE_CHECKSUM: ${{ needs.generate-checksum.outputs.packageChecksum }}
-          PACKAGE_URL: ${{ needs.generate-checksum.outputs.packageUrl }}
-          PACKAGE_VERSION: ${{ inputs.version }}
         with:
-          commit-message: "fix(deps): update ${{env.PACKAGE_NAME}} to version ${{env.PACKAGE_VERSION}}"
+          commit-message: "fix(deps): update ${{needs.resolve-package-variables.outputs.packageName}} to version ${{inputs.version}}"
           sign-commits: true
-          title: "fix(deps): update ${{env.PACKAGE_NAME}} to version ${{env.PACKAGE_VERSION}}"
+          title: "fix(deps): update ${{needs.resolve-package-variables.outputs.packageName}} to version ${{inputs.version}}"
           body: |
-            Update [${{env.PACKAGE_NAME}}](${{env.PACKAGE_URL}}) to version ${{env.PACKAGE_VERSION}}
-            SHA256: ${{env.PACKAGE_CHECKSUM}}
-          branch: update-${{inputs.package}}-${{env.PACKAGE_VERSION}}
+            Update [${{needs.resolve-package-variables.outputs.packageName}}](${{needs.generate-checksum.outputs.packageUrl}}) to version ${{inputs.version}}
+            SHA256: ${{needs.generate-checksum.outputs.packageChecksum}}
+          branch: update-${{inputs.package}}-${{inputs.version}}
           delete-branch: true
           reviewers: garrappachc
