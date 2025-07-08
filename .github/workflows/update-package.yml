@@ -31,27 +31,27 @@ jobs:
         run: |
           case ${{ inputs.package }} in
             metamod)
-              echo "packageName=Metamod:Source" >> "$GITHUB_ENV"
+              echo "packageName=Metamod:Source" >> "$GITHUB_OUTPUT"
               echo "packagePath=packages/tf2-sourcemod" >> "$GITHUB_OUTPUT"
               echo "variablePrefix=METAMOD" >> "$GITHUB_OUTPUT"
               ;;
             sourcemod)
-              echo "packageName=SourceMod" >> "$GITHUB_ENV"
+              echo "packageName=SourceMod" >> "$GITHUB_OUTPUT"
               echo "packagePath=packages/tf2-sourcemod" >> "$GITHUB_OUTPUT"
               echo "variablePrefix=SOURCEMOD" >> "$GITHUB_OUTPUT"
               ;;
             etf2l_configs)
-              echo "packageName=ETF2L.org gameserver configs" >> "$GITHUB_ENV"
+              echo "packageName=ETF2L.org gameserver configs" >> "$GITHUB_OUTPUT"
               echo "packagePath=packages/tf2-competitive" >> "$GITHUB_OUTPUT"
               echo "variablePrefix=ETF2L_CONFIGS" >> "$GITHUB_OUTPUT"
               ;;
             f2_sourcemod_plugins)
-              echo "packageName=F2's SourceMod plugins" >> "$GITHUB_ENV"
+              echo "packageName=F2's SourceMod plugins" >> "$GITHUB_OUTPUT"
               echo "packagePath=packages/tf2-competitive" >> "$GITHUB_OUTPUT"
               echo "variablePrefix=F2_SOURCEMOD_PLUGINS" >> "$GITHUB_OUTPUT"
               ;;
             tf2_comp_fixes)
-              echo "packageName=TF2 Competitive Fixes" >> "$GITHUB_ENV"
+              echo "packageName=TF2 Competitive Fixes" >> "$GITHUB_OUTPUT"
               echo "packagePath=packages/tf2-competitive" >> "$GITHUB_OUTPUT"
               echo "variablePrefix=COMP_FIXES" >> "$GITHUB_OUTPUT"
               ;;
@@ -73,15 +73,15 @@ jobs:
         uses: actions/checkout@v4
 
       - id: generate-checksum
-        name: generate-checksum
+        name: Generate checksum
         env:
           PACKAGE_PATH: ${{ needs.resolve-package-variables.outputs.packagePath }}
           VARIABLE_PREFIX: ${{ needs.resolve-package-variables.outputs.variablePrefix }}
         run: |
-          PACKAGE_URL=$(grep -r "ARG ${{env.VARIABLE_PREFIX}}" ${{env.PACKAGE_PATH}}/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo ${${{env.VARIABLE_PREFIX}}_URL}; })
-          PACKAGE_CHECKSUM=$(wget -O - "${PACKAGE_URL}" | tee file | sha256sum | awk '{print $1}' && rm file)
-          echo "packageUrl=${PACKAGE_URL}" >> "$GITHUB_ENV"
-          echo "packageChecksum=${PACKAGE_CHECKSUM}" >> "$GITHUB_ENV"
+          PACKAGE_URL=$(grep -r "ARG ${{env.VARIABLE_PREFIX}}" ${{env.PACKAGE_PATH}}/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $${{env.VARIABLE_PREFIX}}_URL; })
+          PACKAGE_CHECKSUM=$(wget -O - "$PACKAGE_URL" | tee file | sha256sum | awk '{print $1}' && rm file)
+          echo "packageUrl=$PACKAGE_URL" >> "$GITHUB_OUTPUT"
+          echo "packageChecksum=$PACKAGE_CHECKSUM" >> "$GITHUB_OUTPUT"
 
   update-version:
     runs-on: ubuntu-latest
