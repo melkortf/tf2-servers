@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.8.8](https://github.com/melkortf/tf2-servers/compare/3.8.7...3.8.8) (2025-08-06)
+
+
+### Bug Fixes
+
+* **deps:** update F2's SourceMod plugins to version 20250728-1753698992295 ([#236](https://github.com/melkortf/tf2-servers/issues/236)) ([7b9a366](https://github.com/melkortf/tf2-servers/commit/7b9a36612a47074cedb5e8451b00706ee17fb420))
+
 ## [3.8.7](https://github.com/melkortf/tf2-servers/compare/3.8.6...3.8.7) (2025-08-05)
 
 
