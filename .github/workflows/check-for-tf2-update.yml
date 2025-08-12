@@ -17,7 +17,7 @@ jobs:
       old_version: ${{ steps.get_last_version.outputs.last_version }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Define state file path
         id: paths
