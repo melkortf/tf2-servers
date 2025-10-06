@@ -1,5 +1,12 @@
 # Changelog
 
+# [3.9.0](https://github.com/melkortf/tf2-servers/compare/3.8.10...3.9.0) (2025-10-06)
+
+
+### Features
+
+* **tf2-competitive:** add mapdownloader plugin ([cd08db7](https://github.com/melkortf/tf2-servers/commit/cd08db7b1e52c6b10059d1dd42506d580ffbe09e)), closes [#242](https://github.com/melkortf/tf2-servers/issues/242)
+
 ## [3.8.10](https://github.com/melkortf/tf2-servers/compare/3.8.9...3.8.10) (2025-08-14)
 
 
