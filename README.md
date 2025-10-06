@@ -159,6 +159,7 @@ TF2 server configured to be used in competitive matches. The following plugins, 
 - [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
 - [fbtf.tf configs](https://fbtf.tf/)
 - [showsdr](https://github.com/Ooglely/sdr-plugin)
+- [mapdownloader](https://github.com/spiretf/mapdownloader)
 
 | Environment variable | Default value | Used in                                | Description                                                           |
 | -------------------- | ------------- | -------------------------------------- | --------------------------------------------------------------------- |
