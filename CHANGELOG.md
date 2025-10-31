@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.9.9](https://github.com/melkortf/tf2-servers/compare/3.9.8...3.9.9) (2025-10-31)
+
+
+### Bug Fixes
+
+* **tf2-base:** update tracked TF2 version to 10195385 ([dc7a2be](https://github.com/melkortf/tf2-servers/commit/dc7a2be57dfb5efe1e80a0428e6fffe53a219338))
+
 ## [3.9.8](https://github.com/melkortf/tf2-servers/compare/3.9.7...3.9.8) (2025-10-28)
 
 
