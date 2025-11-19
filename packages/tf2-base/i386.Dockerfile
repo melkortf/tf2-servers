@@ -54,6 +54,7 @@ WORKDIR $HOME
 
 COPY maps_to_keep tf2.txt.template $HOME/
 RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
+  && steamcmd +help +quit \
   && steamcmd +runscript $HOME/tf2.txt \
   && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
   && rm maps_to_keep \
