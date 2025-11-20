@@ -48,9 +48,10 @@ USER $USER
 WORKDIR $HOME
 
 COPY maps_to_keep tf2.txt.template $HOME/
+COPY --chmod=775 install_tf2.sh $HOME/
 RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && steamcmd +help +quit \
-  && steamcmd +runscript $HOME/tf2.txt \
+  && $HOME/install_tf2.sh \
   && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
   && rm maps_to_keep \
   && mkdir $HOME/.steam \
