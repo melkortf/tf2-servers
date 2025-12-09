@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.9.10](/compare/3.9.9...3.9.10) (2025-12-09)
+
+
+### Bug Fixes
+
+* **tf2-base:** add retry mechanism for steamcmd update (#248) 7380d3a, closes #248
+* **tf2-base:** fix steamcmd invocation (#246) 6de7876, closes #246
+* **tf2-base:** update tracked TF2 version to 10298760 f850a04
+
 ## [3.9.9](https://github.com/melkortf/tf2-servers/compare/3.9.8...3.9.9) (2025-10-31)
 
 
