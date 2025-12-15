@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.9.12](/compare/3.9.11...3.9.12) (2025-12-15)
+
+
+### Bug Fixes
+
+* **deps:** update ETF2L.org gameserver configs to version 1.0.23 (#251) 85e9464, closes #251
+
 ## [3.9.11](/compare/3.9.10...3.9.11) (2025-12-12)
 
 
