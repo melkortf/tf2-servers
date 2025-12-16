@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.9.13](/compare/3.9.12...3.9.13) (2025-12-16)
+
+
+### Bug Fixes
+
+* **tf2-base:** update tracked TF2 version to 10318945 c38dd88
+
 ## [3.9.12](/compare/3.9.11...3.9.12) (2025-12-15)
 
 
