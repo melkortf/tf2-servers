@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.9.15](https://github.com/melkortf/tf2-servers/compare/3.9.14...3.9.15) (2026-01-07)
+
+
+### Bug Fixes
+
+* **deps:** update TF2 Competitive Fixes to version 1.17.2 ([#252](https://github.com/melkortf/tf2-servers/issues/252)) ([f8b7dfc](https://github.com/melkortf/tf2-servers/commit/f8b7dfc44d734f6782a6216ef1ceb00659cf8f2f))
+
 ## [3.9.14](https://github.com/melkortf/tf2-servers/compare/3.9.13...3.9.14) (2025-12-24)
 
 
