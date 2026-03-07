@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.9.17](https://github.com/melkortf/tf2-servers/compare/3.9.16...3.9.17) (2026-03-07)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** update srctvplus.so checksum ([7fff175](https://github.com/melkortf/tf2-servers/commit/7fff1750db10e11b2e4ff40d029caead5cd52997))
+
 ## [3.9.16](https://github.com/melkortf/tf2-servers/compare/3.9.15...3.9.16) (2026-03-06)
 
 
