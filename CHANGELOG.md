@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.9.18](https://github.com/melkortf/tf2-servers/compare/3.9.17...3.9.18) (2026-03-08)
+
+
+### Bug Fixes
+
+* **deps:** update TF2 Competitive Fixes to version 1.18.0 ([#257](https://github.com/melkortf/tf2-servers/issues/257)) ([0494d7c](https://github.com/melkortf/tf2-servers/commit/0494d7c48fecf0a592023178c8f489deeb13ff21))
+
 ## [3.9.17](https://github.com/melkortf/tf2-servers/compare/3.9.16...3.9.17) (2026-03-07)
 
 
