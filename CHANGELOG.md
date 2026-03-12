@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.9.20](https://github.com/melkortf/tf2-servers/compare/3.9.19...3.9.20) (2026-03-12)
+
+
+### Bug Fixes
+
+* **deps:** update ETF2L.org gameserver configs to version 1.0.25 ([#258](https://github.com/melkortf/tf2-servers/issues/258)) ([21196ce](https://github.com/melkortf/tf2-servers/commit/21196ceea1126ecebfba907bb1ace89530b56076))
+* **deps:** update SourceMod to version 1.12.0-git7223 ([#259](https://github.com/melkortf/tf2-servers/issues/259)) ([7751483](https://github.com/melkortf/tf2-servers/commit/7751483588a7009217c98c16a1cacb02e5e06d18))
+
 ## [3.9.19](https://github.com/melkortf/tf2-servers/compare/3.9.18...3.9.19) (2026-03-11)
 
 
