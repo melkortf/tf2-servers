@@ -158,7 +158,6 @@ TF2 server configured to be used in competitive matches. The following plugins, 
 - [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
 - [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
 - [fbtf.tf configs](https://fbtf.tf/)
-- [showsdr](https://github.com/Ooglely/sdr-plugin)
 - [mapdownloader](https://github.com/spiretf/mapdownloader)
 
 | Environment variable | Default value | Used in                                | Description                                                           |
