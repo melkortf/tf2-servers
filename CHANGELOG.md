@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.9.24](https://github.com/melkortf/tf2-servers/compare/3.9.23...3.9.24) (2026-05-25)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** remove showsdr plugin ([#261](https://github.com/melkortf/tf2-servers/issues/261)) ([5004b0e](https://github.com/melkortf/tf2-servers/commit/5004b0e7e765ab325a8a360114a13a668d64ff1c))
+
 ## [3.9.23](https://github.com/melkortf/tf2-servers/compare/3.9.22...3.9.23) (2026-05-25)
 
 
