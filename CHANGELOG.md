@@ -1,5 +1,15 @@
 # Changelog
 
+## [3.9.25](https://github.com/melkortf/tf2-servers/compare/3.9.24...3.9.25) (2026-05-27)
+
+
+### Bug Fixes
+
+* **deps:** update F2's SourceMod plugins to version 20260523-1779572117109 ([#265](https://github.com/melkortf/tf2-servers/issues/265)) ([20ec2ce](https://github.com/melkortf/tf2-servers/commit/20ec2ceacbe2ce58a4b163990ebc4a92172231a3))
+* **deps:** update Metamod:Source to version 1.12.0-git1224 ([#263](https://github.com/melkortf/tf2-servers/issues/263)) ([2056ea1](https://github.com/melkortf/tf2-servers/commit/2056ea130995fac7ab9cb876a15c462e5cea19d7))
+* **deps:** update SourceMod to version 1.12.0-git7236 ([#262](https://github.com/melkortf/tf2-servers/issues/262)) ([5081366](https://github.com/melkortf/tf2-servers/commit/5081366879166cd2bba3f65fc8335386586e498b))
+* **tf2-sourcemod:** correct MM:S and SM SHA256 checksums ([#264](https://github.com/melkortf/tf2-servers/issues/264)) ([cf5a036](https://github.com/melkortf/tf2-servers/commit/cf5a036fd2598f1fd170787a3395e73986b3d4e0))
+
 ## [3.9.24](https://github.com/melkortf/tf2-servers/compare/3.9.23...3.9.24) (2026-05-25)
 
 
