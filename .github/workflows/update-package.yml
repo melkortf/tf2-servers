@@ -79,6 +79,7 @@ jobs:
           PACKAGE_VERSION: ${{ inputs.version }}
           VARIABLE_PREFIX: ${{ needs.resolve-package-variables.outputs.variablePrefix }}
         run: |
+          set -o pipefail
           sed -i "s/${VARIABLE_PREFIX}_VERSION=.*/${VARIABLE_PREFIX}_VERSION=${PACKAGE_VERSION}/" ${PACKAGE_PATH}/Dockerfile
           if grep -q "${VARIABLE_PREFIX}_RELEASE_TAG=" ${PACKAGE_PATH}/Dockerfile; then
             RELEASE_TAG="${PACKAGE_VERSION/-git/.}"
