@@ -79,9 +79,14 @@ jobs:
           PACKAGE_VERSION: ${{ inputs.version }}
           VARIABLE_PREFIX: ${{ needs.resolve-package-variables.outputs.variablePrefix }}
         run: |
-          sed -i 's/${{env.VARIABLE_PREFIX}}_VERSION=.*/${{env.VARIABLE_PREFIX}}_VERSION=${{env.PACKAGE_VERSION}}/' ${{env.PACKAGE_PATH}}/Dockerfile
-          PACKAGE_URL=$(grep -r "ARG ${{env.VARIABLE_PREFIX}}" ${{env.PACKAGE_PATH}}/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; echo $${{env.VARIABLE_PREFIX}}_URL; })
-          PACKAGE_CHECKSUM=$(wget -O - "$PACKAGE_URL" | tee file | sha256sum | awk '{print $1}' && rm file)
+          set -o pipefail
+          sed -i "s/${VARIABLE_PREFIX}_VERSION=.*/${VARIABLE_PREFIX}_VERSION=${PACKAGE_VERSION}/" ${PACKAGE_PATH}/Dockerfile
+          if grep -q "${VARIABLE_PREFIX}_RELEASE_TAG=" ${PACKAGE_PATH}/Dockerfile; then
+            RELEASE_TAG="${PACKAGE_VERSION/-git/.}"
+            sed -i "s/${VARIABLE_PREFIX}_RELEASE_TAG=.*/${VARIABLE_PREFIX}_RELEASE_TAG=${RELEASE_TAG}/" ${PACKAGE_PATH}/Dockerfile
+          fi
+          PACKAGE_URL=$(grep -r "ARG ${VARIABLE_PREFIX}" ${PACKAGE_PATH}/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; eval echo \$${VARIABLE_PREFIX}_URL; })
+          PACKAGE_CHECKSUM=$(curl --fail --location --silent "$PACKAGE_URL" | sha256sum | awk '{print $1}')
           echo "packageUrl=$PACKAGE_URL" >> "$GITHUB_OUTPUT"
           echo "packageChecksum=$PACKAGE_CHECKSUM" >> "$GITHUB_OUTPUT"
 
@@ -95,7 +100,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      
+
       - name: Replace version and checksum
         env:
           PACKAGE_PATH: ${{ needs.resolve-package-variables.outputs.packagePath }}
@@ -103,8 +108,12 @@ jobs:
           PACKAGE_CHECKSUM: ${{ needs.generate-checksum.outputs.packageChecksum }}
           VARIABLE_PREFIX: ${{ needs.resolve-package-variables.outputs.variablePrefix }}
         run: |
-          sed -i 's/${{env.VARIABLE_PREFIX}}_VERSION=.*/${{env.VARIABLE_PREFIX}}_VERSION=${{env.PACKAGE_VERSION}}/' ${{env.PACKAGE_PATH}}/Dockerfile
-          sed -i 's/${{env.VARIABLE_PREFIX}}_CHECKSUM=.*/${{env.VARIABLE_PREFIX}}_CHECKSUM=${{env.PACKAGE_CHECKSUM}}/' ${{env.PACKAGE_PATH}}/Dockerfile
+          sed -i "s/${VARIABLE_PREFIX}_VERSION=.*/${VARIABLE_PREFIX}_VERSION=${PACKAGE_VERSION}/" ${PACKAGE_PATH}/Dockerfile
+          sed -i "s/${VARIABLE_PREFIX}_CHECKSUM=.*/${VARIABLE_PREFIX}_CHECKSUM=${PACKAGE_CHECKSUM}/" ${PACKAGE_PATH}/Dockerfile
+          if grep -q "${VARIABLE_PREFIX}_RELEASE_TAG=" ${PACKAGE_PATH}/Dockerfile; then
+            RELEASE_TAG="${PACKAGE_VERSION/-git/.}"
+            sed -i "s/${VARIABLE_PREFIX}_RELEASE_TAG=.*/${VARIABLE_PREFIX}_RELEASE_TAG=${RELEASE_TAG}/" ${PACKAGE_PATH}/Dockerfile
+          fi
     
       - name: Create pull request
         uses: peter-evans/create-pull-request@v8
