@@ -354,14 +354,6 @@ jobs:
           load: true
           tags: ghcr.io/melkortf/tf2-base/i386:pr
 
-      - name: Build tf2-base (amd64)
-        uses: docker/build-push-action@v7
-        with:
-          context: ./packages/tf2-base
-          file: ./packages/tf2-base/amd64.Dockerfile
-          load: true
-          tags: ghcr.io/melkortf/tf2-base/amd64:pr
-
       - name: Build tf2-sourcemod (i386)
         uses: docker/build-push-action@v7
         with:
@@ -371,16 +363,6 @@ jobs:
             ARCH=i386
             TF2_BASE_TAG=pr
           tags: ghcr.io/melkortf/tf2-sourcemod/i386:pr
-
-      - name: Build tf2-sourcemod (amd64)
-        uses: docker/build-push-action@v7
-        with:
-          context: ./packages/tf2-sourcemod
-          load: true
-          build-args: |
-            ARCH=amd64
-            TF2_BASE_TAG=pr
-          tags: ghcr.io/melkortf/tf2-sourcemod/amd64:pr
 
       - name: Build tf2-competitive
         uses: docker/build-push-action@v7
