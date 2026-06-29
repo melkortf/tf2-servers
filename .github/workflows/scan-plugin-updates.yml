@@ -1,0 +1,136 @@
+name: Scan plugin updates
+
+# Scans the GitHub-release-based dependencies pinned in the package Dockerfiles
+# and opens a pull request whenever a newer upstream release is available.
+# Each package gets its own PR (branch update-deps/<id>), so re-runs update the
+# existing PR instead of opening duplicates.
+#
+# Only dependencies hosted as proper GitHub releases are handled here. Packages
+# that are pulled from a moving ref (raw/master, archive/refs/heads/main), from
+# a non-GitHub host (fbtf.tf), or that use bespoke versioning (Metamod:Source
+# and SourceMod snapshots, F2's date-based builds) are intentionally left out
+# and continue to be updated manually via update-package.yml.
+
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - { id: comp_fixes,    name: "TF2 Competitive Fixes",        repo: "ldesgoui/tf2-comp-fixes",        prefix: "COMP_FIXES",    prerelease: false }
+          - { id: soap_dm,       name: "SOAP-TF2DM",                   repo: "sapphonie/SOAP-TF2DM",           prefix: "SOAP_DM",       prerelease: false }
+          - { id: mgemod,        name: "MGEMod",                       repo: "sapphonie/MGEMod",               prefix: "MGEMOD",        prerelease: false }
+          - { id: tf2rue,        name: "tf2rue",                       repo: "sapphonie/tf2rue",               prefix: "TF2RUE",        prerelease: false }
+          - { id: sourcebans,    name: "SourceBans++",                 repo: "sbpp/sourcebans-pp",             prefix: "SOURCEBANS",    prerelease: false }
+          - { id: neocurl,       name: "SM-neocurl-ext",               repo: "sapphonie/SM-neocurl-ext",       prefix: "NEOCURL",       prerelease: true  }
+          - { id: rgl_configs,   name: "RGL.gg gameserver configs",    repo: "RGLgg/server-resources-updater", prefix: "RGL_CONFIGS",   prerelease: false }
+          - { id: etf2l_configs, name: "ETF2L.org gameserver configs", repo: "ETF2L/gameserver-configs",       prefix: "ETF2L_CONFIGS", prerelease: false }
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v7
+
+      - name: Resolve latest version and update Dockerfiles
+        id: update
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PKG_ID: ${{ matrix.id }}
+          PKG_REPO: ${{ matrix.repo }}
+          PKG_PREFIX: ${{ matrix.prefix }}
+          PKG_PRERELEASE: ${{ matrix.prerelease }}
+        run: |
+          set -euo pipefail
+
+          files=$(grep -rlE "^ARG ${PKG_PREFIX}_VERSION=" packages/*/Dockerfile || true)
+          if [[ -z "$files" ]]; then
+            echo "::warning::No Dockerfiles reference ${PKG_PREFIX}_VERSION; skipping."
+            exit 0
+          fi
+
+          current=$(grep -hoP "^ARG ${PKG_PREFIX}_VERSION=\K.*" $files | head -n1 || true)
+
+          # releases/latest excludes pre-releases; packages pinned to a
+          # pre-release need the full release list instead.
+          if [[ "$PKG_PRERELEASE" == "true" ]]; then
+            latest_tag=$(gh api "repos/${PKG_REPO}/releases?per_page=1" --jq '.[0].tag_name // empty' 2>/dev/null || true)
+          else
+            latest_tag=$(gh api "repos/${PKG_REPO}/releases/latest" --jq '.tag_name // empty' 2>/dev/null || true)
+          fi
+
+          if [[ -z "$latest_tag" ]]; then
+            echo "::warning::Could not resolve latest release tag for ${PKG_REPO}; skipping."
+            exit 0
+          fi
+
+          # Preserve the existing convention: keep a leading "v" only if the
+          # currently pinned version already has one.
+          if [[ "$current" == v* ]]; then
+            target="$latest_tag"
+          else
+            target="${latest_tag#v}"
+          fi
+
+          echo "${PKG_ID}: current=${current} latest_tag=${latest_tag} target=${target}"
+
+          needs_update=false
+          for f in $files; do
+            cur=$(grep -oP "^ARG ${PKG_PREFIX}_VERSION=\K.*" "$f")
+            if [[ "$cur" != "$target" ]]; then
+              needs_update=true
+            fi
+          done
+
+          if [[ "$needs_update" != "true" ]]; then
+            echo "All Dockerfiles already pin ${target}; nothing to do."
+            echo "updated=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+
+          for f in $files; do
+            sed -i "s/^ARG ${PKG_PREFIX}_VERSION=.*/ARG ${PKG_PREFIX}_VERSION=${target}/" "$f"
+
+            # Reconstruct the download URL by evaluating the package's ARG lines
+            # in file order (FILE_NAME/VERSION are defined before URL).
+            url=$(grep -E "^ARG ${PKG_PREFIX}_" "$f" \
+              | sed -E 's/^ARG[[:space:]]+([A-Z0-9_]+)=(.*)$/\1="\2"/' \
+              | { eval "$(cat)"; eval echo "\$${PKG_PREFIX}_URL"; })
+
+            echo "  ${f}: ${url}"
+            checksum=$(curl --fail --location --silent "$url" | sha256sum | awk '{print $1}')
+            if [[ -z "$checksum" ]]; then
+              echo "::error::Failed to download ${url} to compute checksum."
+              exit 1
+            fi
+            sed -i "s/^ARG ${PKG_PREFIX}_CHECKSUM=.*/ARG ${PKG_PREFIX}_CHECKSUM=${checksum}/" "$f"
+          done
+
+          {
+            echo "updated=true"
+            echo "target=${target}"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Create pull request
+        if: steps.update.outputs.updated == 'true'
+        uses: peter-evans/create-pull-request@v8
+        with:
+          token: ${{ secrets.ACTIONS_PAT }}
+          sign-commits: true
+          commit-message: "fix(deps): update ${{ matrix.name }} to version ${{ steps.update.outputs.target }}"
+          title: "fix(deps): update ${{ matrix.name }} to version ${{ steps.update.outputs.target }}"
+          body: |
+            Automated dependency update.
+
+            Bumps [${{ matrix.name }}](https://github.com/${{ matrix.repo }}) to version `${{ steps.update.outputs.target }}` and refreshes the SHA256 checksum in every Dockerfile that pins it.
+          branch: update-deps/${{ matrix.id }}
+          delete-branch: true
+          reviewers: garrappachc
