@@ -1,5 +1,16 @@
 # Changelog
 
+## [3.9.26](https://github.com/melkortf/tf2-servers/compare/3.9.25...3.9.26) (2026-06-29)
+
+
+### Bug Fixes
+
+* **deps:** update MGEMod to version v3.0.9 ([#273](https://github.com/melkortf/tf2-servers/issues/273)) ([55c8053](https://github.com/melkortf/tf2-servers/commit/55c8053e5008637e9018f0fd99264e194af40c5a))
+* **deps:** update SOAP-TF2DM to version 4.4.8 ([#275](https://github.com/melkortf/tf2-servers/issues/275)) ([7760f65](https://github.com/melkortf/tf2-servers/commit/7760f651eaddaf32268f36c0369fb29c82a1a206))
+* **deps:** update SourceBans++ to version 1.8.4 ([#271](https://github.com/melkortf/tf2-servers/issues/271)) ([e9c692c](https://github.com/melkortf/tf2-servers/commit/e9c692c814e5aed8cc2a864109eacaee70da206d))
+* **deps:** update TF2 Competitive Fixes to version 1.18.1 ([#272](https://github.com/melkortf/tf2-servers/issues/272)) ([5121587](https://github.com/melkortf/tf2-servers/commit/5121587e2a0f9bd5d990ad9b73496699a611417a))
+* **deps:** update tf2rue to version v0.0.13 ([#274](https://github.com/melkortf/tf2-servers/issues/274)) ([038f1f5](https://github.com/melkortf/tf2-servers/commit/038f1f50837558fdb2d37467f4b3d69e6f991067))
+
 ## [3.9.25](https://github.com/melkortf/tf2-servers/compare/3.9.24...3.9.25) (2026-05-27)
 
 
