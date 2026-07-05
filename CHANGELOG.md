@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.9.27](https://github.com/melkortf/tf2-servers/compare/3.9.26...3.9.27) (2026-07-05)
+
+
+### Bug Fixes
+
+* **deps:** update RGL.gg gameserver configs to version v372 ([#270](https://github.com/melkortf/tf2-servers/issues/270)) ([9a2af95](https://github.com/melkortf/tf2-servers/commit/9a2af95c288836d2e9e45d98dd5f77f1e090e5e2))
+* **tf2-competitive:** remove fbtf.tf configs ([#276](https://github.com/melkortf/tf2-servers/issues/276)) ([306f96c](https://github.com/melkortf/tf2-servers/commit/306f96c6bcd61579daa50aea01822a56821b8b73))
+
 ## [3.9.26](https://github.com/melkortf/tf2-servers/compare/3.9.25...3.9.26) (2026-06-29)
 
 
