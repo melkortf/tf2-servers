@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.9.28](https://github.com/melkortf/tf2-servers/compare/3.9.27...3.9.28) (2026-07-06)
+
+
+### Bug Fixes
+
+* **tf2-competitive:** add sdr-plugin v1.0.0 ([#277](https://github.com/melkortf/tf2-servers/issues/277)) ([b9e8e39](https://github.com/melkortf/tf2-servers/commit/b9e8e39a8f9ef52b91bbeed1fee7450c39f7afa8))
+
 ## [3.9.27](https://github.com/melkortf/tf2-servers/compare/3.9.26...3.9.27) (2026-07-05)
 
 
