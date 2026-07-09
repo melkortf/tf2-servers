@@ -35,6 +35,7 @@ jobs:
           - { id: neocurl,       name: "SM-neocurl-ext",               repo: "sapphonie/SM-neocurl-ext",       prefix: "NEOCURL",       prerelease: true  }
           - { id: rgl_configs,   name: "RGL.gg gameserver configs",    repo: "RGLgg/server-resources-updater", prefix: "RGL_CONFIGS",   prerelease: false }
           - { id: etf2l_configs, name: "ETF2L.org gameserver configs", repo: "ETF2L/gameserver-configs",       prefix: "ETF2L_CONFIGS", prerelease: false }
+          - { id: tickrate,      name: "source-tickrate",              repo: "angelfor3v3r/source-tickrate",   prefix: "TICKRATE",      prerelease: false }
 
     steps:
       - name: Checkout
@@ -51,7 +52,8 @@ jobs:
         run: |
           set -euo pipefail
 
-          files=$(grep -rlE "^ARG ${PKG_PREFIX}_VERSION=" packages/*/Dockerfile || true)
+          # *Dockerfile also matches tf2-base's arch-specific amd64/i386.Dockerfile
+          files=$(grep -rlE "^ARG ${PKG_PREFIX}_VERSION=" packages/*/*Dockerfile || true)
           if [[ -z "$files" ]]; then
             echo "::warning::No Dockerfiles reference ${PKG_PREFIX}_VERSION; skipping."
             exit 0
