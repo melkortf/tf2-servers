@@ -62,6 +62,11 @@ RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && mkdir -p $HOME/.steam \
   && ln -s $HOME/.local/share/Steam/steamcmd/linux32 $HOME/.steam/sdk32
 
+COPY css-tickrate-release-linux-x86.zip $HOME/
+RUN echo "661145ad08af61ad0327586ed56e820e7f178665c92ffa95b8891cd1a3d38f7e  $HOME/css-tickrate-release-linux-x86.zip" | sha256sum -c - \
+  && unzip -o $HOME/css-tickrate-release-linux-x86.zip -d ${SERVER_DIR}/tf \
+  && rm $HOME/css-tickrate-release-linux-x86.zip
+
 COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
 COPY --from=rcon-build /build/rcon/build/rcon ${SERVER_DIR}/rcon
 
@@ -82,7 +87,7 @@ ENV STV_PASSWORD=
 ENV DOWNLOAD_URL="https://fastdl.serveme.tf/"
 
 WORKDIR $SERVER_DIR
-COPY entrypoint.sh .
+COPY --chmod=755 entrypoint.sh .
 COPY healthcheck.sh .
 
 ENTRYPOINT ["./entrypoint.sh"]
