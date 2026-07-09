@@ -33,14 +33,9 @@ trap 'quit' SIGTERM
 
 auto_envsubst
 
-# --- Блок выбора TICKRATE ---
 TICKRATE_FLAGS=()
 if [ -n "${TICKRATE}" ]; then
   case "${TICKRATE}" in
-    66)
-      echo "[Tickrate-Selector] Setting standard 66.7 Tickrate mode..."
-      TICKRATE_FLAGS=("-tickrate" "66" "+sv_maxupdaterate" "66" "+sv_minupdaterate" "66" "+sv_maxcmdrate" "66" "+sv_mincmdrate" "66")
-      ;;
     100)
       echo "[Tickrate-Selector] Setting High-Performance 100 Tickrate mode..."
       TICKRATE_FLAGS=("-tickrate" "100" "+sv_maxupdaterate" "100" "+sv_minupdaterate" "100" "+sv_maxcmdrate" "100" "+sv_mincmdrate" "100")
@@ -60,7 +55,6 @@ if [ -n "${TICKRATE}" ]; then
 else
   echo "[Tickrate-Selector] TICKRATE variable is not set. Using default 66.7 tickrate."
 fi
-# ----------------------------
 
 # enablefakeip switch
 if [ "$ENABLE_FAKE_IP" = "1" ]; then
@@ -69,7 +63,6 @@ else
   FAKE_IP_FLAG=""
 fi
 
-# Запуск сервера с внедрением динамического массива TICKRATE_FLAGS
 faketty $SERVER_DIR/$SRCDS_EXEC \
   -game tf \
   -secured \

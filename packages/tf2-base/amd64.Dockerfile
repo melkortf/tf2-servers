@@ -57,8 +57,8 @@ RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && mkdir $HOME/.steam \
   && ln -s $HOME/.local/share/Steam/steamcmd/linux64 $HOME/.steam/sdk64
 
-COPY css-tickrate-release-linux-x86_64.zip $HOME/
-RUN echo "8af9c47fa235f03baa7d418d7b69eec0c4e73f555549db441593696c197b69f1  $HOME/css-tickrate-release-linux-x86_64.zip" | sha256sum -c - \
+RUN wget -q -O $HOME/css-tickrate-release-linux-x86_64.zip \
+    https://github.com/angelfor3v3r/source-tickrate/releases/download/v1.4.5/css-tickrate-release-linux-x86_64.zip \
   && unzip -o $HOME/css-tickrate-release-linux-x86_64.zip -d ${SERVER_DIR}/tf \
   && rm $HOME/css-tickrate-release-linux-x86_64.zip
 
