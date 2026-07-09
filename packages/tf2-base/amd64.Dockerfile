@@ -57,6 +57,14 @@ RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && mkdir $HOME/.steam \
   && ln -s $HOME/.local/share/Steam/steamcmd/linux64 $HOME/.steam/sdk64
 
+ARG TICKRATE_FILE_NAME=css-tickrate-release-linux-x86_64.zip
+ARG TICKRATE_VERSION=1.4.5
+ARG TICKRATE_URL=https://github.com/angelfor3v3r/source-tickrate/releases/download/v${TICKRATE_VERSION}/${TICKRATE_FILE_NAME}
+ARG TICKRATE_CHECKSUM=8af9c47fa235f03baa7d418d7b69eec0c4e73f555549db441593696c197b69f1
+ADD --chown=tf2:tf2 --checksum=sha256:${TICKRATE_CHECKSUM} ${TICKRATE_URL} ${TICKRATE_FILE_NAME}
+RUN unzip -qo "${TICKRATE_FILE_NAME}" -d "${SERVER_DIR}/tf" \
+  && rm "${TICKRATE_FILE_NAME}"
+
 COPY server.cfg.template ${SERVER_DIR}/tf/cfg/server.cfg.template
 COPY --from=rcon-build /build/rcon/build/rcon ${SERVER_DIR}/rcon
 
