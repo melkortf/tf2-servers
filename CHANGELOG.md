@@ -1,5 +1,18 @@
 # Changelog
 
+# [3.10.0](https://github.com/melkortf/tf2-servers/compare/3.9.30...3.10.0) (2026-07-09)
+
+
+### Bug Fixes
+
+* **ci:** assign instead of requesting review on dependency PRs ([#281](https://github.com/melkortf/tf2-servers/issues/281)) ([b4858a6](https://github.com/melkortf/tf2-servers/commit/b4858a6860b6fce4e72cd333e0b6bc938bcb04a0))
+* **deps:** update SourceBans++ to version 2.0.0 ([#278](https://github.com/melkortf/tf2-servers/issues/278)) ([6023acd](https://github.com/melkortf/tf2-servers/commit/6023acd31b709d094cdc095395a6004b8f95beb8))
+
+
+### Features
+
+* add tickrate selector ([#280](https://github.com/melkortf/tf2-servers/issues/280)) ([fb3fe0f](https://github.com/melkortf/tf2-servers/commit/fb3fe0f7b810944aec9f24195e19eceeb9cfed68))
+
 ## [3.9.30](https://github.com/melkortf/tf2-servers/compare/3.9.29...3.9.30) (2026-07-08)
 
 
