@@ -133,4 +133,4 @@ jobs:
             Bumps [${{ matrix.name }}](https://github.com/${{ matrix.repo }}) to version `${{ steps.update.outputs.target }}` and refreshes the SHA256 checksum in every Dockerfile that pins it.
           branch: update-deps/${{ matrix.id }}
           delete-branch: true
-          reviewers: garrappachc
+          assignees: garrappachc
