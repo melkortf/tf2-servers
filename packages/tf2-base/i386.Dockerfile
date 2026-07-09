@@ -87,7 +87,7 @@ ENV STV_PASSWORD=
 ENV DOWNLOAD_URL="https://fastdl.serveme.tf/"
 
 WORKDIR $SERVER_DIR
-COPY --chmod=755 entrypoint.sh .
+COPY entrypoint.sh .
 COPY healthcheck.sh .
 
 ENTRYPOINT ["./entrypoint.sh"]
