@@ -115,6 +115,7 @@ The base image for all other images; pure TF2 server, without any add-ons and pl
 | STV_PASSWORD         |                                    | `tv_password "${STV_PASSWORD}"`       | SourceTV password.                                                                      |
 | DOWNLOAD_URL         | https://fastdl.serveme.tf/         | `sv_downloadurl "${DOWNLOAD_URL}"`    | Download URL for the [FastDL](https://developer.valvesoftware.com/wiki/Sv_downloadurl). |
 | ENABLE_FAKE_IP       | 0                                  | `-enablefakeip`                       | Enables/Disables [SDR](https://developer.valvesoftware.com/wiki/Steam_Datagram_Relay) by turning the `-enablefakeip` flag on or off, setting to 1 or 0 respectively. |
+| TICKRATE             |                                    | `-tickrate ${TICKRATE}`               | Sets the server tickrate. Supported values: 100, 133, 200. Uses [css-tickrate](https://github.com/angelfor3v3r/source-tickrate). |
 
 #### tf2-sourcemod
 
