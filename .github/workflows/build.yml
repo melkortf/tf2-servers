@@ -351,6 +351,28 @@ jobs:
           load: true
           tags: ghcr.io/melkortf/tf2-base/i386:pr
 
+      - name: Verify entrypoint is executable
+        run: docker run --rm --entrypoint /bin/bash ghcr.io/melkortf/tf2-base/i386:pr -c 'test -x "${SERVER_DIR}/entrypoint.sh"'
+
+      - name: Smoke test tf2-base (i386)
+        run: |
+          docker run --detach --name smoke-test ghcr.io/melkortf/tf2-base/i386:pr
+          for _ in $(seq 1 30); do
+            sleep 10
+            running=$(docker inspect --format '{{.State.Running}}' smoke-test)
+            health=$(docker inspect --format '{{.State.Health.Status}}' smoke-test)
+            echo "running=${running} health=${health}"
+            if [ "${health}" = "healthy" ]; then
+              docker rm --force smoke-test
+              exit 0
+            fi
+            if [ "${running}" != "true" ] || [ "${health}" = "unhealthy" ]; then
+              break
+            fi
+          done
+          docker logs smoke-test
+          exit 1
+
       - name: Build tf2-sourcemod (i386)
         uses: docker/build-push-action@v7
         with:
