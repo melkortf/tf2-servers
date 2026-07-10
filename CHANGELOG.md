@@ -1,5 +1,13 @@
 # Changelog
 
+## [3.10.1](https://github.com/melkortf/tf2-servers/compare/3.10.0...3.10.1) (2026-07-10)
+
+
+### Bug Fixes
+
+* restore executable bit on entrypoint.sh ([798ea49](https://github.com/melkortf/tf2-servers/commit/798ea491beb6e3bdad46c836ad82513b7e28b482))
+* **tf2-base:** copy entrypoint.sh with executable permissions ([#284](https://github.com/melkortf/tf2-servers/issues/284)) ([079e22f](https://github.com/melkortf/tf2-servers/commit/079e22f6946fc9aae9cd8686421cb6b937836305)), closes [#280](https://github.com/melkortf/tf2-servers/issues/280) [#283](https://github.com/melkortf/tf2-servers/issues/283)
+
 # [3.10.0](https://github.com/melkortf/tf2-servers/compare/3.9.30...3.10.0) (2026-07-09)
 
 
