@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.10.4](https://github.com/melkortf/tf2-servers/compare/3.10.3...3.10.4) (2026-07-14)
+
+
+### Bug Fixes
+
+* **tf2-base:** update tracked TF2 version to 10822003 ([fa32f56](https://github.com/melkortf/tf2-servers/commit/fa32f567b08349c0ce7da82b0676ade959f5abb8))
+
 ## [3.10.3](https://github.com/melkortf/tf2-servers/compare/3.10.2...3.10.3) (2026-07-14)
 
 
