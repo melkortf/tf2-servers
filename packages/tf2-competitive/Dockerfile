@@ -102,9 +102,9 @@ RUN unzip -q "${IMPROVED_MATCH_TIMER_FILE_NAME}" \
   && cp "Improved-Match-Timer-main/addons/sourcemod/scripting/"*.sp "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/"
 
 ARG UPDATED_PAUSE_FILE_NAME=updated-pause-plugin.zip
-ARG UPDATED_PAUSE_VERSION=v1.4.2
+ARG UPDATED_PAUSE_VERSION=v1.6.2
 ARG UPDATED_PAUSE_URL=https://github.com/l-Aad-l/updated-pause-plugin/releases/download/${UPDATED_PAUSE_VERSION}/${UPDATED_PAUSE_FILE_NAME}
-ARG UPDATED_PAUSE_CHECKSUM=5fb97a7be0f1246c25ebd674fd87f755f2adca1021c53f4022a6e25f547ea134
+ARG UPDATED_PAUSE_CHECKSUM=866825b4f68d3029a2c4ffb47a561c1719fccaa01047bd05cb3bd0ec0b79326b
 ADD --checksum=sha256:${UPDATED_PAUSE_CHECKSUM} ${UPDATED_PAUSE_URL} .
 RUN unzip -q -o "${UPDATED_PAUSE_FILE_NAME}" -d "${PLUGIN_INSTALL_DIR}/"
 
