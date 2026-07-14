@@ -1,5 +1,14 @@
 # Changelog
 
+## [3.10.3](https://github.com/melkortf/tf2-servers/compare/3.10.2...3.10.3) (2026-07-14)
+
+
+### Bug Fixes
+
+* **deps:** update F2's sourcemod plugins to version 20260702-1782977488895 ([#288](https://github.com/melkortf/tf2-servers/issues/288)) ([80e031d](https://github.com/melkortf/tf2-servers/commit/80e031dabe52e474a4e997bb58d049cb62c0d313))
+* **deps:** update SOAP-TF2DM to version 4.4.9 ([#289](https://github.com/melkortf/tf2-servers/issues/289)) ([f81e755](https://github.com/melkortf/tf2-servers/commit/f81e7557186b39ce7ec8fe7c647fad4081ee0b0b))
+* **deps:** update updated-pause-plugin to version v1.6.2 ([#287](https://github.com/melkortf/tf2-servers/issues/287)) ([fefd41b](https://github.com/melkortf/tf2-servers/commit/fefd41b354a6f16af7c5aa977a00729f8b79ab43))
+
 ## [3.10.2](https://github.com/melkortf/tf2-servers/compare/3.10.1...3.10.2) (2026-07-10)
 
 
