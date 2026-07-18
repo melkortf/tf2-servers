@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.10.6](https://github.com/melkortf/tf2-servers/compare/3.10.5...3.10.6) (2026-07-18)
+
+
+### Bug Fixes
+
+* **deps:** update F2's sourcemod plugins to version 20260717-1784284363049 ([#290](https://github.com/melkortf/tf2-servers/issues/290)) ([ed00208](https://github.com/melkortf/tf2-servers/commit/ed002082f10975659c57163a8d793a137cdd29ee))
+
 ## [3.10.5](https://github.com/melkortf/tf2-servers/compare/3.10.4...3.10.5) (2026-07-16)
 
 
