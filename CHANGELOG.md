@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.10.7](https://github.com/melkortf/tf2-servers/compare/3.10.6...3.10.7) (2026-07-19)
+
+
+### Bug Fixes
+
+* **deps:** update ETF2L.org gameserver configs to version 1.0.27 ([#291](https://github.com/melkortf/tf2-servers/issues/291)) ([9ce6169](https://github.com/melkortf/tf2-servers/commit/9ce6169cbd063823ffc4c525f3e353287d32a85c))
+
 ## [3.10.6](https://github.com/melkortf/tf2-servers/compare/3.10.5...3.10.6) (2026-07-18)
 
 
