@@ -12,6 +12,7 @@ on:
           - etf2l_configs
           - f2_sourcemod_plugins
           - tf2_comp_fixes
+          - ultitrio_configs
 
       version:
         type: string
@@ -54,6 +55,11 @@ jobs:
               echo "packageName=TF2 Competitive Fixes" >> "$GITHUB_OUTPUT"
               echo "packagePath=packages/tf2-competitive" >> "$GITHUB_OUTPUT"
               echo "variablePrefix=COMP_FIXES" >> "$GITHUB_OUTPUT"
+              ;;
+            ultitrio_configs)
+              echo "packageName=Ultitrio gameserver configs" >> "$GITHUB_OUTPUT"
+              echo "packagePath=packages/tf2-competitive" >> "$GITHUB_OUTPUT"
+              echo "variablePrefix=ULTITRIO_CONFIGS" >> "$GITHUB_OUTPUT"
               ;;
             *)
               echo "invalid package"

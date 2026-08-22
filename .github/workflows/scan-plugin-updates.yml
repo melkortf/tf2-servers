@@ -6,11 +6,11 @@ name: Scan plugin updates
 # existing PR instead of opening duplicates.
 #
 # Only dependencies hosted as proper GitHub releases are handled here. Packages
-# that are pulled from a moving ref (raw/master, archive/refs/heads/main), from
-# a non-GitHub host (fbtf.tf), or that use bespoke versioning (Metamod:Source
-# and SourceMod snapshots, srctvplus' two asset/checksum pairs) are
-# intentionally left out and continue to be updated manually via
-# update-package.yml.
+# that are pulled from a moving ref (raw/master, archive/refs/heads/main,
+# Ultitrio's rolling MainRelease tag), from a non-GitHub host (fbtf.tf), or that
+# use bespoke versioning (Metamod:Source and SourceMod snapshots, srctvplus' two
+# asset/checksum pairs) are intentionally left out and continue to be updated
+# manually via update-package.yml.
 
 on:
   schedule:
@@ -39,7 +39,6 @@ jobs:
           - { id: tickrate,      name: "source-tickrate",              repo: "angelfor3v3r/source-tickrate",   prefix: "TICKRATE",      prerelease: false }
           - { id: f2_plugins,    name: "F2's sourcemod plugins",       repo: "F2/F2s-sourcemod-plugins",       prefix: "F2_SOURCEMOD_PLUGINS", prerelease: false }
           - { id: sdr_plugin,    name: "sdr-plugin",                   repo: "Red-X1/sdr-plugin",              prefix: "SDR_PLUGIN",    prerelease: false }
-          - { id: ultitrio,      name: "Ultitrio gameserver configs",  repo: "CoolstuffTF2/Ultitrio",          prefix: "ULTITRIO_CONFIGS", prerelease: false }
           - { id: updated_pause, name: "updated-pause-plugin",         repo: "l-Aad-l/updated-pause-plugin",   prefix: "UPDATED_PAUSE", prerelease: false }
 
     steps:
