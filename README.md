@@ -143,7 +143,9 @@ $ docker pull ghcr.io/melkortf/tf2-competitive
 
 TF2 server configured to be used in competitive matches. The following plugins, add-ons and configs are installed:
 
+- [SOAP-TF2DM](https://github.com/sapphonie/SOAP-TF2DM) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [MGEMod](https://github.com/sapphonie/MGEMod) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [SrcTV+](https://github.com/dalegaard/srctvplus)
 - [Improved Match Timer plugin](https://github.com/dewbsku/Improved-Match-Timer)
