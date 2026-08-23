@@ -139,28 +139,28 @@ $ docker pull ghcr.io/melkortf/tf2-competitive
 | --------------------------------------------------------------------------- | ------ |
 | `ghcr.io/melkortf/tf2-competitive`, `ghcr.io/melkortf/tf2-competitive/i386` | -      |
 
-TF2 server configured to be used in competitive matches. The following plugins, add-ons and configs are installed:
+TF2 server configured to be used in competitive matches. The following plugins, add-ons and configs are installed. Entries tagged ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen) are bumped automatically by the [scan plugin updates](.github/workflows/scan-plugin-updates.yml) workflow; the rest are updated manually:
 
-- [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes)
-- [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin)
+- [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [SrcTV+](https://github.com/dalegaard/srctvplus)
 - [Improved Match Timer plugin](https://github.com/dewbsku/Improved-Match-Timer)
-- [Supplemental Stats 2](https://github.com/F2/F2s-sourcemod-plugins#supplemental-stats-2-)
-- [Medic Stats](https://github.com/F2/F2s-sourcemod-plugins#medic-stats-)
-- [RestoreScore](https://github.com/F2/F2s-sourcemod-plugins#restorescore-)
-- [LogsTF](https://github.com/F2/F2s-sourcemod-plugins#logstf-)
-- [RecordSTV](https://github.com/F2/F2s-sourcemod-plugins#recordstv-)
-- [WaitForSTV](https://github.com/F2/F2s-sourcemod-plugins#waitforstv-)
-- [FixStvSlot](https://github.com/F2/F2s-sourcemod-plugins#fixstvslot-)
-- [AFK](https://github.com/F2/F2s-sourcemod-plugins#afk-)
-- [tf2rue](https://github.com/sapphonie/tf2rue)
-- [neocurl](https://github.com/sapphonie/SM-neocurl-ext)
+- [Supplemental Stats 2](https://github.com/F2/F2s-sourcemod-plugins#supplemental-stats-2-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [Medic Stats](https://github.com/F2/F2s-sourcemod-plugins#medic-stats-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [RestoreScore](https://github.com/F2/F2s-sourcemod-plugins#restorescore-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [LogsTF](https://github.com/F2/F2s-sourcemod-plugins#logstf-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [RecordSTV](https://github.com/F2/F2s-sourcemod-plugins#recordstv-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [WaitForSTV](https://github.com/F2/F2s-sourcemod-plugins#waitforstv-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [FixStvSlot](https://github.com/F2/F2s-sourcemod-plugins#fixstvslot-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [AFK](https://github.com/F2/F2s-sourcemod-plugins#afk-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [tf2rue](https://github.com/sapphonie/tf2rue) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [neocurl](https://github.com/sapphonie/SM-neocurl-ext) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [demos.tf](https://github.com/demostf/plugin)
-- [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
-- [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
+- [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [fbtf.tf configs](https://fbtf.tf/)
 - [mapdownloader](https://github.com/spiretf/mapdownloader)
-- [sdr-plugin](https://github.com/Red-X1/sdr-plugin)
+- [sdr-plugin](https://github.com/Red-X1/sdr-plugin) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 
 | Environment variable | Default value | Used in                                | Description                                                           |
 | -------------------- | ------------- | -------------------------------------- | --------------------------------------------------------------------- |
