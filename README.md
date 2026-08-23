@@ -87,6 +87,8 @@ This will start the server on pl_badwater.
 
 ### Images
 
+> Packages tagged ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen) are bumped automatically by the [scan plugin updates](.github/workflows/scan-plugin-updates.yml) workflow; everything else is updated manually.
+
 #### tf2-base
 
 ```
@@ -115,7 +117,7 @@ The base image for all other images; pure TF2 server, without any add-ons and pl
 | STV_PASSWORD         |                                    | `tv_password "${STV_PASSWORD}"`       | SourceTV password.                                                                      |
 | DOWNLOAD_URL         | https://fastdl.serveme.tf/         | `sv_downloadurl "${DOWNLOAD_URL}"`    | Download URL for the [FastDL](https://developer.valvesoftware.com/wiki/Sv_downloadurl). |
 | ENABLE_FAKE_IP       | 0                                  | `-enablefakeip`                       | Enables/Disables [SDR](https://developer.valvesoftware.com/wiki/Steam_Datagram_Relay) by turning the `-enablefakeip` flag on or off, setting to 1 or 0 respectively. |
-| TICKRATE             |                                    | `-tickrate ${TICKRATE}`               | Sets the server tickrate. Supported values: 100, 133, 200. Uses [css-tickrate](https://github.com/angelfor3v3r/source-tickrate). |
+| TICKRATE             |                                    | `-tickrate ${TICKRATE}`               | Sets the server tickrate. Supported values: 100, 133, 200. Uses [css-tickrate](https://github.com/angelfor3v3r/source-tickrate) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen). |
 
 #### tf2-sourcemod
 
@@ -141,26 +143,28 @@ $ docker pull ghcr.io/melkortf/tf2-competitive
 
 TF2 server configured to be used in competitive matches. The following plugins, add-ons and configs are installed:
 
-- [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes)
-- [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin)
+- [SOAP-TF2DM](https://github.com/sapphonie/SOAP-TF2DM) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [MGEMod](https://github.com/sapphonie/MGEMod) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [SrcTV+](https://github.com/dalegaard/srctvplus)
 - [Improved Match Timer plugin](https://github.com/dewbsku/Improved-Match-Timer)
-- [Supplemental Stats 2](https://github.com/F2/F2s-sourcemod-plugins#supplemental-stats-2-)
-- [Medic Stats](https://github.com/F2/F2s-sourcemod-plugins#medic-stats-)
-- [RestoreScore](https://github.com/F2/F2s-sourcemod-plugins#restorescore-)
-- [LogsTF](https://github.com/F2/F2s-sourcemod-plugins#logstf-)
-- [RecordSTV](https://github.com/F2/F2s-sourcemod-plugins#recordstv-)
-- [WaitForSTV](https://github.com/F2/F2s-sourcemod-plugins#waitforstv-)
-- [FixStvSlot](https://github.com/F2/F2s-sourcemod-plugins#fixstvslot-)
-- [AFK](https://github.com/F2/F2s-sourcemod-plugins#afk-)
-- [tf2rue](https://github.com/sapphonie/tf2rue)
-- [neocurl](https://github.com/sapphonie/SM-neocurl-ext)
+- [Supplemental Stats 2](https://github.com/F2/F2s-sourcemod-plugins#supplemental-stats-2-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [Medic Stats](https://github.com/F2/F2s-sourcemod-plugins#medic-stats-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [RestoreScore](https://github.com/F2/F2s-sourcemod-plugins#restorescore-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [LogsTF](https://github.com/F2/F2s-sourcemod-plugins#logstf-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [RecordSTV](https://github.com/F2/F2s-sourcemod-plugins#recordstv-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [WaitForSTV](https://github.com/F2/F2s-sourcemod-plugins#waitforstv-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [FixStvSlot](https://github.com/F2/F2s-sourcemod-plugins#fixstvslot-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [AFK](https://github.com/F2/F2s-sourcemod-plugins#afk-) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [tf2rue](https://github.com/sapphonie/tf2rue) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [neocurl](https://github.com/sapphonie/SM-neocurl-ext) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [demos.tf](https://github.com/demostf/plugin)
-- [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs)
-- [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg)
+- [ETF2L.org configs](https://github.com/ETF2L/gameserver-configs) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [RGL.gg configs](https://github.com/RGLgg/server-resources-updater/tree/master/cfg) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [fbtf.tf configs](https://fbtf.tf/)
 - [mapdownloader](https://github.com/spiretf/mapdownloader)
-- [sdr-plugin](https://github.com/Red-X1/sdr-plugin)
+- [sdr-plugin](https://github.com/Red-X1/sdr-plugin) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 
 | Environment variable | Default value | Used in                                | Description                                                           |
 | -------------------- | ------------- | -------------------------------------- | --------------------------------------------------------------------- |
@@ -177,7 +181,14 @@ $ docker pull ghcr.io/melkortf/tf2-dm
 | --------------------------------------------------------- | ------ |
 | `ghcr.io/melkortf/tf2-dm`, `ghcr.io/melkortf/tf2-dm/i386` | -      |
 
-TF2 dedicated server for DeathMatch gameplay.
+TF2 dedicated server for DeathMatch gameplay. The following plugins are installed:
+
+- [SOAP-TF2DM](https://github.com/sapphonie/SOAP-TF2DM) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [SourceBans++](https://github.com/sbpp/sourcebans-pp) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [tf2rue](https://github.com/sapphonie/tf2rue) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- AFK Manager
+- Class Restrict
 
 #### tf2-mge
 
@@ -189,4 +200,8 @@ $ docker pull ghcr.io/melkortf/tf2-mge
 | ----------------------------------------------------------- | ------ |
 | `ghcr.io/melkortf/tf2-mge`, `ghcr.io/melkortf/tf2-mge/i386` | -      |
 
-TF2 dedicated server for MGE 1v1 training mod.
+TF2 dedicated server for MGE 1v1 training mod. The following plugins are installed:
+
+- [MGEMod](https://github.com/sapphonie/MGEMod) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [SourceBans++](https://github.com/sbpp/sourcebans-pp) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- AFK Manager
