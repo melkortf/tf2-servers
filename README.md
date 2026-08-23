@@ -87,6 +87,8 @@ This will start the server on pl_badwater.
 
 ### Images
 
+> Packages tagged ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen) are bumped automatically by the [scan plugin updates](.github/workflows/scan-plugin-updates.yml) workflow; everything else is updated manually.
+
 #### tf2-base
 
 ```
@@ -115,7 +117,7 @@ The base image for all other images; pure TF2 server, without any add-ons and pl
 | STV_PASSWORD         |                                    | `tv_password "${STV_PASSWORD}"`       | SourceTV password.                                                                      |
 | DOWNLOAD_URL         | https://fastdl.serveme.tf/         | `sv_downloadurl "${DOWNLOAD_URL}"`    | Download URL for the [FastDL](https://developer.valvesoftware.com/wiki/Sv_downloadurl). |
 | ENABLE_FAKE_IP       | 0                                  | `-enablefakeip`                       | Enables/Disables [SDR](https://developer.valvesoftware.com/wiki/Steam_Datagram_Relay) by turning the `-enablefakeip` flag on or off, setting to 1 or 0 respectively. |
-| TICKRATE             |                                    | `-tickrate ${TICKRATE}`               | Sets the server tickrate. Supported values: 100, 133, 200. Uses [css-tickrate](https://github.com/angelfor3v3r/source-tickrate). |
+| TICKRATE             |                                    | `-tickrate ${TICKRATE}`               | Sets the server tickrate. Supported values: 100, 133, 200. Uses [css-tickrate](https://github.com/angelfor3v3r/source-tickrate) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen). |
 
 #### tf2-sourcemod
 
@@ -139,7 +141,7 @@ $ docker pull ghcr.io/melkortf/tf2-competitive
 | --------------------------------------------------------------------------- | ------ |
 | `ghcr.io/melkortf/tf2-competitive`, `ghcr.io/melkortf/tf2-competitive/i386` | -      |
 
-TF2 server configured to be used in competitive matches. The following plugins, add-ons and configs are installed. Entries tagged ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen) are bumped automatically by the [scan plugin updates](.github/workflows/scan-plugin-updates.yml) workflow; the rest are updated manually:
+TF2 server configured to be used in competitive matches. The following plugins, add-ons and configs are installed:
 
 - [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [Updated pause plugin](https://github.com/l-Aad-l/updated-pause-plugin) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
@@ -177,7 +179,14 @@ $ docker pull ghcr.io/melkortf/tf2-dm
 | --------------------------------------------------------- | ------ |
 | `ghcr.io/melkortf/tf2-dm`, `ghcr.io/melkortf/tf2-dm/i386` | -      |
 
-TF2 dedicated server for DeathMatch gameplay.
+TF2 dedicated server for DeathMatch gameplay. The following plugins are installed:
+
+- [SOAP-TF2DM](https://github.com/sapphonie/SOAP-TF2DM) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [TF2 competitive fixes](https://github.com/ldesgoui/tf2-comp-fixes) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [SourceBans++](https://github.com/sbpp/sourcebans-pp) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [tf2rue](https://github.com/sapphonie/tf2rue) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- AFK Manager
+- Class Restrict
 
 #### tf2-mge
 
@@ -189,4 +198,8 @@ $ docker pull ghcr.io/melkortf/tf2-mge
 | ----------------------------------------------------------- | ------ |
 | `ghcr.io/melkortf/tf2-mge`, `ghcr.io/melkortf/tf2-mge/i386` | -      |
 
-TF2 dedicated server for MGE 1v1 training mod.
+TF2 dedicated server for MGE 1v1 training mod. The following plugins are installed:
+
+- [MGEMod](https://github.com/sapphonie/MGEMod) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [SourceBans++](https://github.com/sbpp/sourcebans-pp) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- AFK Manager
