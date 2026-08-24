@@ -72,10 +72,10 @@ RUN unzip -q "${RGL_CONFIGS_FILE_NAME}" \
   && mkdir "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/disabled" \
   && cp "addons/sourcemod/scripting/disabled/roundtimer_override.sp" "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/disabled/"
 
-ARG ULTITRIO_CONFIGS_VERSION=3.2.1
+ARG ULTITRIO_CONFIGS_VERSION=MainRelease
 ARG ULTITRIO_CONFIGS_FILE_NAME=Ultitrio-${ULTITRIO_CONFIGS_VERSION}.zip
-ARG ULTITRIO_CONFIGS_URL=https://github.com/CoolstuffTF2/Ultitrio/archive/refs/tags/v${ULTITRIO_CONFIGS_VERSION}.zip
-ARG ULTITRIO_CONFIGS_CHECKSUM=73c5a7daca365bc8e5461e49bd42430aec482c0e5d9e155651cbb54cd18e1a29
+ARG ULTITRIO_CONFIGS_URL=https://github.com/CoolstuffTF2/Ultitrio/archive/refs/tags/${ULTITRIO_CONFIGS_VERSION}.zip
+ARG ULTITRIO_CONFIGS_CHECKSUM=f3aa0b47ad16492d401966dab3e82ce0a967e49348d0a5e527e8d4635f7ecc3b
 ADD --checksum=sha256:${ULTITRIO_CONFIGS_CHECKSUM} ${ULTITRIO_CONFIGS_URL} ./${ULTITRIO_CONFIGS_FILE_NAME}
 RUN unzip -q "${ULTITRIO_CONFIGS_FILE_NAME}" \
   && cp "Ultitrio-${ULTITRIO_CONFIGS_VERSION}/ultitrio_"*.{cfg,txt} "${PLUGIN_INSTALL_DIR}/cfg/"
