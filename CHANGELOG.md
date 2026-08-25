@@ -1,5 +1,12 @@
 # Changelog
 
+## [3.10.10](https://github.com/melkortf/tf2-servers/compare/3.10.9...3.10.10) (2026-08-25)
+
+### Bug Fixes
+
+* **ci:** resolve scan-plugin-updates failure on Ultitrio configs ([#298](https://github.com/melkortf/tf2-servers/issues/298)) ([3e4da09](https://github.com/melkortf/tf2-servers/commit/3e4da0988a44a140c95d4652dc92ddb35d1ec492))
+* **deps:** update RGL.gg gameserver configs to version v375 ([#300](https://github.com/melkortf/tf2-servers/issues/300)) ([d565890](https://github.com/melkortf/tf2-servers/commit/d565890789a694b0089071658dcbb1d624c707f3))
+
 ## [3.10.9](https://github.com/melkortf/tf2-servers/compare/3.10.8...3.10.9) (2026-07-29)
 
 ### Bug Fixes
