@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS rcon-build
+FROM ubuntu:26.04 AS rcon-build
 WORKDIR /build
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -9,11 +9,11 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && git clone https://github.com/n0la/rcon.git \
   && mkdir rcon/build \
   && cd rcon/build \
-  && cmake .. \
+  && cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .. \
   && make
 
 
-FROM steamcmd/steamcmd:ubuntu-22
+FROM steamcmd/steamcmd:ubuntu-26
 LABEL maintainer="garrappachc@gmail.com"
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -26,15 +26,19 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && apt-get install -y --no-install-recommends --no-install-suggests \
   lib32gcc-s1 \
   lib32z1 \
-  libncurses5:i386 \
   libbz2-1.0:i386 \
   lib32stdc++6 \
-  libtinfo5:i386 \
   libcurl3-gnutls:i386 \
   wget \
   unzip \
   gettext-base \
   libbsd0 \
+  && wget https://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libncurses5_6.3-2ubuntu0.3_i386.deb \
+  && wget https://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.3-2ubuntu0.3_i386.deb \
+  && dpkg -i libtinfo5_6.3-2ubuntu0.3_i386.deb \
+  && dpkg -i libncurses5_6.3-2ubuntu0.3_i386.deb \
+  && rm libncurses5_6.3-2ubuntu0.3_i386.deb \
+  && rm libtinfo5_6.3-2ubuntu0.3_i386.deb \
   && rm -rf /var/lib/apt/lists/*
 
 ARG USER=tf2
@@ -48,7 +52,8 @@ ENV HOME=$HOME
 ENV SERVER_DIR=$SERVER_DIR
 ENV APP_ID=$APP_ID
 
-RUN useradd --home-dir $HOME --create-home --shell /bin/bash $USER
+RUN usermod -l $USER -d /home/ubuntu -m ubuntu \
+  && groupmod -n $USER ubuntu
 USER $USER
 WORKDIR $HOME
 
