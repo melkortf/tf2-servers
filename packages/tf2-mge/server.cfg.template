@@ -26,6 +26,7 @@ mp_match_end_at_timelimit 1
 
 mgemod_clear_projectiles 0
 mgemod_rating_engine glicko2
+mgemod_glicko_period_close 1
 
 sv_voiceenable 1
 sv_alltalk 1
