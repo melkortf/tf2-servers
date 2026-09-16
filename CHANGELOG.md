@@ -1,5 +1,16 @@
 # Changelog
 
+# [3.11.0](https://github.com/melkortf/tf2-servers/compare/3.10.10...3.11.0) (2026-09-16)
+
+### Bug Fixes
+
+* **deps:** update RGL.gg gameserver configs to version v378 ([#303](https://github.com/melkortf/tf2-servers/issues/303)) ([dab2e6e](https://github.com/melkortf/tf2-servers/commit/dab2e6efa1d3a7b764e96b6c6bc4c4a585135502))
+* **deps:** update SourceBans++ to version 2.0.3 ([#302](https://github.com/melkortf/tf2-servers/issues/302)) ([8157b3c](https://github.com/melkortf/tf2-servers/commit/8157b3c1728ccd18fb6dc631e3df9d2af3039c81))
+
+### Features
+
+* **tf2-competitive,tf2-mge:** replace sapphonie/MGEMod with mgetf/MGEMod ([#304](https://github.com/melkortf/tf2-servers/issues/304)) ([a831f9c](https://github.com/melkortf/tf2-servers/commit/a831f9c4f0d03e5f9bfe2b8b7f3368a98ec52ccb))
+
 ## [3.10.10](https://github.com/melkortf/tf2-servers/compare/3.10.9...3.10.10) (2026-08-25)
 
 ### Bug Fixes
