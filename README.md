@@ -89,6 +89,8 @@ This will start the server on pl_badwater.
 
 > Packages tagged ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen) are bumped automatically by the [scan plugin updates](.github/workflows/scan-plugin-updates.yml) workflow; everything else is updated manually.
 
+Images are published to both the [GitHub Container Registry](https://github.com/melkortf/tf2-servers/pkgs/container/tf2-base) and [Docker Hub](https://hub.docker.com/u/melkortf). Docker Hub images use the `melkortf/<image>` name and correspond to the 32-bit variants; use GHCR for the 64-bit variants.
+
 #### tf2-base
 
 ```
