@@ -30,7 +30,7 @@ jobs:
         include:
           - { id: comp_fixes,    name: "TF2 Competitive Fixes",        repo: "ldesgoui/tf2-comp-fixes",        prefix: "COMP_FIXES",    prerelease: false }
           - { id: soap_dm,       name: "SOAP-TF2DM",                   repo: "sapphonie/SOAP-TF2DM",           prefix: "SOAP_DM",       prerelease: false }
-          - { id: mgemod,        name: "MGEMod",                       repo: "sapphonie/MGEMod",               prefix: "MGEMOD",        prerelease: false }
+          - { id: mgemod,        name: "MGEMod",                       repo: "mgetf/MGEMod",                   prefix: "MGEMOD",        prerelease: false }
           - { id: tf2rue,        name: "tf2rue",                       repo: "sapphonie/tf2rue",               prefix: "TF2RUE",        prerelease: false }
           - { id: sourcebans,    name: "SourceBans++",                 repo: "sbpp/sourcebans-pp",             prefix: "SOURCEBANS",    prerelease: false }
           - { id: neocurl,       name: "SM-neocurl-ext",               repo: "sapphonie/SM-neocurl-ext",       prefix: "NEOCURL",       prerelease: true  }

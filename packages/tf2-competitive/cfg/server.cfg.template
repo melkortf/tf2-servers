@@ -20,6 +20,10 @@ tv_maxrate 0
 
 sv_quota_stringcmdspersecond 400
 
+mgemod_clear_projectiles 0
+mgemod_rating_engine glicko2
+mgemod_glicko_period_close 1
+
 logstf_apikey "${LOGS_TF_APIKEY}"
 sm_demostf_apikey "${DEMOS_TF_APIKEY}"
 
