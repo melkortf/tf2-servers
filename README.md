@@ -202,6 +202,6 @@ $ docker pull ghcr.io/melkortf/tf2-mge
 
 TF2 dedicated server for MGE 1v1 training mod. The following plugins are installed:
 
-- [MGEMod](https://github.com/sapphonie/MGEMod) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
+- [MGEMod](https://github.com/mge/MGEMod) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - [SourceBans++](https://github.com/sbpp/sourcebans-pp) ![auto-updated](https://img.shields.io/badge/auto--updated-brightgreen)
 - AFK Manager
