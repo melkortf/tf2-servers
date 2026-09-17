@@ -1,5 +1,19 @@
 # Changelog
 
+# [4.0.0](https://github.com/melkortf/tf2-servers/compare/3.11.1...4.0.0) (2026-09-17)
+
+* feat!: upgrade base ubuntu image to 26.04 (#305), closes [#305](https://github.com/melkortf/tf2-servers/issues/305)
+
+### Features
+
+* **ci:** publish images to Docker Hub ([#306](https://github.com/melkortf/tf2-servers/issues/306)) ([0d2cd04](https://github.com/melkortf/tf2-servers/commit/0d2cd0457303e271a0902176dca8116e43ce7608))
+
+### BREAKING CHANGES
+
+* all images are now based on ubuntu:26.04
+
+  ---------
+
 ## [3.11.1](https://github.com/melkortf/tf2-servers/compare/3.11.0...3.11.1) (2026-09-17)
 
 ### Bug Fixes
