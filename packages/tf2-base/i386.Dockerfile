@@ -52,7 +52,7 @@ ENV HOME=$HOME
 ENV SERVER_DIR=$SERVER_DIR
 ENV APP_ID=$APP_ID
 
-RUN usermod -l $USER -d /home/ubuntu -m ubuntu \
+RUN usermod -l $USER -d $HOME -m ubuntu \
   && groupmod -n $USER ubuntu
 USER $USER
 WORKDIR $HOME
