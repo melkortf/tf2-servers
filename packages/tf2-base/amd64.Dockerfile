@@ -1,4 +1,4 @@
-FROM ubuntu:22.04 AS rcon-build
+FROM ubuntu:26.04 AS rcon-build
 WORKDIR /build
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -9,11 +9,11 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && git clone https://github.com/n0la/rcon.git \
   && mkdir rcon/build \
   && cd rcon/build \
-  && cmake .. \
+  && cmake -DCMAKE_POLICY_VERSION_MINIMUM=3.5 .. \
   && make
 
 
-FROM steamcmd/steamcmd:ubuntu-22
+FROM steamcmd/steamcmd:ubuntu-26
 LABEL maintainer="garrappachc@gmail.com"
 
 RUN export DEBIAN_FRONTEND=noninteractive \
@@ -23,13 +23,18 @@ RUN export DEBIAN_FRONTEND=noninteractive \
   && add-apt-repository multiverse \
   && apt-get -y update \
   && apt-get install -y --no-install-recommends --no-install-suggests \
-  libncurses5 \
   libbz2-1.0 \
   libcurl3-gnutls \
   wget \
   unzip \
   gettext-base \
   libbsd0 \
+  && wget https://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libncurses5_6.3-2ubuntu0.3_amd64.deb \
+  && wget https://archive.ubuntu.com/ubuntu/pool/universe/n/ncurses/libtinfo5_6.3-2ubuntu0.3_amd64.deb \
+  && dpkg -i libtinfo5_6.3-2ubuntu0.3_amd64.deb \
+  && dpkg -i libncurses5_6.3-2ubuntu0.3_amd64.deb \
+  && rm libncurses5_6.3-2ubuntu0.3_amd64.deb \
+  && rm libtinfo5_6.3-2ubuntu0.3_amd64.deb \
   && rm -rf /var/lib/apt/lists/*
 
 ARG USER=tf2
@@ -43,7 +48,8 @@ ENV SERVER_DIR=$SERVER_DIR
 ENV APP_ID=$APP_ID
 ENV SRCDS_EXEC=srcds_run_64
 
-RUN useradd --home-dir $HOME --create-home --shell /bin/bash $USER
+RUN usermod --login $USER --home $HOME --move-home ubuntu \
+  && groupmod --new-name $USER ubuntu
 USER $USER
 WORKDIR $HOME
 
@@ -54,7 +60,6 @@ RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && $HOME/install_tf2.sh \
   && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
   && rm maps_to_keep \
-  && mkdir $HOME/.steam \
   && ln -s $HOME/.local/share/Steam/steamcmd/linux64 $HOME/.steam/sdk64
 
 ARG TICKRATE_FILE_NAME=css-tickrate-release-linux-x86_64.zip

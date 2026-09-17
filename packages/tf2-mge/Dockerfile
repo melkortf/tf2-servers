@@ -1,7 +1,7 @@
 ARG REGISTRY=ghcr.io
 ARG TF2_SOURCEMOD_TAG=latest
 
-FROM ubuntu:22.04 AS plugins
+FROM ubuntu:26.04 AS plugins
 RUN export DEBIAN_FRONTEND=noninteractive \
   && export TZ=Etc/UTC \
   && apt-get -y update \

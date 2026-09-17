@@ -68,7 +68,7 @@ faketty $SERVER_DIR/$SRCDS_EXEC \
   -secured \
   $FAKE_IP_FLAG \
   "${TICKRATE_FLAGS[@]}" \
-  -steam_dir ${HOME}/.steam/steamcmd \
+  -steam_dir ${HOME}/.local/share/Steam/steamcmd \
   -steamcmd_script ${HOME}/tf2.txt \
   -autoupdate \
   +sv_setsteamaccount ${SERVER_TOKEN} \

@@ -2,7 +2,7 @@ ARG REGISTRY=ghcr.io
 ARG TF2_BASE_TAG=latest
 ARG ARCH=i386
 
-FROM ubuntu:22.04 AS plugins
+FROM ubuntu:26.04 AS plugins
 WORKDIR /download
 ARG INSTALL_DIR=/server/tf
 RUN mkdir -p "${INSTALL_DIR}"
