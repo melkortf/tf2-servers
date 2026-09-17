@@ -17,7 +17,8 @@ on:
       - "images/**"
 
 env:
-  REGISTRY: ghcr.io
+  GHCR_REGISTRY: ghcr.io
+  DOCKERHUB_REGISTRY: docker.io
   OWNER: ${{ github.repository_owner }}
 
 permissions:
@@ -39,8 +40,9 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: |
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-base
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-base/i386
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-base
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-base/i386
+            ${{ env.DOCKERHUB_REGISTRY }}/melkortf/tf2-base
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -51,12 +53,19 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Login to DockerHub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v4.6.0
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.GHCR_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4.6.0
+        with:
+          registry: ${{ env.DOCKERHUB_REGISTRY }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         uses: docker/build-push-action@v7
@@ -82,7 +91,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v6
         with:
-          images: ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-base/amd64
+          images: ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-base/amd64
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -93,10 +102,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Login to DockerHub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v4.6.0
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.GHCR_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -126,8 +135,9 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: |
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-sourcemod
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-sourcemod/i386
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-sourcemod
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-sourcemod/i386
+            ${{ env.DOCKERHUB_REGISTRY }}/melkortf/tf2-sourcemod
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -138,12 +148,19 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Login to DockerHub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v4.6.0
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.GHCR_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4.6.0
+        with:
+          registry: ${{ env.DOCKERHUB_REGISTRY }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         uses: docker/build-push-action@v7
@@ -172,8 +189,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v6
         with:
-          images: |
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-sourcemod/amd64
+          images: ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-sourcemod/amd64
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -184,10 +200,10 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Login to DockerHub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v4.6.0
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.GHCR_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
@@ -217,8 +233,9 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: |
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-mge
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-mge/i386
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-mge
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-mge/i386
+            ${{ env.DOCKERHUB_REGISTRY }}/melkortf/tf2-mge
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -229,12 +246,19 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Login to DockerHub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v4.6.0
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.GHCR_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4.6.0
+        with:
+          registry: ${{ env.DOCKERHUB_REGISTRY }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         uses: docker/build-push-action@v7
@@ -261,8 +285,9 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: |
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-competitive
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-competitive/i386
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-competitive
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-competitive/i386
+            ${{ env.DOCKERHUB_REGISTRY }}/melkortf/tf2-competitive
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -273,12 +298,19 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Login to DockerHub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v4.6.0
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.GHCR_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4.6.0
+        with:
+          registry: ${{ env.DOCKERHUB_REGISTRY }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build
         uses: docker/build-push-action@v7
@@ -305,8 +337,9 @@ jobs:
         uses: docker/metadata-action@v6
         with:
           images: |
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-dm
-            ${{ env.REGISTRY }}/${{ env.OWNER }}/tf2-dm/i386
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-dm
+            ${{ env.GHCR_REGISTRY }}/${{ env.OWNER }}/tf2-dm/i386
+            ${{ env.DOCKERHUB_REGISTRY }}/melkortf/tf2-dm
           tags: |
             type=sha,format=long
             type=schedule,pattern=nightly
@@ -317,12 +350,19 @@ jobs:
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v4
 
-      - name: Login to DockerHub
+      - name: Login to GitHub Container Registry
         uses: docker/login-action@v4.6.0
         with:
-          registry: ${{ env.REGISTRY }}
+          registry: ${{ env.GHCR_REGISTRY }}
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Login to Docker Hub
+        uses: docker/login-action@v4.6.0
+        with:
+          registry: ${{ env.DOCKERHUB_REGISTRY }}
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
 
       - name: Build and push
         uses: docker/build-push-action@v7
