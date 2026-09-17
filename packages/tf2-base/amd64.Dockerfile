@@ -48,8 +48,8 @@ ENV SERVER_DIR=$SERVER_DIR
 ENV APP_ID=$APP_ID
 ENV SRCDS_EXEC=srcds_run_64
 
-RUN usermod -l $USER -d $HOME -m ubuntu \
-  && groupmod -n $USER ubuntu
+RUN usermod --login $USER --home $HOME --move-home ubuntu \
+  && groupmod --new-name $USER ubuntu
 USER $USER
 WORKDIR $HOME
 
