@@ -60,7 +60,6 @@ RUN envsubst < $HOME/tf2.txt.template > $HOME/tf2.txt \
   && $HOME/install_tf2.sh \
   && find $SERVER_DIR/tf/maps -type f | grep -v "$(cat maps_to_keep)" | xargs rm -rf \
   && rm maps_to_keep \
-  #&& mkdir $HOME/.steam \
   && ln -s $HOME/.local/share/Steam/steamcmd/linux64 $HOME/.steam/sdk64
 
 ARG TICKRATE_FILE_NAME=css-tickrate-release-linux-x86_64.zip
