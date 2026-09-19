@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.0.1](https://github.com/melkortf/tf2-servers/compare/4.0.0...4.0.1) (2026-09-19)
+
+### Bug Fixes
+
+* **deps:** update SourceBans++ to version 2.1.0 ([#308](https://github.com/melkortf/tf2-servers/issues/308)) ([d9aa408](https://github.com/melkortf/tf2-servers/commit/d9aa408dda7f9196451230d7919d4d33232c0fed))
+
 # [4.0.0](https://github.com/melkortf/tf2-servers/compare/3.11.1...4.0.0) (2026-09-17)
 
 * feat!: upgrade base ubuntu image to 26.04 (#305), closes [#305](https://github.com/melkortf/tf2-servers/issues/305)
