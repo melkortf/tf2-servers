@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.0.6](https://github.com/melkortf/tf2-servers/compare/4.0.5...4.0.6) (2026-10-05)
+
+### Bug Fixes
+
+* **deps:** update MGEMod to version v3.1.0-beta38 ([#312](https://github.com/melkortf/tf2-servers/issues/312)) ([962558b](https://github.com/melkortf/tf2-servers/commit/962558b9f015cd04eb004109ff087c07e57c44c3))
+* **deps:** update RGL.gg gameserver configs to version v383 ([#311](https://github.com/melkortf/tf2-servers/issues/311)) ([d3196f5](https://github.com/melkortf/tf2-servers/commit/d3196f5750576ede8fa61ffe593675e3d509428b))
+* **deps:** update RGL.gg gameserver configs to version v386 ([#313](https://github.com/melkortf/tf2-servers/issues/313)) ([dc408de](https://github.com/melkortf/tf2-servers/commit/dc408de29f685dcf5de91725b779c0b5f93d5fed))
+
 ## [4.0.5](https://github.com/melkortf/tf2-servers/compare/4.0.4...4.0.5) (2026-10-03)
 
 ### Bug Fixes
