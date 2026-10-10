@@ -67,38 +67,9 @@ jobs:
               ;;
           esac
   
-  generate-checksum:
-    runs-on: ubuntu-latest
-    needs: resolve-package-variables
-    outputs:
-      packageUrl: ${{ steps.generate-checksum.outputs.packageUrl }}
-      packageChecksum: ${{ steps.generate-checksum.outputs.packageChecksum }}
-
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v7
-
-      - id: generate-checksum
-        name: Generate checksum
-        env:
-          PACKAGE_PATH: ${{ needs.resolve-package-variables.outputs.packagePath }}
-          PACKAGE_VERSION: ${{ inputs.version }}
-          VARIABLE_PREFIX: ${{ needs.resolve-package-variables.outputs.variablePrefix }}
-        run: |
-          set -o pipefail
-          sed -i "s/${VARIABLE_PREFIX}_VERSION=.*/${VARIABLE_PREFIX}_VERSION=${PACKAGE_VERSION}/" ${PACKAGE_PATH}/Dockerfile
-          if grep -q "${VARIABLE_PREFIX}_RELEASE_TAG=" ${PACKAGE_PATH}/Dockerfile; then
-            RELEASE_TAG="${PACKAGE_VERSION/-git/.}"
-            sed -i "s/${VARIABLE_PREFIX}_RELEASE_TAG=.*/${VARIABLE_PREFIX}_RELEASE_TAG=${RELEASE_TAG}/" ${PACKAGE_PATH}/Dockerfile
-          fi
-          PACKAGE_URL=$(grep -r "ARG ${VARIABLE_PREFIX}" ${PACKAGE_PATH}/Dockerfile | sed -E 's/^ARG\s(.+)=(.+)$/\1="\2"/g' | { eval "$(cat -)"; eval echo \$${VARIABLE_PREFIX}_URL; })
-          PACKAGE_CHECKSUM=$(curl --fail --location --silent "$PACKAGE_URL" | sha256sum | awk '{print $1}')
-          echo "packageUrl=$PACKAGE_URL" >> "$GITHUB_OUTPUT"
-          echo "packageChecksum=$PACKAGE_CHECKSUM" >> "$GITHUB_OUTPUT"
-
   update-version:
     runs-on: ubuntu-latest
-    needs: [resolve-package-variables, generate-checksum]
+    needs: resolve-package-variables
     permissions:
       contents: write
       pull-requests: write
@@ -107,29 +78,33 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
-      - name: Replace version and checksum
+      - id: pin
+        name: Pin version and checksum
         env:
           PACKAGE_PATH: ${{ needs.resolve-package-variables.outputs.packagePath }}
           PACKAGE_VERSION: ${{ inputs.version }}
-          PACKAGE_CHECKSUM: ${{ needs.generate-checksum.outputs.packageChecksum }}
           VARIABLE_PREFIX: ${{ needs.resolve-package-variables.outputs.variablePrefix }}
         run: |
-          sed -i "s/${VARIABLE_PREFIX}_VERSION=.*/${VARIABLE_PREFIX}_VERSION=${PACKAGE_VERSION}/" ${PACKAGE_PATH}/Dockerfile
-          sed -i "s/${VARIABLE_PREFIX}_CHECKSUM=.*/${VARIABLE_PREFIX}_CHECKSUM=${PACKAGE_CHECKSUM}/" ${PACKAGE_PATH}/Dockerfile
-          if grep -q "${VARIABLE_PREFIX}_RELEASE_TAG=" ${PACKAGE_PATH}/Dockerfile; then
-            RELEASE_TAG="${PACKAGE_VERSION/-git/.}"
-            sed -i "s/${VARIABLE_PREFIX}_RELEASE_TAG=.*/${VARIABLE_PREFIX}_RELEASE_TAG=${RELEASE_TAG}/" ${PACKAGE_PATH}/Dockerfile
-          fi
-    
+          set +e
+          ./scripts/pin-dependency.sh "${PACKAGE_PATH}/Dockerfile" "$VARIABLE_PREFIX" "$PACKAGE_VERSION"
+          code=$?
+          set -e
+          case "$code" in
+            0) echo "changed=true" >> "$GITHUB_OUTPUT" ;;
+            10) echo "changed=false" >> "$GITHUB_OUTPUT"
+                echo "::notice::${VARIABLE_PREFIX} already pinned to ${PACKAGE_VERSION}; nothing to do." ;;
+            *) echo "::error::pin-dependency.sh failed (exit ${code})"; exit 1 ;;
+          esac
+
       - name: Create pull request
+        if: steps.pin.outputs.changed == 'true'
         uses: peter-evans/create-pull-request@v8
         with:
           commit-message: "fix(deps): update ${{needs.resolve-package-variables.outputs.packageName}} to version ${{inputs.version}}"
           sign-commits: true
           title: "fix(deps): update ${{needs.resolve-package-variables.outputs.packageName}} to version ${{inputs.version}}"
           body: |
-            Update [${{needs.resolve-package-variables.outputs.packageName}}](${{needs.generate-checksum.outputs.packageUrl}}) to version ${{inputs.version}}
-            SHA256: ${{needs.generate-checksum.outputs.packageChecksum}}
+            Update ${{needs.resolve-package-variables.outputs.packageName}} to version ${{inputs.version}}
           branch: update-${{inputs.package}}-${{inputs.version}}
           delete-branch: true
           reviewers: garrappachc
