@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.0.10](https://github.com/melkortf/tf2-servers/compare/4.0.9...4.0.10) (2026-10-16)
+
+### Bug Fixes
+
+* **tf2-base:** update tracked TF2 version to 11138802 ([4db0a6c](https://github.com/melkortf/tf2-servers/commit/4db0a6c5d561158c5610fa89eb9eba31809b2ee7))
+
 ## [4.0.9](https://github.com/melkortf/tf2-servers/compare/4.0.8...4.0.9) (2026-10-12)
 
 ### Bug Fixes
