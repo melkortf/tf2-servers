@@ -1,5 +1,13 @@
 # Changelog
 
+## [4.0.11](https://github.com/melkortf/tf2-servers/compare/4.0.10...4.0.11) (2026-10-22)
+
+### Bug Fixes
+
+* **deps:** update RGL.gg gameserver configs to version v390 ([#316](https://github.com/melkortf/tf2-servers/issues/316)) ([3902b09](https://github.com/melkortf/tf2-servers/commit/3902b096a868ce2d77ad8e06379311539be0c168))
+* **deps:** update SourceBans++ to version 2.2.2 ([#317](https://github.com/melkortf/tf2-servers/issues/317)) ([c832bde](https://github.com/melkortf/tf2-servers/commit/c832bde1290ae1ebdc8fa9370270b0432cefa2b6))
+* **tf2-dm,tf2-mge:** vendor SourceMod plugins downloaded from sourcemod.net ([#318](https://github.com/melkortf/tf2-servers/issues/318)) ([dca5230](https://github.com/melkortf/tf2-servers/commit/dca5230d72a9eb2d8b12ab6c3a492e37dc06e70f))
+
 ## [4.0.10](https://github.com/melkortf/tf2-servers/compare/4.0.9...4.0.10) (2026-10-16)
 
 ### Bug Fixes
