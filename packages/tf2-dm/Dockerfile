@@ -42,15 +42,8 @@ ARG TF2RUE_CHECKSUM=670f228f287bb55c4418ff8241032582189621a944a420f42ddae9db6754
 ADD --checksum=sha256:${TF2RUE_CHECKSUM} ${TF2RUE_URL} .
 RUN unzip -q -n "${TF2RUE_FILE_NAME}" -d "${PLUGIN_INSTALL_DIR}/addons/sourcemod/"
 
-ARG AFK_MANAGER_FILE_NAME=afk_manager4.smx
-ARG AFK_MANAGER_URL=https://www.sourcemod.net/vbcompiler.php?file_id=170330
-ARG AFK_MANAGER_CHECKSUM=cd41cf4195f8e54c579ed4fe730457a5c81f8007478ff9cd75b9659f8859c22b
-ADD --checksum=sha256:${AFK_MANAGER_CHECKSUM} ${AFK_MANAGER_URL} "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/${AFK_MANAGER_FILE_NAME}"
-
-ARG CLASS_RESTRICT_FILE_NAME=classrestrict.smx
-ARG CLASS_RESTRICT_URL=https://www.sourcemod.net/vbcompiler.php?file_id=27957
-ARG CLASS_RESTRICT_CHECKSUM=bce83fef7c80f66f0d1a102433aebdd5201d8ef2e3e5ea4442d1fe30f84938e9
-ADD --checksum=sha256:${CLASS_RESTRICT_CHECKSUM} ${CLASS_RESTRICT_URL} "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/${CLASS_RESTRICT_FILE_NAME}"
+# vendored: sourcemod.net blocks downloads from GitHub Actions runners
+COPY afk_manager4.smx classrestrict.smx "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/"
 
 FROM ${REGISTRY}/melkortf/tf2-sourcemod/i386:${TF2_SOURCEMOD_TAG}
 LABEL maintainer="garrappachc@gmail.com"

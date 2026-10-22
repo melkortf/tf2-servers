@@ -27,10 +27,8 @@ ARG SOURCEBANS_CHECKSUM=c0d15c46b51535101626c317158bf9d1e1274fdc29c25405c86d4faf
 ADD --checksum=sha256:${SOURCEBANS_CHECKSUM} ${SOURCEBANS_URL} .
 RUN tar xf "${SOURCEBANS_FILE_NAME}" -C "${PLUGIN_INSTALL_DIR}/"
 
-ARG AFK_MANAGER_FILE_NAME=afk_manager4.smx
-ARG AFK_MANAGER_URL=https://www.sourcemod.net/vbcompiler.php?file_id=170330
-ARG AFK_MANAGER_CHECKSUM=cd41cf4195f8e54c579ed4fe730457a5c81f8007478ff9cd75b9659f8859c22b
-ADD --checksum=sha256:${AFK_MANAGER_CHECKSUM} ${AFK_MANAGER_URL} "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/${AFK_MANAGER_FILE_NAME}"
+# vendored: sourcemod.net blocks downloads from GitHub Actions runners
+COPY afk_manager4.smx "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/"
 
 FROM ${REGISTRY}/melkortf/tf2-sourcemod/i386:${TF2_SOURCEMOD_TAG}
 LABEL maintainer="garrappachc@gmail.com"
