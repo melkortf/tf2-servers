@@ -1,5 +1,11 @@
 # Changelog
 
+# [4.1.0](https://github.com/melkortf/tf2-servers/compare/4.0.11...4.1.0) (2026-10-23)
+
+### Features
+
+* **tf2-competitive:** update ETF2L.org configs to 1.0.29 and add spells_blocker plugin ([#315](https://github.com/melkortf/tf2-servers/issues/315)) ([0f4989d](https://github.com/melkortf/tf2-servers/commit/0f4989db585f86b365178d82b796d2aa413f501a))
+
 ## [4.0.11](https://github.com/melkortf/tf2-servers/compare/4.0.10...4.0.11) (2026-10-22)
 
 ### Bug Fixes
