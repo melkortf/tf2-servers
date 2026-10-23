@@ -134,6 +134,12 @@ ARG SDR_PLUGIN_CHECKSUM=9668b437b5d091f564fd2333c9d3db6c1d5cf04eeb52d1639ad85cc3
 ADD --checksum=sha256:${SDR_PLUGIN_CHECKSUM} ${SDR_PLUGIN_URL} .
 RUN unzip -q -o "${SDR_PLUGIN_FILE_NAME}" -d "${PLUGIN_INSTALL_DIR}/addons/sourcemod/"
 
+ARG SPELLS_BLOCKER_FILE_NAME=spells_blocker.sp
+ARG SPELLS_BLOCKER_COMMIT=dbad665a7d437fd80547c4fd84481ca50d712d07
+ARG SPELLS_BLOCKER_URL=https://raw.githubusercontent.com/Arie/serveme/${SPELLS_BLOCKER_COMMIT}/docker/tf2-cloud-server/${SPELLS_BLOCKER_FILE_NAME}
+ARG SPELLS_BLOCKER_CHECKSUM=9eb2c158296e9e5e23616b67b2cf3e633c698c00b62ba81f5a2cdc5a6effcee2
+ADD --checksum=sha256:${SPELLS_BLOCKER_CHECKSUM} ${SPELLS_BLOCKER_URL} "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/${SPELLS_BLOCKER_FILE_NAME}"
+
 FROM ${REGISTRY}/melkortf/tf2-sourcemod/i386:${TF2_SOURCEMOD_TAG}
 LABEL maintainer="garrappachc@gmail.com"
 
@@ -142,6 +148,10 @@ COPY --from=plugins --chown=tf2 "${PLUGIN_INSTALL_DIR}/" "${SERVER_DIR}/tf/"
 
 # disable useless (and potentially harmful) plugins
 RUN mv "${SERVER_DIR}/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx "${SERVER_DIR}/tf/addons/sourcemod/plugins/disabled/"
+
+# spells_blocker is shipped as source only; idle until a config sets sm_spellban_spells
+RUN cd "${SERVER_DIR}/tf/addons/sourcemod/scripting" \
+  && ./spcomp spells_blocker.sp -o ../plugins/spells_blocker.smx
 
 ENV DEMOS_TF_APIKEY=
 ENV LOGS_TF_APIKEY=
