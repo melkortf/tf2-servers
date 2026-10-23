@@ -52,9 +52,9 @@ RUN unzip -q -j "${F2_SOURCEMOD_PLUGINS_FILE_NAME}" ${F2_ENABLED_PLUGINS} \
   -d "${PLUGIN_INSTALL_DIR}/addons/sourcemod/plugins/"
 
 ARG ETF2L_CONFIGS_FILE_NAME=etf2l_configs.zip
-ARG ETF2L_CONFIGS_VERSION=1.0.28
+ARG ETF2L_CONFIGS_VERSION=1.0.29
 ARG ETF2L_CONFIGS_URL=https://github.com/ETF2L/gameserver-configs/releases/download/${ETF2L_CONFIGS_VERSION}/${ETF2L_CONFIGS_FILE_NAME}
-ARG ETF2L_CONFIGS_CHECKSUM=9788d3da517b399d8d9606669e4ecc8344a771913a934085641a5659b0c015fa
+ARG ETF2L_CONFIGS_CHECKSUM=f171e626bcd4cbdfafef764420f0d788ebf96d599bf676c869b948d81191743e
 ADD --checksum=sha256:${ETF2L_CONFIGS_CHECKSUM} ${ETF2L_CONFIGS_URL} .
 RUN unzip -q "${ETF2L_CONFIGS_FILE_NAME}" -d "${PLUGIN_INSTALL_DIR}/cfg/"
 
@@ -134,6 +134,12 @@ ARG SDR_PLUGIN_CHECKSUM=9668b437b5d091f564fd2333c9d3db6c1d5cf04eeb52d1639ad85cc3
 ADD --checksum=sha256:${SDR_PLUGIN_CHECKSUM} ${SDR_PLUGIN_URL} .
 RUN unzip -q -o "${SDR_PLUGIN_FILE_NAME}" -d "${PLUGIN_INSTALL_DIR}/addons/sourcemod/"
 
+ARG SPELLS_BLOCKER_FILE_NAME=spells_blocker.sp
+ARG SPELLS_BLOCKER_COMMIT=dbad665a7d437fd80547c4fd84481ca50d712d07
+ARG SPELLS_BLOCKER_URL=https://raw.githubusercontent.com/Arie/serveme/${SPELLS_BLOCKER_COMMIT}/docker/tf2-cloud-server/${SPELLS_BLOCKER_FILE_NAME}
+ARG SPELLS_BLOCKER_CHECKSUM=9eb2c158296e9e5e23616b67b2cf3e633c698c00b62ba81f5a2cdc5a6effcee2
+ADD --checksum=sha256:${SPELLS_BLOCKER_CHECKSUM} ${SPELLS_BLOCKER_URL} "${PLUGIN_INSTALL_DIR}/addons/sourcemod/scripting/${SPELLS_BLOCKER_FILE_NAME}"
+
 FROM ${REGISTRY}/melkortf/tf2-sourcemod/i386:${TF2_SOURCEMOD_TAG}
 LABEL maintainer="garrappachc@gmail.com"
 
@@ -142,6 +148,10 @@ COPY --from=plugins --chown=tf2 "${PLUGIN_INSTALL_DIR}/" "${SERVER_DIR}/tf/"
 
 # disable useless (and potentially harmful) plugins
 RUN mv "${SERVER_DIR}/tf/addons/sourcemod/plugins/"{nextmap,funcommands,funvotes}.smx "${SERVER_DIR}/tf/addons/sourcemod/plugins/disabled/"
+
+# spells_blocker is shipped as source only; idle until a config sets sm_spellban_spells
+RUN cd "${SERVER_DIR}/tf/addons/sourcemod/scripting" \
+  && ./spcomp spells_blocker.sp -o ../plugins/spells_blocker.smx
 
 ENV DEMOS_TF_APIKEY=
 ENV LOGS_TF_APIKEY=
