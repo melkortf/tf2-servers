@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.1.1](https://github.com/melkortf/tf2-servers/compare/4.1.0...4.1.1) (2026-10-26)
+
+### Bug Fixes
+
+* **deps:** update MGEMod to version v3.1.0-beta40 ([#319](https://github.com/melkortf/tf2-servers/issues/319)) ([9b777d6](https://github.com/melkortf/tf2-servers/commit/9b777d6b057d8669a15b2ec621dee70f1102845c))
+
 # [4.1.0](https://github.com/melkortf/tf2-servers/compare/4.0.11...4.1.0) (2026-10-23)
 
 ### Features
