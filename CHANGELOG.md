@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.1.2](https://github.com/melkortf/tf2-servers/compare/4.1.1...4.1.2) (2026-10-28)
+
+### Bug Fixes
+
+* **deps:** update SourceBans++ to version 2.2.3 ([#321](https://github.com/melkortf/tf2-servers/issues/321)) ([1411358](https://github.com/melkortf/tf2-servers/commit/1411358e2ed495ba944aaae29e20bcc76355a4a7))
+
 ## [4.1.1](https://github.com/melkortf/tf2-servers/compare/4.1.0...4.1.1) (2026-10-26)
 
 ### Bug Fixes
