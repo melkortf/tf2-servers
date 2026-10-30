@@ -63,8 +63,6 @@ jobs:
             exit 0
           fi
 
-          current=$(grep -hoP "^ARG ${PKG_PREFIX}_VERSION=\K.*" $files | head -n1 || true)
-
           # releases/latest excludes pre-releases; packages pinned to a
           # pre-release need the full release list instead.
           if [[ "$PKG_PRERELEASE" == "true" ]]; then
@@ -78,47 +76,32 @@ jobs:
             exit 0
           fi
 
-          # Preserve the existing convention: keep a leading "v" only if the
-          # currently pinned version already has one.
-          if [[ "$current" == v* ]]; then
-            target="$latest_tag"
-          else
-            target="${latest_tag#v}"
-          fi
+          echo "${PKG_ID}: latest_tag=${latest_tag}"
 
-          echo "${PKG_ID}: current=${current} latest_tag=${latest_tag} target=${target}"
-
-          needs_update=false
+          # pin-dependency.sh normalizes the tag, reconstructs the URL(s),
+          # refreshes the checksum(s), and reports 0=changed / 10=unchanged.
+          updated=false
           for f in $files; do
-            cur=$(grep -oP "^ARG ${PKG_PREFIX}_VERSION=\K.*" "$f")
-            if [[ "$cur" != "$target" ]]; then
-              needs_update=true
-            fi
+            set +e
+            ./scripts/pin-dependency.sh "$f" "$PKG_PREFIX" "$latest_tag"
+            code=$?
+            set -e
+            case "$code" in
+              0) updated=true ;;
+              10) ;;
+              *) echo "::error::pin-dependency.sh failed for ${f} (exit ${code})"; exit 1 ;;
+            esac
           done
 
-          if [[ "$needs_update" != "true" ]]; then
-            echo "All Dockerfiles already pin ${target}; nothing to do."
+          if [[ "$updated" != "true" ]]; then
+            echo "All Dockerfiles already pin the latest ${PKG_PREFIX}; nothing to do."
             echo "updated=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
-          for f in $files; do
-            sed -i "s/^ARG ${PKG_PREFIX}_VERSION=.*/ARG ${PKG_PREFIX}_VERSION=${target}/" "$f"
-
-            # Reconstruct the download URL by evaluating the package's ARG lines
-            # in file order (FILE_NAME/VERSION are defined before URL).
-            url=$(grep -E "^ARG ${PKG_PREFIX}_" "$f" \
-              | sed -E 's/^ARG[[:space:]]+([A-Z0-9_]+)=(.*)$/\1="\2"/' \
-              | { eval "$(cat)"; eval echo "\$${PKG_PREFIX}_URL"; })
-
-            echo "  ${f}: ${url}"
-            checksum=$(curl --fail --location --silent "$url" | sha256sum | awk '{print $1}')
-            if [[ -z "$checksum" ]]; then
-              echo "::error::Failed to download ${url} to compute checksum."
-              exit 1
-            fi
-            sed -i "s/^ARG ${PKG_PREFIX}_CHECKSUM=.*/ARG ${PKG_PREFIX}_CHECKSUM=${checksum}/" "$f"
-          done
+          # Read the normalized version back from a file for the PR message.
+          first=$(echo "$files" | head -n1)
+          target=$(sed -n "s|^ARG ${PKG_PREFIX}_VERSION=\(.*\)|\1|p" "$first" | head -n1)
 
           {
             echo "updated=true"
