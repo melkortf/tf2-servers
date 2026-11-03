@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.1.5](https://github.com/melkortf/tf2-servers/compare/4.1.4...4.1.5) (2026-11-03)
+
+### Bug Fixes
+
+* **deps:** update ETF2L.org gameserver configs to version 1.0.30 ([#323](https://github.com/melkortf/tf2-servers/issues/323)) ([fadefa8](https://github.com/melkortf/tf2-servers/commit/fadefa86266e6cb2edc7398a1742446c6de2274a))
+
 ## [4.1.4](https://github.com/melkortf/tf2-servers/compare/4.1.3...4.1.4) (2026-10-30)
 
 ### Bug Fixes
