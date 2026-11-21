@@ -383,6 +383,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v7
 
+      # Docker 29.4.2 blocks the 32-bit socket calls used by SteamCMD.
+      - name: Set up Docker
+        uses: docker/setup-docker-action@v5
+        with:
+          version: v29.9.3
+
       - name: Build tf2-base (i386)
         uses: docker/build-push-action@v7
         with:
