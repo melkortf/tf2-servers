@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.1.7](https://github.com/melkortf/tf2-servers/compare/4.1.6...4.1.7) (2026-11-22)
+
+### Bug Fixes
+
+* **deps:** update TF2 Competitive Fixes to version 1.18.2 ([#328](https://github.com/melkortf/tf2-servers/issues/328)) ([7961d57](https://github.com/melkortf/tf2-servers/commit/7961d57ff6f6e6eb141a1d66207cc4c26eef7597))
+
 ## [4.1.6](https://github.com/melkortf/tf2-servers/compare/4.1.5...4.1.6) (2026-11-21)
 
 ### Bug Fixes
