@@ -1,5 +1,12 @@
 # Changelog
 
+## [4.1.9](https://github.com/melkortf/tf2-servers/compare/4.1.8...4.1.9) (2026-11-24)
+
+### Bug Fixes
+
+* **deps:** update F2's sourcemod plugins to version 20261123-1795430513932 ([#329](https://github.com/melkortf/tf2-servers/issues/329)) ([baf3657](https://github.com/melkortf/tf2-servers/commit/baf36570768eb7d45369e4b69d13934b1c29db67))
+* **deps:** update Metamod:Source to 1.12.0-git1230 and SourceMod to 1.12.0-git7263 ([#330](https://github.com/melkortf/tf2-servers/issues/330)) ([2df97cc](https://github.com/melkortf/tf2-servers/commit/2df97cc7438609872816520900d8f4586186a96f))
+
 ## [4.1.8](https://github.com/melkortf/tf2-servers/compare/4.1.7...4.1.8) (2026-11-24)
 
 ### Bug Fixes
