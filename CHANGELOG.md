@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.1.8](https://github.com/melkortf/tf2-servers/compare/4.1.7...4.1.8) (2026-11-24)
+
+### Bug Fixes
+
+* **tf2-base:** update tracked TF2 version to 11267535 ([7579468](https://github.com/melkortf/tf2-servers/commit/75794684c763a226a973a29a0b3ad4157995fe45))
+
 ## [4.1.7](https://github.com/melkortf/tf2-servers/compare/4.1.6...4.1.7) (2026-11-22)
 
 ### Bug Fixes
