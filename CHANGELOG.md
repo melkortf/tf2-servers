@@ -1,5 +1,11 @@
 # Changelog
 
+## [4.1.11](https://github.com/melkortf/tf2-servers/compare/4.1.10...4.1.11) (2026-11-28)
+
+### Bug Fixes
+
+* **deps:** update SOAP-TF2DM to version 4.5.0 ([#331](https://github.com/melkortf/tf2-servers/issues/331)) ([545da6b](https://github.com/melkortf/tf2-servers/commit/545da6b14944acf3f4d39de54ce35a72aa13158a))
+
 ## [4.1.10](https://github.com/melkortf/tf2-servers/compare/4.1.9...4.1.10) (2026-11-26)
 
 ### Bug Fixes
